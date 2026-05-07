@@ -1,0 +1,395 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cdf:Benchmark
+  xmlns:cdf="http://checklists.nist.gov/xccdf/1.2"
+  xmlns:dc="http://purl.org/dc/elements/1.1/"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  id="xccdf_org.ssgproject.content_benchmark_RHEL-9"
+  style="SCAP_1.2"
+  resolved="true"
+  xml:lang="en-US">
+
+  <cdf:status date="2024-01-15">accepted</cdf:status>
+  <cdf:title>Guide to the Secure Configuration of Red Hat Enterprise Linux 9</cdf:title>
+  <cdf:description>
+    This guide presents a catalog of security-relevant configuration settings for Red Hat
+    Enterprise Linux 9. It is a rendering of content structured in the eXtensible
+    Configuration Checklist Description Format (XCCDF) in order to support security
+    automation.
+  </cdf:description>
+  <cdf:notice id="terms-of-use" xml:lang="en-US">
+    Do not attempt to implement any of the settings in this guide without first testing
+    them in a non-operational environment.
+  </cdf:notice>
+  <cdf:reference href="https://www.nist.gov">
+    <dc:publisher>NIST</dc:publisher>
+    <dc:source>NIST SP 800-53</dc:source>
+  </cdf:reference>
+  <cdf:version>0.1.72</cdf:version>
+
+  <!-- ============================================================ -->
+  <!-- Profile                                                       -->
+  <!-- ============================================================ -->
+  <cdf:Profile id="xccdf_org.ssgproject.content_profile_stig">
+    <cdf:title>DISA STIG for Red Hat Enterprise Linux 9</cdf:title>
+    <cdf:description>
+      This profile contains configuration checks that align to the
+      DISA STIG for RHEL 9.
+    </cdf:description>
+    <cdf:select idref="xccdf_org.ssgproject.content_rule_package_aide_installed"         selected="true"/>
+    <cdf:select idref="xccdf_org.ssgproject.content_rule_aide_periodic_cron_checking"    selected="true"/>
+    <cdf:select idref="xccdf_org.ssgproject.content_rule_rpm_verify_permissions"         selected="true"/>
+    <cdf:select idref="xccdf_org.ssgproject.content_rule_rpm_verify_hashes"              selected="true"/>
+    <cdf:select idref="xccdf_org.ssgproject.content_rule_sshd_disable_root_login"        selected="true"/>
+    <cdf:select idref="xccdf_org.ssgproject.content_rule_accounts_password_minlen_login_defs" selected="true"/>
+    <cdf:select idref="xccdf_org.ssgproject.content_rule_no_empty_passwords"             selected="true"/>
+    <cdf:select idref="xccdf_org.ssgproject.content_rule_auditd_data_retention_max_log_file" selected="true"/>
+    <cdf:select idref="xccdf_org.ssgproject.content_rule_service_firewalld_enabled"      selected="true"/>
+    <cdf:select idref="xccdf_org.ssgproject.content_rule_kernel_module_dccp_disabled"    selected="true"/>
+  </cdf:Profile>
+
+  <!-- ============================================================ -->
+  <!-- Rules (abbreviated – just enough for the TestResult below)   -->
+  <!-- ============================================================ -->
+  <cdf:Group id="xccdf_org.ssgproject.content_group_software">
+    <cdf:title>Software and Patch Management</cdf:title>
+
+    <cdf:Rule id="xccdf_org.ssgproject.content_rule_package_aide_installed"
+              severity="medium" selected="false" weight="1.0">
+      <cdf:title>Install AIDE</cdf:title>
+      <cdf:description>AIDE provides intrusion detection by monitoring file integrity.</cdf:description>
+      <cdf:ident system="https://nvd.nist.gov/cce/index.cfm">CCE-90843-4</cdf:ident>
+      <cdf:fixtext fixref="F-package_aide_installed_fix">
+        Install the aide package with: yum install aide
+      </cdf:fixtext>
+      <cdf:fix id="F-package_aide_installed_fix" system="urn:xccdf:fix:script:sh">
+        yum -y install aide
+      </cdf:fix>
+      <cdf:check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
+        <cdf:check-content-ref name="oval:ssg:def:245" href="ssg-rhel9-oval.xml"/>
+      </cdf:check>
+    </cdf:Rule>
+
+    <cdf:Rule id="xccdf_org.ssgproject.content_rule_aide_periodic_cron_checking"
+              severity="medium" selected="false" weight="1.0">
+      <cdf:title>Configure Periodic Execution of AIDE</cdf:title>
+      <cdf:description>
+        AIDE should be executed on a periodic basis to check for changes.
+        At a minimum, AIDE should be configured to run weekly.
+      </cdf:description>
+      <cdf:ident system="https://nvd.nist.gov/cce/index.cfm">CCE-83437-4</cdf:ident>
+      <cdf:fix id="F-aide_periodic_cron_checking_fix" system="urn:xccdf:fix:script:sh">
+        echo "05 4 * * * root /usr/sbin/aide --check" &gt;&gt; /etc/cron.d/aide
+      </cdf:fix>
+      <cdf:check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
+        <cdf:check-content-ref name="oval:ssg:def:246" href="ssg-rhel9-oval.xml"/>
+      </cdf:check>
+    </cdf:Rule>
+
+    <cdf:Rule id="xccdf_org.ssgproject.content_rule_rpm_verify_permissions"
+              severity="high" selected="false" weight="1.0">
+      <cdf:title>Verify File Permissions with RPM</cdf:title>
+      <cdf:description>
+        Verify permissions of files installed by RPM to detect unauthorized changes.
+      </cdf:description>
+      <cdf:ident system="https://nvd.nist.gov/cce/index.cfm">CCE-90840-0</cdf:ident>
+      <cdf:check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
+        <cdf:check-content-ref name="oval:ssg:def:247" href="ssg-rhel9-oval.xml"/>
+      </cdf:check>
+    </cdf:Rule>
+
+    <cdf:Rule id="xccdf_org.ssgproject.content_rule_rpm_verify_hashes"
+              severity="high" selected="false" weight="1.0">
+      <cdf:title>Verify File Hashes with RPM</cdf:title>
+      <cdf:description>
+        Verify cryptographic hashes of files to ensure integrity.
+      </cdf:description>
+      <cdf:ident system="https://nvd.nist.gov/cce/index.cfm">CCE-90841-8</cdf:ident>
+      <cdf:check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
+        <cdf:check-content-ref name="oval:ssg:def:248" href="ssg-rhel9-oval.xml"/>
+      </cdf:check>
+    </cdf:Rule>
+  </cdf:Group>
+
+  <cdf:Group id="xccdf_org.ssgproject.content_group_remote_access">
+    <cdf:title>SSH Server Configuration</cdf:title>
+
+    <cdf:Rule id="xccdf_org.ssgproject.content_rule_sshd_disable_root_login"
+              severity="medium" selected="false" weight="1.0">
+      <cdf:title>Disable SSH Root Login</cdf:title>
+      <cdf:description>
+        The root user should never be allowed to log in to a system directly over a network.
+      </cdf:description>
+      <cdf:ident system="https://nvd.nist.gov/cce/index.cfm">CCE-83308-7</cdf:ident>
+      <cdf:fix id="F-sshd_disable_root_login_fix" system="urn:xccdf:fix:script:sh">
+        sed -i 's/^PermitRootLogin.*/PermitRootLogin no/' /etc/ssh/sshd_config
+        systemctl restart sshd
+      </cdf:fix>
+      <cdf:check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
+        <cdf:check-content-ref name="oval:ssg:def:301" href="ssg-rhel9-oval.xml"/>
+      </cdf:check>
+    </cdf:Rule>
+  </cdf:Group>
+
+  <cdf:Group id="xccdf_org.ssgproject.content_group_accounts">
+    <cdf:title>Account and Access Control</cdf:title>
+
+    <cdf:Rule id="xccdf_org.ssgproject.content_rule_accounts_password_minlen_login_defs"
+              severity="medium" selected="false" weight="1.0">
+      <cdf:title>Set Password Minimum Length in /etc/login.defs</cdf:title>
+      <cdf:description>
+        Setting the minimum password length to at least 15 characters ensures strong passwords.
+      </cdf:description>
+      <cdf:ident system="https://nvd.nist.gov/cce/index.cfm">CCE-83521-5</cdf:ident>
+      <cdf:fix id="F-accounts_password_minlen_fix" system="urn:xccdf:fix:script:sh">
+        sed -i 's/^PASS_MIN_LEN.*/PASS_MIN_LEN 15/' /etc/login.defs
+      </cdf:fix>
+      <cdf:check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
+        <cdf:check-content-ref name="oval:ssg:def:413" href="ssg-rhel9-oval.xml"/>
+      </cdf:check>
+    </cdf:Rule>
+
+    <cdf:Rule id="xccdf_org.ssgproject.content_rule_no_empty_passwords"
+              severity="high" selected="false" weight="1.0">
+      <cdf:title>Prevent Login to Accounts With Empty Passwords</cdf:title>
+      <cdf:description>
+        Accounts with empty passwords represent a significant security risk and should not
+        be permitted to log in.
+      </cdf:description>
+      <cdf:ident system="https://nvd.nist.gov/cce/index.cfm">CCE-83611-4</cdf:ident>
+      <cdf:check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
+        <cdf:check-content-ref name="oval:ssg:def:414" href="ssg-rhel9-oval.xml"/>
+      </cdf:check>
+    </cdf:Rule>
+  </cdf:Group>
+
+  <cdf:Group id="xccdf_org.ssgproject.content_group_auditing">
+    <cdf:title>System Auditing</cdf:title>
+
+    <cdf:Rule id="xccdf_org.ssgproject.content_rule_auditd_data_retention_max_log_file"
+              severity="medium" selected="false" weight="1.0">
+      <cdf:title>Configure auditd Max Log File Size</cdf:title>
+      <cdf:description>
+        Determine the amount of audit data (in megabytes) which will be retained.
+      </cdf:description>
+      <cdf:ident system="https://nvd.nist.gov/cce/index.cfm">CCE-83700-5</cdf:ident>
+      <cdf:fix id="F-auditd_max_log_file_fix" system="urn:xccdf:fix:script:sh">
+        sed -i 's/^max_log_file .*/max_log_file = 6/' /etc/audit/auditd.conf
+      </cdf:fix>
+      <cdf:check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
+        <cdf:check-content-ref name="oval:ssg:def:501" href="ssg-rhel9-oval.xml"/>
+      </cdf:check>
+    </cdf:Rule>
+  </cdf:Group>
+
+  <cdf:Group id="xccdf_org.ssgproject.content_group_network">
+    <cdf:title>Network Configuration and Firewalls</cdf:title>
+
+    <cdf:Rule id="xccdf_org.ssgproject.content_rule_service_firewalld_enabled"
+              severity="medium" selected="false" weight="1.0">
+      <cdf:title>Verify firewalld Enabled</cdf:title>
+      <cdf:description>The firewalld service should be enabled and active.</cdf:description>
+      <cdf:ident system="https://nvd.nist.gov/cce/index.cfm">CCE-83437-6</cdf:ident>
+      <cdf:fix id="F-service_firewalld_enabled_fix" system="urn:xccdf:fix:script:sh">
+        systemctl enable --now firewalld
+      </cdf:fix>
+      <cdf:check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
+        <cdf:check-content-ref name="oval:ssg:def:601" href="ssg-rhel9-oval.xml"/>
+      </cdf:check>
+    </cdf:Rule>
+
+    <cdf:Rule id="xccdf_org.ssgproject.content_rule_kernel_module_dccp_disabled"
+              severity="medium" selected="false" weight="1.0">
+      <cdf:title>Disable DCCP Kernel Module</cdf:title>
+      <cdf:description>
+        The Datagram Congestion Control Protocol (DCCP) is not required for typical use.
+        Disabling it reduces the attack surface of the kernel.
+      </cdf:description>
+      <cdf:ident system="https://nvd.nist.gov/cce/index.cfm">CCE-83497-8</cdf:ident>
+      <cdf:fix id="F-kernel_module_dccp_disabled_fix" system="urn:xccdf:fix:script:sh">
+        echo "install dccp /bin/true" &gt;&gt; /etc/modprobe.d/dccp.conf
+      </cdf:fix>
+      <cdf:check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
+        <cdf:check-content-ref name="oval:ssg:def:602" href="ssg-rhel9-oval.xml"/>
+      </cdf:check>
+    </cdf:Rule>
+  </cdf:Group>
+
+  <!-- ============================================================ -->
+  <!-- TestResult                                                     -->
+  <!-- ============================================================ -->
+  <cdf:TestResult
+      id="xccdf_org.open-scap_testresult_xccdf_org.ssgproject.content_profile_stig"
+      start-time="2024-03-15T08:00:01"
+      end-time="2024-03-15T08:04:37"
+      version="1.2"
+      test-system="cpe:/a:open-scap:openscap:1.3.9">
+
+    <cdf:benchmark href="/usr/share/xml/scap/ssg/content/ssg-rhel9-ds.xml"
+                   id="xccdf_org.ssgproject.content_benchmark_RHEL-9"/>
+
+    <cdf:title>OSCAP Scan Result</cdf:title>
+
+    <cdf:identity authenticated="true" privileged="true">root</cdf:identity>
+
+    <cdf:profile idref="xccdf_org.ssgproject.content_profile_stig"/>
+
+    <cdf:target>rhel9-host.example.com</cdf:target>
+    <cdf:target-address>192.168.1.42</cdf:target-address>
+    <cdf:target-facts>
+      <cdf:fact name="urn:xccdf:fact:asset:identifier:host_name" type="string">rhel9-host.example.com</cdf:fact>
+      <cdf:fact name="urn:xccdf:fact:asset:identifier:ipv4" type="string">192.168.1.42</cdf:fact>
+      <cdf:fact name="urn:xccdf:fact:asset:identifier:os_name" type="string">Red Hat Enterprise Linux</cdf:fact>
+      <cdf:fact name="urn:xccdf:fact:asset:identifier:os_version" type="string">9.3</cdf:fact>
+    </cdf:target-facts>
+
+    <cdf:platform idref="cpe:/o:redhat:enterprise_linux:9"/>
+
+    <!-- ── rule-results ─────────────────────────────────────────── -->
+
+    <cdf:rule-result
+        idref="xccdf_org.ssgproject.content_rule_package_aide_installed"
+        time="2024-03-15T08:00:15"
+        severity="medium"
+        weight="1.000000">
+      <cdf:result>pass</cdf:result>
+      <cdf:ident system="https://nvd.nist.gov/cce/index.cfm">CCE-90843-4</cdf:ident>
+      <cdf:check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
+        <cdf:check-content-ref name="oval:ssg:def:245" href="ssg-rhel9-oval.xml"/>
+      </cdf:check>
+    </cdf:rule-result>
+
+    <cdf:rule-result
+        idref="xccdf_org.ssgproject.content_rule_aide_periodic_cron_checking"
+        time="2024-03-15T08:00:42"
+        severity="medium"
+        weight="1.000000">
+      <cdf:result>fail</cdf:result>
+      <cdf:ident system="https://nvd.nist.gov/cce/index.cfm">CCE-83437-4</cdf:ident>
+      <cdf:fix xmlns:xhtml="http://www.w3.org/1999/xhtml"
+               id="F-aide_periodic_cron_checking_fix"
+               system="urn:xccdf:fix:script:sh">
+        echo "05 4 * * * root /usr/sbin/aide --check" &gt;&gt; /etc/cron.d/aide
+      </cdf:fix>
+      <cdf:check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
+        <cdf:check-content-ref name="oval:ssg:def:246" href="ssg-rhel9-oval.xml"/>
+      </cdf:check>
+    </cdf:rule-result>
+
+    <cdf:rule-result
+        idref="xccdf_org.ssgproject.content_rule_rpm_verify_permissions"
+        time="2024-03-15T08:01:05"
+        severity="high"
+        weight="1.000000">
+      <cdf:result>fail</cdf:result>
+      <cdf:ident system="https://nvd.nist.gov/cce/index.cfm">CCE-90840-0</cdf:ident>
+      <cdf:check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
+        <cdf:check-content-ref name="oval:ssg:def:247" href="ssg-rhel9-oval.xml"/>
+      </cdf:check>
+    </cdf:rule-result>
+
+    <cdf:rule-result
+        idref="xccdf_org.ssgproject.content_rule_rpm_verify_hashes"
+        time="2024-03-15T08:01:28"
+        severity="high"
+        weight="1.000000">
+      <cdf:result>pass</cdf:result>
+      <cdf:ident system="https://nvd.nist.gov/cce/index.cfm">CCE-90841-8</cdf:ident>
+      <cdf:check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
+        <cdf:check-content-ref name="oval:ssg:def:248" href="ssg-rhel9-oval.xml"/>
+      </cdf:check>
+    </cdf:rule-result>
+
+    <cdf:rule-result
+        idref="xccdf_org.ssgproject.content_rule_sshd_disable_root_login"
+        time="2024-03-15T08:02:00"
+        severity="medium"
+        weight="1.000000">
+      <cdf:result>pass</cdf:result>
+      <cdf:ident system="https://nvd.nist.gov/cce/index.cfm">CCE-83308-7</cdf:ident>
+      <cdf:check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
+        <cdf:check-content-ref name="oval:ssg:def:301" href="ssg-rhel9-oval.xml"/>
+      </cdf:check>
+    </cdf:rule-result>
+
+    <cdf:rule-result
+        idref="xccdf_org.ssgproject.content_rule_accounts_password_minlen_login_defs"
+        time="2024-03-15T08:02:30"
+        severity="medium"
+        weight="1.000000">
+      <cdf:result>notchecked</cdf:result>
+      <cdf:ident system="https://nvd.nist.gov/cce/index.cfm">CCE-83521-5</cdf:ident>
+      <cdf:message severity="info">
+        Rule not applicable on this platform configuration.
+      </cdf:message>
+      <cdf:check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
+        <cdf:check-content-ref name="oval:ssg:def:413" href="ssg-rhel9-oval.xml"/>
+      </cdf:check>
+    </cdf:rule-result>
+
+    <cdf:rule-result
+        idref="xccdf_org.ssgproject.content_rule_no_empty_passwords"
+        time="2024-03-15T08:02:55"
+        severity="high"
+        weight="1.000000">
+      <cdf:result>pass</cdf:result>
+      <cdf:ident system="https://nvd.nist.gov/cce/index.cfm">CCE-83611-4</cdf:ident>
+      <cdf:check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
+        <cdf:check-content-ref name="oval:ssg:def:414" href="ssg-rhel9-oval.xml"/>
+      </cdf:check>
+    </cdf:rule-result>
+
+    <cdf:rule-result
+        idref="xccdf_org.ssgproject.content_rule_auditd_data_retention_max_log_file"
+        time="2024-03-15T08:03:20"
+        severity="medium"
+        weight="1.000000">
+      <cdf:result>fail</cdf:result>
+      <cdf:ident system="https://nvd.nist.gov/cce/index.cfm">CCE-83700-5</cdf:ident>
+      <cdf:fix xmlns:xhtml="http://www.w3.org/1999/xhtml"
+               id="F-auditd_max_log_file_fix"
+               system="urn:xccdf:fix:script:sh">
+        sed -i 's/^max_log_file .*/max_log_file = 6/' /etc/audit/auditd.conf
+      </cdf:fix>
+      <cdf:check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
+        <cdf:check-content-ref name="oval:ssg:def:501" href="ssg-rhel9-oval.xml"/>
+      </cdf:check>
+    </cdf:rule-result>
+
+    <cdf:rule-result
+        idref="xccdf_org.ssgproject.content_rule_service_firewalld_enabled"
+        time="2024-03-15T08:03:50"
+        severity="medium"
+        weight="1.000000">
+      <cdf:result>pass</cdf:result>
+      <cdf:ident system="https://nvd.nist.gov/cce/index.cfm">CCE-83437-6</cdf:ident>
+      <cdf:check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
+        <cdf:check-content-ref name="oval:ssg:def:601" href="ssg-rhel9-oval.xml"/>
+      </cdf:check>
+    </cdf:rule-result>
+
+    <cdf:rule-result
+        idref="xccdf_org.ssgproject.content_rule_kernel_module_dccp_disabled"
+        time="2024-03-15T08:04:10"
+        severity="medium"
+        weight="1.000000">
+      <cdf:result>notapplicable</cdf:result>
+      <cdf:ident system="https://nvd.nist.gov/cce/index.cfm">CCE-83497-8</cdf:ident>
+      <cdf:message severity="info">
+        Module already absent from the running kernel; rule not applicable.
+      </cdf:message>
+      <cdf:check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
+        <cdf:check-content-ref name="oval:ssg:def:602" href="ssg-rhel9-oval.xml"/>
+      </cdf:check>
+    </cdf:rule-result>
+
+    <!-- ── scores ──────────────────────────────────────────────── -->
+    <!-- pass=5, fail=3, notchecked=1, notapplicable=1  (of 10)    -->
+
+    <cdf:score system="urn:xccdf:scoring:default"         maximum="100">50.0</cdf:score>
+    <cdf:score system="urn:xccdf:scoring:flat"            maximum="10">5.0</cdf:score>
+    <cdf:score system="urn:xccdf:scoring:flat-unweighted" maximum="10">5.0</cdf:score>
+
+  </cdf:TestResult>
+
+</cdf:Benchmark>

@@ -1,0 +1,2271 @@
+{
+  "mapping-collection": {
+    "uuid": "283b7052-01eb-4fe0-8328-e1a0ef0aa0ce",
+    "metadata": {
+      "title": "IBM Sovereign Controls Framework (ISCF) to Digital Operational Resilience Act (DORA)",
+      "last-modified": "2026-04-13T08:22:55+00:00",
+      "version": "1.0",
+      "oscal-version": "1.2.1"
+    },
+    "provenance": {
+      "method": "automation",
+      "matching-rationale": "semantic",
+      "status": "complete",
+      "mapping-description": "Mapping collection from IBM Sovereign Controls Framework (ISCF) to Digital Operational Resilience Act (DORA)"
+    },
+    "mappings": [
+      {
+        "uuid": "d37fb4fd-2921-41c1-b796-db9ece74082f",
+        "source-resource": {
+          "type": "catalog",
+          "href": "catalogs/ISCF/catalog.json",
+          "props": [
+            {
+              "name": "catalog_uuid",
+              "value": "e13ba568-72aa-470f-8ae1-87938f5b1e14",
+              "ns": "https://ibm.com/concert/ns/oscal"
+            }
+          ]
+        },
+        "target-resource": {
+          "type": "catalog",
+          "href": "catalogs/EU-Dora/catalog.json",
+          "props": [
+            {
+              "name": "catalog_uuid",
+              "value": "079735f7-5f82-4ebf-98ac-d9c05dcb5e57",
+              "ns": "https://ibm.com/concert/ns/oscal"
+            }
+          ]
+        },
+        "maps": [
+          {
+            "uuid": "3c0f132d-bed5-4ad4-877a-3596d42f63e7",
+            "relationship": "intersects-with",
+            "sources": [
+              {
+                "type": "control",
+                "id-ref": "iscf-gov-01"
+              },
+              {
+                "type": "control",
+                "id-ref": "iscf-gov-04"
+              },
+              {
+                "type": "control",
+                "id-ref": "iscf-mi-01"
+              },
+              {
+                "type": "control",
+                "id-ref": "iscf-ra-01"
+              }
+            ],
+            "targets": [
+              {
+                "type": "control",
+                "id-ref": "art_1"
+              }
+            ],
+            "props": [
+              {
+                "name": "mapping-rationale",
+                "value": "DORA Article 1 establishes the subject matter covering ICT risk management, incident reporting, resilience testing, and third-party risk management. ISCF controls intersect with these requirements: iscf-gov-01 addresses sovereignty control ownership and governance authority; iscf-gov-04 covers management review of security posture; iscf-mi-01 addresses sovereign monitoring stack for operational visibility; iscf-ra-01 covers continuous vulnerability scanning. While DORA focuses on financial sector digital resilience, ISCF focuses on sovereignty controls - both share common ground in governance, monitoring, and risk management.",
+                "ns": "https://ibm.com/concert/ns/oscal"
+              }
+            ],
+            "confidence-score": {
+              "percentage": 0.78
+            },
+            "coverage": {
+              "target-coverage": 0.35
+            }
+          },
+          {
+            "uuid": "46890904-a443-418b-9e6d-d38f7cf06efe",
+            "relationship": "intersects-with",
+            "sources": [
+              {
+                "type": "control",
+                "id-ref": "iscf-gov-01"
+              },
+              {
+                "type": "control",
+                "id-ref": "iscf-gov-02"
+              },
+              {
+                "type": "control",
+                "id-ref": "iscf-gov-04"
+              }
+            ],
+            "targets": [
+              {
+                "type": "control",
+                "id-ref": "art_4"
+              }
+            ],
+            "props": [
+              {
+                "name": "mapping-rationale",
+                "value": "DORA Article 4 establishes the proportionality principle requiring that ICT risk management requirements be proportionate to size, risk profile, and complexity of operations. ISCF governance controls intersect: iscf-gov-01 addresses region-based sovereignty control ownership with authority to define and enforce controls; iscf-gov-02 covers sovereignty risk acceptance authority with formal approval processes; iscf-gov-04 requires periodic management review of sovereignty posture. Both frameworks emphasize governance oversight and risk-based approaches, though DORA focuses on proportionality in financial services while ISCF focuses on sovereignty governance.",
+                "ns": "https://ibm.com/concert/ns/oscal"
+              }
+            ],
+            "confidence-score": {
+              "percentage": 0.76
+            },
+            "coverage": {
+              "target-coverage": 0.4
+            }
+          },
+          {
+            "uuid": "1ff0f50d-6682-40d1-9e26-d7d8136b761f",
+            "relationship": "intersects-with",
+            "sources": [
+              {
+                "type": "control",
+                "id-ref": "iscf-gov-01"
+              },
+              {
+                "type": "control",
+                "id-ref": "iscf-gov-02"
+              },
+              {
+                "type": "control",
+                "id-ref": "iscf-gov-04"
+              },
+              {
+                "type": "control",
+                "id-ref": "iscf-op-01"
+              }
+            ],
+            "targets": [
+              {
+                "type": "control",
+                "id-ref": "art_5"
+              }
+            ],
+            "props": [
+              {
+                "name": "mapping-rationale",
+                "value": "DORA Article 5 establishes governance and organisation requirements, mandating that management bodies define, approve, oversee and be accountable for ICT risk management framework implementation. ISCF controls directly intersect: iscf-gov-01 establishes region-based sovereignty control ownership with authority to define, enforce, and update controls; iscf-gov-02 requires formal management approval for sovereignty risk acceptance; iscf-gov-04 mandates periodic management review of sovereignty posture; iscf-op-01 ensures operational activities are executed by region-based teams under regional jurisdiction. Both frameworks require management accountability and governance oversight, though DORA focuses on ICT risk while ISCF focuses on sovereignty.",
+                "ns": "https://ibm.com/concert/ns/oscal"
+              }
+            ],
+            "confidence-score": {
+              "percentage": 0.82
+            },
+            "coverage": {
+              "target-coverage": 0.55
+            }
+          },
+          {
+            "uuid": "6fbb7f93-91d9-41c2-8726-11ce83f2a2be",
+            "relationship": "intersects-with",
+            "sources": [
+              {
+                "type": "control",
+                "id-ref": "iscf-gov-01"
+              },
+              {
+                "type": "control",
+                "id-ref": "iscf-gov-04"
+              },
+              {
+                "type": "control",
+                "id-ref": "iscf-ra-01"
+              },
+              {
+                "type": "control",
+                "id-ref": "iscf-ra-02"
+              },
+              {
+                "type": "control",
+                "id-ref": "iscf-ra-03"
+              }
+            ],
+            "targets": [
+              {
+                "type": "control",
+                "id-ref": "art_6"
+              }
+            ],
+            "props": [
+              {
+                "name": "mapping-rationale",
+                "value": "DORA Article 6 requires financial entities to have a sound, comprehensive and well-documented ICT risk management framework including strategies, policies, procedures, protocols and tools. ISCF controls intersect: iscf-gov-01 establishes region-based sovereignty control ownership with authority to define and enforce controls; iscf-gov-04 requires periodic management review of sovereignty posture; iscf-ra-01 implements continuous vulnerability scanning; iscf-ra-02 tracks remediation SLAs; iscf-ra-03 mandates monthly security and sovereignty health reviews. Both frameworks require documented risk management approaches, though DORA focuses on ICT risk while ISCF focuses on sovereignty risk.",
+                "ns": "https://ibm.com/concert/ns/oscal"
+              }
+            ],
+            "confidence-score": {
+              "percentage": 0.8
+            },
+            "coverage": {
+              "target-coverage": 0.45
+            }
+          },
+          {
+            "uuid": "7500b113-801c-48f5-ac0b-64024691c135",
+            "relationship": "intersects-with",
+            "sources": [
+              {
+                "type": "control",
+                "id-ref": "iscf-dr-06"
+              },
+              {
+                "type": "control",
+                "id-ref": "iscf-dr-07"
+              },
+              {
+                "type": "control",
+                "id-ref": "iscf-cr-03"
+              },
+              {
+                "type": "control",
+                "id-ref": "iscf-cr-04"
+              },
+              {
+                "type": "control",
+                "id-ref": "iscf-op-02"
+              }
+            ],
+            "targets": [
+              {
+                "type": "control",
+                "id-ref": "art_7"
+              }
+            ],
+            "props": [
+              {
+                "name": "mapping-rationale",
+                "value": "DORA Article 7 requires ICT systems, protocols and tools to be resilient, reliable, have sufficient capacity, and be technologically sound. ISCF controls intersect: iscf-dr-06 mandates encryption of data at rest using approved cryptographic mechanisms; iscf-dr-07 requires encryption of data in transit using approved protocols; iscf-cr-03 ensures cryptographic algorithms meet modern security standards; iscf-cr-04 validates cryptographic configurations periodically; iscf-op-02 ensures offline deployment capability for operational independence. Both frameworks address technical security requirements for ICT systems.",
+                "ns": "https://ibm.com/concert/ns/oscal"
+              }
+            ],
+            "confidence-score": {
+              "percentage": 0.79
+            },
+            "coverage": {
+              "target-coverage": 0.4
+            }
+          },
+          {
+            "uuid": "f4b6ba91-560a-4579-9d0b-cca9e3b1222b",
+            "relationship": "intersects-with",
+            "sources": [
+              {
+                "type": "control",
+                "id-ref": "iscf-ai-01"
+              },
+              {
+                "type": "control",
+                "id-ref": "iscf-sc-01"
+              },
+              {
+                "type": "control",
+                "id-ref": "iscf-sc-03"
+              },
+              {
+                "type": "control",
+                "id-ref": "iscf-trn-06"
+              }
+            ],
+            "targets": [
+              {
+                "type": "control",
+                "id-ref": "art_8"
+              }
+            ],
+            "props": [
+              {
+                "name": "mapping-rationale",
+                "value": "DORA Article 8 requires identification of all ICT-supported business functions, information assets, ICT assets, and their dependencies. ISCF controls intersect: iscf-ai-01 maintains AI model inventory and approval monitoring; iscf-sc-01 provides source code transparency enabling inspection of software components; iscf-sc-03 manages transitive dependency risks through SBOM generation; iscf-trn-06 documents sub-processors and external dependencies. Both frameworks require asset identification and dependency mapping, though DORA is broader while ISCF focuses on sovereignty-relevant assets.",
+                "ns": "https://ibm.com/concert/ns/oscal"
+              }
+            ],
+            "confidence-score": {
+              "percentage": 0.77
+            },
+            "coverage": {
+              "target-coverage": 0.35
+            }
+          },
+          {
+            "uuid": "12c08518-3c73-437a-a115-9744cb9e15c2",
+            "relationship": "intersects-with",
+            "sources": [
+              {
+                "type": "control",
+                "id-ref": "iscf-dr-06"
+              },
+              {
+                "type": "control",
+                "id-ref": "iscf-dr-07"
+              },
+              {
+                "type": "control",
+                "id-ref": "iscf-dr-09"
+              },
+              {
+                "type": "control",
+                "id-ref": "iscf-ia-06"
+              },
+              {
+                "type": "control",
+                "id-ref": "iscf-cr-03"
+              }
+            ],
+            "targets": [
+              {
+                "type": "control",
+                "id-ref": "art_9"
+              }
+            ],
+            "props": [
+              {
+                "name": "mapping-rationale",
+                "value": "DORA Article 9 requires protection and prevention measures including ICT security policies, access controls, encryption, and network security. ISCF controls directly intersect: iscf-dr-06 mandates encryption at rest for all customer data; iscf-dr-07 requires encryption in transit using approved protocols; iscf-dr-09 prevents cross-tenant data exposure through continuous validation; iscf-ia-06 enforces strong authentication with phishing-resistant methods or MFA; iscf-cr-03 ensures approved cryptographic algorithms. Both frameworks address data protection, access control, and encryption requirements.",
+                "ns": "https://ibm.com/concert/ns/oscal"
+              }
+            ],
+            "confidence-score": {
+              "percentage": 0.85
+            },
+            "coverage": {
+              "target-coverage": 0.55
+            }
+          },
+          {
+            "uuid": "9fabf65c-5f00-47bd-bef3-7bd33fbcc079",
+            "relationship": "intersects-with",
+            "sources": [
+              {
+                "type": "control",
+                "id-ref": "iscf-mi-01"
+              },
+              {
+                "type": "control",
+                "id-ref": "iscf-ra-01"
+              },
+              {
+                "type": "control",
+                "id-ref": "iscf-ia-04"
+              }
+            ],
+            "targets": [
+              {
+                "type": "control",
+                "id-ref": "art_10"
+              }
+            ],
+            "props": [
+              {
+                "name": "mapping-rationale",
+                "value": "DORA Article 10 requires detection mechanisms to promptly identify anomalous activities, ICT-related incidents, and potential single points of failure. ISCF controls intersect: iscf-mi-01 establishes sovereign monitoring stack for operational visibility including metrics collection, centralized logging, and alerting systems; iscf-ra-01 implements continuous vulnerability scanning to identify security vulnerabilities; iscf-ia-04 monitors all account lifecycle events including creation, modification, and deletion. Both frameworks require monitoring and detection capabilities for security events.",
+                "ns": "https://ibm.com/concert/ns/oscal"
+              }
+            ],
+            "confidence-score": {
+              "percentage": 0.82
+            },
+            "coverage": {
+              "target-coverage": 0.5
+            }
+          },
+          {
+            "uuid": "496e4e0e-e4f1-4e80-b1f7-b5661e582334",
+            "relationship": "intersects-with",
+            "sources": [
+              {
+                "type": "control",
+                "id-ref": "iscf-mi-02"
+              },
+              {
+                "type": "control",
+                "id-ref": "iscf-op-03"
+              },
+              {
+                "type": "control",
+                "id-ref": "iscf-re-01"
+              }
+            ],
+            "targets": [
+              {
+                "type": "control",
+                "id-ref": "art_11"
+              }
+            ],
+            "props": [
+              {
+                "name": "mapping-rationale",
+                "value": "DORA Article 11 requires response and recovery capabilities including ICT business continuity policy, response and recovery plans, and crisis management functions. ISCF controls intersect: iscf-mi-02 establishes incident sovereignty ensuring incident response activities are executed under MSP or region-authorized authority; iscf-op-03 ensures emergency operational authority sovereignty with crisis response under regional control including isolation, shutdown, and override capabilities; iscf-re-01 provides region-based disaster recovery with backup, failover, and recovery infrastructure within the region. Both frameworks address incident response and recovery, though DORA focuses on business continuity while ISCF emphasizes sovereignty.",
+                "ns": "https://ibm.com/concert/ns/oscal"
+              }
+            ],
+            "confidence-score": {
+              "percentage": 0.83
+            },
+            "coverage": {
+              "target-coverage": 0.5
+            }
+          },
+          {
+            "uuid": "b7b3844f-9240-4348-ad8d-2f36de554b9e",
+            "relationship": "intersects-with",
+            "sources": [
+              {
+                "type": "control",
+                "id-ref": "iscf-dr-05"
+              },
+              {
+                "type": "control",
+                "id-ref": "iscf-dr-08"
+              },
+              {
+                "type": "control",
+                "id-ref": "iscf-re-01"
+              }
+            ],
+            "targets": [
+              {
+                "type": "control",
+                "id-ref": "art_12"
+              }
+            ],
+            "props": [
+              {
+                "name": "mapping-rationale",
+                "value": "DORA Article 12 requires backup policies, restoration procedures, and recovery methods including backup scope, frequency, and testing. ISCF controls directly intersect: iscf-dr-05 ensures backup and snapshot sovereignty requiring all backups to remain region-resident with same encryption and access controls as production data; iscf-dr-08 mandates backup and snapshot deletion verification ensuring data lifecycle sovereignty; iscf-re-01 provides region-based disaster recovery with documented recovery runbooks and restoration procedures. Both frameworks address backup and recovery requirements with strong alignment.",
+                "ns": "https://ibm.com/concert/ns/oscal"
+              }
+            ],
+            "confidence-score": {
+              "percentage": 0.86
+            },
+            "coverage": {
+              "target-coverage": 0.6
+            }
+          },
+          {
+            "uuid": "c051fb7b-a34d-474c-98b6-a2219ae86593",
+            "relationship": "intersects-with",
+            "sources": [
+              {
+                "type": "control",
+                "id-ref": "iscf-ra-03"
+              },
+              {
+                "type": "control",
+                "id-ref": "iscf-gov-04"
+              },
+              {
+                "type": "control",
+                "id-ref": "iscf-ai-07"
+              }
+            ],
+            "targets": [
+              {
+                "type": "control",
+                "id-ref": "art_13"
+              }
+            ],
+            "props": [
+              {
+                "name": "mapping-rationale",
+                "value": "DORA Article 13 requires learning and evolving capabilities including post-incident reviews, lessons learned, and continuous improvement of ICT risk management. ISCF controls intersect: iscf-ra-03 mandates monthly security and sovereignty health reviews covering vulnerability status, configuration compliance, and sovereignty control status; iscf-gov-04 requires periodic management review of sovereignty posture with documented outcomes; iscf-ai-07 ensures AI risk assessment lifecycle with reassessment after significant changes. Both frameworks emphasize continuous improvement and periodic reviews.",
+                "ns": "https://ibm.com/concert/ns/oscal"
+              }
+            ],
+            "confidence-score": {
+              "percentage": 0.78
+            },
+            "coverage": {
+              "target-coverage": 0.45
+            }
+          },
+          {
+            "uuid": "847de32a-18d2-4db3-bc56-29710c5e5bb0",
+            "relationship": "intersects-with",
+            "sources": [
+              {
+                "type": "control",
+                "id-ref": "iscf-mi-02"
+              },
+              {
+                "type": "control",
+                "id-ref": "iscf-trn-01"
+              },
+              {
+                "type": "control",
+                "id-ref": "iscf-trn-02"
+              }
+            ],
+            "targets": [
+              {
+                "type": "control",
+                "id-ref": "art_14"
+              }
+            ],
+            "props": [
+              {
+                "name": "mapping-rationale",
+                "value": "DORA Article 14 requires communication policies for internal staff, external stakeholders, and clients during ICT-related incidents. ISCF controls intersect: iscf-mi-02 addresses incident sovereignty with security incidents detected, analyzed, and resolved by region-authorized teams; iscf-trn-01 provides sovereignty transparency commitment with documentation describing controls, scope, and limitations; iscf-trn-02 ensures customer visibility into sovereignty controls and monitoring results. Both frameworks address communication and transparency requirements, though DORA focuses on incident communication while ISCF focuses on sovereignty transparency.",
+                "ns": "https://ibm.com/concert/ns/oscal"
+              }
+            ],
+            "confidence-score": {
+              "percentage": 0.75
+            },
+            "coverage": {
+              "target-coverage": 0.35
+            }
+          },
+          {
+            "uuid": "cc1498c3-5ddd-4a25-9fa7-0680885c328d",
+            "relationship": "intersects-with",
+            "sources": [
+              {
+                "type": "control",
+                "id-ref": "iscf-gov-01"
+              },
+              {
+                "type": "control",
+                "id-ref": "iscf-cr-03"
+              },
+              {
+                "type": "control",
+                "id-ref": "iscf-ra-01"
+              }
+            ],
+            "targets": [
+              {
+                "type": "control",
+                "id-ref": "art_15"
+              }
+            ],
+            "props": [
+              {
+                "name": "mapping-rationale",
+                "value": "DORA Article 15 mandates ESAs to develop regulatory technical standards for ICT risk management tools, methods, processes and policies. ISCF controls intersect at the implementation level: iscf-gov-01 establishes sovereignty control ownership with authority to define and enforce controls; iscf-cr-03 ensures approved cryptographic algorithms aligned with recognized authorities like ANSSI, ENISA, and NIST; iscf-ra-01 implements continuous vulnerability scanning. Both frameworks reference standards and regulatory alignment, though DORA delegates to ESAs while ISCF references specific security authorities.",
+                "ns": "https://ibm.com/concert/ns/oscal"
+              }
+            ],
+            "confidence-score": {
+              "percentage": 0.76
+            },
+            "coverage": {
+              "target-coverage": 0.4
+            }
+          },
+          {
+            "uuid": "4bd1bb48-8b6d-4d6d-9d78-bd1a3a220fe4",
+            "relationship": "intersects-with",
+            "sources": [
+              {
+                "type": "control",
+                "id-ref": "iscf-gov-01"
+              },
+              {
+                "type": "control",
+                "id-ref": "iscf-gov-04"
+              },
+              {
+                "type": "control",
+                "id-ref": "iscf-ra-01"
+              }
+            ],
+            "targets": [
+              {
+                "type": "control",
+                "id-ref": "art_16"
+              }
+            ],
+            "props": [
+              {
+                "name": "mapping-rationale",
+                "value": "DORA Article 16 establishes a simplified ICT risk management framework for smaller financial entities with proportionate requirements. ISCF controls intersect at the governance level: iscf-gov-01 establishes sovereignty control ownership with authority to define and enforce controls; iscf-gov-04 requires periodic management review of sovereignty posture; iscf-ra-01 implements continuous vulnerability scanning. Both frameworks allow for proportionate implementation based on entity size and risk profile, though DORA explicitly defines simplified requirements while ISCF applies uniformly.",
+                "ns": "https://ibm.com/concert/ns/oscal"
+              }
+            ],
+            "confidence-score": {
+              "percentage": 0.75
+            },
+            "coverage": {
+              "target-coverage": 0.35
+            }
+          },
+          {
+            "uuid": "b8fb3dde-912c-4234-b307-ea84af966801",
+            "relationship": "intersects-with",
+            "sources": [
+              {
+                "type": "control",
+                "id-ref": "iscf-mi-02"
+              },
+              {
+                "type": "control",
+                "id-ref": "iscf-ia-04"
+              },
+              {
+                "type": "control",
+                "id-ref": "iscf-m1-03"
+              }
+            ],
+            "targets": [
+              {
+                "type": "control",
+                "id-ref": "art_17"
+              }
+            ],
+            "props": [
+              {
+                "name": "mapping-rationale",
+                "value": "DORA Article 17 requires ICT-related incident management processes including classification, monitoring, and handling procedures. ISCF controls intersect: iscf-mi-02 establishes incident sovereignty with security incidents detected, analyzed, and resolved by region-authorized teams; iscf-ia-04 monitors all account lifecycle events for visibility and accountability; iscf-m1-03 ensures time synchronization integrity for accurate logs and security events. Both frameworks address incident management processes, though DORA focuses on classification while ISCF emphasizes sovereignty.",
+                "ns": "https://ibm.com/concert/ns/oscal"
+              }
+            ],
+            "confidence-score": {
+              "percentage": 0.8
+            },
+            "coverage": {
+              "target-coverage": 0.45
+            }
+          },
+          {
+            "uuid": "aaf8d871-98ff-44d6-89b2-0fd1e3053e8f",
+            "relationship": "intersects-with",
+            "sources": [
+              {
+                "type": "control",
+                "id-ref": "iscf-mi-02"
+              },
+              {
+                "type": "control",
+                "id-ref": "iscf-op-03"
+              },
+              {
+                "type": "control",
+                "id-ref": "iscf-mi-01"
+              }
+            ],
+            "targets": [
+              {
+                "type": "control",
+                "id-ref": "art_18"
+              }
+            ],
+            "props": [
+              {
+                "name": "mapping-rationale",
+                "value": "DORA Article 18 continues ICT-related incident management requirements including response procedures, root cause analysis, and follow-up actions. ISCF controls intersect: iscf-mi-02 ensures incident response activities are executed under MSP or region-authorized authority; iscf-op-03 provides emergency operational authority sovereignty for crisis response including isolation and shutdown; iscf-mi-01 establishes sovereign monitoring stack for operational visibility. Both frameworks address incident response procedures with emphasis on authorized response actions.",
+                "ns": "https://ibm.com/concert/ns/oscal"
+              }
+            ],
+            "confidence-score": {
+              "percentage": 0.81
+            },
+            "coverage": {
+              "target-coverage": 0.5
+            }
+          },
+          {
+            "uuid": "00cfc3cc-4b5b-4635-b97e-866e873d4a5f",
+            "relationship": "intersects-with",
+            "sources": [
+              {
+                "type": "control",
+                "id-ref": "iscf-mi-02"
+              },
+              {
+                "type": "control",
+                "id-ref": "iscf-trn-05"
+              },
+              {
+                "type": "control",
+                "id-ref": "iscf-m1-03"
+              }
+            ],
+            "targets": [
+              {
+                "type": "control",
+                "id-ref": "art_19"
+              }
+            ],
+            "props": [
+              {
+                "name": "mapping-rationale",
+                "value": "DORA Article 19 requires reporting of major ICT-related incidents to competent authorities with initial, intermediate, and final reports. ISCF controls intersect: iscf-mi-02 addresses incident sovereignty with security incidents detected and analyzed by authorized teams; iscf-trn-05 provides customer access to audit and evidence for compliance verification; iscf-m1-03 ensures time synchronization for accurate and legally defensible audit records. Both frameworks address incident documentation and reporting, though DORA mandates regulatory reporting while ISCF focuses on audit evidence.",
+                "ns": "https://ibm.com/concert/ns/oscal"
+              }
+            ],
+            "confidence-score": {
+              "percentage": 0.77
+            },
+            "coverage": {
+              "target-coverage": 0.4
+            }
+          },
+          {
+            "uuid": "f98154be-8c46-4333-9d8b-e4a0cb3597ea",
+            "relationship": "intersects-with",
+            "sources": [
+              {
+                "type": "control",
+                "id-ref": "iscf-trn-01"
+              },
+              {
+                "type": "control",
+                "id-ref": "iscf-trn-05"
+              },
+              {
+                "type": "control",
+                "id-ref": "iscf-m1-03"
+              }
+            ],
+            "targets": [
+              {
+                "type": "control",
+                "id-ref": "art_20"
+              }
+            ],
+            "props": [
+              {
+                "name": "mapping-rationale",
+                "value": "DORA Article 20 mandates ESAs to develop standardized reporting templates and content for ICT-related incidents. ISCF controls intersect at the documentation level: iscf-trn-01 provides sovereignty transparency commitment with documentation describing controls and scope; iscf-trn-05 ensures customer access to audit evidence; iscf-m1-03 ensures time synchronization for consistent and accurate records. Both frameworks address standardized documentation and reporting, though DORA focuses on regulatory templates while ISCF focuses on sovereignty documentation.",
+                "ns": "https://ibm.com/concert/ns/oscal"
+              }
+            ],
+            "confidence-score": {
+              "percentage": 0.75
+            },
+            "coverage": {
+              "target-coverage": 0.35
+            }
+          },
+          {
+            "uuid": "a9ed344b-681b-4eaa-b96d-7b742bacead3",
+            "relationship": "intersects-with",
+            "sources": [
+              {
+                "type": "control",
+                "id-ref": "iscf-mi-02"
+              },
+              {
+                "type": "control",
+                "id-ref": "iscf-trn-05"
+              }
+            ],
+            "targets": [
+              {
+                "type": "control",
+                "id-ref": "art_21"
+              }
+            ],
+            "props": [
+              {
+                "name": "mapping-rationale",
+                "value": "DORA Article 21 addresses centralisation of reporting of major ICT-related incidents through a potential single EU Hub. ISCF controls intersect at the reporting level: iscf-mi-02 ensures incident sovereignty with security incidents handled by region-authorized teams; iscf-trn-05 provides customer access to audit and evidence for compliance verification. Both frameworks address incident reporting mechanisms, though DORA focuses on centralized EU reporting while ISCF focuses on sovereign incident handling and audit access.",
+                "ns": "https://ibm.com/concert/ns/oscal"
+              }
+            ],
+            "confidence-score": {
+              "percentage": 0.75
+            },
+            "coverage": {
+              "target-coverage": 0.3
+            }
+          },
+          {
+            "uuid": "623c20e1-2b53-4514-96d7-5d62837ac57b",
+            "relationship": "intersects-with",
+            "sources": [
+              {
+                "type": "control",
+                "id-ref": "iscf-trn-02"
+              },
+              {
+                "type": "control",
+                "id-ref": "iscf-gov-04"
+              }
+            ],
+            "targets": [
+              {
+                "type": "control",
+                "id-ref": "art_22"
+              }
+            ],
+            "props": [
+              {
+                "name": "mapping-rationale",
+                "value": "DORA Article 22 requires supervisory feedback on incident reports including guidance and recommendations. ISCF controls intersect: iscf-trn-02 ensures customer visibility into sovereignty controls and monitoring results enabling independent verification; iscf-gov-04 requires periodic management review of sovereignty posture with documented outcomes. Both frameworks address feedback and review mechanisms, though DORA focuses on regulatory feedback while ISCF focuses on customer visibility and management review.",
+                "ns": "https://ibm.com/concert/ns/oscal"
+              }
+            ],
+            "confidence-score": {
+              "percentage": 0.75
+            },
+            "coverage": {
+              "target-coverage": 0.3
+            }
+          },
+          {
+            "uuid": "3787bc36-aae2-41dd-9e6b-0b204b9234ae",
+            "relationship": "intersects-with",
+            "sources": [
+              {
+                "type": "control",
+                "id-ref": "iscf-mi-02"
+              },
+              {
+                "type": "control",
+                "id-ref": "iscf-dr-07"
+              },
+              {
+                "type": "control",
+                "id-ref": "iscf-cr-03"
+              }
+            ],
+            "targets": [
+              {
+                "type": "control",
+                "id-ref": "art_23"
+              }
+            ],
+            "props": [
+              {
+                "name": "mapping-rationale",
+                "value": "DORA Article 23 addresses operational or security payment-related incidents for credit institutions and payment service providers. ISCF controls intersect: iscf-mi-02 ensures incident sovereignty for security incident handling; iscf-dr-07 mandates encryption of data in transit protecting payment data; iscf-cr-03 ensures approved cryptographic algorithms for secure transactions. Both frameworks address security for sensitive operations, though DORA specifically targets payment incidents while ISCF provides general security controls.",
+                "ns": "https://ibm.com/concert/ns/oscal"
+              }
+            ],
+            "confidence-score": {
+              "percentage": 0.76
+            },
+            "coverage": {
+              "target-coverage": 0.35
+            }
+          },
+          {
+            "uuid": "13962328-cc17-4f67-b15e-fa03217d0835",
+            "relationship": "intersects-with",
+            "sources": [
+              {
+                "type": "control",
+                "id-ref": "iscf-ra-01"
+              },
+              {
+                "type": "control",
+                "id-ref": "iscf-ra-02"
+              },
+              {
+                "type": "control",
+                "id-ref": "iscf-cr-04"
+              }
+            ],
+            "targets": [
+              {
+                "type": "control",
+                "id-ref": "art_24"
+              }
+            ],
+            "props": [
+              {
+                "name": "mapping-rationale",
+                "value": "DORA Article 24 establishes general requirements for digital operational resilience testing including testing programs and methodologies. ISCF controls intersect: iscf-ra-01 implements continuous vulnerability scanning across all in-scope components; iscf-ra-02 tracks remediation SLAs for identified vulnerabilities; iscf-cr-04 validates cryptographic configurations periodically. Both frameworks require systematic testing and validation of security controls, though DORA mandates comprehensive resilience testing while ISCF focuses on vulnerability and configuration validation.",
+                "ns": "https://ibm.com/concert/ns/oscal"
+              }
+            ],
+            "confidence-score": {
+              "percentage": 0.8
+            },
+            "coverage": {
+              "target-coverage": 0.45
+            }
+          },
+          {
+            "uuid": "95e4081c-29b7-4fd7-b823-bbd9ddd7eca0",
+            "relationship": "intersects-with",
+            "sources": [
+              {
+                "type": "control",
+                "id-ref": "iscf-ra-01"
+              },
+              {
+                "type": "control",
+                "id-ref": "iscf-cr-04"
+              },
+              {
+                "type": "control",
+                "id-ref": "iscf-sc-02"
+              }
+            ],
+            "targets": [
+              {
+                "type": "control",
+                "id-ref": "art_25"
+              }
+            ],
+            "props": [
+              {
+                "name": "mapping-rationale",
+                "value": "DORA Article 25 specifies testing requirements for ICT tools and systems including vulnerability assessments, network security assessments, and source code reviews. ISCF controls intersect: iscf-ra-01 implements continuous vulnerability scanning for platform components and container images; iscf-cr-04 validates cryptographic configurations to ensure compliance with approved policies; iscf-sc-02 enforces image signing ensuring only cryptographically signed container images are deployed. Both frameworks address security testing of ICT systems and software integrity.",
+                "ns": "https://ibm.com/concert/ns/oscal"
+              }
+            ],
+            "confidence-score": {
+              "percentage": 0.82
+            },
+            "coverage": {
+              "target-coverage": 0.5
+            }
+          },
+          {
+            "uuid": "12aad364-4952-4f96-94b0-35bb7049a0e8",
+            "relationship": "intersects-with",
+            "sources": [
+              {
+                "type": "control",
+                "id-ref": "iscf-ra-01"
+              },
+              {
+                "type": "control",
+                "id-ref": "iscf-ra-02"
+              }
+            ],
+            "targets": [
+              {
+                "type": "control",
+                "id-ref": "art_26"
+              }
+            ],
+            "props": [
+              {
+                "name": "mapping-rationale",
+                "value": "DORA Article 26 mandates advanced threat-led penetration testing (TLPT) at least every 3 years covering critical functions on live production systems. ISCF-RA-01 (Risk Assessment Framework) and ISCF-RA-02 (Risk Assessment Methodology) provide foundational risk assessment capabilities that inform testing scope and priorities. ISCF-MO-02 (Security Testing) addresses security testing requirements. Both frameworks require systematic testing approaches, though DORA specifically mandates TLPT methodology with regulatory attestation while ISCF focuses on sovereignty-oriented risk assessment and testing.",
+                "ns": "https://ibm.com/concert/ns/oscal"
+              }
+            ],
+            "confidence-score": {
+              "percentage": 0.78
+            },
+            "coverage": {
+              "target-coverage": 0.45
+            }
+          },
+          {
+            "uuid": "cd709ad9-52de-4052-bf2f-94162cc50d8b",
+            "relationship": "intersects-with",
+            "sources": [
+              {
+                "type": "control",
+                "id-ref": "iscf-sc-01"
+              },
+              {
+                "type": "control",
+                "id-ref": "iscf-sc-02"
+              }
+            ],
+            "targets": [
+              {
+                "type": "control",
+                "id-ref": "art_27"
+              }
+            ],
+            "props": [
+              {
+                "name": "mapping-rationale",
+                "value": "DORA Article 27 specifies requirements for TLPT testers including suitability, technical capabilities, certifications, and professional indemnity insurance. ISCF-SC-01 (Supply Chain Risk Management) and ISCF-SC-02 (Supplier Assessment) address third-party assessment and qualification requirements that partially align with tester qualification requirements. ISCF-GO-02 (Roles and Responsibilities) addresses organizational accountability. The intersection exists in third-party qualification and oversight, though DORA's specific TLPT tester requirements are more specialized than ISCF's general supplier assessment framework.",
+                "ns": "https://ibm.com/concert/ns/oscal"
+              }
+            ],
+            "confidence-score": {
+              "percentage": 0.75
+            },
+            "coverage": {
+              "target-coverage": 0.4
+            }
+          },
+          {
+            "uuid": "d031ba86-adb3-4424-97ea-170aa508f1da",
+            "relationship": "intersects-with",
+            "sources": [
+              {
+                "type": "control",
+                "id-ref": "iscf-sc-01"
+              },
+              {
+                "type": "control",
+                "id-ref": "iscf-sc-02"
+              },
+              {
+                "type": "control",
+                "id-ref": "iscf-sc-03"
+              },
+              {
+                "type": "control",
+                "id-ref": "iscf-ra-01"
+              }
+            ],
+            "targets": [
+              {
+                "type": "control",
+                "id-ref": "art_28"
+              }
+            ],
+            "props": [
+              {
+                "name": "mapping-rationale",
+                "value": "DORA Article 28 establishes comprehensive ICT third-party risk management principles including maintaining registers of contractual arrangements, due diligence requirements, exit strategies, and audit rights. ISCF-SC-01 (Supply Chain Risk Management), ISCF-SC-02 (Supplier Assessment), and ISCF-SC-03 (Supply Chain Monitoring) directly address third-party/supply chain risk management with sovereignty considerations. ISCF-GO-01 (Governance Framework) provides governance structure and ISCF-RA-01 (Risk Assessment Framework) supports risk identification. Both frameworks emphasize third-party oversight, though DORA focuses on financial sector ICT services while ISCF emphasizes sovereignty and data residency in supply chain relationships.",
+                "ns": "https://ibm.com/concert/ns/oscal"
+              }
+            ],
+            "confidence-score": {
+              "percentage": 0.82
+            },
+            "coverage": {
+              "target-coverage": 0.55
+            }
+          },
+          {
+            "uuid": "1a4a3de6-4ea2-40ca-afc2-7e563d0bec89",
+            "relationship": "intersects-with",
+            "sources": [
+              {
+                "type": "control",
+                "id-ref": "iscf-sc-01"
+              },
+              {
+                "type": "control",
+                "id-ref": "iscf-ra-01"
+              },
+              {
+                "type": "control",
+                "id-ref": "iscf-ra-02"
+              },
+              {
+                "type": "control",
+                "id-ref": "iscf-re-01"
+              }
+            ],
+            "targets": [
+              {
+                "type": "control",
+                "id-ref": "art_29"
+              }
+            ],
+            "props": [
+              {
+                "name": "mapping-rationale",
+                "value": "DORA Article 29 requires assessment of ICT concentration risk including evaluating substitutability of providers, multiple arrangements with same provider, and subcontracting chains. ISCF-SC-01 (Supply Chain Risk Management) addresses supply chain dependencies and concentration concerns. ISCF-RA-01 and ISCF-RA-02 (Risk Assessment Framework and Methodology) provide risk assessment capabilities for evaluating concentration risks. ISCF-RE-01 (Resilience Planning) addresses business continuity considerations related to provider dependencies. Both frameworks recognize concentration risk, though DORA specifically targets ICT service provider concentration while ISCF addresses broader sovereignty-related supply chain concentration.",
+                "ns": "https://ibm.com/concert/ns/oscal"
+              }
+            ],
+            "confidence-score": {
+              "percentage": 0.79
+            },
+            "coverage": {
+              "target-coverage": 0.5
+            }
+          },
+          {
+            "uuid": "7deda58e-17e1-4ef2-a97a-61ad354cffff",
+            "relationship": "intersects-with",
+            "sources": [
+              {
+                "type": "control",
+                "id-ref": "iscf-sc-02"
+              },
+              {
+                "type": "control",
+                "id-ref": "iscf-dr-01"
+              },
+              {
+                "type": "control",
+                "id-ref": "iscf-dr-02"
+              },
+              {
+                "type": "control",
+                "id-ref": "iscf-lj-01"
+              }
+            ],
+            "targets": [
+              {
+                "type": "control",
+                "id-ref": "art_30"
+              }
+            ],
+            "props": [
+              {
+                "name": "mapping-rationale",
+                "value": "DORA Article 30 specifies mandatory contractual provisions for ICT services including data location requirements, availability/integrity/confidentiality provisions, data recovery rights, service levels, and termination rights. ISCF-SC-02 (Supplier Assessment) addresses contractual requirements with suppliers. ISCF-DR-01 and ISCF-DR-02 (Data Residency controls) directly address data location and processing requirements in contracts. ISCF-LJ-01 (Legal Jurisdiction) addresses jurisdictional requirements in agreements. ISCF-TR-01 (Transparency Requirements) addresses disclosure and transparency in contractual relationships. Both frameworks require contractual safeguards, with DORA focusing on operational resilience provisions and ISCF emphasizing sovereignty, data residency, and jurisdictional protections.",
+                "ns": "https://ibm.com/concert/ns/oscal"
+              }
+            ],
+            "confidence-score": {
+              "percentage": 0.8
+            },
+            "coverage": {
+              "target-coverage": 0.5
+            }
+          },
+          {
+            "uuid": "f505481b-e375-4d69-8450-731b1d35a467",
+            "relationship": "intersects-with",
+            "sources": [
+              {
+                "type": "control",
+                "id-ref": "iscf-sc-01"
+              },
+              {
+                "type": "control",
+                "id-ref": "iscf-sc-02"
+              },
+              {
+                "type": "control",
+                "id-ref": "iscf-ra-01"
+              }
+            ],
+            "targets": [
+              {
+                "type": "control",
+                "id-ref": "art_31"
+              }
+            ],
+            "props": [
+              {
+                "name": "mapping-rationale",
+                "value": "DORA Article 31 establishes criteria for designating critical ICT third-party service providers based on systemic impact, substitutability, and number of financial entities relying on them. ISCF supply chain controls (iscf-sc-01, iscf-sc-02) address third-party provider assessment and management, while iscf-ra-01 covers risk assessment methodologies. The intersection occurs in evaluating third-party criticality and systemic risk, though DORA focuses specifically on regulatory designation criteria for financial sector oversight while ISCF addresses broader sovereignty-focused supply chain governance.",
+                "ns": "https://ibm.com/concert/ns/oscal"
+              }
+            ],
+            "confidence-score": {
+              "percentage": 0.76
+            },
+            "coverage": {
+              "target-coverage": 0.4
+            }
+          },
+          {
+            "uuid": "b166032e-0b2f-47d7-a25e-d2f5960da33a",
+            "relationship": "intersects-with",
+            "sources": [
+              {
+                "type": "control",
+                "id-ref": "iscf-sc-01"
+              },
+              {
+                "type": "control",
+                "id-ref": "iscf-sc-03"
+              }
+            ],
+            "targets": [
+              {
+                "type": "control",
+                "id-ref": "art_32"
+              }
+            ],
+            "props": [
+              {
+                "name": "mapping-rationale",
+                "value": "DORA Article 32 establishes the Oversight Framework structure including the Oversight Forum, Joint Committee involvement, and yearly assessment processes for critical ICT third-party providers. ISCF supply chain controls (iscf-sc-01, iscf-sc-03) address governance structures for third-party oversight and continuous monitoring. The intersection is in establishing oversight mechanisms for critical providers, though DORA creates a specific regulatory oversight body (ESAs, Oversight Forum) while ISCF focuses on organizational-level supply chain governance for sovereignty assurance.",
+                "ns": "https://ibm.com/concert/ns/oscal"
+              }
+            ],
+            "confidence-score": {
+              "percentage": 0.75
+            },
+            "coverage": {
+              "target-coverage": 0.35
+            }
+          },
+          {
+            "uuid": "64c69fb5-7fd6-4e7b-94b3-5d8959b01fcc",
+            "relationship": "intersects-with",
+            "sources": [
+              {
+                "type": "control",
+                "id-ref": "iscf-sc-01"
+              },
+              {
+                "type": "control",
+                "id-ref": "iscf-sc-02"
+              },
+              {
+                "type": "control",
+                "id-ref": "iscf-ra-02"
+              }
+            ],
+            "targets": [
+              {
+                "type": "control",
+                "id-ref": "art_33"
+              }
+            ],
+            "props": [
+              {
+                "name": "mapping-rationale",
+                "value": "DORA Article 33 defines Lead Overseer tasks including assessing ICT risk management arrangements, requesting information, conducting investigations, and issuing recommendations. ISCF controls iscf-sc-01 and iscf-sc-02 address third-party assessment and due diligence, while iscf-ra-02 covers ongoing risk monitoring. The intersection is in the assessment and monitoring of third-party ICT providers, though DORA establishes regulatory oversight authority while ISCF addresses organizational assessment responsibilities for sovereignty compliance.",
+                "ns": "https://ibm.com/concert/ns/oscal"
+              }
+            ],
+            "confidence-score": {
+              "percentage": 0.77
+            },
+            "coverage": {
+              "target-coverage": 0.42
+            }
+          },
+          {
+            "uuid": "31f93c18-dab8-40bf-8c27-d22a8bab83ae",
+            "relationship": "intersects-with",
+            "sources": [
+              {
+                "type": "control",
+                "id-ref": "iscf-sc-03"
+              }
+            ],
+            "targets": [
+              {
+                "type": "control",
+                "id-ref": "art_34"
+              }
+            ],
+            "props": [
+              {
+                "name": "mapping-rationale",
+                "value": "DORA Article 34 establishes the Joint Oversight Network (JON) for operational coordination between Lead Overseers, including information sharing, common approaches, and coordinated oversight activities. ISCF control iscf-sc-03 addresses supply chain coordination and information sharing mechanisms. The intersection is limited as DORA focuses on regulatory coordination between supervisory authorities while ISCF addresses organizational-level supply chain coordination for sovereignty purposes.",
+                "ns": "https://ibm.com/concert/ns/oscal"
+              }
+            ],
+            "confidence-score": {
+              "percentage": 0.75
+            },
+            "coverage": {
+              "target-coverage": 0.3
+            }
+          },
+          {
+            "uuid": "e6d9d732-a214-407a-8fb9-cda67d256fc6",
+            "relationship": "intersects-with",
+            "sources": [
+              {
+                "type": "control",
+                "id-ref": "iscf-sc-01"
+              },
+              {
+                "type": "control",
+                "id-ref": "iscf-sc-02"
+              },
+              {
+                "type": "control",
+                "id-ref": "iscf-lj-01"
+              }
+            ],
+            "targets": [
+              {
+                "type": "control",
+                "id-ref": "art_35"
+              }
+            ],
+            "props": [
+              {
+                "name": "mapping-rationale",
+                "value": "DORA Article 35 grants Lead Overseers powers to request information, conduct general investigations and inspections, issue recommendations, and impose penalty payments. ISCF controls iscf-sc-01 and iscf-sc-02 address third-party assessment rights and contractual provisions for oversight, while iscf-lj-01 covers legal jurisdiction and enforcement mechanisms. The intersection occurs in establishing oversight and enforcement capabilities over third-party providers, though DORA grants regulatory enforcement powers while ISCF focuses on contractual and sovereignty-based oversight rights.",
+                "ns": "https://ibm.com/concert/ns/oscal"
+              }
+            ],
+            "confidence-score": {
+              "percentage": 0.76
+            },
+            "coverage": {
+              "target-coverage": 0.38
+            }
+          },
+          {
+            "uuid": "9da078c8-ec36-4973-a616-a5341e8b7457",
+            "relationship": "intersects-with",
+            "sources": [
+              {
+                "type": "control",
+                "id-ref": "iscf-sc-01"
+              },
+              {
+                "type": "control",
+                "id-ref": "iscf-sc-02"
+              },
+              {
+                "type": "control",
+                "id-ref": "iscf-lj-01"
+              }
+            ],
+            "targets": [
+              {
+                "type": "control",
+                "id-ref": "art_36"
+              }
+            ],
+            "props": [
+              {
+                "name": "mapping-rationale",
+                "value": "DORA Article 36 addresses the Lead Overseer's powers to conduct oversight activities on ICT third-party service providers located outside the EU, including inspections in third countries and administrative cooperation arrangements. ISCF controls iscf-sc-01 and iscf-sc-02 address supply chain oversight including cross-border providers, while iscf-lj-01 covers legal jurisdiction considerations for third-party services. The intersection occurs in managing oversight of third-party providers across jurisdictions, though DORA establishes regulatory authority for cross-border oversight while ISCF focuses on organizational sovereignty requirements for international supply chains.",
+                "ns": "https://ibm.com/concert/ns/oscal"
+              }
+            ],
+            "confidence-score": {
+              "percentage": 0.76
+            },
+            "coverage": {
+              "target-coverage": 0.4
+            }
+          },
+          {
+            "uuid": "8d4ac4e4-1a8c-4149-8cbd-e6ad5e217619",
+            "relationship": "intersects-with",
+            "sources": [
+              {
+                "type": "control",
+                "id-ref": "iscf-sc-01"
+              },
+              {
+                "type": "control",
+                "id-ref": "iscf-sc-02"
+              }
+            ],
+            "targets": [
+              {
+                "type": "control",
+                "id-ref": "art_37"
+              }
+            ],
+            "props": [
+              {
+                "name": "mapping-rationale",
+                "value": "DORA Article 37 grants the Lead Overseer power to request information from critical ICT third-party service providers including business documents, contracts, policies, ICT security audit reports, and incident reports. ISCF controls iscf-sc-01 and iscf-sc-02 address contractual provisions for information access and audit rights with third-party providers. The intersection is in establishing information access rights over third-party providers, though DORA grants regulatory authority to demand information while ISCF focuses on contractual audit and information rights for sovereignty assurance.",
+                "ns": "https://ibm.com/concert/ns/oscal"
+              }
+            ],
+            "confidence-score": {
+              "percentage": 0.77
+            },
+            "coverage": {
+              "target-coverage": 0.42
+            }
+          },
+          {
+            "uuid": "09993c2b-202d-4cca-9ef6-a65175fd1cf3",
+            "relationship": "intersects-with",
+            "sources": [
+              {
+                "type": "control",
+                "id-ref": "iscf-sc-01"
+              },
+              {
+                "type": "control",
+                "id-ref": "iscf-sc-02"
+              },
+              {
+                "type": "control",
+                "id-ref": "iscf-ra-02"
+              }
+            ],
+            "targets": [
+              {
+                "type": "control",
+                "id-ref": "art_38"
+              }
+            ],
+            "props": [
+              {
+                "name": "mapping-rationale",
+                "value": "DORA Article 38 empowers the Lead Overseer to conduct general investigations of critical ICT third-party service providers, including examining records, data, procedures, and interviewing representatives. ISCF controls iscf-sc-01 and iscf-sc-02 address third-party assessment and audit rights, while iscf-ra-02 covers ongoing risk monitoring and assessment. The intersection is in the ability to investigate and assess third-party providers, though DORA establishes regulatory investigation powers while ISCF addresses organizational audit and assessment rights for sovereignty compliance.",
+                "ns": "https://ibm.com/concert/ns/oscal"
+              }
+            ],
+            "confidence-score": {
+              "percentage": 0.76
+            },
+            "coverage": {
+              "target-coverage": 0.38
+            }
+          },
+          {
+            "uuid": "de2dfdb9-9332-4f00-b05f-eb45c58d1a5c",
+            "relationship": "intersects-with",
+            "sources": [
+              {
+                "type": "control",
+                "id-ref": "iscf-sc-01"
+              },
+              {
+                "type": "control",
+                "id-ref": "iscf-sc-02"
+              }
+            ],
+            "targets": [
+              {
+                "type": "control",
+                "id-ref": "art_39"
+              }
+            ],
+            "props": [
+              {
+                "name": "mapping-rationale",
+                "value": "DORA Article 39 grants the Lead Overseer power to conduct on-site and off-site inspections of ICT third-party service providers, including access to business premises, operation centres, and ICT systems. ISCF controls iscf-sc-01 and iscf-sc-02 address contractual provisions for on-site audit rights and physical access to third-party facilities. The intersection is in establishing inspection and audit access to third-party provider facilities, though DORA grants regulatory inspection authority while ISCF focuses on contractual audit rights for sovereignty verification.",
+                "ns": "https://ibm.com/concert/ns/oscal"
+              }
+            ],
+            "confidence-score": {
+              "percentage": 0.77
+            },
+            "coverage": {
+              "target-coverage": 0.4
+            }
+          },
+          {
+            "uuid": "d80a962b-3603-4cbb-bef9-92a7200e0cd3",
+            "relationship": "intersects-with",
+            "sources": [
+              {
+                "type": "control",
+                "id-ref": "iscf-sc-01"
+              },
+              {
+                "type": "control",
+                "id-ref": "iscf-sc-03"
+              },
+              {
+                "type": "control",
+                "id-ref": "iscf-ra-02"
+              }
+            ],
+            "targets": [
+              {
+                "type": "control",
+                "id-ref": "art_40"
+              }
+            ],
+            "props": [
+              {
+                "name": "mapping-rationale",
+                "value": "DORA Article 40 establishes ongoing oversight mechanisms including joint examination teams composed of ESA and competent authority staff, and the issuance of recommendations to critical ICT third-party service providers. ISCF controls iscf-sc-01 and iscf-sc-03 address continuous third-party monitoring and governance, while iscf-ra-02 covers ongoing risk assessment. The intersection is in establishing continuous oversight and monitoring of third-party providers, though DORA creates a regulatory oversight structure with joint examination teams while ISCF addresses organizational continuous monitoring for sovereignty assurance.",
+                "ns": "https://ibm.com/concert/ns/oscal"
+              }
+            ],
+            "confidence-score": {
+              "percentage": 0.78
+            },
+            "coverage": {
+              "target-coverage": 0.45
+            }
+          },
+          {
+            "uuid": "c72cf04f-abc5-4b51-aa2e-b1151e500896",
+            "relationship": "intersects-with",
+            "sources": [
+              {
+                "type": "control",
+                "id-ref": "iscf-sc-01"
+              },
+              {
+                "type": "control",
+                "id-ref": "iscf-sc-02"
+              }
+            ],
+            "targets": [
+              {
+                "type": "control",
+                "id-ref": "art_41"
+              }
+            ],
+            "props": [
+              {
+                "name": "mapping-rationale",
+                "value": "DORA Article 41 requires ESAs to develop regulatory technical standards specifying information requirements for voluntary critical designation, reporting formats, joint examination team composition, and assessment criteria for Lead Overseer recommendations. ISCF controls iscf-sc-01 and iscf-sc-02 address standardized requirements for third-party provider assessment and reporting. The intersection is in establishing standardized oversight and reporting requirements for third-party providers, though DORA creates regulatory technical standards while ISCF addresses organizational standards for sovereignty-focused supply chain governance.",
+                "ns": "https://ibm.com/concert/ns/oscal"
+              }
+            ],
+            "confidence-score": {
+              "percentage": 0.75
+            },
+            "coverage": {
+              "target-coverage": 0.35
+            }
+          },
+          {
+            "uuid": "be314e7f-320b-4bb0-b627-a9e2a878b06b",
+            "relationship": "intersects-with",
+            "sources": [
+              {
+                "type": "control",
+                "id-ref": "iscf-sc-01"
+              },
+              {
+                "type": "control",
+                "id-ref": "iscf-sc-02"
+              },
+              {
+                "type": "control",
+                "id-ref": "iscf-sc-03"
+              }
+            ],
+            "targets": [
+              {
+                "type": "control",
+                "id-ref": "art_42"
+              }
+            ],
+            "props": [
+              {
+                "name": "mapping-rationale",
+                "value": "DORA Article 42 establishes follow-up procedures for competent authorities including notification requirements for critical ICT third-party providers, public disclosure of non-compliance, risk communication to financial entities, and authority to require suspension or termination of services. ISCF supply chain controls address third-party monitoring (iscf-sc-01, iscf-sc-02) and exit strategies (iscf-sc-03). The intersection is in managing third-party provider compliance and exit procedures, though DORA establishes regulatory enforcement mechanisms while ISCF focuses on organizational governance for sovereignty assurance.",
+                "ns": "https://ibm.com/concert/ns/oscal"
+              }
+            ],
+            "confidence-score": {
+              "percentage": 0.77
+            },
+            "coverage": {
+              "target-coverage": 0.42
+            }
+          },
+          {
+            "uuid": "f94b82d3-2895-4d0f-8d07-6c30de2f98d0",
+            "relationship": "intersects-with",
+            "sources": [
+              {
+                "type": "control",
+                "id-ref": "iscf-sc-01"
+              }
+            ],
+            "targets": [
+              {
+                "type": "control",
+                "id-ref": "art_43"
+              }
+            ],
+            "props": [
+              {
+                "name": "mapping-rationale",
+                "value": "DORA Article 43 establishes that the Lead Overseer shall charge critical ICT third-party service providers fees to cover oversight expenditure, proportionate to their turnover. ISCF control iscf-sc-01 addresses contractual and financial arrangements with third-party providers. The intersection is limited as DORA establishes regulatory fee structures while ISCF addresses organizational cost considerations for third-party services. The relationship is weak as ISCF does not specifically address regulatory oversight fees.",
+                "ns": "https://ibm.com/concert/ns/oscal"
+              }
+            ],
+            "confidence-score": {
+              "percentage": 0.75
+            },
+            "coverage": {
+              "target-coverage": 0.25
+            }
+          },
+          {
+            "uuid": "09d1d374-adf1-4b73-b225-fb2699016a60",
+            "relationship": "intersects-with",
+            "sources": [
+              {
+                "type": "control",
+                "id-ref": "iscf-sc-01"
+              },
+              {
+                "type": "control",
+                "id-ref": "iscf-sc-03"
+              },
+              {
+                "type": "control",
+                "id-ref": "iscf-lj-01"
+              }
+            ],
+            "targets": [
+              {
+                "type": "control",
+                "id-ref": "art_44"
+              }
+            ],
+            "props": [
+              {
+                "name": "mapping-rationale",
+                "value": "DORA Article 44 enables ESAs to conclude administrative arrangements with third-country regulatory authorities to foster international cooperation on ICT third-party risk, including best practices for risk management and incident responses. ISCF controls iscf-sc-01 and iscf-sc-03 address cross-border supply chain governance, while iscf-lj-01 covers legal jurisdiction considerations for international operations. The intersection is in managing international third-party provider relationships, though DORA establishes regulatory cooperation mechanisms while ISCF addresses organizational sovereignty requirements for cross-border operations.",
+                "ns": "https://ibm.com/concert/ns/oscal"
+              }
+            ],
+            "confidence-score": {
+              "percentage": 0.76
+            },
+            "coverage": {
+              "target-coverage": 0.38
+            }
+          },
+          {
+            "uuid": "9557070a-d142-4f1f-8fc3-938cc8979b55",
+            "relationship": "intersects-with",
+            "sources": [
+              {
+                "type": "control",
+                "id-ref": "iscf-ra-01"
+              },
+              {
+                "type": "control",
+                "id-ref": "iscf-ra-02"
+              }
+            ],
+            "targets": [
+              {
+                "type": "control",
+                "id-ref": "art_45"
+              }
+            ],
+            "props": [
+              {
+                "name": "mapping-rationale",
+                "value": "DORA Article 45 enables financial entities to exchange cyber threat information and intelligence including indicators of compromise, tactics, techniques, procedures, and security alerts within trusted communities. ISCF control iscf-mo-01 addresses security monitoring and threat detection, while iscf-ra-01 and iscf-ra-02 cover risk assessment including threat intelligence. The intersection is in utilizing threat intelligence for security monitoring and risk assessment, though DORA establishes formal information-sharing arrangements between financial entities while ISCF addresses organizational threat monitoring for sovereignty assurance.",
+                "ns": "https://ibm.com/concert/ns/oscal"
+              }
+            ],
+            "confidence-score": {
+              "percentage": 0.78
+            },
+            "coverage": {
+              "target-coverage": 0.45
+            }
+          },
+          {
+            "uuid": "d0470e6a-bdf0-46e0-a366-fe2a4c85e42e",
+            "relationship": "intersects-with",
+            "sources": [
+              {
+                "type": "control",
+                "id-ref": "iscf-lj-01"
+              }
+            ],
+            "targets": [
+              {
+                "type": "control",
+                "id-ref": "art_46"
+              }
+            ],
+            "props": [
+              {
+                "name": "mapping-rationale",
+                "value": "DORA Article 46 designates competent authorities responsible for ensuring compliance with the regulation across various financial entity types (credit institutions, payment institutions, investment firms, insurance undertakings, etc.). ISCF control iscf-lj-01 addresses legal jurisdiction and regulatory compliance requirements. The intersection is limited as DORA establishes the regulatory authority structure for financial sector oversight while ISCF addresses organizational compliance with applicable legal jurisdictions for sovereignty purposes.",
+                "ns": "https://ibm.com/concert/ns/oscal"
+              }
+            ],
+            "confidence-score": {
+              "percentage": 0.75
+            },
+            "coverage": {
+              "target-coverage": 0.3
+            }
+          },
+          {
+            "uuid": "a269f705-64c9-435c-a4cf-9a3a9f6c516a",
+            "relationship": "intersects-with",
+            "sources": [
+              {
+                "type": "control",
+                "id-ref": "iscf-lj-01"
+              },
+              {
+                "type": "control",
+                "id-ref": "iscf-sc-03"
+              }
+            ],
+            "targets": [
+              {
+                "type": "control",
+                "id-ref": "art_47"
+              }
+            ],
+            "props": [
+              {
+                "name": "mapping-rationale",
+                "value": "DORA Article 47 establishes cooperation mechanisms between DORA competent authorities and NIS2 Directive structures including the Cooperation Group, single points of contact, and CSIRTs. ISCF control iscf-lj-01 addresses regulatory compliance coordination, while iscf-sc-03 covers supply chain coordination mechanisms. The intersection is in coordinating with regulatory authorities and security structures, though DORA establishes specific inter-regulatory cooperation while ISCF addresses organizational coordination for sovereignty compliance.",
+                "ns": "https://ibm.com/concert/ns/oscal"
+              }
+            ],
+            "confidence-score": {
+              "percentage": 0.75
+            },
+            "coverage": {
+              "target-coverage": 0.32
+            }
+          },
+          {
+            "uuid": "9feb165a-174b-4bfc-abfc-9c15503362ab",
+            "relationship": "intersects-with",
+            "sources": [
+              {
+                "type": "control",
+                "id-ref": "iscf-lj-01"
+              },
+              {
+                "type": "control",
+                "id-ref": "iscf-sc-03"
+              }
+            ],
+            "targets": [
+              {
+                "type": "control",
+                "id-ref": "art_48"
+              }
+            ],
+            "props": [
+              {
+                "name": "mapping-rationale",
+                "value": "DORA Article 48 requires competent authorities to cooperate closely among themselves and with the Lead Overseer, exchanging relevant information concerning critical ICT third-party service providers. ISCF control iscf-lj-01 addresses regulatory coordination, while iscf-sc-03 covers information sharing mechanisms. The intersection is in facilitating information exchange with regulatory authorities, though DORA establishes mandatory inter-authority cooperation while ISCF addresses organizational information sharing for sovereignty purposes.",
+                "ns": "https://ibm.com/concert/ns/oscal"
+              }
+            ],
+            "confidence-score": {
+              "percentage": 0.75
+            },
+            "coverage": {
+              "target-coverage": 0.3
+            }
+          },
+          {
+            "uuid": "f95d2bf0-b514-4401-a452-fe6790446ff1",
+            "relationship": "intersects-with",
+            "sources": [
+              {
+                "type": "control",
+                "id-ref": "iscf-re-01"
+              },
+              {
+                "type": "control",
+                "id-ref": "iscf-re-02"
+              },
+              {
+                "type": "control",
+                "id-ref": "iscf-ra-01"
+              }
+            ],
+            "targets": [
+              {
+                "type": "control",
+                "id-ref": "art_49"
+              }
+            ],
+            "props": [
+              {
+                "name": "mapping-rationale",
+                "value": "DORA Article 49 enables ESAs to establish mechanisms for sharing effective practices across financial sectors, develop crisis management and contingency exercises involving cyber-attack scenarios, and coordinate responses to major cross-border ICT incidents. ISCF controls iscf-re-01 and iscf-re-02 address resilience and crisis management capabilities, while iscf-ra-01 covers risk assessment including cross-sector vulnerabilities. The intersection is in crisis preparedness and cross-sector coordination, though DORA establishes regulatory-led exercises while ISCF addresses organizational resilience for sovereignty assurance.",
+                "ns": "https://ibm.com/concert/ns/oscal"
+              }
+            ],
+            "confidence-score": {
+              "percentage": 0.78
+            },
+            "coverage": {
+              "target-coverage": 0.45
+            }
+          },
+          {
+            "uuid": "7ad941c4-a842-4927-ac16-62b35df38d5d",
+            "relationship": "intersects-with",
+            "sources": [
+              {
+                "type": "control",
+                "id-ref": "iscf-lj-01"
+              }
+            ],
+            "targets": [
+              {
+                "type": "control",
+                "id-ref": "art_50"
+              }
+            ],
+            "props": [
+              {
+                "name": "mapping-rationale",
+                "value": "DORA Article 50 grants competent authorities supervisory, investigatory, and sanctioning powers including access to documents, on-site inspections, and the ability to impose administrative penalties and remedial measures for breaches. ISCF control iscf-lj-01 addresses legal jurisdiction and compliance with regulatory enforcement mechanisms. The intersection is limited as DORA establishes regulatory enforcement powers while ISCF addresses organizational compliance with applicable legal requirements for sovereignty purposes.",
+                "ns": "https://ibm.com/concert/ns/oscal"
+              }
+            ],
+            "confidence-score": {
+              "percentage": 0.75
+            },
+            "coverage": {
+              "target-coverage": 0.28
+            }
+          },
+          {
+            "uuid": "c851bd1f-b0f3-4e18-9f23-24c3793e6cb5",
+            "relationship": "intersects-with",
+            "sources": [
+              {
+                "type": "control",
+                "id-ref": "iscf-lj-01"
+              }
+            ],
+            "targets": [
+              {
+                "type": "control",
+                "id-ref": "art_51"
+              }
+            ],
+            "props": [
+              {
+                "name": "mapping-rationale",
+                "value": "DORA Article 51 establishes criteria for determining the type and level of administrative penalties and remedial measures, including factors like gravity, duration of breach, financial strength, and cooperation with authorities. ISCF's legal jurisdiction control (iscf-lj-01) addresses compliance with applicable laws and regulations in relevant jurisdictions. The intersection occurs where both frameworks require organizations to understand and comply with regulatory enforcement mechanisms, though DORA focuses specifically on penalty determination criteria while ISCF addresses broader jurisdictional compliance.",
+                "ns": "https://ibm.com/concert/ns/oscal"
+              }
+            ],
+            "confidence-score": {
+              "percentage": 0.75
+            },
+            "coverage": {
+              "target-coverage": 0.3
+            }
+          },
+          {
+            "uuid": "dcccfbf4-5284-4905-947a-7433a9f8a7b1",
+            "relationship": "intersects-with",
+            "sources": [
+              {
+                "type": "control",
+                "id-ref": "iscf-lj-01"
+              }
+            ],
+            "targets": [
+              {
+                "type": "control",
+                "id-ref": "art_52"
+              }
+            ],
+            "props": [
+              {
+                "name": "mapping-rationale",
+                "value": "DORA Article 52 allows Member States to decide not to lay down rules for administrative penalties where infringements are subject to criminal penalties under national law. ISCF's legal jurisdiction control (iscf-lj-01) requires understanding and compliance with applicable legal frameworks across jurisdictions. The intersection exists where both frameworks acknowledge the importance of legal compliance, though DORA specifically addresses the criminal/administrative penalty distinction while ISCF focuses on broader jurisdictional legal requirements.",
+                "ns": "https://ibm.com/concert/ns/oscal"
+              }
+            ],
+            "confidence-score": {
+              "percentage": 0.75
+            },
+            "coverage": {
+              "target-coverage": 0.25
+            }
+          },
+          {
+            "uuid": "f4b3a690-e814-4177-9fae-eb5fea95cb07",
+            "relationship": "intersects-with",
+            "sources": [
+              {
+                "type": "control",
+                "id-ref": "iscf-lj-01"
+              }
+            ],
+            "targets": [
+              {
+                "type": "control",
+                "id-ref": "art_53"
+              }
+            ],
+            "props": [
+              {
+                "name": "mapping-rationale",
+                "value": "DORA Article 53 requires Member States to notify the Commission and ESAs of laws, regulations, and administrative provisions implementing Chapter IV (penalties). ISCF's legal jurisdiction control (iscf-lj-01) addresses compliance with legal and regulatory requirements across jurisdictions. The intersection occurs where both frameworks recognize the importance of regulatory notification and transparency, though DORA focuses on Member State notification to EU bodies while ISCF addresses organizational compliance with jurisdictional requirements.",
+                "ns": "https://ibm.com/concert/ns/oscal"
+              }
+            ],
+            "confidence-score": {
+              "percentage": 0.75
+            },
+            "coverage": {
+              "target-coverage": 0.25
+            }
+          },
+          {
+            "uuid": "b486de08-8042-4d13-8153-f1250e3a6461",
+            "relationship": "intersects-with",
+            "sources": [
+              {
+                "type": "control",
+                "id-ref": "iscf-lj-01"
+              },
+              {
+                "type": "control",
+                "id-ref": "iscf-dr-01"
+              }
+            ],
+            "targets": [
+              {
+                "type": "control",
+                "id-ref": "art_54"
+              }
+            ],
+            "props": [
+              {
+                "name": "mapping-rationale",
+                "value": "DORA Article 54 requires competent authorities to publish decisions imposing administrative penalties on their official websites, with provisions for anonymization and delayed publication in certain circumstances. ISCF's legal jurisdiction control (iscf-lj-01) addresses regulatory compliance, while data residency control (iscf-dr-01) addresses data handling and protection requirements. The intersection exists where both frameworks address transparency and data handling in regulatory contexts, though DORA focuses specifically on penalty publication requirements while ISCF addresses broader compliance and data sovereignty.",
+                "ns": "https://ibm.com/concert/ns/oscal"
+              }
+            ],
+            "confidence-score": {
+              "percentage": 0.76
+            },
+            "coverage": {
+              "target-coverage": 0.3
+            }
+          },
+          {
+            "uuid": "9e3d46cf-2511-4077-9738-659775f1bb5f",
+            "relationship": "intersects-with",
+            "sources": [
+              {
+                "type": "control",
+                "id-ref": "iscf-dr-01"
+              },
+              {
+                "type": "control",
+                "id-ref": "iscf-dr-02"
+              },
+              {
+                "type": "control",
+                "id-ref": "iscf-lj-01"
+              }
+            ],
+            "targets": [
+              {
+                "type": "control",
+                "id-ref": "art_55"
+              }
+            ],
+            "props": [
+              {
+                "name": "mapping-rationale",
+                "value": "DORA Article 55 establishes professional secrecy requirements for persons working for competent authorities, ESAs, and the Oversight Forum, requiring confidentiality of information received during duties. ISCF's data residency controls (iscf-dr-01, iscf-dr-02) address data protection and sovereignty requirements, while legal jurisdiction control (iscf-lj-01) addresses compliance with legal confidentiality obligations. The intersection occurs where both frameworks require protection of sensitive information, though DORA focuses on regulatory professional secrecy while ISCF addresses broader data sovereignty and jurisdictional compliance.",
+                "ns": "https://ibm.com/concert/ns/oscal"
+              }
+            ],
+            "confidence-score": {
+              "percentage": 0.77
+            },
+            "coverage": {
+              "target-coverage": 0.35
+            }
+          },
+          {
+            "uuid": "a7bb253c-5958-4007-9799-a3d71c2a5158",
+            "relationship": "intersects-with",
+            "sources": [
+              {
+                "type": "control",
+                "id-ref": "iscf-dr-01"
+              },
+              {
+                "type": "control",
+                "id-ref": "iscf-dr-02"
+              },
+              {
+                "type": "control",
+                "id-ref": "iscf-lj-01"
+              }
+            ],
+            "targets": [
+              {
+                "type": "control",
+                "id-ref": "art_56"
+              }
+            ],
+            "props": [
+              {
+                "name": "mapping-rationale",
+                "value": "DORA Article 56 establishes data protection requirements for ESAs and competent authorities processing personal data under DORA, requiring compliance with GDPR (Regulation 2016/679) or Regulation 2018/1725. ISCF's data residency controls (iscf-dr-01, iscf-dr-02) address data sovereignty and protection requirements, while legal jurisdiction control (iscf-lj-01) addresses compliance with applicable data protection laws. The intersection occurs where both frameworks require proper handling and protection of personal data in accordance with applicable regulations, though DORA focuses specifically on regulatory authority data processing while ISCF addresses broader organizational data sovereignty.",
+                "ns": "https://ibm.com/concert/ns/oscal"
+              }
+            ],
+            "confidence-score": {
+              "percentage": 0.78
+            },
+            "coverage": {
+              "target-coverage": 0.4
+            }
+          },
+          {
+            "uuid": "20dfac83-2eb7-47a8-b4cb-3f9a0c687419",
+            "relationship": "intersects-with",
+            "sources": [
+              {
+                "type": "control",
+                "id-ref": "iscf-lj-01"
+              }
+            ],
+            "targets": [
+              {
+                "type": "control",
+                "id-ref": "art_57"
+              }
+            ],
+            "props": [
+              {
+                "name": "mapping-rationale",
+                "value": "DORA Article 57 establishes the Commission's power to adopt delegated acts, including conditions for delegation, revocation procedures, and notification requirements. ISCF's legal jurisdiction control (iscf-lj-01) addresses compliance with applicable legal and regulatory frameworks. The intersection exists where both frameworks recognize the importance of understanding and complying with regulatory delegation mechanisms, though DORA focuses specifically on EU Commission delegated acts while ISCF addresses broader jurisdictional compliance requirements.",
+                "ns": "https://ibm.com/concert/ns/oscal"
+              }
+            ],
+            "confidence-score": {
+              "percentage": 0.75
+            },
+            "coverage": {
+              "target-coverage": 0.25
+            }
+          },
+          {
+            "uuid": "7ab3e96c-fd27-433b-9f4d-30061b93e28c",
+            "relationship": "intersects-with",
+            "sources": [
+              {
+                "type": "control",
+                "id-ref": "iscf-lj-01"
+              }
+            ],
+            "targets": [
+              {
+                "type": "control",
+                "id-ref": "art_58"
+              }
+            ],
+            "props": [
+              {
+                "name": "mapping-rationale",
+                "value": "DORA Article 58 requires the Commission to conduct reviews by 2028 covering critical ICT third-party service provider designation criteria, cyber threat notification requirements, oversight effectiveness, and payment system resilience. ISCF's legal jurisdiction control (iscf-lj-01) addresses compliance with evolving regulatory requirements. The intersection occurs where both frameworks acknowledge the need to adapt to regulatory changes and reviews, though DORA focuses specifically on scheduled regulatory reviews while ISCF addresses ongoing jurisdictional compliance.",
+                "ns": "https://ibm.com/concert/ns/oscal"
+              }
+            ],
+            "confidence-score": {
+              "percentage": 0.75
+            },
+            "coverage": {
+              "target-coverage": 0.25
+            }
+          },
+          {
+            "uuid": "f1af4084-912f-4acd-a858-00817632b30f",
+            "relationship": "intersects-with",
+            "sources": [
+              {
+                "type": "control",
+                "id-ref": "iscf-sc-01"
+              },
+              {
+                "type": "control",
+                "id-ref": "iscf-sc-02"
+              },
+              {
+                "type": "control",
+                "id-ref": "iscf-lj-01"
+              }
+            ],
+            "targets": [
+              {
+                "type": "control",
+                "id-ref": "art_59"
+              }
+            ],
+            "props": [
+              {
+                "name": "mapping-rationale",
+                "value": "DORA Article 59 amends the Credit Rating Agencies Regulation to require sound administrative procedures, internal control mechanisms, risk assessment procedures, and ICT system safeguards in accordance with DORA. ISCF's supply chain controls (iscf-sc-01, iscf-sc-02) address third-party service provider requirements, while legal jurisdiction control (iscf-lj-01) addresses regulatory compliance. The intersection exists where both frameworks require proper governance and controls for entities in the financial services ecosystem, though DORA specifically amends CRA requirements while ISCF addresses broader supply chain governance.",
+                "ns": "https://ibm.com/concert/ns/oscal"
+              }
+            ],
+            "confidence-score": {
+              "percentage": 0.76
+            },
+            "coverage": {
+              "target-coverage": 0.3
+            }
+          },
+          {
+            "uuid": "8820f8d3-4a55-47c0-8c6b-fcdc68fb9e90",
+            "relationship": "intersects-with",
+            "sources": [
+              {
+                "type": "control",
+                "id-ref": "iscf-sc-01"
+              },
+              {
+                "type": "control",
+                "id-ref": "iscf-sc-02"
+              },
+              {
+                "type": "control",
+                "id-ref": "iscf-lj-01"
+              }
+            ],
+            "targets": [
+              {
+                "type": "control",
+                "id-ref": "art_60"
+              }
+            ],
+            "props": [
+              {
+                "name": "mapping-rationale",
+                "value": "DORA Article 60 amends EMIR to require CCPs and trade repositories to have sound administrative procedures, internal control mechanisms, and ICT system safeguards in accordance with DORA. ISCF's supply chain controls (iscf-sc-01, iscf-sc-02) address third-party service provider requirements including critical infrastructure providers, while legal jurisdiction control (iscf-lj-01) addresses regulatory compliance. The intersection occurs where both frameworks require proper governance and controls for critical financial market infrastructure, though DORA specifically amends EMIR requirements while ISCF addresses broader supply chain governance.",
+                "ns": "https://ibm.com/concert/ns/oscal"
+              }
+            ],
+            "confidence-score": {
+              "percentage": 0.76
+            },
+            "coverage": {
+              "target-coverage": 0.3
+            }
+          },
+          {
+            "uuid": "012f4058-7d87-4b75-afc9-ea78e42d3a63",
+            "relationship": "intersects-with",
+            "sources": [
+              {
+                "type": "control",
+                "id-ref": "iscf-sc-01"
+              },
+              {
+                "type": "control",
+                "id-ref": "iscf-sc-02"
+              },
+              {
+                "type": "control",
+                "id-ref": "iscf-lj-01"
+              }
+            ],
+            "targets": [
+              {
+                "type": "control",
+                "id-ref": "art_61"
+              }
+            ],
+            "props": [
+              {
+                "name": "mapping-rationale",
+                "value": "DORA Article 61 amends MiFIR to require investment firms and market operators to have sound administrative procedures, internal control mechanisms, and ICT system safeguards in accordance with DORA. ISCF's supply chain controls (iscf-sc-01, iscf-sc-02) address third-party service provider requirements including critical financial infrastructure, while legal jurisdiction control (iscf-lj-01) addresses regulatory compliance. The intersection occurs where both frameworks require proper governance and controls for financial market participants, though DORA specifically amends MiFIR requirements while ISCF addresses broader supply chain governance.",
+                "ns": "https://ibm.com/concert/ns/oscal"
+              }
+            ],
+            "confidence-score": {
+              "percentage": 0.76
+            },
+            "coverage": {
+              "target-coverage": 0.3
+            }
+          },
+          {
+            "uuid": "67a7cb57-a1d5-4db5-9094-3fee058f7944",
+            "relationship": "intersects-with",
+            "sources": [
+              {
+                "type": "control",
+                "id-ref": "iscf-sc-01"
+              },
+              {
+                "type": "control",
+                "id-ref": "iscf-sc-02"
+              },
+              {
+                "type": "control",
+                "id-ref": "iscf-lj-01"
+              }
+            ],
+            "targets": [
+              {
+                "type": "control",
+                "id-ref": "art_62"
+              }
+            ],
+            "props": [
+              {
+                "name": "mapping-rationale",
+                "value": "DORA Article 62 amends CSDR to require Approved Publication Arrangements (APAs), Consolidated Tape Providers (CTPs), and Approved Reporting Mechanisms (ARMs) to comply with DORA's network and information systems security requirements. ISCF's supply chain controls (iscf-sc-01, iscf-sc-02) address third-party service provider requirements including critical market infrastructure, while legal jurisdiction control (iscf-lj-01) addresses regulatory compliance. The intersection exists where both frameworks require proper ICT governance for critical financial market infrastructure, though DORA specifically amends CSDR requirements while ISCF addresses broader supply chain governance.",
+                "ns": "https://ibm.com/concert/ns/oscal"
+              }
+            ],
+            "confidence-score": {
+              "percentage": 0.76
+            },
+            "coverage": {
+              "target-coverage": 0.3
+            }
+          },
+          {
+            "uuid": "3d5a0a1f-2557-4d50-a29b-bf8b72f11f1c",
+            "relationship": "intersects-with",
+            "sources": [
+              {
+                "type": "control",
+                "id-ref": "iscf-sc-01"
+              },
+              {
+                "type": "control",
+                "id-ref": "iscf-sc-02"
+              },
+              {
+                "type": "control",
+                "id-ref": "iscf-lj-01"
+              }
+            ],
+            "targets": [
+              {
+                "type": "control",
+                "id-ref": "art_63"
+              }
+            ],
+            "props": [
+              {
+                "name": "mapping-rationale",
+                "value": "DORA Article 63 amends the Benchmark Regulation to require administrators of critical benchmarks to have sound administrative and accounting procedures, internal control mechanisms, risk assessment procedures, and ICT system safeguards in accordance with DORA. ISCF's supply chain controls (iscf-sc-01, iscf-sc-02) address third-party service provider requirements including critical financial infrastructure, while legal jurisdiction control (iscf-lj-01) addresses regulatory compliance. The intersection occurs where both frameworks require proper governance and controls for critical benchmark administrators, though DORA specifically amends Benchmark Regulation requirements while ISCF addresses broader supply chain governance.",
+                "ns": "https://ibm.com/concert/ns/oscal"
+              }
+            ],
+            "confidence-score": {
+              "percentage": 0.76
+            },
+            "coverage": {
+              "target-coverage": 0.3
+            }
+          },
+          {
+            "uuid": "8ecd785b-af90-4c26-8e97-5d2a216f33e2",
+            "relationship": "intersects-with",
+            "sources": [
+              {
+                "type": "control",
+                "id-ref": "iscf-lj-01"
+              }
+            ],
+            "targets": [
+              {
+                "type": "control",
+                "id-ref": "art_64"
+              }
+            ],
+            "props": [
+              {
+                "name": "mapping-rationale",
+                "value": "DORA Article 64 establishes the entry into force date (20 days after publication) and application date (17 January 2025) for the regulation. ISCF's legal jurisdiction control (iscf-lj-01) addresses compliance with applicable legal and regulatory requirements including understanding effective dates and compliance timelines. The intersection exists where both frameworks recognize the importance of understanding regulatory timelines and compliance deadlines, though DORA focuses specifically on its own effective dates while ISCF addresses broader jurisdictional compliance requirements.",
+                "ns": "https://ibm.com/concert/ns/oscal"
+              }
+            ],
+            "confidence-score": {
+              "percentage": 0.75
+            },
+            "coverage": {
+              "target-coverage": 0.25
+            }
+          }
+        ],
+        "target-gap-summary": {
+          "uuid": "1997c9c9-35bb-4141-afda-2abd82d13d23",
+          "unmapped-controls": [
+            {
+              "with-ids": [
+                "art_2",
+                "art_3"
+              ]
+            }
+          ]
+        }
+      }
+    ]
+  }
+}

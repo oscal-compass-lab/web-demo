@@ -1,0 +1,3355 @@
+{
+  "mapping-collection": {
+    "uuid": "1a4a33c9-674d-4415-8c71-030ee6db7b18",
+    "metadata": {
+      "title": "IBM Sovereign Controls Framework (ISCF) to Electronic (OSCAL) Version of NIST SP 800-53 Rev 5.2.0 Controls and SP 800-53A Rev 5.2.0 Assessment Procedures",
+      "last-modified": "2026-04-13T15:09:53+00:00",
+      "version": "1.0",
+      "oscal-version": "1.2.1"
+    },
+    "provenance": {
+      "method": "automation",
+      "matching-rationale": "semantic",
+      "status": "complete",
+      "mapping-description": "Mapping collection from IBM Sovereign Controls Framework (ISCF) to Electronic (OSCAL) Version of NIST SP 800-53 Rev 5.2.0 Controls and SP 800-53A Rev 5.2.0 Assessment Procedures"
+    },
+    "mappings": [
+      {
+        "uuid": "453a071a-c84f-4862-aeaf-aae00b4f5563",
+        "source-resource": {
+          "type": "catalog",
+          "href": "catalogs/ISCF/catalog.json",
+          "props": [
+            {
+              "name": "catalog_uuid",
+              "value": "e13ba568-72aa-470f-8ae1-87938f5b1e14",
+              "ns": "https://ibm.com/concert/ns/oscal"
+            }
+          ]
+        },
+        "target-resource": {
+          "type": "catalog",
+          "href": "catalogs/nist-800-53-rev5/catalog.json",
+          "props": [
+            {
+              "name": "catalog_uuid",
+              "value": "5ba2a3ba-1aa2-47d8-ad69-5beef7372b98",
+              "ns": "https://ibm.com/concert/ns/oscal"
+            }
+          ]
+        },
+        "maps": [
+          {
+            "uuid": "9d312e15-6641-4326-851a-3d659c322b2e",
+            "relationship": "intersects-with",
+            "sources": [
+              {
+                "type": "control",
+                "id-ref": "iscf-dr-01"
+              }
+            ],
+            "targets": [
+              {
+                "type": "control",
+                "id-ref": "sc-7"
+              },
+              {
+                "type": "control",
+                "id-ref": "ac-4"
+              },
+              {
+                "type": "control",
+                "id-ref": "sa-9"
+              }
+            ],
+            "props": [
+              {
+                "name": "mapping-rationale",
+                "value": "ISCF-DR-01 requires data to be stored and processed exclusively within boundary and region locations. NIST SC-7 (Boundary Protection) addresses controlling communications at system boundaries. NIST AC-4 (Information Flow Enforcement) enforces approved authorizations for controlling information flow. NIST SA-9 (External System Services) addresses requirements for external service providers. The shared requirement is controlling where data resides and flows, though ISCF focuses specifically on sovereign jurisdiction while NIST addresses general boundary and flow controls.",
+                "ns": "https://ibm.com/concert/ns/oscal"
+              }
+            ],
+            "confidence-score": {
+              "percentage": 0.82
+            },
+            "coverage": {
+              "target-coverage": 0.7
+            }
+          },
+          {
+            "uuid": "82602049-5e96-4038-838c-665e7c72f222",
+            "relationship": "intersects-with",
+            "sources": [
+              {
+                "type": "control",
+                "id-ref": "iscf-dr-02"
+              }
+            ],
+            "targets": [
+              {
+                "type": "control",
+                "id-ref": "sc-4"
+              },
+              {
+                "type": "control",
+                "id-ref": "si-12"
+              },
+              {
+                "type": "control",
+                "id-ref": "cm-12"
+              }
+            ],
+            "props": [
+              {
+                "name": "mapping-rationale",
+                "value": "ISCF-DR-02 requires derived, cached, and temporary data to remain region-resident. NIST SC-4 (Information in Shared System Resources) prevents unauthorized information transfer via shared resources. NIST SI-12 (Information Management and Retention) addresses information lifecycle management. NIST CM-12 (Information Location) addresses identifying and documenting information location. Both frameworks address data handling but ISCF specifically requires geographic residency for all data artifacts.",
+                "ns": "https://ibm.com/concert/ns/oscal"
+              }
+            ],
+            "confidence-score": {
+              "percentage": 0.78
+            },
+            "coverage": {
+              "target-coverage": 0.65
+            }
+          },
+          {
+            "uuid": "9bd35afd-02b4-4763-9895-0bce1d66f3fe",
+            "relationship": "intersects-with",
+            "sources": [
+              {
+                "type": "control",
+                "id-ref": "iscf-dr-03"
+              }
+            ],
+            "targets": [
+              {
+                "type": "control",
+                "id-ref": "sc-7"
+              },
+              {
+                "type": "control",
+                "id-ref": "sc-7.10"
+              },
+              {
+                "type": "control",
+                "id-ref": "ac-4"
+              },
+              {
+                "type": "control",
+                "id-ref": "ac-4.4"
+              }
+            ],
+            "props": [
+              {
+                "name": "mapping-rationale",
+                "value": "ISCF-DR-03 requires all outbound network traffic to be explicitly controlled and auditable to prevent unauthorized data transfer outside sovereign boundaries. NIST SC-7 (Boundary Protection) and SC-7.10 (Prevent Exfiltration) directly address controlling outbound communications and preventing data exfiltration. NIST AC-4 (Information Flow Enforcement) and AC-4.4 (Flow Control of Encrypted Information) address controlling information flows. Both frameworks share the objective of controlling egress traffic, though ISCF emphasizes sovereignty while NIST focuses on security.",
+                "ns": "https://ibm.com/concert/ns/oscal"
+              }
+            ],
+            "confidence-score": {
+              "percentage": 0.85
+            },
+            "coverage": {
+              "target-coverage": 0.75
+            }
+          },
+          {
+            "uuid": "db3b64f6-0a7d-45e3-a31a-d69826e5babd",
+            "relationship": "intersects-with",
+            "sources": [
+              {
+                "type": "control",
+                "id-ref": "iscf-dr-04"
+              }
+            ],
+            "targets": [
+              {
+                "type": "control",
+                "id-ref": "ac-4"
+              },
+              {
+                "type": "control",
+                "id-ref": "ac-4.21"
+              },
+              {
+                "type": "control",
+                "id-ref": "sc-7.20"
+              },
+              {
+                "type": "control",
+                "id-ref": "sc-7.21"
+              }
+            ],
+            "props": [
+              {
+                "name": "mapping-rationale",
+                "value": "ISCF-DR-04 requires data flows between namespaces to be explicitly restricted to approved paths to prevent lateral movement and cross-tenant exposure. NIST AC-4 (Information Flow Enforcement) enforces approved authorizations for information flow. NIST AC-4.21 (Physical or Logical Separation of Information Flows) addresses separating information flows. NIST SC-7.20 (Dynamic Isolation and Segregation) and SC-7.21 (Isolation of System Components) address isolating system components. Both frameworks address controlling internal data flows and isolation.",
+                "ns": "https://ibm.com/concert/ns/oscal"
+              }
+            ],
+            "confidence-score": {
+              "percentage": 0.83
+            },
+            "coverage": {
+              "target-coverage": 0.72
+            }
+          },
+          {
+            "uuid": "136cdf2b-76a2-4a68-bf8b-ef91b37d96ce",
+            "relationship": "intersects-with",
+            "sources": [
+              {
+                "type": "control",
+                "id-ref": "iscf-dr-05"
+              }
+            ],
+            "targets": [
+              {
+                "type": "control",
+                "id-ref": "cp-9"
+              },
+              {
+                "type": "control",
+                "id-ref": "sc-28"
+              },
+              {
+                "type": "control",
+                "id-ref": "cp-6"
+              }
+            ],
+            "props": [
+              {
+                "name": "mapping-rationale",
+                "value": "ISCF-DR-05 requires all backups and snapshots to remain region-resident and inherit the same encryption and access controls as production data. NIST CP-9 (System Backup) addresses backup requirements including protection. NIST SC-28 (Protection of Information at Rest) addresses protecting stored information including backups. NIST CP-6 (Alternate Storage Site) addresses storage site requirements. Both frameworks address backup protection, though ISCF specifically requires geographic residency while NIST focuses on availability and protection.",
+                "ns": "https://ibm.com/concert/ns/oscal"
+              }
+            ],
+            "confidence-score": {
+              "percentage": 0.8
+            },
+            "coverage": {
+              "target-coverage": 0.68
+            }
+          },
+          {
+            "uuid": "50ea2ca0-ed16-46ea-ac7c-2c7d5349ed6a",
+            "relationship": "intersects-with",
+            "sources": [
+              {
+                "type": "control",
+                "id-ref": "iscf-dr-06"
+              }
+            ],
+            "targets": [
+              {
+                "type": "control",
+                "id-ref": "sc-28"
+              },
+              {
+                "type": "control",
+                "id-ref": "sc-28.1"
+              },
+              {
+                "type": "control",
+                "id-ref": "sc-13"
+              }
+            ],
+            "props": [
+              {
+                "name": "mapping-rationale",
+                "value": "ISCF-DR-06 requires all customer data to be encrypted at rest using approved cryptographic mechanisms. NIST SC-28 (Protection of Information at Rest) directly addresses protecting stored information through encryption. NIST SC-28.1 (Cryptographic Protection) specifically requires cryptographic mechanisms for data at rest. NIST SC-13 (Cryptographic Protection) addresses the use of approved cryptography. Both frameworks share the core requirement of encrypting stored data, with ISCF emphasizing sovereignty protection while NIST focuses on general security.",
+                "ns": "https://ibm.com/concert/ns/oscal"
+              }
+            ],
+            "confidence-score": {
+              "percentage": 0.88
+            },
+            "coverage": {
+              "target-coverage": 0.8
+            }
+          },
+          {
+            "uuid": "ecaf8760-a3fb-4540-a240-16e54bdaf8b9",
+            "relationship": "intersects-with",
+            "sources": [
+              {
+                "type": "control",
+                "id-ref": "iscf-dr-07"
+              }
+            ],
+            "targets": [
+              {
+                "type": "control",
+                "id-ref": "sc-8"
+              },
+              {
+                "type": "control",
+                "id-ref": "sc-8.1"
+              },
+              {
+                "type": "control",
+                "id-ref": "sc-13"
+              }
+            ],
+            "props": [
+              {
+                "name": "mapping-rationale",
+                "value": "ISCF-DR-07 requires all data in transit to be encrypted using approved cryptographic protocols. NIST SC-8 (Transmission Confidentiality and Integrity) addresses protecting transmitted information. NIST SC-8.1 (Cryptographic Protection) specifically requires cryptographic mechanisms for transmission protection. NIST SC-13 (Cryptographic Protection) addresses approved cryptographic mechanisms. Both frameworks require encryption for data in transit, with ISCF focusing on preventing interception outside sovereign boundaries.",
+                "ns": "https://ibm.com/concert/ns/oscal"
+              }
+            ],
+            "confidence-score": {
+              "percentage": 0.88
+            },
+            "coverage": {
+              "target-coverage": 0.82
+            }
+          },
+          {
+            "uuid": "a7f72646-edfe-454c-bc5c-e7fb9f5e3fcd",
+            "relationship": "intersects-with",
+            "sources": [
+              {
+                "type": "control",
+                "id-ref": "iscf-dr-08"
+              }
+            ],
+            "targets": [
+              {
+                "type": "control",
+                "id-ref": "si-12"
+              },
+              {
+                "type": "control",
+                "id-ref": "mp-6"
+              },
+              {
+                "type": "control",
+                "id-ref": "mp-6.1"
+              },
+              {
+                "type": "control",
+                "id-ref": "mp-6.2"
+              }
+            ],
+            "props": [
+              {
+                "name": "mapping-rationale",
+                "value": "ISCF-DR-08 requires deleted customer data to not persist in backups or snapshots beyond approved retention periods, ensuring secure deletion. NIST SI-12 (Information Management and Retention) addresses information lifecycle including disposal. NIST MP-6 (Media Sanitization) addresses sanitizing media before disposal or reuse. NIST MP-6.1 (Review, Approve, Track, Document, and Verify) and MP-6.2 (Equipment Testing) address verification of sanitization. Both frameworks address secure data deletion, though ISCF specifically addresses backup/snapshot sovereignty.",
+                "ns": "https://ibm.com/concert/ns/oscal"
+              }
+            ],
+            "confidence-score": {
+              "percentage": 0.82
+            },
+            "coverage": {
+              "target-coverage": 0.72
+            }
+          },
+          {
+            "uuid": "bac3973b-4f1b-4b2d-a1b3-af42d2949858",
+            "relationship": "intersects-with",
+            "sources": [
+              {
+                "type": "control",
+                "id-ref": "iscf-dr-09"
+              }
+            ],
+            "targets": [
+              {
+                "type": "control",
+                "id-ref": "sc-4"
+              },
+              {
+                "type": "control",
+                "id-ref": "ac-4"
+              },
+              {
+                "type": "control",
+                "id-ref": "ac-4.21"
+              },
+              {
+                "type": "control",
+                "id-ref": "sc-39"
+              }
+            ],
+            "props": [
+              {
+                "name": "mapping-rationale",
+                "value": "ISCF-DR-09 requires continuous validation that data belonging to one tenant cannot be accessed by another tenant, maintaining strict tenant isolation. NIST SC-4 (Information in Shared System Resources) prevents unauthorized information transfer via shared resources. NIST AC-4 (Information Flow Enforcement) enforces approved authorizations for information flow. NIST AC-4.21 (Physical or Logical Separation) addresses separating information flows. NIST SC-39 (Process Isolation) addresses isolating processes. Both frameworks address multi-tenant isolation and preventing cross-tenant data exposure.",
+                "ns": "https://ibm.com/concert/ns/oscal"
+              }
+            ],
+            "confidence-score": {
+              "percentage": 0.85
+            },
+            "coverage": {
+              "target-coverage": 0.78
+            }
+          },
+          {
+            "uuid": "f30bd8e1-9c20-4735-b035-d6fc150f534f",
+            "relationship": "intersects-with",
+            "sources": [
+              {
+                "type": "control",
+                "id-ref": "iscf-dr-10"
+              }
+            ],
+            "targets": [
+              {
+                "type": "control",
+                "id-ref": "au-4"
+              },
+              {
+                "type": "control",
+                "id-ref": "au-9"
+              },
+              {
+                "type": "control",
+                "id-ref": "sc-7"
+              },
+              {
+                "type": "control",
+                "id-ref": "si-4"
+              }
+            ],
+            "props": [
+              {
+                "name": "mapping-rationale",
+                "value": "ISCF-DR-10 requires operational metadata, telemetry, metrics, and logs to not be exported outside the boundary, preventing sovereignty violations through monitoring pipelines. NIST AU-4 (Audit Log Storage Capacity) addresses audit log storage. NIST AU-9 (Protection of Audit Information) addresses protecting audit information. NIST SC-7 (Boundary Protection) addresses controlling communications at boundaries. NIST SI-4 (System Monitoring) addresses monitoring system activities. Both frameworks address protecting monitoring data, though ISCF specifically requires geographic residency for telemetry.",
+                "ns": "https://ibm.com/concert/ns/oscal"
+              }
+            ],
+            "confidence-score": {
+              "percentage": 0.78
+            },
+            "coverage": {
+              "target-coverage": 0.65
+            }
+          },
+          {
+            "uuid": "96ee5706-2379-4bad-8361-638b11c980df",
+            "relationship": "intersects-with",
+            "sources": [
+              {
+                "type": "control",
+                "id-ref": "iscf-ia-01"
+              }
+            ],
+            "targets": [
+              {
+                "type": "control",
+                "id-ref": "ac-2"
+              },
+              {
+                "type": "control",
+                "id-ref": "ia-1"
+              },
+              {
+                "type": "control",
+                "id-ref": "ia-2"
+              },
+              {
+                "type": "control",
+                "id-ref": "ia-4"
+              }
+            ],
+            "props": [
+              {
+                "name": "mapping-rationale",
+                "value": "ISCF-IA-01 requires identity and access management to be controlled by the MSP (Managed Service Provider) to ensure sovereign authority over user identity, authentication mechanisms, and access policies. NIST AC-2 (Account Management) addresses managing system accounts. NIST IA-1 (Policy and Procedures) addresses identification and authentication policies. NIST IA-2 (Identification and Authentication) addresses authenticating users. NIST IA-4 (Identifier Management) addresses managing identifiers. Both frameworks address IAM controls, though ISCF specifically requires MSP control for sovereignty while NIST focuses on general IAM security.",
+                "ns": "https://ibm.com/concert/ns/oscal"
+              }
+            ],
+            "confidence-score": {
+              "percentage": 0.82
+            },
+            "coverage": {
+              "target-coverage": 0.7
+            }
+          },
+          {
+            "uuid": "cdce52fa-19e8-443e-b865-dd18570210bc",
+            "relationship": "intersects-with",
+            "sources": [
+              {
+                "type": "control",
+                "id-ref": "iscf-ia-02"
+              }
+            ],
+            "targets": [
+              {
+                "type": "control",
+                "id-ref": "ac-2"
+              },
+              {
+                "type": "control",
+                "id-ref": "ac-6"
+              },
+              {
+                "type": "control",
+                "id-ref": "ac-6.5"
+              },
+              {
+                "type": "control",
+                "id-ref": "ac-6.6"
+              }
+            ],
+            "props": [
+              {
+                "name": "mapping-rationale",
+                "value": "ISCF-IA-02 requires vendors to not retain standing administrative access, preventing persistent external privileged access. NIST AC-2 (Account Management) addresses account lifecycle including termination. NIST AC-6 (Least Privilege) addresses limiting access to necessary functions. NIST AC-6.5 (Privileged Accounts) restricts privileged accounts. NIST AC-6.6 (Privileged Access by Non-organizational Users) prohibits privileged access by non-organizational users. Both frameworks address limiting privileged access, with ISCF specifically targeting vendor standing access.",
+                "ns": "https://ibm.com/concert/ns/oscal"
+              }
+            ],
+            "confidence-score": {
+              "percentage": 0.85
+            },
+            "coverage": {
+              "target-coverage": 0.75
+            }
+          },
+          {
+            "uuid": "1e6ed50d-17cb-4f59-b7e7-5cd6c16cf6e4",
+            "relationship": "intersects-with",
+            "sources": [
+              {
+                "type": "control",
+                "id-ref": "iscf-ia-03"
+              }
+            ],
+            "targets": [
+              {
+                "type": "control",
+                "id-ref": "ac-2"
+              },
+              {
+                "type": "control",
+                "id-ref": "ac-2.2"
+              },
+              {
+                "type": "control",
+                "id-ref": "au-2"
+              },
+              {
+                "type": "control",
+                "id-ref": "au-6"
+              },
+              {
+                "type": "control",
+                "id-ref": "ir-6"
+              }
+            ],
+            "props": [
+              {
+                "name": "mapping-rationale",
+                "value": "ISCF-IA-03 requires emergency access to be approved by MSP, fully auditable, logged, alerted, and reviewed. NIST AC-2 (Account Management) addresses account management including emergency accounts. NIST AC-2.2 (Automated Temporary and Emergency Account Management) specifically addresses emergency accounts. NIST AU-2 (Event Logging) addresses logging events. NIST AU-6 (Audit Record Review) addresses reviewing audit records. NIST IR-6 (Incident Reporting) addresses reporting incidents. Both frameworks address emergency access governance with audit requirements.",
+                "ns": "https://ibm.com/concert/ns/oscal"
+              }
+            ],
+            "confidence-score": {
+              "percentage": 0.83
+            },
+            "coverage": {
+              "target-coverage": 0.72
+            }
+          },
+          {
+            "uuid": "cd023c22-a745-4044-9b27-ee6b515f2569",
+            "relationship": "intersects-with",
+            "sources": [
+              {
+                "type": "control",
+                "id-ref": "iscf-ia-04"
+              }
+            ],
+            "targets": [
+              {
+                "type": "control",
+                "id-ref": "ac-2.4"
+              },
+              {
+                "type": "control",
+                "id-ref": "au-2"
+              },
+              {
+                "type": "control",
+                "id-ref": "au-12"
+              },
+              {
+                "type": "control",
+                "id-ref": "au-3"
+              }
+            ],
+            "props": [
+              {
+                "name": "mapping-rationale",
+                "value": "ISCF-IA-04 requires all account creation, modification, and deletion to be monitored for complete visibility and accountability. NIST AC-2.4 (Automated Audit Actions) automatically audits account creation, modification, enabling, disabling, and removal actions. NIST AU-2 (Event Logging) addresses logging security-relevant events. NIST AU-12 (Audit Record Generation) addresses generating audit records. NIST AU-3 (Content of Audit Records) addresses audit record content. Both frameworks directly address monitoring account lifecycle events.",
+                "ns": "https://ibm.com/concert/ns/oscal"
+              }
+            ],
+            "confidence-score": {
+              "percentage": 0.88
+            },
+            "coverage": {
+              "target-coverage": 0.82
+            }
+          },
+          {
+            "uuid": "5796b89b-468f-4abe-acdf-a98b414a727b",
+            "relationship": "intersects-with",
+            "sources": [
+              {
+                "type": "control",
+                "id-ref": "iscf-ia-05"
+              }
+            ],
+            "targets": [
+              {
+                "type": "control",
+                "id-ref": "ac-2"
+              },
+              {
+                "type": "control",
+                "id-ref": "ac-6.7"
+              },
+              {
+                "type": "control",
+                "id-ref": "ac-5"
+              }
+            ],
+            "props": [
+              {
+                "name": "mapping-rationale",
+                "value": "ISCF-IA-05 requires periodic access reviews to ensure user access privileges remain appropriate over time. NIST AC-2 (Account Management) addresses reviewing accounts periodically. NIST AC-6.7 (Review of User Privileges) specifically addresses reviewing user privileges. NIST AC-5 (Separation of Duties) addresses reviewing separation of duties. Both frameworks require periodic review of access privileges to maintain appropriate access levels.",
+                "ns": "https://ibm.com/concert/ns/oscal"
+              }
+            ],
+            "confidence-score": {
+              "percentage": 0.86
+            },
+            "coverage": {
+              "target-coverage": 0.78
+            }
+          },
+          {
+            "uuid": "1645fa7f-26da-4cc0-900f-745165c1774e",
+            "relationship": "intersects-with",
+            "sources": [
+              {
+                "type": "control",
+                "id-ref": "iscf-ia-06"
+              }
+            ],
+            "targets": [
+              {
+                "type": "control",
+                "id-ref": "ia-2"
+              },
+              {
+                "type": "control",
+                "id-ref": "ia-2.1"
+              },
+              {
+                "type": "control",
+                "id-ref": "ia-2.2"
+              },
+              {
+                "type": "control",
+                "id-ref": "ia-2.6"
+              }
+            ],
+            "props": [
+              {
+                "name": "mapping-rationale",
+                "value": "ISCF-IA-06 requires all interactive user access to use phishing-resistant authentication by default, with password authentication only permitted with mandatory MFA. NIST IA-2 (Identification and Authentication) addresses authenticating organizational users. NIST IA-2.1 (Multi-factor Authentication to Privileged Accounts) requires MFA for privileged accounts. NIST IA-2.2 (Multi-factor Authentication to Non-privileged Accounts) requires MFA for non-privileged accounts. NIST IA-2.6 (Access to Accounts - Separate Device) addresses separate device authentication. Both frameworks require strong authentication, with ISCF specifically mandating phishing-resistant methods.",
+                "ns": "https://ibm.com/concert/ns/oscal"
+              }
+            ],
+            "confidence-score": {
+              "percentage": 0.85
+            },
+            "coverage": {
+              "target-coverage": 0.78
+            }
+          },
+          {
+            "uuid": "b600be24-fe60-4fd3-8954-86afcd702c05",
+            "relationship": "intersects-with",
+            "sources": [
+              {
+                "type": "control",
+                "id-ref": "iscf-cr-01"
+              }
+            ],
+            "targets": [
+              {
+                "type": "control",
+                "id-ref": "sc-12"
+              },
+              {
+                "type": "control",
+                "id-ref": "sc-12.1"
+              },
+              {
+                "type": "control",
+                "id-ref": "sc-12.2"
+              },
+              {
+                "type": "control",
+                "id-ref": "sc-12.3"
+              }
+            ],
+            "props": [
+              {
+                "name": "mapping-rationale",
+                "value": "ISCF-CR-01 requires encryption keys to be controlled by the MSP for sovereign authority over cryptographic material. NIST SC-12 (Cryptographic Key Establishment and Management) addresses key management requirements. NIST SC-12.1 (Availability) addresses key availability. NIST SC-12.2 (Symmetric Keys) addresses symmetric key management. NIST SC-12.3 (Asymmetric Keys) addresses asymmetric key management. Both frameworks address key management, though ISCF specifically requires MSP control for sovereignty.",
+                "ns": "https://ibm.com/concert/ns/oscal"
+              }
+            ],
+            "confidence-score": {
+              "percentage": 0.82
+            },
+            "coverage": {
+              "target-coverage": 0.72
+            }
+          },
+          {
+            "uuid": "e4d95082-9717-439d-9566-547296a9bee0",
+            "relationship": "intersects-with",
+            "sources": [
+              {
+                "type": "control",
+                "id-ref": "iscf-cr-02"
+              }
+            ],
+            "targets": [
+              {
+                "type": "control",
+                "id-ref": "sc-12"
+              },
+              {
+                "type": "control",
+                "id-ref": "sc-12.6"
+              }
+            ],
+            "props": [
+              {
+                "name": "mapping-rationale",
+                "value": "ISCF-CR-02 requires the provider to not retain escrow or recovery keys for customer data encryption, ensuring the platform provider cannot decrypt customer data without MSP authorization. NIST SC-12 (Cryptographic Key Establishment and Management) addresses key management. NIST SC-12.6 (Physical Control of Keys) specifically addresses maintaining physical control of cryptographic keys when stored information is encrypted by external service providers. Both frameworks address preventing unauthorized key access, with ISCF specifically prohibiting vendor key escrow.",
+                "ns": "https://ibm.com/concert/ns/oscal"
+              }
+            ],
+            "confidence-score": {
+              "percentage": 0.8
+            },
+            "coverage": {
+              "target-coverage": 0.7
+            }
+          },
+          {
+            "uuid": "74830e64-8631-4cf1-9799-f8a32fd744c6",
+            "relationship": "intersects-with",
+            "sources": [
+              {
+                "type": "control",
+                "id-ref": "iscf-cr-03"
+              }
+            ],
+            "targets": [
+              {
+                "type": "control",
+                "id-ref": "sc-13"
+              },
+              {
+                "type": "control",
+                "id-ref": "sc-13.1"
+              }
+            ],
+            "props": [
+              {
+                "name": "mapping-rationale",
+                "value": "ISCF-CR-03 requires cryptographic mechanisms to meet modern security standards and align with regional security authority guidance. NIST SC-13 (Cryptographic Protection) addresses implementing cryptography in accordance with applicable laws and policies. NIST SC-13.1 (FIPS-validated Cryptography) requires FIPS-validated cryptographic modules. Both frameworks require approved cryptographic algorithms, with ISCF emphasizing regional authority guidance while NIST references FIPS standards.",
+                "ns": "https://ibm.com/concert/ns/oscal"
+              }
+            ],
+            "confidence-score": {
+              "percentage": 0.85
+            },
+            "coverage": {
+              "target-coverage": 0.78
+            }
+          },
+          {
+            "uuid": "34a5e4a6-6e9e-4b5f-a574-7920ec94c767",
+            "relationship": "intersects-with",
+            "sources": [
+              {
+                "type": "control",
+                "id-ref": "iscf-cr-04"
+              }
+            ],
+            "targets": [
+              {
+                "type": "control",
+                "id-ref": "sc-13"
+              },
+              {
+                "type": "control",
+                "id-ref": "cm-6"
+              },
+              {
+                "type": "control",
+                "id-ref": "cm-3"
+              },
+              {
+                "type": "control",
+                "id-ref": "ca-7"
+              }
+            ],
+            "props": [
+              {
+                "name": "mapping-rationale",
+                "value": "ISCF-CR-04 requires cryptographic configurations to be validated periodically to ensure compliance with approved cipher policies and prevent configuration drift. NIST SC-13 (Cryptographic Protection) addresses cryptographic implementation. NIST CM-6 (Configuration Settings) addresses establishing and documenting configuration settings. NIST CM-3 (Configuration Change Control) addresses controlling configuration changes. NIST CA-7 (Continuous Monitoring) addresses continuous monitoring of security controls. Both frameworks address maintaining proper cryptographic configurations over time.",
+                "ns": "https://ibm.com/concert/ns/oscal"
+              }
+            ],
+            "confidence-score": {
+              "percentage": 0.82
+            },
+            "coverage": {
+              "target-coverage": 0.72
+            }
+          },
+          {
+            "uuid": "51136e1f-b16f-42c3-9507-36f92877b3af",
+            "relationship": "intersects-with",
+            "sources": [
+              {
+                "type": "control",
+                "id-ref": "iscf-op-01"
+              }
+            ],
+            "targets": [
+              {
+                "type": "control",
+                "id-ref": "ps-1"
+              },
+              {
+                "type": "control",
+                "id-ref": "ps-3"
+              },
+              {
+                "type": "control",
+                "id-ref": "sa-9"
+              },
+              {
+                "type": "control",
+                "id-ref": "sa-9.1"
+              }
+            ],
+            "props": [
+              {
+                "name": "mapping-rationale",
+                "value": "ISCF-OP-01 requires operational activities to be executed by region-based teams operating under regional jurisdiction, ensuring operational authority remains within the region. NIST PS-1 (Personnel Security Policy and Procedures) addresses personnel security policies. NIST PS-3 (Personnel Screening) addresses screening personnel. NIST SA-9 (External System Services) addresses requirements for external service providers. NIST SA-9.1 (Risk Assessments and Organizational Approvals) addresses risk assessments for external services. Both frameworks address operational personnel controls, though ISCF specifically requires regional jurisdiction.",
+                "ns": "https://ibm.com/concert/ns/oscal"
+              }
+            ],
+            "confidence-score": {
+              "percentage": 0.78
+            },
+            "coverage": {
+              "target-coverage": 0.65
+            }
+          },
+          {
+            "uuid": "428d068a-42d8-4ccb-a0f5-e3c974153d27",
+            "relationship": "intersects-with",
+            "sources": [
+              {
+                "type": "control",
+                "id-ref": "iscf-op-02"
+              }
+            ],
+            "targets": [
+              {
+                "type": "control",
+                "id-ref": "cp-2"
+              },
+              {
+                "type": "control",
+                "id-ref": "cp-2.5"
+              },
+              {
+                "type": "control",
+                "id-ref": "sa-9"
+              },
+              {
+                "type": "control",
+                "id-ref": "sc-36"
+              }
+            ],
+            "props": [
+              {
+                "name": "mapping-rationale",
+                "value": "ISCF-OP-02 requires the sovereign platform to remain operationally independent and not be disrupted by external service providers through offline deployment capability. NIST CP-2 (Contingency Plan) addresses contingency planning. NIST CP-2.5 (Continue Mission and Business Functions) addresses continuity with minimal loss. NIST SA-9 (External System Services) addresses external service provider dependencies. NIST SC-36 (Distributed Processing and Storage) addresses distributed processing. Both frameworks address operational independence, though ISCF specifically requires offline capability for sovereignty.",
+                "ns": "https://ibm.com/concert/ns/oscal"
+              }
+            ],
+            "confidence-score": {
+              "percentage": 0.75
+            },
+            "coverage": {
+              "target-coverage": 0.62
+            }
+          },
+          {
+            "uuid": "207391cc-6bd7-43ef-a8b5-24663571f595",
+            "relationship": "intersects-with",
+            "sources": [
+              {
+                "type": "control",
+                "id-ref": "iscf-op-03"
+              }
+            ],
+            "targets": [
+              {
+                "type": "control",
+                "id-ref": "cp-2"
+              },
+              {
+                "type": "control",
+                "id-ref": "ir-4"
+              },
+              {
+                "type": "control",
+                "id-ref": "ir-4.1"
+              },
+              {
+                "type": "control",
+                "id-ref": "ir-5"
+              }
+            ],
+            "props": [
+              {
+                "name": "mapping-rationale",
+                "value": "ISCF-OP-03 requires emergency operational decisions to be executed under region-based authority, including isolation, shutdown, or override actions by authorized regional personnel. NIST CP-2 (Contingency Plan) addresses contingency planning including emergency procedures. NIST IR-4 (Incident Handling) addresses incident handling capabilities. NIST IR-4.1 (Automated Incident Handling Processes) addresses automated incident handling. NIST IR-5 (Incident Monitoring) addresses monitoring incidents. Both frameworks address emergency operations, though ISCF specifically requires regional authority.",
+                "ns": "https://ibm.com/concert/ns/oscal"
+              }
+            ],
+            "confidence-score": {
+              "percentage": 0.78
+            },
+            "coverage": {
+              "target-coverage": 0.68
+            }
+          },
+          {
+            "uuid": "bca247ce-d97a-4798-bf76-9fe63e93049e",
+            "relationship": "intersects-with",
+            "sources": [
+              {
+                "type": "control",
+                "id-ref": "iscf-sc-01"
+              }
+            ],
+            "targets": [
+              {
+                "type": "control",
+                "id-ref": "sa-4"
+              },
+              {
+                "type": "control",
+                "id-ref": "sa-4.2"
+              },
+              {
+                "type": "control",
+                "id-ref": "sa-11"
+              },
+              {
+                "type": "control",
+                "id-ref": "sr-4"
+              }
+            ],
+            "props": [
+              {
+                "name": "mapping-rationale",
+                "value": "ISCF-SC-01 requires MSPs to be able to inspect relevant source artifacts associated with the sovereign platform for transparency into software components. NIST SA-4 (Acquisition Process) addresses acquisition requirements including source code access. NIST SA-4.2 (Design and Implementation Information for Controls) addresses obtaining design and implementation information. NIST SA-11 (Developer Testing and Evaluation) addresses developer security testing. NIST SR-4 (Provenance) addresses tracking component provenance. Both frameworks address software transparency, though ISCF specifically requires MSP inspection capability.",
+                "ns": "https://ibm.com/concert/ns/oscal"
+              }
+            ],
+            "confidence-score": {
+              "percentage": 0.8
+            },
+            "coverage": {
+              "target-coverage": 0.7
+            }
+          },
+          {
+            "uuid": "56f06f8c-6208-4485-a8df-0f6628a75847",
+            "relationship": "intersects-with",
+            "sources": [
+              {
+                "type": "control",
+                "id-ref": "iscf-sc-02"
+              }
+            ],
+            "targets": [
+              {
+                "type": "control",
+                "id-ref": "sr-4"
+              },
+              {
+                "type": "control",
+                "id-ref": "sr-4.3"
+              },
+              {
+                "type": "control",
+                "id-ref": "cm-8"
+              },
+              {
+                "type": "control",
+                "id-ref": "cm-8.1"
+              }
+            ],
+            "props": [
+              {
+                "name": "mapping-rationale",
+                "value": "ISCF-SC-02 requires Software Bill of Materials (SBOM) to document software components and dependencies. NIST SR-4 (Provenance) addresses tracking component provenance. NIST SR-4.3 (Validate as Genuine and Not Altered) addresses validating component authenticity. NIST CM-8 (System Component Inventory) addresses maintaining component inventory. NIST CM-8.1 (Updates During Installation and Removal) addresses updating inventory. Both frameworks address software component documentation and tracking.",
+                "ns": "https://ibm.com/concert/ns/oscal"
+              }
+            ],
+            "confidence-score": {
+              "percentage": 0.85
+            },
+            "coverage": {
+              "target-coverage": 0.78
+            }
+          },
+          {
+            "uuid": "70a94650-619b-4e71-9167-3e0c8064963e",
+            "relationship": "intersects-with",
+            "sources": [
+              {
+                "type": "control",
+                "id-ref": "iscf-sc-03"
+              }
+            ],
+            "targets": [
+              {
+                "type": "control",
+                "id-ref": "si-2"
+              },
+              {
+                "type": "control",
+                "id-ref": "si-2.2"
+              },
+              {
+                "type": "control",
+                "id-ref": "ra-5"
+              },
+              {
+                "type": "control",
+                "id-ref": "ra-5.5"
+              }
+            ],
+            "props": [
+              {
+                "name": "mapping-rationale",
+                "value": "ISCF-SC-03 requires vulnerability disclosure and patching processes to address security vulnerabilities in a timely manner. NIST SI-2 (Flaw Remediation) addresses identifying, reporting, and correcting system flaws. NIST SI-2.2 (Automated Flaw Remediation Status) addresses automated tracking of flaw remediation. NIST RA-5 (Vulnerability Monitoring and Scanning) addresses vulnerability scanning. NIST RA-5.5 (Privileged Access) addresses privileged access for vulnerability scanning. Both frameworks address vulnerability management and remediation.",
+                "ns": "https://ibm.com/concert/ns/oscal"
+              }
+            ],
+            "confidence-score": {
+              "percentage": 0.85
+            },
+            "coverage": {
+              "target-coverage": 0.78
+            }
+          },
+          {
+            "uuid": "34fffdb4-747f-455c-8309-d28860440e2f",
+            "relationship": "intersects-with",
+            "sources": [
+              {
+                "type": "control",
+                "id-ref": "iscf-ra-01"
+              }
+            ],
+            "targets": [
+              {
+                "type": "control",
+                "id-ref": "ra-5"
+              },
+              {
+                "type": "control",
+                "id-ref": "ra-5.2"
+              },
+              {
+                "type": "control",
+                "id-ref": "ra-5.5"
+              },
+              {
+                "type": "control",
+                "id-ref": "ca-7"
+              }
+            ],
+            "props": [
+              {
+                "name": "mapping-rationale",
+                "value": "ISCF-RA-01 requires continuous vulnerability scanning across all in-scope components to identify security vulnerabilities and maintain an accurate risk posture. NIST RA-5 (Vulnerability Monitoring and Scanning) addresses scanning for vulnerabilities. NIST RA-5.2 (Update Vulnerabilities to Be Scanned) addresses updating vulnerability databases. NIST RA-5.5 (Privileged Access) addresses privileged access for scanning. NIST CA-7 (Continuous Monitoring) addresses continuous monitoring of security controls. Both frameworks require continuous vulnerability assessment.",
+                "ns": "https://ibm.com/concert/ns/oscal"
+              }
+            ],
+            "confidence-score": {
+              "percentage": 0.88
+            },
+            "coverage": {
+              "target-coverage": 0.82
+            }
+          },
+          {
+            "uuid": "2d324478-e8cb-454c-b916-a7bf37e3123a",
+            "relationship": "intersects-with",
+            "sources": [
+              {
+                "type": "control",
+                "id-ref": "iscf-ra-02"
+              }
+            ],
+            "targets": [
+              {
+                "type": "control",
+                "id-ref": "si-2"
+              },
+              {
+                "type": "control",
+                "id-ref": "ra-5"
+              },
+              {
+                "type": "control",
+                "id-ref": "ca-5"
+              },
+              {
+                "type": "control",
+                "id-ref": "pm-4"
+              }
+            ],
+            "props": [
+              {
+                "name": "mapping-rationale",
+                "value": "ISCF-RA-02 requires remediation timelines for identified vulnerabilities to be tracked and enforced within defined SLAs. NIST SI-2 (Flaw Remediation) addresses correcting system flaws within defined timeframes. NIST RA-5 (Vulnerability Monitoring and Scanning) addresses vulnerability remediation tracking. NIST CA-5 (Plan of Action and Milestones) addresses tracking remediation actions. NIST PM-4 (Plan of Action and Milestones Process) addresses the POA&M process. Both frameworks address tracking and enforcing vulnerability remediation timelines.",
+                "ns": "https://ibm.com/concert/ns/oscal"
+              }
+            ],
+            "confidence-score": {
+              "percentage": 0.85
+            },
+            "coverage": {
+              "target-coverage": 0.78
+            }
+          },
+          {
+            "uuid": "95ab381c-e278-4062-9e2e-26553dac2c2e",
+            "relationship": "intersects-with",
+            "sources": [
+              {
+                "type": "control",
+                "id-ref": "iscf-ra-03"
+              }
+            ],
+            "targets": [
+              {
+                "type": "control",
+                "id-ref": "ca-7"
+              },
+              {
+                "type": "control",
+                "id-ref": "pm-6"
+              },
+              {
+                "type": "control",
+                "id-ref": "pm-9"
+              },
+              {
+                "type": "control",
+                "id-ref": "ra-3"
+              }
+            ],
+            "props": [
+              {
+                "name": "mapping-rationale",
+                "value": "ISCF-RA-03 requires monthly security and sovereignty health reviews to maintain oversight of the security posture. NIST CA-7 (Continuous Monitoring) addresses ongoing monitoring of security controls. NIST PM-6 (Measures of Performance) addresses measuring security performance. NIST PM-9 (Risk Management Strategy) addresses risk management strategy. NIST RA-3 (Risk Assessment) addresses conducting risk assessments. Both frameworks address periodic security posture reviews, though ISCF specifically includes sovereignty aspects.",
+                "ns": "https://ibm.com/concert/ns/oscal"
+              }
+            ],
+            "confidence-score": {
+              "percentage": 0.8
+            },
+            "coverage": {
+              "target-coverage": 0.7
+            }
+          },
+          {
+            "uuid": "abe68c32-1b27-46fd-aedd-f20bde0889e5",
+            "relationship": "intersects-with",
+            "sources": [
+              {
+                "type": "control",
+                "id-ref": "iscf-re-01"
+              }
+            ],
+            "targets": [
+              {
+                "type": "control",
+                "id-ref": "cp-2"
+              },
+              {
+                "type": "control",
+                "id-ref": "cp-6"
+              },
+              {
+                "type": "control",
+                "id-ref": "cp-7"
+              },
+              {
+                "type": "control",
+                "id-ref": "cp-9"
+              },
+              {
+                "type": "control",
+                "id-ref": "cp-10"
+              }
+            ],
+            "props": [
+              {
+                "name": "mapping-rationale",
+                "value": "ISCF-RE-01 requires disaster recovery operations to be executed within the region without dependency on external providers. NIST CP-2 (Contingency Plan) addresses contingency planning. NIST CP-6 (Alternate Storage Site) addresses alternate storage sites. NIST CP-7 (Alternate Processing Site) addresses alternate processing sites. NIST CP-9 (System Backup) addresses system backup. NIST CP-10 (System Recovery and Reconstitution) addresses system recovery. Both frameworks address disaster recovery, though ISCF specifically requires regional execution without external dependencies.",
+                "ns": "https://ibm.com/concert/ns/oscal"
+              }
+            ],
+            "confidence-score": {
+              "percentage": 0.82
+            },
+            "coverage": {
+              "target-coverage": 0.72
+            }
+          },
+          {
+            "uuid": "8ba69b29-c344-4ae6-8884-4588dd0c6957",
+            "relationship": "intersects-with",
+            "sources": [
+              {
+                "type": "control",
+                "id-ref": "iscf-re-02"
+              }
+            ],
+            "targets": [
+              {
+                "type": "control",
+                "id-ref": "si-12"
+              },
+              {
+                "type": "control",
+                "id-ref": "ac-3.9"
+              },
+              {
+                "type": "control",
+                "id-ref": "sa-9"
+              }
+            ],
+            "props": [
+              {
+                "name": "mapping-rationale",
+                "value": "ISCF-RE-02 requires MSPs and tenants to be able to export and delete their data without vendor lock-in, ensuring data portability. NIST SI-12 (Information Management and Retention) addresses information lifecycle including disposal. NIST AC-3.9 (Controlled Release) addresses releasing information outside the system. NIST SA-9 (External System Services) addresses requirements for external service providers including data portability. Both frameworks address data portability and exit capabilities, though ISCF specifically emphasizes avoiding vendor lock-in.",
+                "ns": "https://ibm.com/concert/ns/oscal"
+              }
+            ],
+            "confidence-score": {
+              "percentage": 0.78
+            },
+            "coverage": {
+              "target-coverage": 0.65
+            }
+          },
+          {
+            "uuid": "0db7aa8b-6494-4b96-a0c9-45b703ee9270",
+            "relationship": "intersects-with",
+            "sources": [
+              {
+                "type": "control",
+                "id-ref": "iscf-trn-01"
+              }
+            ],
+            "targets": [
+              {
+                "type": "control",
+                "id-ref": "pl-1"
+              },
+              {
+                "type": "control",
+                "id-ref": "pm-1"
+              },
+              {
+                "type": "control",
+                "id-ref": "pl-2"
+              }
+            ],
+            "props": [
+              {
+                "name": "mapping-rationale",
+                "value": "ISCF-TRN-01 requires documentation describing sovereignty controls, scope, and limitations as a transparency commitment. NIST PL-1 (Policy and Procedures) addresses security planning policies and procedures. NIST PM-1 (Information Security Program Plan) addresses the information security program plan. NIST PL-2 (System Security and Privacy Plans) addresses system security plans. Both frameworks address documentation of security controls, though ISCF specifically requires sovereignty-focused transparency documentation.",
+                "ns": "https://ibm.com/concert/ns/oscal"
+              }
+            ],
+            "confidence-score": {
+              "percentage": 0.78
+            },
+            "coverage": {
+              "target-coverage": 0.65
+            }
+          },
+          {
+            "uuid": "9af1e4c9-c7cf-4e36-b31f-7e6b852eb6ea",
+            "relationship": "intersects-with",
+            "sources": [
+              {
+                "type": "control",
+                "id-ref": "iscf-trn-02"
+              }
+            ],
+            "targets": [
+              {
+                "type": "control",
+                "id-ref": "ca-7"
+              },
+              {
+                "type": "control",
+                "id-ref": "au-6"
+              },
+              {
+                "type": "control",
+                "id-ref": "pm-14"
+              },
+              {
+                "type": "control",
+                "id-ref": "pm-31"
+              }
+            ],
+            "props": [
+              {
+                "name": "mapping-rationale",
+                "value": "ISCF-TRN-02 requires customers to have visibility into sovereignty-relevant configurations and monitoring results to independently verify sovereignty enforcement. NIST CA-7 (Continuous Monitoring) addresses ongoing monitoring of security controls. NIST AU-6 (Audit Record Review, Analysis, and Reporting) addresses reviewing audit records. NIST PM-14 (Testing, Training, and Monitoring) addresses monitoring activities. NIST PM-31 (Continuous Monitoring Strategy) addresses monitoring strategy. Both frameworks address visibility into security monitoring, though ISCF specifically requires customer access for sovereignty verification.",
+                "ns": "https://ibm.com/concert/ns/oscal"
+              }
+            ],
+            "confidence-score": {
+              "percentage": 0.8
+            },
+            "coverage": {
+              "target-coverage": 0.68
+            }
+          },
+          {
+            "uuid": "69735119-0e37-4e4d-b1e1-9801775c9a9d",
+            "relationship": "intersects-with",
+            "sources": [
+              {
+                "type": "control",
+                "id-ref": "iscf-trn-03"
+              }
+            ],
+            "targets": [
+              {
+                "type": "control",
+                "id-ref": "ac-2"
+              },
+              {
+                "type": "control",
+                "id-ref": "ia-4"
+              },
+              {
+                "type": "control",
+                "id-ref": "ia-5"
+              },
+              {
+                "type": "control",
+                "id-ref": "ac-6"
+              }
+            ],
+            "props": [
+              {
+                "name": "mapping-rationale",
+                "value": "ISCF-TRN-03 requires customers to control their own users, roles, and access policies, ensuring identity governance remains under customer authority. NIST AC-2 (Account Management) addresses managing system accounts. NIST IA-4 (Identifier Management) addresses managing identifiers. NIST IA-5 (Authenticator Management) addresses managing authenticators. NIST AC-6 (Least Privilege) addresses access control. Both frameworks address identity and access management, though ISCF specifically requires customer control for sovereignty.",
+                "ns": "https://ibm.com/concert/ns/oscal"
+              }
+            ],
+            "confidence-score": {
+              "percentage": 0.82
+            },
+            "coverage": {
+              "target-coverage": 0.72
+            }
+          },
+          {
+            "uuid": "386f6fab-0d7c-4240-b598-088451f67220",
+            "relationship": "intersects-with",
+            "sources": [
+              {
+                "type": "control",
+                "id-ref": "iscf-trn-04"
+              }
+            ],
+            "targets": [
+              {
+                "type": "control",
+                "id-ref": "sc-12"
+              },
+              {
+                "type": "control",
+                "id-ref": "sc-12.1"
+              },
+              {
+                "type": "control",
+                "id-ref": "sc-12.6"
+              }
+            ],
+            "props": [
+              {
+                "name": "mapping-rationale",
+                "value": "ISCF-TRN-04 requires customers to retain control over cryptographic keys used to protect their data, ensuring cryptographic sovereignty remains with the customer. NIST SC-12 (Cryptographic Key Establishment and Management) addresses key management. NIST SC-12.1 (Availability) addresses key availability. NIST SC-12.6 (Physical Control of Keys) addresses maintaining physical control of keys. Both frameworks address cryptographic key management, though ISCF specifically requires customer control for sovereignty.",
+                "ns": "https://ibm.com/concert/ns/oscal"
+              }
+            ],
+            "confidence-score": {
+              "percentage": 0.85
+            },
+            "coverage": {
+              "target-coverage": 0.78
+            }
+          },
+          {
+            "uuid": "8b199186-6a21-4d3f-ae76-79b28d6c9b56",
+            "relationship": "intersects-with",
+            "sources": [
+              {
+                "type": "control",
+                "id-ref": "iscf-trn-05"
+              }
+            ],
+            "targets": [
+              {
+                "type": "control",
+                "id-ref": "au-9"
+              },
+              {
+                "type": "control",
+                "id-ref": "au-11"
+              },
+              {
+                "type": "control",
+                "id-ref": "au-6"
+              },
+              {
+                "type": "control",
+                "id-ref": "ca-2"
+              }
+            ],
+            "props": [
+              {
+                "name": "mapping-rationale",
+                "value": "ISCF-TRN-05 requires customers to access sovereignty-related audit evidence relevant to their deployment to verify compliance with sovereignty requirements. NIST AU-9 (Protection of Audit Information) addresses protecting audit information. NIST AU-11 (Audit Record Retention) addresses retaining audit records. NIST AU-6 (Audit Record Review, Analysis, and Reporting) addresses reviewing audit records. NIST CA-2 (Control Assessments) addresses security control assessments. Both frameworks address audit evidence access, though ISCF specifically requires customer access for sovereignty verification.",
+                "ns": "https://ibm.com/concert/ns/oscal"
+              }
+            ],
+            "confidence-score": {
+              "percentage": 0.82
+            },
+            "coverage": {
+              "target-coverage": 0.72
+            }
+          },
+          {
+            "uuid": "e1d88561-a893-49e6-85f6-7d5cff812436",
+            "relationship": "intersects-with",
+            "sources": [
+              {
+                "type": "control",
+                "id-ref": "iscf-trn-06"
+              }
+            ],
+            "targets": [
+              {
+                "type": "control",
+                "id-ref": "sa-9"
+              },
+              {
+                "type": "control",
+                "id-ref": "sr-6"
+              },
+              {
+                "type": "control",
+                "id-ref": "sr-3"
+              },
+              {
+                "type": "control",
+                "id-ref": "pm-30"
+              }
+            ],
+            "props": [
+              {
+                "name": "mapping-rationale",
+                "value": "ISCF-TRN-06 requires customers to be informed of sub-processors and external dependencies impacting sovereignty to prevent undisclosed third-party dependencies. NIST SA-9 (External System Services) addresses requirements for external service providers. NIST SR-6 (Supplier Assessments and Reviews) addresses assessing suppliers. NIST SR-3 (Supply Chain Controls and Processes) addresses supply chain risk management. NIST PM-30 (Supply Chain Risk Management Strategy) addresses supply chain strategy. Both frameworks address third-party transparency, though ISCF specifically requires disclosure for sovereignty impact.",
+                "ns": "https://ibm.com/concert/ns/oscal"
+              }
+            ],
+            "confidence-score": {
+              "percentage": 0.82
+            },
+            "coverage": {
+              "target-coverage": 0.72
+            }
+          },
+          {
+            "uuid": "522ad989-ce9b-4e93-8049-c52f0e9e417c",
+            "relationship": "intersects-with",
+            "sources": [
+              {
+                "type": "control",
+                "id-ref": "iscf-trn-07"
+              }
+            ],
+            "targets": [
+              {
+                "type": "control",
+                "id-ref": "sa-9"
+              },
+              {
+                "type": "control",
+                "id-ref": "si-12"
+              },
+              {
+                "type": "control",
+                "id-ref": "ac-3.9"
+              }
+            ],
+            "props": [
+              {
+                "name": "mapping-rationale",
+                "value": "ISCF-TRN-07 requires exit procedures and data portability mechanisms to be documented and transparent. NIST SA-9 (External System Services) addresses requirements for external service providers including data portability. NIST SI-12 (Information Management and Retention) addresses information lifecycle. NIST AC-3.9 (Controlled Release) addresses releasing information outside the system. Both frameworks address data portability and exit procedures, though ISCF specifically requires transparency for sovereignty.",
+                "ns": "https://ibm.com/concert/ns/oscal"
+              }
+            ],
+            "confidence-score": {
+              "percentage": 0.78
+            },
+            "coverage": {
+              "target-coverage": 0.65
+            }
+          },
+          {
+            "uuid": "a970e9cc-9e81-4140-93b7-9bebeb012e00",
+            "relationship": "intersects-with",
+            "sources": [
+              {
+                "type": "control",
+                "id-ref": "iscf-gov-01"
+              }
+            ],
+            "targets": [
+              {
+                "type": "control",
+                "id-ref": "pm-2"
+              },
+              {
+                "type": "control",
+                "id-ref": "pm-1"
+              },
+              {
+                "type": "control",
+                "id-ref": "pl-1"
+              }
+            ],
+            "props": [
+              {
+                "name": "mapping-rationale",
+                "value": "ISCF-GOV-01 requires ownership of sovereignty controls to be assigned to a region-based function or role with authority to define, enforce, and update sovereignty controls. NIST PM-2 (Information Security Program Leadership Role) addresses senior leadership roles for information security. NIST PM-1 (Information Security Program Plan) addresses the security program plan. NIST PL-1 (Policy and Procedures) addresses security planning policies. Both frameworks address security governance ownership, though ISCF specifically requires regional jurisdiction.",
+                "ns": "https://ibm.com/concert/ns/oscal"
+              }
+            ],
+            "confidence-score": {
+              "percentage": 0.78
+            },
+            "coverage": {
+              "target-coverage": 0.65
+            }
+          },
+          {
+            "uuid": "ecdca107-b0a5-47dc-9969-a00d31acd22c",
+            "relationship": "intersects-with",
+            "sources": [
+              {
+                "type": "control",
+                "id-ref": "iscf-gov-02"
+              }
+            ],
+            "targets": [
+              {
+                "type": "control",
+                "id-ref": "pm-9"
+              },
+              {
+                "type": "control",
+                "id-ref": "ra-3"
+              },
+              {
+                "type": "control",
+                "id-ref": "pm-28"
+              }
+            ],
+            "props": [
+              {
+                "name": "mapping-rationale",
+                "value": "ISCF-GOV-02 requires acceptance of sovereignty-related risks to be formally approved by region-based management with documented authority. NIST PM-9 (Risk Management Strategy) addresses the risk management strategy. NIST RA-3 (Risk Assessment) addresses conducting risk assessments. NIST PM-28 (Risk Framing) addresses risk framing. Both frameworks address risk acceptance authority, though ISCF specifically requires regional management approval for sovereignty risks.",
+                "ns": "https://ibm.com/concert/ns/oscal"
+              }
+            ],
+            "confidence-score": {
+              "percentage": 0.8
+            },
+            "coverage": {
+              "target-coverage": 0.68
+            }
+          },
+          {
+            "uuid": "cde288d8-adae-401e-bede-01b927c51778",
+            "relationship": "intersects-with",
+            "sources": [
+              {
+                "type": "control",
+                "id-ref": "iscf-gov-03"
+              }
+            ],
+            "targets": [
+              {
+                "type": "control",
+                "id-ref": "pm-10"
+              },
+              {
+                "type": "control",
+                "id-ref": "ca-6"
+              },
+              {
+                "type": "control",
+                "id-ref": "ca-7"
+              }
+            ],
+            "props": [
+              {
+                "name": "mapping-rationale",
+                "value": "ISCF-GOV-03 requires exceptions to sovereignty controls to be documented and approved by region-based authority, ensuring exceptions are controlled and temporary. NIST PM-10 (Authorization Process) addresses the authorization process. NIST CA-6 (Authorization) addresses security authorization. NIST CA-7 (Continuous Monitoring) addresses monitoring including exception tracking. Both frameworks address exception management and authorization, though ISCF specifically requires regional authority approval for sovereignty exceptions.",
+                "ns": "https://ibm.com/concert/ns/oscal"
+              }
+            ],
+            "confidence-score": {
+              "percentage": 0.8
+            },
+            "coverage": {
+              "target-coverage": 0.68
+            }
+          },
+          {
+            "uuid": "89da02a0-72d4-4a43-ba73-210050ed4716",
+            "relationship": "intersects-with",
+            "sources": [
+              {
+                "type": "control",
+                "id-ref": "iscf-gov-04"
+              }
+            ],
+            "targets": [
+              {
+                "type": "control",
+                "id-ref": "pm-6"
+              },
+              {
+                "type": "control",
+                "id-ref": "ca-7"
+              },
+              {
+                "type": "control",
+                "id-ref": "pm-9"
+              }
+            ],
+            "props": [
+              {
+                "name": "mapping-rationale",
+                "value": "ISCF-GOV-04 requires the sovereignty posture to be reviewed periodically by region-based management to maintain oversight and accountability. NIST PM-6 (Measures of Performance) addresses measuring security performance. NIST CA-7 (Continuous Monitoring) addresses ongoing monitoring of security controls. NIST PM-9 (Risk Management Strategy) addresses risk management strategy. Both frameworks address management review of security posture, though ISCF specifically requires regional management review for sovereignty.",
+                "ns": "https://ibm.com/concert/ns/oscal"
+              }
+            ],
+            "confidence-score": {
+              "percentage": 0.8
+            },
+            "coverage": {
+              "target-coverage": 0.68
+            }
+          },
+          {
+            "uuid": "1417cb3e-3cd3-4ecb-9d8c-49bb85452c70",
+            "relationship": "intersects-with",
+            "sources": [
+              {
+                "type": "control",
+                "id-ref": "iscf-lj-01"
+              }
+            ],
+            "targets": [
+              {
+                "type": "control",
+                "id-ref": "sa-9"
+              },
+              {
+                "type": "control",
+                "id-ref": "pm-1"
+              },
+              {
+                "type": "control",
+                "id-ref": "pl-1"
+              }
+            ],
+            "props": [
+              {
+                "name": "mapping-rationale",
+                "value": "ISCF-LJ-01 requires the service to be governed exclusively by region or region member-state law. NIST SA-9 (External System Services) addresses requirements for external service providers including legal requirements. NIST PM-1 (Information Security Program Plan) addresses the security program plan. NIST PL-1 (Policy and Procedures) addresses security planning policies. NIST does not directly address legal jurisdiction exclusivity, but these controls provide partial coverage for contractual and policy requirements.",
+                "ns": "https://ibm.com/concert/ns/oscal"
+              }
+            ],
+            "confidence-score": {
+              "percentage": 0.65
+            },
+            "coverage": {
+              "target-coverage": 0.5
+            }
+          },
+          {
+            "uuid": "493398c0-fc4e-4931-9bf2-d38d82390384",
+            "relationship": "intersects-with",
+            "sources": [
+              {
+                "type": "control",
+                "id-ref": "iscf-lj-02"
+              }
+            ],
+            "targets": [
+              {
+                "type": "control",
+                "id-ref": "sa-9"
+              },
+              {
+                "type": "control",
+                "id-ref": "pm-1"
+              },
+              {
+                "type": "control",
+                "id-ref": "pt-1"
+              }
+            ],
+            "props": [
+              {
+                "name": "mapping-rationale",
+                "value": "ISCF-LJ-02 requires documentation of exposure to, or exclusion from, non-regional extraterritorial laws that could compel access to data or systems. NIST SA-9 (External System Services) addresses external service provider requirements. NIST PM-1 (Information Security Program Plan) addresses the security program plan. NIST PT-1 (Policy and Procedures for PII Processing) addresses privacy policies. NIST does not directly address extraterritorial law exclusion, but these controls provide partial coverage for legal risk documentation.",
+                "ns": "https://ibm.com/concert/ns/oscal"
+              }
+            ],
+            "confidence-score": {
+              "percentage": 0.62
+            },
+            "coverage": {
+              "target-coverage": 0.45
+            }
+          },
+          {
+            "uuid": "a085ccfe-23de-425c-8d32-59600d615c28",
+            "relationship": "intersects-with",
+            "sources": [
+              {
+                "type": "control",
+                "id-ref": "iscf-lj-03"
+              }
+            ],
+            "targets": [
+              {
+                "type": "control",
+                "id-ref": "sa-9"
+              },
+              {
+                "type": "control",
+                "id-ref": "pm-1"
+              },
+              {
+                "type": "control",
+                "id-ref": "pm-2"
+              }
+            ],
+            "props": [
+              {
+                "name": "mapping-rationale",
+                "value": "ISCF-LJ-03 requires the service to be operated by a region-incorporated legal entity to ensure operational and contractual control remains under regional governance. NIST SA-9 (External System Services) addresses external service provider requirements. NIST PM-1 (Information Security Program Plan) addresses the security program plan. NIST PM-2 (Information Security Program Leadership Role) addresses leadership roles. NIST does not directly address legal entity incorporation requirements, but these controls provide partial coverage for organizational governance.",
+                "ns": "https://ibm.com/concert/ns/oscal"
+              }
+            ],
+            "confidence-score": {
+              "percentage": 0.62
+            },
+            "coverage": {
+              "target-coverage": 0.45
+            }
+          },
+          {
+            "uuid": "f703717b-26b5-4134-8098-56906506dfef",
+            "relationship": "intersects-with",
+            "sources": [
+              {
+                "type": "control",
+                "id-ref": "iscf-ai-01"
+              }
+            ],
+            "targets": [
+              {
+                "type": "control",
+                "id-ref": "cm-8"
+              },
+              {
+                "type": "control",
+                "id-ref": "cm-8.1"
+              },
+              {
+                "type": "control",
+                "id-ref": "pm-32"
+              },
+              {
+                "type": "control",
+                "id-ref": "sa-4"
+              }
+            ],
+            "props": [
+              {
+                "name": "mapping-rationale",
+                "value": "ISCF-AI-01 requires AI model inventory and approval monitoring to ensure only authorized AI models operate within the sovereign environment. NIST CM-8 (System Component Inventory) addresses maintaining component inventory. NIST CM-8.1 (Updates During Installation and Removal) addresses updating inventory. NIST PM-32 (Purposing) addresses system purposing. NIST SA-4 (Acquisition Process) addresses acquisition requirements. Both frameworks address component inventory, though ISCF specifically requires AI model authorization for sovereignty.",
+                "ns": "https://ibm.com/concert/ns/oscal"
+              }
+            ],
+            "confidence-score": {
+              "percentage": 0.78
+            },
+            "coverage": {
+              "target-coverage": 0.65
+            }
+          },
+          {
+            "uuid": "422ac6e9-b7b4-4647-9873-e9cea6ee307f",
+            "relationship": "intersects-with",
+            "sources": [
+              {
+                "type": "control",
+                "id-ref": "iscf-ai-02"
+              }
+            ],
+            "targets": [
+              {
+                "type": "control",
+                "id-ref": "cm-14"
+              },
+              {
+                "type": "control",
+                "id-ref": "si-7"
+              },
+              {
+                "type": "control",
+                "id-ref": "si-7.1"
+              },
+              {
+                "type": "control",
+                "id-ref": "sa-12"
+              }
+            ],
+            "props": [
+              {
+                "name": "mapping-rationale",
+                "value": "ISCF-AI-02 requires only cryptographically signed and approved AI models to be deployed, ensuring AI model artifacts cannot be tampered with. NIST CM-14 (Signed Components) prevents installation of components without verification of digital signatures. NIST SI-7 (Software, Firmware, and Information Integrity) addresses software integrity verification. NIST SI-7.1 (Integrity Checks) addresses integrity checking mechanisms. NIST SA-12 (Supply Chain Protection) addresses supply chain integrity. Both frameworks address component signing and integrity verification.",
+                "ns": "https://ibm.com/concert/ns/oscal"
+              }
+            ],
+            "confidence-score": {
+              "percentage": 0.85
+            },
+            "coverage": {
+              "target-coverage": 0.78
+            }
+          },
+          {
+            "uuid": "9b5b6e90-b90c-421e-b2e8-bee28cad5cd4",
+            "relationship": "intersects-with",
+            "sources": [
+              {
+                "type": "control",
+                "id-ref": "iscf-ai-03"
+              }
+            ],
+            "targets": [
+              {
+                "type": "control",
+                "id-ref": "sc-7"
+              },
+              {
+                "type": "control",
+                "id-ref": "sc-7.5"
+              },
+              {
+                "type": "control",
+                "id-ref": "ac-4"
+              },
+              {
+                "type": "control",
+                "id-ref": "sc-7.21"
+              }
+            ],
+            "props": [
+              {
+                "name": "mapping-rationale",
+                "value": "ISCF-AI-03 requires AI workloads to not communicate with external networks except explicitly approved sovereign endpoints, preventing data transfer outside the sovereign boundary. NIST SC-7 (Boundary Protection) addresses controlling communications at system boundaries. NIST SC-7.5 (Deny by Default - Allow by Exception) addresses default deny policies. NIST AC-4 (Information Flow Enforcement) addresses controlling information flow. NIST SC-7.21 (Isolation of System Components) addresses isolating components. Both frameworks address network isolation and egress control.",
+                "ns": "https://ibm.com/concert/ns/oscal"
+              }
+            ],
+            "confidence-score": {
+              "percentage": 0.85
+            },
+            "coverage": {
+              "target-coverage": 0.78
+            }
+          },
+          {
+            "uuid": "4bbdb19f-7d2b-48ab-a2df-610760f33906",
+            "relationship": "intersects-with",
+            "sources": [
+              {
+                "type": "control",
+                "id-ref": "iscf-ai-04"
+              }
+            ],
+            "targets": [
+              {
+                "type": "control",
+                "id-ref": "au-2"
+              },
+              {
+                "type": "control",
+                "id-ref": "au-12"
+              },
+              {
+                "type": "control",
+                "id-ref": "au-3"
+              },
+              {
+                "type": "control",
+                "id-ref": "au-6"
+              }
+            ],
+            "props": [
+              {
+                "name": "mapping-rationale",
+                "value": "ISCF-AI-04 requires all AI usage to be logged and traceable for accountability and auditability. NIST AU-2 (Event Logging) addresses logging security-relevant events. NIST AU-12 (Audit Record Generation) addresses generating audit records. NIST AU-3 (Content of Audit Records) addresses audit record content. NIST AU-6 (Audit Record Review, Analysis, and Reporting) addresses reviewing audit records. Both frameworks address comprehensive logging and traceability requirements.",
+                "ns": "https://ibm.com/concert/ns/oscal"
+              }
+            ],
+            "confidence-score": {
+              "percentage": 0.88
+            },
+            "coverage": {
+              "target-coverage": 0.82
+            }
+          },
+          {
+            "uuid": "327b673f-cb68-4b08-b78c-fdc0edcf8853",
+            "relationship": "intersects-with",
+            "sources": [
+              {
+                "type": "control",
+                "id-ref": "iscf-ai-05"
+              }
+            ],
+            "targets": [
+              {
+                "type": "control",
+                "id-ref": "pm-32"
+              },
+              {
+                "type": "control",
+                "id-ref": "ac-3.10"
+              },
+              {
+                "type": "control",
+                "id-ref": "ir-4"
+              }
+            ],
+            "props": [
+              {
+                "name": "mapping-rationale",
+                "value": "ISCF-AI-05 requires AI systems to support human oversight and manual override capability, ensuring AI systems do not operate autonomously without human control. NIST PM-32 (Purposing) addresses system purposing and use limitations. NIST AC-3.10 (Audited Override of Access Control Mechanisms) addresses audited override capabilities. NIST IR-4 (Incident Handling) addresses incident response including manual intervention. NIST has limited direct coverage for AI human oversight, but these controls provide partial coverage for override and control capabilities.",
+                "ns": "https://ibm.com/concert/ns/oscal"
+              }
+            ],
+            "confidence-score": {
+              "percentage": 0.7
+            },
+            "coverage": {
+              "target-coverage": 0.55
+            }
+          },
+          {
+            "uuid": "9ee90a1a-e9e2-45da-a749-c8821e1a3421",
+            "relationship": "intersects-with",
+            "sources": [
+              {
+                "type": "control",
+                "id-ref": "iscf-ai-06"
+              }
+            ],
+            "targets": [
+              {
+                "type": "control",
+                "id-ref": "ra-3"
+              },
+              {
+                "type": "control",
+                "id-ref": "ra-5"
+              },
+              {
+                "type": "control",
+                "id-ref": "pm-9"
+              },
+              {
+                "type": "control",
+                "id-ref": "ra-7"
+              }
+            ],
+            "props": [
+              {
+                "name": "mapping-rationale",
+                "value": "ISCF-AI-06 requires AI risk classification and impact assessment to ensure AI risks are properly evaluated. NIST RA-3 (Risk Assessment) addresses conducting risk assessments. NIST RA-5 (Vulnerability Monitoring and Scanning) addresses vulnerability assessment. NIST PM-9 (Risk Management Strategy) addresses risk management strategy. NIST RA-7 (Risk Response) addresses risk response. Both frameworks address risk assessment, though ISCF specifically requires AI-focused risk classification.",
+                "ns": "https://ibm.com/concert/ns/oscal"
+              }
+            ],
+            "confidence-score": {
+              "percentage": 0.78
+            },
+            "coverage": {
+              "target-coverage": 0.65
+            }
+          },
+          {
+            "uuid": "ede5b59c-662c-4481-a495-08484c49860b",
+            "relationship": "intersects-with",
+            "sources": [
+              {
+                "type": "control",
+                "id-ref": "iscf-ai-07"
+              }
+            ],
+            "targets": [
+              {
+                "type": "control",
+                "id-ref": "ac-6"
+              },
+              {
+                "type": "control",
+                "id-ref": "ac-6.1"
+              },
+              {
+                "type": "control",
+                "id-ref": "ac-6.5"
+              },
+              {
+                "type": "control",
+                "id-ref": "ac-6.9"
+              },
+              {
+                "type": "control",
+                "id-ref": "ac-6.10"
+              },
+              {
+                "type": "control",
+                "id-ref": "cm-5"
+              },
+              {
+                "type": "control",
+                "id-ref": "cm-5.1"
+              }
+            ],
+            "props": [
+              {
+                "name": "mapping-rationale",
+                "value": "ISCF-AI-07 requires privileged access controls for AI systems including model training, fine-tuning, and deployment operations. NIST AC-6 (Least Privilege) and its enhancements address privileged access management: AC-6.1 (authorize access to security functions), AC-6.5 (privileged accounts), AC-6.9 (log privileged function use), AC-6.10 (prohibit non-privileged users from executing privileged functions). CM-5 (Access Restrictions for Change) and CM-5.1 (Automated Access Enforcement) address restricting system changes to authorized personnel. Both frameworks require limiting privileged access, but ISCF specifically focuses on AI-specific operations while NIST provides general privileged access controls.",
+                "ns": "https://ibm.com/concert/ns/oscal"
+              }
+            ],
+            "confidence-score": {
+              "percentage": 0.84
+            },
+            "coverage": {
+              "target-coverage": 0.76
+            }
+          },
+          {
+            "uuid": "4984f712-45cc-42dc-a25b-7cc9b34e649d",
+            "relationship": "intersects-with",
+            "sources": [
+              {
+                "type": "control",
+                "id-ref": "iscf-ai-08"
+              }
+            ],
+            "targets": [
+              {
+                "type": "control",
+                "id-ref": "au-2"
+              },
+              {
+                "type": "control",
+                "id-ref": "au-3"
+              },
+              {
+                "type": "control",
+                "id-ref": "au-3.1"
+              },
+              {
+                "type": "control",
+                "id-ref": "au-6"
+              },
+              {
+                "type": "control",
+                "id-ref": "au-6.1"
+              },
+              {
+                "type": "control",
+                "id-ref": "au-12"
+              },
+              {
+                "type": "control",
+                "id-ref": "si-4"
+              }
+            ],
+            "props": [
+              {
+                "name": "mapping-rationale",
+                "value": "ISCF-AI-08 requires comprehensive logging and monitoring of AI system activities including model inference, training operations, and decision outputs. NIST AU-2 (Event Logging) defines auditable events, AU-3 (Content of Audit Records) specifies required information, AU-3.1 (Additional Audit Information) adds context, AU-6 (Audit Record Review, Analysis, and Reporting) addresses log analysis, AU-6.1 (Automated Process Integration) enables automated analysis, AU-12 (Audit Record Generation) ensures logging capability, and SI-4 (System Monitoring) provides continuous monitoring. Both frameworks require comprehensive logging, but ISCF specifically addresses AI-specific events while NIST provides general audit requirements.",
+                "ns": "https://ibm.com/concert/ns/oscal"
+              }
+            ],
+            "confidence-score": {
+              "percentage": 0.86
+            },
+            "coverage": {
+              "target-coverage": 0.8
+            }
+          },
+          {
+            "uuid": "b34f5a02-0915-4242-8f8d-7a5dcadba3e3",
+            "relationship": "intersects-with",
+            "sources": [
+              {
+                "type": "control",
+                "id-ref": "iscf-ai-09"
+              }
+            ],
+            "targets": [
+              {
+                "type": "control",
+                "id-ref": "ir-4"
+              },
+              {
+                "type": "control",
+                "id-ref": "ir-4.1"
+              },
+              {
+                "type": "control",
+                "id-ref": "ir-5"
+              },
+              {
+                "type": "control",
+                "id-ref": "ir-6"
+              },
+              {
+                "type": "control",
+                "id-ref": "ir-8"
+              },
+              {
+                "type": "control",
+                "id-ref": "cp-2"
+              },
+              {
+                "type": "control",
+                "id-ref": "cp-10"
+              }
+            ],
+            "props": [
+              {
+                "name": "mapping-rationale",
+                "value": "ISCF-AI-09 requires incident response capabilities specific to AI systems including model failures, adversarial attacks, and unexpected behaviors. NIST IR-4 (Incident Handling) provides incident response procedures, IR-4.1 (Automated Incident Handling Processes) enables automation, IR-5 (Incident Monitoring) tracks incidents, IR-6 (Incident Reporting) addresses communication, IR-8 (Incident Response Plan) documents procedures. CP-2 (Contingency Plan) and CP-10 (System Recovery and Reconstitution) address recovery from AI system failures. Both frameworks require incident response, but ISCF specifically addresses AI-related incidents while NIST provides general incident handling.",
+                "ns": "https://ibm.com/concert/ns/oscal"
+              }
+            ],
+            "confidence-score": {
+              "percentage": 0.85
+            },
+            "coverage": {
+              "target-coverage": 0.78
+            }
+          },
+          {
+            "uuid": "b25cca75-cf30-4b69-8aee-50cf0d87035e",
+            "relationship": "intersects-with",
+            "sources": [
+              {
+                "type": "control",
+                "id-ref": "iscf-ai-10"
+              }
+            ],
+            "targets": [
+              {
+                "type": "control",
+                "id-ref": "pm-28"
+              },
+              {
+                "type": "control",
+                "id-ref": "ra-3"
+              },
+              {
+                "type": "control",
+                "id-ref": "ra-5"
+              },
+              {
+                "type": "control",
+                "id-ref": "ca-7"
+              },
+              {
+                "type": "control",
+                "id-ref": "si-2"
+              },
+              {
+                "type": "control",
+                "id-ref": "si-3"
+              }
+            ],
+            "props": [
+              {
+                "name": "mapping-rationale",
+                "value": "ISCF-AI-10 requires continuous risk assessment and vulnerability management for AI systems including model drift detection, adversarial vulnerability testing, and performance degradation monitoring. NIST PM-28 (Risk Framing) establishes risk context, RA-3 (Risk Assessment) identifies and evaluates risks, RA-5 (Vulnerability Monitoring and Scanning) addresses vulnerability identification, CA-7 (Continuous Monitoring) provides ongoing assessment, SI-2 (Flaw Remediation) addresses vulnerability remediation, and SI-3 (Malicious Code Protection) protects against adversarial inputs. Both frameworks require ongoing risk management, but ISCF specifically addresses AI-specific risks while NIST provides general risk assessment controls.",
+                "ns": "https://ibm.com/concert/ns/oscal"
+              }
+            ],
+            "confidence-score": {
+              "percentage": 0.83
+            },
+            "coverage": {
+              "target-coverage": 0.75
+            }
+          }
+        ],
+        "target-gap-summary": {
+          "uuid": "d08599ad-2807-4f9a-a57f-671c844d7ca5",
+          "unmapped-controls": [
+            {
+              "with-ids": [
+                "ac-1",
+                "ac-10",
+                "ac-11",
+                "ac-11.1",
+                "ac-12",
+                "ac-12.1",
+                "ac-12.2",
+                "ac-12.3",
+                "ac-13",
+                "ac-14",
+                "ac-14.1",
+                "ac-15",
+                "ac-16",
+                "ac-16.1",
+                "ac-16.10",
+                "ac-16.2",
+                "ac-16.3",
+                "ac-16.4",
+                "ac-16.5",
+                "ac-16.6",
+                "ac-16.7",
+                "ac-16.8",
+                "ac-16.9",
+                "ac-17",
+                "ac-17.1",
+                "ac-17.10",
+                "ac-17.2",
+                "ac-17.3",
+                "ac-17.4",
+                "ac-17.5",
+                "ac-17.6",
+                "ac-17.7",
+                "ac-17.8",
+                "ac-17.9",
+                "ac-18",
+                "ac-18.1",
+                "ac-18.2",
+                "ac-18.3",
+                "ac-18.4",
+                "ac-18.5",
+                "ac-19",
+                "ac-19.1",
+                "ac-19.2",
+                "ac-19.3",
+                "ac-19.4",
+                "ac-19.5",
+                "ac-2.1",
+                "ac-2.10",
+                "ac-2.11",
+                "ac-2.12",
+                "ac-2.13",
+                "ac-2.3",
+                "ac-2.5",
+                "ac-2.6",
+                "ac-2.7",
+                "ac-2.8",
+                "ac-2.9",
+                "ac-20",
+                "ac-20.1",
+                "ac-20.2",
+                "ac-20.3",
+                "ac-20.4",
+                "ac-20.5",
+                "ac-21",
+                "ac-21.1",
+                "ac-21.2",
+                "ac-22",
+                "ac-23",
+                "ac-24",
+                "ac-24.1",
+                "ac-24.2",
+                "ac-25",
+                "ac-3",
+                "ac-3.1",
+                "ac-3.11",
+                "ac-3.12",
+                "ac-3.13",
+                "ac-3.14",
+                "ac-3.15",
+                "ac-3.2",
+                "ac-3.3",
+                "ac-3.4",
+                "ac-3.5",
+                "ac-3.6",
+                "ac-3.7",
+                "ac-3.8",
+                "ac-4.1",
+                "ac-4.10",
+                "ac-4.11",
+                "ac-4.12",
+                "ac-4.13",
+                "ac-4.14",
+                "ac-4.15",
+                "ac-4.16",
+                "ac-4.17",
+                "ac-4.18",
+                "ac-4.19",
+                "ac-4.2",
+                "ac-4.20",
+                "ac-4.22",
+                "ac-4.23",
+                "ac-4.24",
+                "ac-4.25",
+                "ac-4.26",
+                "ac-4.27",
+                "ac-4.28",
+                "ac-4.29",
+                "ac-4.3",
+                "ac-4.30",
+                "ac-4.31",
+                "ac-4.32",
+                "ac-4.5",
+                "ac-4.6",
+                "ac-4.7",
+                "ac-4.8",
+                "ac-4.9",
+                "ac-6.2",
+                "ac-6.3",
+                "ac-6.4",
+                "ac-6.8",
+                "ac-7",
+                "ac-7.1",
+                "ac-7.2",
+                "ac-7.3",
+                "ac-7.4",
+                "ac-8",
+                "ac-9",
+                "ac-9.1",
+                "ac-9.2",
+                "ac-9.3",
+                "ac-9.4",
+                "at-1",
+                "at-2",
+                "at-2.1",
+                "at-2.2",
+                "at-2.3",
+                "at-2.4",
+                "at-2.5",
+                "at-2.6",
+                "at-3",
+                "at-3.1",
+                "at-3.2",
+                "at-3.3",
+                "at-3.4",
+                "at-3.5",
+                "at-4",
+                "at-5",
+                "at-6",
+                "au-1",
+                "au-10",
+                "au-10.1",
+                "au-10.2",
+                "au-10.3",
+                "au-10.4",
+                "au-10.5",
+                "au-11.1",
+                "au-12.1",
+                "au-12.2",
+                "au-12.3",
+                "au-12.4",
+                "au-13",
+                "au-13.1",
+                "au-13.2",
+                "au-13.3",
+                "au-14",
+                "au-14.1",
+                "au-14.2",
+                "au-14.3",
+                "au-15",
+                "au-16",
+                "au-16.1",
+                "au-16.2",
+                "au-16.3",
+                "au-2.1",
+                "au-2.2",
+                "au-2.3",
+                "au-2.4",
+                "au-3.2",
+                "au-3.3",
+                "au-4.1",
+                "au-5",
+                "au-5.1",
+                "au-5.2",
+                "au-5.3",
+                "au-5.4",
+                "au-5.5",
+                "au-6.10",
+                "au-6.2",
+                "au-6.3",
+                "au-6.4",
+                "au-6.5",
+                "au-6.6",
+                "au-6.7",
+                "au-6.8",
+                "au-6.9",
+                "au-7",
+                "au-7.1",
+                "au-7.2",
+                "au-8",
+                "au-8.1",
+                "au-8.2",
+                "au-9.1",
+                "au-9.2",
+                "au-9.3",
+                "au-9.4",
+                "au-9.5",
+                "au-9.6",
+                "au-9.7",
+                "ca-1",
+                "ca-2.1",
+                "ca-2.2",
+                "ca-2.3",
+                "ca-3",
+                "ca-3.1",
+                "ca-3.2",
+                "ca-3.3",
+                "ca-3.4",
+                "ca-3.5",
+                "ca-3.6",
+                "ca-3.7",
+                "ca-4",
+                "ca-5.1",
+                "ca-6.1",
+                "ca-6.2",
+                "ca-7.1",
+                "ca-7.2",
+                "ca-7.3",
+                "ca-7.4",
+                "ca-7.5",
+                "ca-7.6",
+                "ca-8",
+                "ca-8.1",
+                "ca-8.2",
+                "ca-8.3",
+                "ca-9",
+                "ca-9.1",
+                "cm-1",
+                "cm-10",
+                "cm-10.1",
+                "cm-11",
+                "cm-11.1",
+                "cm-11.2",
+                "cm-11.3",
+                "cm-12.1",
+                "cm-13",
+                "cm-2",
+                "cm-2.1",
+                "cm-2.2",
+                "cm-2.3",
+                "cm-2.4",
+                "cm-2.5",
+                "cm-2.6",
+                "cm-2.7",
+                "cm-3.1",
+                "cm-3.2",
+                "cm-3.3",
+                "cm-3.4",
+                "cm-3.5",
+                "cm-3.6",
+                "cm-3.7",
+                "cm-3.8",
+                "cm-4",
+                "cm-4.1",
+                "cm-4.2",
+                "cm-5.2",
+                "cm-5.3",
+                "cm-5.4",
+                "cm-5.5",
+                "cm-5.6",
+                "cm-5.7",
+                "cm-6.1",
+                "cm-6.2",
+                "cm-6.3",
+                "cm-6.4",
+                "cm-7",
+                "cm-7.1",
+                "cm-7.2",
+                "cm-7.3",
+                "cm-7.4",
+                "cm-7.5",
+                "cm-7.6",
+                "cm-7.7",
+                "cm-7.8",
+                "cm-7.9",
+                "cm-8.2",
+                "cm-8.3",
+                "cm-8.4",
+                "cm-8.5",
+                "cm-8.6",
+                "cm-8.7",
+                "cm-8.8",
+                "cm-8.9",
+                "cm-9",
+                "cm-9.1",
+                "cp-1",
+                "cp-10.1",
+                "cp-10.2",
+                "cp-10.3",
+                "cp-10.4",
+                "cp-10.5",
+                "cp-10.6",
+                "cp-11",
+                "cp-12",
+                "cp-13",
+                "cp-2.1",
+                "cp-2.2",
+                "cp-2.3",
+                "cp-2.4",
+                "cp-2.6",
+                "cp-2.7",
+                "cp-2.8",
+                "cp-3",
+                "cp-3.1",
+                "cp-3.2",
+                "cp-4",
+                "cp-4.1",
+                "cp-4.2",
+                "cp-4.3",
+                "cp-4.4",
+                "cp-4.5",
+                "cp-5",
+                "cp-6.1",
+                "cp-6.2",
+                "cp-6.3",
+                "cp-7.1",
+                "cp-7.2",
+                "cp-7.3",
+                "cp-7.4",
+                "cp-7.5",
+                "cp-7.6",
+                "cp-8",
+                "cp-8.1",
+                "cp-8.2",
+                "cp-8.3",
+                "cp-8.4",
+                "cp-8.5",
+                "cp-9.1",
+                "cp-9.2",
+                "cp-9.3",
+                "cp-9.4",
+                "cp-9.5",
+                "cp-9.6",
+                "cp-9.7",
+                "cp-9.8",
+                "ia-10",
+                "ia-11",
+                "ia-12",
+                "ia-12.1",
+                "ia-12.2",
+                "ia-12.3",
+                "ia-12.4",
+                "ia-12.5",
+                "ia-12.6",
+                "ia-13",
+                "ia-13.1",
+                "ia-13.2",
+                "ia-13.3",
+                "ia-2.10",
+                "ia-2.11",
+                "ia-2.12",
+                "ia-2.13",
+                "ia-2.3",
+                "ia-2.4",
+                "ia-2.5",
+                "ia-2.7",
+                "ia-2.8",
+                "ia-2.9",
+                "ia-3",
+                "ia-3.1",
+                "ia-3.2",
+                "ia-3.3",
+                "ia-3.4",
+                "ia-4.1",
+                "ia-4.2",
+                "ia-4.3",
+                "ia-4.4",
+                "ia-4.5",
+                "ia-4.6",
+                "ia-4.7",
+                "ia-4.8",
+                "ia-4.9",
+                "ia-5.1",
+                "ia-5.10",
+                "ia-5.11",
+                "ia-5.12",
+                "ia-5.13",
+                "ia-5.14",
+                "ia-5.15",
+                "ia-5.16",
+                "ia-5.17",
+                "ia-5.18",
+                "ia-5.2",
+                "ia-5.3",
+                "ia-5.4",
+                "ia-5.5",
+                "ia-5.6",
+                "ia-5.7",
+                "ia-5.8",
+                "ia-5.9",
+                "ia-6",
+                "ia-7",
+                "ia-8",
+                "ia-8.1",
+                "ia-8.2",
+                "ia-8.3",
+                "ia-8.4",
+                "ia-8.5",
+                "ia-8.6",
+                "ia-9",
+                "ia-9.1",
+                "ia-9.2",
+                "ir-1",
+                "ir-10",
+                "ir-2",
+                "ir-2.1",
+                "ir-2.2",
+                "ir-2.3",
+                "ir-3",
+                "ir-3.1",
+                "ir-3.2",
+                "ir-3.3",
+                "ir-4.10",
+                "ir-4.11",
+                "ir-4.12",
+                "ir-4.13",
+                "ir-4.14",
+                "ir-4.15",
+                "ir-4.2",
+                "ir-4.3",
+                "ir-4.4",
+                "ir-4.5",
+                "ir-4.6",
+                "ir-4.7",
+                "ir-4.8",
+                "ir-4.9",
+                "ir-5.1",
+                "ir-6.1",
+                "ir-6.2",
+                "ir-6.3",
+                "ir-7",
+                "ir-7.1",
+                "ir-7.2",
+                "ir-8.1",
+                "ir-9",
+                "ir-9.1",
+                "ir-9.2",
+                "ir-9.3",
+                "ir-9.4",
+                "ma-1",
+                "ma-2",
+                "ma-2.1",
+                "ma-2.2",
+                "ma-3",
+                "ma-3.1",
+                "ma-3.2",
+                "ma-3.3",
+                "ma-3.4",
+                "ma-3.5",
+                "ma-3.6",
+                "ma-4",
+                "ma-4.1",
+                "ma-4.2",
+                "ma-4.3",
+                "ma-4.4",
+                "ma-4.5",
+                "ma-4.6",
+                "ma-4.7",
+                "ma-5",
+                "ma-5.1",
+                "ma-5.2",
+                "ma-5.3",
+                "ma-5.4",
+                "ma-5.5",
+                "ma-6",
+                "ma-6.1",
+                "ma-6.2",
+                "ma-6.3",
+                "ma-7",
+                "mp-1",
+                "mp-2",
+                "mp-2.1",
+                "mp-2.2",
+                "mp-3",
+                "mp-4",
+                "mp-4.1",
+                "mp-4.2",
+                "mp-5",
+                "mp-5.1",
+                "mp-5.2",
+                "mp-5.3",
+                "mp-5.4",
+                "mp-6.3",
+                "mp-6.4",
+                "mp-6.5",
+                "mp-6.6",
+                "mp-6.7",
+                "mp-6.8",
+                "mp-7",
+                "mp-7.1",
+                "mp-7.2",
+                "mp-8",
+                "mp-8.1",
+                "mp-8.2",
+                "mp-8.3",
+                "mp-8.4",
+                "pe-1",
+                "pe-10",
+                "pe-10.1",
+                "pe-11",
+                "pe-11.1",
+                "pe-11.2",
+                "pe-12",
+                "pe-12.1",
+                "pe-13",
+                "pe-13.1",
+                "pe-13.2",
+                "pe-13.3",
+                "pe-13.4",
+                "pe-14",
+                "pe-14.1",
+                "pe-14.2",
+                "pe-15",
+                "pe-15.1",
+                "pe-16",
+                "pe-17",
+                "pe-18",
+                "pe-18.1",
+                "pe-19",
+                "pe-19.1",
+                "pe-2",
+                "pe-2.1",
+                "pe-2.2",
+                "pe-2.3",
+                "pe-20",
+                "pe-21",
+                "pe-22",
+                "pe-23",
+                "pe-3",
+                "pe-3.1",
+                "pe-3.2",
+                "pe-3.3",
+                "pe-3.4",
+                "pe-3.5",
+                "pe-3.6",
+                "pe-3.7",
+                "pe-3.8",
+                "pe-4",
+                "pe-5",
+                "pe-5.1",
+                "pe-5.2",
+                "pe-5.3",
+                "pe-6",
+                "pe-6.1",
+                "pe-6.2",
+                "pe-6.3",
+                "pe-6.4",
+                "pe-7",
+                "pe-8",
+                "pe-8.1",
+                "pe-8.2",
+                "pe-8.3",
+                "pe-9",
+                "pe-9.1",
+                "pe-9.2",
+                "pl-10",
+                "pl-11",
+                "pl-2.1",
+                "pl-2.2",
+                "pl-2.3",
+                "pl-3",
+                "pl-4",
+                "pl-4.1",
+                "pl-5",
+                "pl-6",
+                "pl-7",
+                "pl-8",
+                "pl-8.1",
+                "pl-8.2",
+                "pl-9",
+                "pm-11",
+                "pm-12",
+                "pm-13",
+                "pm-15",
+                "pm-16",
+                "pm-16.1",
+                "pm-17",
+                "pm-18",
+                "pm-19",
+                "pm-20",
+                "pm-20.1",
+                "pm-21",
+                "pm-22",
+                "pm-23",
+                "pm-24",
+                "pm-25",
+                "pm-26",
+                "pm-27",
+                "pm-29",
+                "pm-3",
+                "pm-30.1",
+                "pm-5",
+                "pm-5.1",
+                "pm-7",
+                "pm-7.1",
+                "pm-8",
+                "ps-2",
+                "ps-3.1",
+                "ps-3.2",
+                "ps-3.3",
+                "ps-3.4",
+                "ps-4",
+                "ps-4.1",
+                "ps-4.2",
+                "ps-5",
+                "ps-6",
+                "ps-6.1",
+                "ps-6.2",
+                "ps-6.3",
+                "ps-7",
+                "ps-8",
+                "ps-9",
+                "pt-2",
+                "pt-2.1",
+                "pt-2.2",
+                "pt-3",
+                "pt-3.1",
+                "pt-3.2",
+                "pt-4",
+                "pt-4.1",
+                "pt-4.2",
+                "pt-4.3",
+                "pt-5",
+                "pt-5.1",
+                "pt-5.2",
+                "pt-6",
+                "pt-6.1",
+                "pt-6.2",
+                "pt-7",
+                "pt-7.1",
+                "pt-7.2",
+                "pt-8",
+                "ra-1",
+                "ra-10",
+                "ra-2",
+                "ra-2.1",
+                "ra-3.1",
+                "ra-3.2",
+                "ra-3.3",
+                "ra-3.4",
+                "ra-4",
+                "ra-5.1",
+                "ra-5.10",
+                "ra-5.11",
+                "ra-5.3",
+                "ra-5.4",
+                "ra-5.6",
+                "ra-5.7",
+                "ra-5.8",
+                "ra-5.9",
+                "ra-6",
+                "ra-8",
+                "ra-9",
+                "sa-1",
+                "sa-10",
+                "sa-10.1",
+                "sa-10.2",
+                "sa-10.3",
+                "sa-10.4",
+                "sa-10.5",
+                "sa-10.6",
+                "sa-10.7",
+                "sa-11.1",
+                "sa-11.2",
+                "sa-11.3",
+                "sa-11.4",
+                "sa-11.5",
+                "sa-11.6",
+                "sa-11.7",
+                "sa-11.8",
+                "sa-11.9",
+                "sa-12.1",
+                "sa-12.10",
+                "sa-12.11",
+                "sa-12.12",
+                "sa-12.13",
+                "sa-12.14",
+                "sa-12.15",
+                "sa-12.2",
+                "sa-12.3",
+                "sa-12.4",
+                "sa-12.5",
+                "sa-12.6",
+                "sa-12.7",
+                "sa-12.8",
+                "sa-12.9",
+                "sa-13",
+                "sa-14",
+                "sa-14.1",
+                "sa-15",
+                "sa-15.1",
+                "sa-15.10",
+                "sa-15.11",
+                "sa-15.12",
+                "sa-15.13",
+                "sa-15.2",
+                "sa-15.3",
+                "sa-15.4",
+                "sa-15.5",
+                "sa-15.6",
+                "sa-15.7",
+                "sa-15.8",
+                "sa-15.9",
+                "sa-16",
+                "sa-17",
+                "sa-17.1",
+                "sa-17.2",
+                "sa-17.3",
+                "sa-17.4",
+                "sa-17.5",
+                "sa-17.6",
+                "sa-17.7",
+                "sa-17.8",
+                "sa-17.9",
+                "sa-18",
+                "sa-18.1",
+                "sa-18.2",
+                "sa-19",
+                "sa-19.1",
+                "sa-19.2",
+                "sa-19.3",
+                "sa-19.4",
+                "sa-2",
+                "sa-20",
+                "sa-21",
+                "sa-21.1",
+                "sa-22",
+                "sa-22.1",
+                "sa-23",
+                "sa-24",
+                "sa-3",
+                "sa-3.1",
+                "sa-3.2",
+                "sa-3.3",
+                "sa-4.1",
+                "sa-4.10",
+                "sa-4.11",
+                "sa-4.12",
+                "sa-4.3",
+                "sa-4.4",
+                "sa-4.5",
+                "sa-4.6",
+                "sa-4.7",
+                "sa-4.8",
+                "sa-4.9",
+                "sa-5",
+                "sa-5.1",
+                "sa-5.2",
+                "sa-5.3",
+                "sa-5.4",
+                "sa-5.5",
+                "sa-6",
+                "sa-7",
+                "sa-8",
+                "sa-8.1",
+                "sa-8.10",
+                "sa-8.11",
+                "sa-8.12",
+                "sa-8.13",
+                "sa-8.14",
+                "sa-8.15",
+                "sa-8.16",
+                "sa-8.17",
+                "sa-8.18",
+                "sa-8.19",
+                "sa-8.2",
+                "sa-8.20",
+                "sa-8.21",
+                "sa-8.22",
+                "sa-8.23",
+                "sa-8.24",
+                "sa-8.25",
+                "sa-8.26",
+                "sa-8.27",
+                "sa-8.28",
+                "sa-8.29",
+                "sa-8.3",
+                "sa-8.30",
+                "sa-8.31",
+                "sa-8.32",
+                "sa-8.33",
+                "sa-8.4",
+                "sa-8.5",
+                "sa-8.6",
+                "sa-8.7",
+                "sa-8.8",
+                "sa-8.9",
+                "sa-9.2",
+                "sa-9.3",
+                "sa-9.4",
+                "sa-9.5",
+                "sa-9.6",
+                "sa-9.7",
+                "sa-9.8",
+                "sc-1",
+                "sc-10",
+                "sc-11",
+                "sc-11.1",
+                "sc-12.4",
+                "sc-12.5",
+                "sc-13.2",
+                "sc-13.3",
+                "sc-13.4",
+                "sc-14",
+                "sc-15",
+                "sc-15.1",
+                "sc-15.2",
+                "sc-15.3",
+                "sc-15.4",
+                "sc-16",
+                "sc-16.1",
+                "sc-16.2",
+                "sc-16.3",
+                "sc-17",
+                "sc-18",
+                "sc-18.1",
+                "sc-18.2",
+                "sc-18.3",
+                "sc-18.4",
+                "sc-18.5",
+                "sc-19",
+                "sc-2",
+                "sc-2.1",
+                "sc-2.2",
+                "sc-20",
+                "sc-20.1",
+                "sc-20.2",
+                "sc-21",
+                "sc-21.1",
+                "sc-22",
+                "sc-23",
+                "sc-23.1",
+                "sc-23.2",
+                "sc-23.3",
+                "sc-23.4",
+                "sc-23.5",
+                "sc-24",
+                "sc-25",
+                "sc-26",
+                "sc-26.1",
+                "sc-27",
+                "sc-28.2",
+                "sc-28.3",
+                "sc-29",
+                "sc-29.1",
+                "sc-3",
+                "sc-3.1",
+                "sc-3.2",
+                "sc-3.3",
+                "sc-3.4",
+                "sc-3.5",
+                "sc-30",
+                "sc-30.1",
+                "sc-30.2",
+                "sc-30.3",
+                "sc-30.4",
+                "sc-30.5",
+                "sc-31",
+                "sc-31.1",
+                "sc-31.2",
+                "sc-31.3",
+                "sc-32",
+                "sc-32.1",
+                "sc-33",
+                "sc-34",
+                "sc-34.1",
+                "sc-34.2",
+                "sc-34.3",
+                "sc-35",
+                "sc-36.1",
+                "sc-36.2",
+                "sc-37",
+                "sc-37.1",
+                "sc-38",
+                "sc-39.1",
+                "sc-39.2",
+                "sc-4.1",
+                "sc-4.2",
+                "sc-40",
+                "sc-40.1",
+                "sc-40.2",
+                "sc-40.3",
+                "sc-40.4",
+                "sc-41",
+                "sc-42",
+                "sc-42.1",
+                "sc-42.2",
+                "sc-42.3",
+                "sc-42.4",
+                "sc-42.5",
+                "sc-43",
+                "sc-44",
+                "sc-45",
+                "sc-45.1",
+                "sc-45.2",
+                "sc-46",
+                "sc-47",
+                "sc-48",
+                "sc-48.1",
+                "sc-49",
+                "sc-5",
+                "sc-5.1",
+                "sc-5.2",
+                "sc-5.3",
+                "sc-50",
+                "sc-51",
+                "sc-6",
+                "sc-7.1",
+                "sc-7.11",
+                "sc-7.12",
+                "sc-7.13",
+                "sc-7.14",
+                "sc-7.15",
+                "sc-7.16",
+                "sc-7.17",
+                "sc-7.18",
+                "sc-7.19",
+                "sc-7.2",
+                "sc-7.22",
+                "sc-7.23",
+                "sc-7.24",
+                "sc-7.25",
+                "sc-7.26",
+                "sc-7.27",
+                "sc-7.28",
+                "sc-7.29",
+                "sc-7.3",
+                "sc-7.4",
+                "sc-7.6",
+                "sc-7.7",
+                "sc-7.8",
+                "sc-7.9",
+                "sc-8.2",
+                "sc-8.3",
+                "sc-8.4",
+                "sc-8.5",
+                "sc-9",
+                "si-1",
+                "si-10",
+                "si-10.1",
+                "si-10.2",
+                "si-10.3",
+                "si-10.4",
+                "si-10.5",
+                "si-10.6",
+                "si-11",
+                "si-12.1",
+                "si-12.2",
+                "si-12.3",
+                "si-13",
+                "si-13.1",
+                "si-13.2",
+                "si-13.3",
+                "si-13.4",
+                "si-13.5",
+                "si-14",
+                "si-14.1",
+                "si-14.2",
+                "si-14.3",
+                "si-15",
+                "si-16",
+                "si-17",
+                "si-18",
+                "si-18.1",
+                "si-18.2",
+                "si-18.3",
+                "si-18.4",
+                "si-18.5",
+                "si-19",
+                "si-19.1",
+                "si-19.2",
+                "si-19.3",
+                "si-19.4",
+                "si-19.5",
+                "si-19.6",
+                "si-19.7",
+                "si-19.8",
+                "si-2.1",
+                "si-2.3",
+                "si-2.4",
+                "si-2.5",
+                "si-2.6",
+                "si-2.7",
+                "si-20",
+                "si-21",
+                "si-22",
+                "si-23",
+                "si-3.1",
+                "si-3.10",
+                "si-3.2",
+                "si-3.3",
+                "si-3.4",
+                "si-3.5",
+                "si-3.6",
+                "si-3.7",
+                "si-3.8",
+                "si-3.9",
+                "si-4.1",
+                "si-4.10",
+                "si-4.11",
+                "si-4.12",
+                "si-4.13",
+                "si-4.14",
+                "si-4.15",
+                "si-4.16",
+                "si-4.17",
+                "si-4.18",
+                "si-4.19",
+                "si-4.2",
+                "si-4.20",
+                "si-4.21",
+                "si-4.22",
+                "si-4.23",
+                "si-4.24",
+                "si-4.25",
+                "si-4.3",
+                "si-4.4",
+                "si-4.5",
+                "si-4.6",
+                "si-4.7",
+                "si-4.8",
+                "si-4.9",
+                "si-5",
+                "si-5.1",
+                "si-6",
+                "si-6.1",
+                "si-6.2",
+                "si-6.3",
+                "si-7.10",
+                "si-7.11",
+                "si-7.12",
+                "si-7.13",
+                "si-7.14",
+                "si-7.15",
+                "si-7.16",
+                "si-7.17",
+                "si-7.2",
+                "si-7.3",
+                "si-7.4",
+                "si-7.5",
+                "si-7.6",
+                "si-7.7",
+                "si-7.8",
+                "si-7.9",
+                "si-8",
+                "si-8.1",
+                "si-8.2",
+                "si-8.3",
+                "si-9",
+                "sr-1",
+                "sr-10",
+                "sr-11",
+                "sr-11.1",
+                "sr-11.2",
+                "sr-11.3",
+                "sr-12",
+                "sr-2",
+                "sr-2.1",
+                "sr-3.1",
+                "sr-3.2",
+                "sr-3.3",
+                "sr-4.1",
+                "sr-4.2",
+                "sr-4.4",
+                "sr-5",
+                "sr-5.1",
+                "sr-5.2",
+                "sr-6.1",
+                "sr-7",
+                "sr-8",
+                "sr-9",
+                "sr-9.1"
+              ]
+            }
+          ]
+        }
+      }
+    ]
+  }
+}
