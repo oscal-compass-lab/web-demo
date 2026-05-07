@@ -311,8 +311,8 @@
                 <div class="card">
                     <h3>{{ subject.description }}</h3>
                     <p><span class="badge secondary">Type: {{ subject.type }}</span></p>
-                    {% if subject['include-subjects'] > 0 %}
-                    <p><strong>Number of subjects:</strong> {{ subject['include-subjects'] }}</p>
+                    {% if subject['include-subjects'] %}
+                    <p><strong>Number of subjects:</strong> {{ subject['include-subjects']|length }}</p>
                     {% endif %}
                 </div>
                 {% endfor %}

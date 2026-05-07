@@ -280,8 +280,8 @@
                 </div>
 
                 {% if result.control_selections %}
-                <div class="section">
-                    <h2>Reviewed Controls</h2>
+                <div style="margin-top: 20px; margin-bottom: 20px;">
+                    <h3 style="color: #667eea; font-size: 1.4em; margin-bottom: 15px;">Reviewed Controls</h3>
                     {% for selection in result.control_selections %}
                     <div class="card">
                         <p>{{ selection.description }}</p>
@@ -291,11 +291,11 @@
                 {% endif %}
 
                 {% if result.assessment_log_entries %}
-                <div class="section">
-                    <h2>Assessment Log</h2>
+                <div style="margin-top: 20px; margin-bottom: 20px;">
+                    <h3 style="color: #667eea; font-size: 1.4em; margin-bottom: 15px;">Assessment Log</h3>
                     {% for entry in result.assessment_log_entries %}
                     <div class="card">
-                        <h3>{{ entry.title }}</h3>
+                        <h4 style="color: #495057; margin-bottom: 10px;">{{ entry.title }}</h4>
                         <p>{{ entry.description }}</p>
                         <p>
                             <span class="badge secondary">Start: {{ entry.start }}</span>
@@ -307,11 +307,11 @@
                 {% endif %}
 
                 {% if result.observations %}
-                <div class="section">
-                    <h2>Observations</h2>
+                <div style="margin-top: 20px; margin-bottom: 20px;">
+                    <h3 style="color: #667eea; font-size: 1.4em; margin-bottom: 15px;">Observations ({{ result.observations|length }})</h3>
                     {% for observation in result.observations %}
                     <div class="card">
-                        <h3>{{ observation.title }}</h3>
+                        <h4 style="color: #495057; margin-bottom: 10px;">{{ observation.title }}</h4>
                         <p>{{ observation.description }}</p>
                         <p>
                             {% for method in observation.methods %}
@@ -338,12 +338,12 @@
                 {% endif %}
 
                 {% if result.risks %}
-                <div class="section">
-                    <h2>Risks</h2>
+                <div style="margin-top: 20px; margin-bottom: 20px;">
+                    <h3 style="color: #667eea; font-size: 1.4em; margin-bottom: 15px;">Risks ({{ result.risks|length }})</h3>
                     <div class="grid-2">
                         {% for risk in result.risks %}
                         <div class="card">
-                            <h3>{{ risk.title }}</h3>
+                            <h4 style="color: #495057; margin-bottom: 10px;">{{ risk.title }}</h4>
                             <p><span class="badge warning">{{ risk.status }}</span></p>
                             <p>{{ risk.description }}</p>
                             <div class="prop-item">

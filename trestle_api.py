@@ -1,4 +1,18 @@
 #!/usr/bin/env python3
+# Copyright (c) 2026 The OSCAL Compass Authors. All rights reserved.
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     https://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
 """
 Trestle API module for reading OSCAL documents using compliance-trestle library.
 This module provides a clean interface for loading catalogs, profiles, component definitions,
@@ -7,11 +21,12 @@ and SSPs using trestle's built-in functionality.
 
 from pathlib import Path
 from typing import Optional, Dict, Any, List
-import json
 import trestle.oscal.catalog as catalog_module
 import trestle.oscal.profile as profile_module
 import trestle.oscal.component as component_module
 import trestle.oscal.ssp as ssp_module
+import trestle.oscal.mapping as mapping_module
+import trestle.oscal.assessment_results as assessment_results_module
 from trestle.common.model_utils import ModelUtils
 
 
@@ -78,6 +93,13 @@ class TrestleAPI:
                 print(f"Error loading catalog {catalog_name}: {e}")
         return None
     
+    def load_catalog_dict(self, catalog_name: str) -> Optional[Dict[str, Any]]:
+        """Load a specific catalog by name and return native OSCAL dictionary data."""
+        catalog_obj = self.load_catalog(catalog_name)
+        if catalog_obj:
+            return catalog_obj.oscal_dict()
+        return None
+
     def list_profiles(self) -> List[Dict[str, str]]:
         """
         List all available profiles.
@@ -121,6 +143,13 @@ class TrestleAPI:
                 print(f"Error loading profile {profile_name}: {e}")
         return None
     
+    def load_profile_dict(self, profile_name: str) -> Optional[Dict[str, Any]]:
+        """Load a specific profile by name and return native OSCAL dictionary data."""
+        profile_obj = self.load_profile(profile_name)
+        if profile_obj:
+            return profile_obj.oscal_dict()
+        return None
+
     def list_components(self) -> List[Dict[str, str]]:
         """
         List all available component definitions.
@@ -164,6 +193,13 @@ class TrestleAPI:
                 print(f"Error loading component {component_name}: {e}")
         return None
     
+    def load_component_dict(self, component_name: str) -> Optional[Dict[str, Any]]:
+        """Load a specific component definition by name and return native OSCAL dictionary data."""
+        comp_obj = self.load_component(component_name)
+        if comp_obj:
+            return comp_obj.oscal_dict()
+        return None
+
     def list_ssps(self) -> List[Dict[str, str]]:
         """
         List all available system security plans.
@@ -207,6 +243,13 @@ class TrestleAPI:
                 print(f"Error loading SSP {ssp_name}: {e}")
         return None
     
+    def load_ssp_dict(self, ssp_name: str) -> Optional[Dict[str, Any]]:
+        """Load a specific system security plan by name and return native OSCAL dictionary data."""
+        ssp_obj = self.load_ssp(ssp_name)
+        if ssp_obj:
+            return ssp_obj.oscal_dict()
+        return None
+
     def save_ssp(self, ssp: ssp_module.SystemSecurityPlan, ssp_name: str) -> bool:
         """
         Save a system security plan.
@@ -248,6 +291,27 @@ class TrestleAPI:
             print(f"Error saving assessment plan {plan_name}: {e}")
             return False
     
+    def save_assessment_results(self, results, results_name: str) -> bool:
+        """
+        Save assessment results.
+        
+        Args:
+            results: AssessmentResults object to save
+            results_name: Name of the assessment results directory
+            
+        Returns:
+            True if successful, False otherwise
+        """
+        results_dir = self.assessment_results_dir / results_name
+        results_dir.mkdir(parents=True, exist_ok=True)
+        results_file = results_dir / 'assessment-results.json'
+        try:
+            results.oscal_write(results_file)
+            return True
+        except Exception as e:
+            print(f"Error saving assessment results {results_name}: {e}")
+            return False
+    
     def load_assessment_plan(self, plan_name: str):
         """
         Load an assessment plan by name.
@@ -269,43 +333,178 @@ class TrestleAPI:
             return None
     
     
+    def load_assessment_plan_dict(self, plan_name: str) -> Optional[Dict[str, Any]]:
+        """Load an assessment plan by name and return native OSCAL dictionary data."""
+        plan_obj = self.load_assessment_plan(plan_name)
+        if plan_obj:
+            return plan_obj.oscal_dict()
+        return None
+
     def list_assessment_plans(self) -> List[Dict[str, str]]:
         """List all available assessment plans"""
         plans = []
         if self.assessment_plans_dir.exists():
             for plan_dir in self.assessment_plans_dir.iterdir():
                 if plan_dir.is_dir() and plan_dir.name != '.keep':
-                    # Assessment plans not yet implemented in trestle, return basic info
+                    plan_file = plan_dir / 'assessment-plan.json'
+                    title = plan_dir.name
+                    version = 'N/A'
+                    if plan_file.exists():
+                        try:
+                            import trestle.oscal.assessment_plan as ap_module
+                            plan_obj = ap_module.AssessmentPlan.oscal_read(plan_file)
+                            title = plan_obj.metadata.title or plan_dir.name
+                            version = plan_obj.metadata.version or 'N/A'
+                        except Exception as e:
+                            print(f"Error loading assessment plan {plan_dir.name}: {e}")
                     plans.append({
                         'name': plan_dir.name,
-                        'title': plan_dir.name,
-                        'version': 'N/A',
+                        'title': title,
+                        'version': version,
                         'path': str(plan_dir)
                     })
         return plans
     
+    def load_assessment_results(self, results_name: str):
+        """Load assessment results by name."""
+        results_file = self.assessment_results_dir / results_name / 'assessment-results.json'
+        if not results_file.exists():
+            return None
+        try:
+            return assessment_results_module.AssessmentResults.oscal_read(results_file)
+        except Exception as e:
+            print(f"Error loading assessment results {results_name}: {e}")
+            return None
+
+    def load_assessment_results_dict(self, results_name: str) -> Optional[Dict[str, Any]]:
+        """Load assessment results by name and return native OSCAL dictionary data."""
+        results_obj = self.load_assessment_results(results_name)
+        if results_obj:
+            return results_obj.oscal_dict()
+        return None
+
+    def load_assessment_results_view(self, results_name: str) -> Optional[Dict[str, Any]]:
+        """Load assessment results by name and return normalized data for the web view."""
+        data = self.load_assessment_results_dict(results_name)
+        if not data:
+            return None
+
+        ar = data.get('assessment-results', data)
+
+        metadata = ar.get('metadata', {})
+        props = metadata.get('props', []) or []
+
+        regulation = 'N/A'
+        assessment_scope = 'N/A'
+        subject_count = 'N/A'
+        result_summary = 'N/A'
+        for prop in props:
+            name = prop.get('name')
+            value = prop.get('value')
+            if name == 'regulation':
+                regulation = value
+            elif name == 'assessment-scope':
+                assessment_scope = value
+            elif name == 'assessment-subject-count':
+                subject_count = value
+            elif name == 'result-summary':
+                result_summary = value
+
+        normalized_results = []
+        for result in ar.get('results', []) or []:
+            reviewed_controls = result.get('reviewed-controls', {}) or {}
+            control_selections = reviewed_controls.get('control-selections', []) or []
+
+            assessment_log = result.get('assessment-log', {}) or {}
+            log_entries = assessment_log.get('entries', []) or []
+
+            observations = []
+            for observation in result.get('observations', []) or []:
+                observations.append({
+                    'uuid': observation.get('uuid', 'N/A'),
+                    'title': observation.get('title', 'Untitled Observation'),
+                    'description': observation.get('description', 'N/A'),
+                    'methods': observation.get('methods', []) or [],
+                    'types': observation.get('types', []) or [],
+                    'collected': observation.get('collected', 'N/A'),
+                    'subject_count': len(observation.get('subjects', []) or []),
+                    'evidence': [
+                        ev.get('description', 'N/A')
+                        for ev in (observation.get('relevant-evidence', []) or [])
+                    ]
+                })
+
+            risks = []
+            for risk in result.get('risks', []) or []:
+                risks.append({
+                    'uuid': risk.get('uuid', 'N/A'),
+                    'title': risk.get('title', 'Untitled Risk'),
+                    'description': risk.get('description', 'N/A'),
+                    'statement': risk.get('statement', 'N/A'),
+                    'status': risk.get('status', 'N/A')
+                })
+
+            normalized_results.append({
+                'uuid': result.get('uuid', 'N/A'),
+                'title': result.get('title', 'Untitled Result'),
+                'description': result.get('description', 'N/A'),
+                'start': result.get('start', 'N/A'),
+                'end': result.get('end', 'N/A'),
+                'remarks': result.get('remarks', ''),
+                'control_selections': control_selections,
+                'assessment_log_entries': log_entries,
+                'observations': observations,
+                'risks': risks
+            })
+
+        activities = []
+        local_definitions = ar.get('local-definitions', {}) or {}
+        for activity in local_definitions.get('activities', []) or []:
+            activities.append({
+                'uuid': activity.get('uuid', 'N/A'),
+                'title': activity.get('title', 'Untitled Activity'),
+                'description': activity.get('description', 'N/A'),
+                'steps': activity.get('steps', []) or []
+            })
+
+        return {
+            'uuid': ar.get('uuid', 'N/A'),
+            'metadata': {
+                'title': metadata.get('title', 'N/A'),
+                'version': metadata.get('version', 'N/A'),
+                'last-modified': metadata.get('last-modified', 'N/A'),
+                'oscal-version': metadata.get('oscal-version', 'N/A'),
+                'published': metadata.get('published', 'N/A')
+            },
+            'import-ap': ar.get('import-ap'),
+            'regulation': regulation,
+            'assessment-scope': assessment_scope,
+            'assessment-subject-count': subject_count,
+            'result-summary': result_summary,
+            'local-definitions': {
+                'activities': activities
+            },
+            'results': normalized_results
+        }
+
     def list_assessment_results(self) -> List[Dict[str, str]]:
         """List all available assessment results"""
         results = []
         if self.assessment_results_dir.exists():
             for result_dir in self.assessment_results_dir.iterdir():
                 if result_dir.is_dir() and result_dir.name != '.keep':
-                    # Read the assessment results JSON to get metadata
                     ar_file = result_dir / 'assessment-results.json'
                     title = result_dir.name
                     version = 'N/A'
-                    
+
                     if ar_file.exists():
                         try:
-                            with open(ar_file, 'r') as f:
-                                ar_data = json.load(f)
-                                ar = ar_data.get('assessment-results', {})
-                                metadata = ar.get('metadata', {})
-                                title = metadata.get('title', result_dir.name)
-                                version = metadata.get('version', 'N/A')
-                        except (json.JSONDecodeError, KeyError):
-                            pass  # Use defaults if file is invalid
-                    
+                            ar_obj = assessment_results_module.AssessmentResults.oscal_read(ar_file)
+                            title = ar_obj.metadata.title or result_dir.name
+                            version = ar_obj.metadata.version or 'N/A'
+                        except Exception as e:
+                            print(f"Error loading assessment results {result_dir.name}: {e}")
+
                     results.append({
                         'name': result_dir.name,
                         'title': title,
@@ -314,6 +513,64 @@ class TrestleAPI:
                     })
         return results
     
+    def resolve_regulation_reference(self, href: Optional[str]) -> Dict[str, str]:
+        """Resolve an SSP import-profile reference into normalized regulation display metadata."""
+        result = {
+            'label': 'N/A',
+            'href': href or 'N/A',
+            'title': 'N/A',
+            'version': 'N/A',
+            'source_type': 'unknown',
+            'source_name': 'N/A'
+        }
+
+        if not href:
+            return result
+
+        parts = href.rstrip('/').split('/')
+        if len(parts) < 2:
+            result['label'] = href
+            return result
+
+        source_name = parts[-2]
+        source_type = parts[-3] if len(parts) >= 3 else 'unknown'
+        result['source_name'] = source_name
+
+        if source_type == 'profiles':
+            result['source_type'] = 'profile'
+            profile_obj = self.load_profile(source_name)
+            if profile_obj:
+                title = str(profile_obj.metadata.title)
+                version = str(profile_obj.metadata.version)
+                result['title'] = title
+                result['version'] = version
+                normalized = {
+                    'FedRAMP-Rev5-Low': 'FedRAMP Rev 5 Low',
+                    'FedRAMP-Rev5-Moderate': 'FedRAMP Rev 5 Moderate',
+                    'FedRAMP-Rev5-High': 'FedRAMP Rev 5 High'
+                }
+                result['label'] = normalized.get(source_name, title)
+            else:
+                result['label'] = source_name
+        elif source_type == 'catalogs':
+            result['source_type'] = 'catalog'
+            catalog_obj = self.load_catalog(source_name)
+            if catalog_obj:
+                title = str(catalog_obj.metadata.title)
+                version = str(catalog_obj.metadata.version)
+                result['title'] = title
+                result['version'] = version
+                normalized = {
+                    'EU-Dora': f'EU DORA {version}' if version and version != 'None' else 'EU DORA'
+                }
+                result['label'] = normalized.get(source_name, title)
+            else:
+                result['label'] = source_name
+        else:
+            result['label'] = source_name or href
+
+        return result
+
     def list_poams(self) -> List[Dict[str, str]]:
         """List all available POAMs"""
         poams = []
@@ -336,12 +593,40 @@ class TrestleAPI:
             for mapping_dir in self.mappings_dir.iterdir():
                 if mapping_dir.is_dir() and mapping_dir.name != '.keep':
                     # Mapping collections not yet fully implemented, return basic info
+                    mapping_file = mapping_dir / 'mapping-collection.json'
+                    title = mapping_dir.name
+                    version = 'N/A'
+                    if mapping_file.exists():
+                        try:
+                            mapping_obj = mapping_module.MappingCollection.oscal_read(mapping_file)
+                            title = mapping_obj.metadata.title or mapping_dir.name
+                            version = mapping_obj.metadata.version or 'N/A'
+                        except Exception as e:
+                            print(f"Error loading mapping collection {mapping_dir.name}: {e}")
                     mappings.append({
                         'name': mapping_dir.name,
-                        'title': mapping_dir.name,
-                        'version': 'N/A',
+                        'title': title,
+                        'version': version,
                         'path': str(mapping_dir)
                     })
         return mappings
+
+    def load_mapping(self, mapping_name: str):
+        """Load a mapping collection by name."""
+        mapping_file = self.mappings_dir / mapping_name / 'mapping-collection.json'
+        if not mapping_file.exists():
+            return None
+        try:
+            return mapping_module.MappingCollection.oscal_read(mapping_file)
+        except Exception as e:
+            print(f"Error loading mapping collection {mapping_name}: {e}")
+            return None
+
+    def load_mapping_dict(self, mapping_name: str) -> Optional[Dict[str, Any]]:
+        """Load a mapping collection by name and return native OSCAL dictionary data."""
+        mapping_obj = self.load_mapping(mapping_name)
+        if mapping_obj:
+            return mapping_obj.oscal_dict()
+        return None
 
 # Made with Bob

@@ -1,12 +1,12 @@
 {
   "assessment-results": {
-    "uuid": "91083dac-a4a2-4b0f-b72d-f641e9a1672b",
+    "uuid": "54b72836-67de-4cba-968e-88eacdc96348",
     "metadata": {
-      "title": "Ubuntu System Assessment Results - FedRAMP Rev 5 High",
-      "published": "2026-05-07T16:08:27Z",
-      "last-modified": "2026-05-07T16:08:27Z",
-      "version": "1.1",
-      "oscal-version": "1.1.2",
+      "title": "Ubuntu System Assessment Results - FedRAMP High",
+      "published": "2026-05-07T16:31:42.080876+00:00",
+      "last-modified": "2026-05-07T16:31:42.080876+00:00",
+      "version": "1.0",
+      "oscal-version": "1.2.1",
       "props": [
         {
           "name": "regulation",
@@ -36,17 +36,17 @@
     "local-definitions": {
       "activities": [
         {
-          "uuid": "44ea6879-d9b2-4606-94e7-aaa7429ba385",
+          "uuid": "e09d7ec2-34a8-45b4-be6e-5b462fad483b",
           "title": "Mapped XCCDF evidence analysis",
           "description": "XCCDF rule results were normalized and mapped to FedRAMP Rev 5 High control identifiers.",
           "steps": [
             {
-              "uuid": "9201e5c8-48f7-412d-ae3a-dce63679852c",
+              "uuid": "6cb31edd-919c-4189-9577-9803a6420c9d",
               "title": "Parse XCCDF rule results",
               "description": "Collected rule pass/fail results for all 5 Ubuntu servers."
             },
             {
-              "uuid": "03f1028e-7468-41ba-8480-043c978aea42",
+              "uuid": "7ac24c26-6152-4049-b174-84e1c1e38751",
               "title": "Map rules to controls",
               "description": "Used component definition implemented-requirement Rule_Id properties to associate evidence with controls."
             }
@@ -56,11 +56,11 @@
     },
     "results": [
       {
-        "uuid": "ff6c6544-1b83-4b93-ac5c-29aa1cb54e02",
+        "uuid": "050e4ec6-308b-4fe9-93f2-47357ce2786b",
         "title": "FedRAMP Rev 5 High assessment execution results",
         "description": "Assessment results for the Ubuntu 24.04 LTS 5-server fleet evaluated against FedRAMP Rev 5 High using mapped XCCDF evidence.",
-        "start": "2026-05-21T15:53:17Z",
-        "end": "2026-06-21T15:53:17Z",
+        "start": "2026-04-07T16:31:42.080876+00:00",
+        "end": "2026-05-07T16:31:42.080876+00:00",
         "reviewed-controls": {
           "control-selections": [
             {
@@ -340,60 +340,26 @@
         "assessment-log": {
           "entries": [
             {
-              "uuid": "d430f736-5381-4d80-9115-a54fddf574c5",
-              "title": "Evidence collection completed",
-              "description": "Collected XCCDF results from all assessed Ubuntu server subjects.",
-              "start": "2026-05-06T02:52:39Z",
-              "end": "2026-05-06T18:07:39Z"
+              "uuid": "0094fc47-0dfc-41ed-b11a-b7272686859d",
+              "title": "XCCDF scans executed",
+              "description": "Executed OpenSCAP security compliance scans on 5 Ubuntu 24.04 LTS servers.",
+              "start": "2026-04-07T16:31:42.080876+00:00",
+              "end": "2026-04-08T16:31:42.080876+00:00"
             },
             {
-              "uuid": "6e1c8678-1446-4e1e-bb62-a4f2e2f1de46",
+              "uuid": "32db5802-2f28-493e-a326-98d1ac6f99e7",
               "title": "Control mapping analysis completed",
               "description": "Mapped rule-level evidence to control identifiers using component definitions and regulatory mappings.",
-              "start": "2026-06-20T15:53:17Z",
-              "end": "2026-06-21T15:53:17Z"
+              "start": "2026-05-06T16:31:42.080876+00:00",
+              "end": "2026-05-07T16:31:42.080876+00:00"
             }
           ]
         },
         "observations": [
           {
-            "uuid": "a51730bc-85e9-4158-b5bd-c3293fedec72",
+            "uuid": "f2e83670-b81b-4f80-b13b-002b6cddda98",
             "title": "Control ac-1 assessment outcome",
             "description": "Control ac-1 is partially-satisfied based on 15 passing and 5 failing mapped XCCDF rule evaluations across 5 assessed subjects.",
-            "methods": [
-              "TEST"
-            ],
-            "types": [
-              "finding"
-            ],
-            "collected": "2026-06-21T15:53:17Z",
-            "relevant-evidence": [
-              {
-                "description": "Mapped rules: accounts_passwords_pam_faillock_deny, accounts_passwords_pam_faillock_enabled, accounts_passwords_pam_faillock_root_unlock_time, accounts_passwords_pam_faillock_unlock_time"
-              }
-            ],
-            "subjects": [
-              {
-                "subject-uuid": "e313c9ab-6224-4d72-a471-307499b02289",
-                "type": "component"
-              },
-              {
-                "subject-uuid": "1509c9df-1b35-41d3-b661-ce7b39dd7ff3",
-                "type": "component"
-              },
-              {
-                "subject-uuid": "d54bd900-0b34-4aa7-8692-0edfbff56df7",
-                "type": "component"
-              },
-              {
-                "subject-uuid": "5ed5a61a-4db3-4014-a407-6414cf08914a",
-                "type": "component"
-              },
-              {
-                "subject-uuid": "7fc14ee4-c110-4725-9792-02509c557049",
-                "type": "component"
-              }
-            ],
             "props": [
               {
                 "name": "control-id",
@@ -415,46 +381,46 @@
                 "name": "rule-count",
                 "value": "4"
               }
-            ]
-          },
-          {
-            "uuid": "6c53b8d3-d0cb-4aa6-b597-2c19acc0f450",
-            "title": "Control ac-11 assessment outcome",
-            "description": "Control ac-11 is partially-satisfied based on 3 passing and 2 failing mapped XCCDF rule evaluations across 5 assessed subjects.",
+            ],
             "methods": [
               "TEST"
             ],
             "types": [
               "finding"
             ],
-            "collected": "2026-06-21T15:53:17Z",
-            "relevant-evidence": [
-              {
-                "description": "Mapped rules: accounts_tmout"
-              }
-            ],
             "subjects": [
               {
-                "subject-uuid": "e313c9ab-6224-4d72-a471-307499b02289",
+                "subject-uuid": "26085f3f-9ebf-487e-a778-40eabc73e11b",
                 "type": "component"
               },
               {
-                "subject-uuid": "1509c9df-1b35-41d3-b661-ce7b39dd7ff3",
+                "subject-uuid": "2b01bf2d-0d42-4019-a661-8b01d5481c5d",
                 "type": "component"
               },
               {
-                "subject-uuid": "d54bd900-0b34-4aa7-8692-0edfbff56df7",
+                "subject-uuid": "655526f2-a653-41df-8f3c-fc323017d56b",
                 "type": "component"
               },
               {
-                "subject-uuid": "5ed5a61a-4db3-4014-a407-6414cf08914a",
+                "subject-uuid": "69307396-043d-4063-8b07-91662afeaac2",
                 "type": "component"
               },
               {
-                "subject-uuid": "7fc14ee4-c110-4725-9792-02509c557049",
+                "subject-uuid": "d13e7e29-0ef4-4984-a733-780ef4471d8a",
                 "type": "component"
               }
             ],
+            "relevant-evidence": [
+              {
+                "description": "Mapped rules: accounts_passwords_pam_faillock_deny, accounts_passwords_pam_faillock_enabled, accounts_passwords_pam_faillock_root_unlock_time, accounts_passwords_pam_faillock_unlock_time"
+              }
+            ],
+            "collected": "2026-05-07T16:31:42.080876+00:00"
+          },
+          {
+            "uuid": "27071eaf-24f8-49df-9525-581e74d49146",
+            "title": "Control ac-11 assessment outcome",
+            "description": "Control ac-11 is partially-satisfied based on 3 passing and 2 failing mapped XCCDF rule evaluations across 5 assessed subjects.",
             "props": [
               {
                 "name": "control-id",
@@ -476,46 +442,46 @@
                 "name": "rule-count",
                 "value": "1"
               }
-            ]
-          },
-          {
-            "uuid": "f96dd8e7-d875-4a93-a3b7-8206bc476a37",
-            "title": "Control ac-11.1 assessment outcome",
-            "description": "Control ac-11.1 is partially-satisfied based on 3 passing and 2 failing mapped XCCDF rule evaluations across 5 assessed subjects.",
+            ],
             "methods": [
               "TEST"
             ],
             "types": [
               "finding"
             ],
-            "collected": "2026-06-21T15:53:17Z",
+            "subjects": [
+              {
+                "subject-uuid": "26085f3f-9ebf-487e-a778-40eabc73e11b",
+                "type": "component"
+              },
+              {
+                "subject-uuid": "2b01bf2d-0d42-4019-a661-8b01d5481c5d",
+                "type": "component"
+              },
+              {
+                "subject-uuid": "655526f2-a653-41df-8f3c-fc323017d56b",
+                "type": "component"
+              },
+              {
+                "subject-uuid": "69307396-043d-4063-8b07-91662afeaac2",
+                "type": "component"
+              },
+              {
+                "subject-uuid": "d13e7e29-0ef4-4984-a733-780ef4471d8a",
+                "type": "component"
+              }
+            ],
             "relevant-evidence": [
               {
                 "description": "Mapped rules: accounts_tmout"
               }
             ],
-            "subjects": [
-              {
-                "subject-uuid": "e313c9ab-6224-4d72-a471-307499b02289",
-                "type": "component"
-              },
-              {
-                "subject-uuid": "1509c9df-1b35-41d3-b661-ce7b39dd7ff3",
-                "type": "component"
-              },
-              {
-                "subject-uuid": "d54bd900-0b34-4aa7-8692-0edfbff56df7",
-                "type": "component"
-              },
-              {
-                "subject-uuid": "5ed5a61a-4db3-4014-a407-6414cf08914a",
-                "type": "component"
-              },
-              {
-                "subject-uuid": "7fc14ee4-c110-4725-9792-02509c557049",
-                "type": "component"
-              }
-            ],
+            "collected": "2026-05-07T16:31:42.080876+00:00"
+          },
+          {
+            "uuid": "b8678d1c-03bf-4bd8-bcbf-8dc5fdc0ad29",
+            "title": "Control ac-11.1 assessment outcome",
+            "description": "Control ac-11.1 is partially-satisfied based on 3 passing and 2 failing mapped XCCDF rule evaluations across 5 assessed subjects.",
             "props": [
               {
                 "name": "control-id",
@@ -537,46 +503,46 @@
                 "name": "rule-count",
                 "value": "1"
               }
-            ]
-          },
-          {
-            "uuid": "6edab983-099f-48d8-aa25-125a2c8c1519",
-            "title": "Control ac-12 assessment outcome",
-            "description": "Control ac-12 is partially-satisfied based on 3 passing and 2 failing mapped XCCDF rule evaluations across 5 assessed subjects.",
+            ],
             "methods": [
               "TEST"
             ],
             "types": [
               "finding"
             ],
-            "collected": "2026-06-21T15:53:17Z",
+            "subjects": [
+              {
+                "subject-uuid": "26085f3f-9ebf-487e-a778-40eabc73e11b",
+                "type": "component"
+              },
+              {
+                "subject-uuid": "2b01bf2d-0d42-4019-a661-8b01d5481c5d",
+                "type": "component"
+              },
+              {
+                "subject-uuid": "655526f2-a653-41df-8f3c-fc323017d56b",
+                "type": "component"
+              },
+              {
+                "subject-uuid": "69307396-043d-4063-8b07-91662afeaac2",
+                "type": "component"
+              },
+              {
+                "subject-uuid": "d13e7e29-0ef4-4984-a733-780ef4471d8a",
+                "type": "component"
+              }
+            ],
             "relevant-evidence": [
               {
                 "description": "Mapped rules: accounts_tmout"
               }
             ],
-            "subjects": [
-              {
-                "subject-uuid": "e313c9ab-6224-4d72-a471-307499b02289",
-                "type": "component"
-              },
-              {
-                "subject-uuid": "1509c9df-1b35-41d3-b661-ce7b39dd7ff3",
-                "type": "component"
-              },
-              {
-                "subject-uuid": "d54bd900-0b34-4aa7-8692-0edfbff56df7",
-                "type": "component"
-              },
-              {
-                "subject-uuid": "5ed5a61a-4db3-4014-a407-6414cf08914a",
-                "type": "component"
-              },
-              {
-                "subject-uuid": "7fc14ee4-c110-4725-9792-02509c557049",
-                "type": "component"
-              }
-            ],
+            "collected": "2026-05-07T16:31:42.080876+00:00"
+          },
+          {
+            "uuid": "9d8bcdac-be79-49d2-a012-15cff968aca5",
+            "title": "Control ac-12 assessment outcome",
+            "description": "Control ac-12 is partially-satisfied based on 3 passing and 2 failing mapped XCCDF rule evaluations across 5 assessed subjects.",
             "props": [
               {
                 "name": "control-id",
@@ -598,46 +564,46 @@
                 "name": "rule-count",
                 "value": "1"
               }
-            ]
-          },
-          {
-            "uuid": "9c416bd6-2eaa-42d4-a99f-e64d2282c808",
-            "title": "Control ac-17.2 assessment outcome",
-            "description": "Control ac-17.2 is satisfied based on 15 passing and 0 failing mapped XCCDF rule evaluations across 5 assessed subjects.",
+            ],
             "methods": [
               "TEST"
             ],
             "types": [
-              "statement"
-            ],
-            "collected": "2026-06-21T15:53:17Z",
-            "relevant-evidence": [
-              {
-                "description": "Mapped rules: sshd_use_strong_ciphers, sshd_use_strong_kex, sshd_use_strong_macs"
-              }
+              "finding"
             ],
             "subjects": [
               {
-                "subject-uuid": "e313c9ab-6224-4d72-a471-307499b02289",
+                "subject-uuid": "26085f3f-9ebf-487e-a778-40eabc73e11b",
                 "type": "component"
               },
               {
-                "subject-uuid": "1509c9df-1b35-41d3-b661-ce7b39dd7ff3",
+                "subject-uuid": "2b01bf2d-0d42-4019-a661-8b01d5481c5d",
                 "type": "component"
               },
               {
-                "subject-uuid": "d54bd900-0b34-4aa7-8692-0edfbff56df7",
+                "subject-uuid": "655526f2-a653-41df-8f3c-fc323017d56b",
                 "type": "component"
               },
               {
-                "subject-uuid": "5ed5a61a-4db3-4014-a407-6414cf08914a",
+                "subject-uuid": "69307396-043d-4063-8b07-91662afeaac2",
                 "type": "component"
               },
               {
-                "subject-uuid": "7fc14ee4-c110-4725-9792-02509c557049",
+                "subject-uuid": "d13e7e29-0ef4-4984-a733-780ef4471d8a",
                 "type": "component"
               }
             ],
+            "relevant-evidence": [
+              {
+                "description": "Mapped rules: accounts_tmout"
+              }
+            ],
+            "collected": "2026-05-07T16:31:42.080876+00:00"
+          },
+          {
+            "uuid": "0366ecf6-85ee-441a-bc0e-87d95153b181",
+            "title": "Control ac-17.2 assessment outcome",
+            "description": "Control ac-17.2 is satisfied based on 15 passing and 0 failing mapped XCCDF rule evaluations across 5 assessed subjects.",
             "props": [
               {
                 "name": "control-id",
@@ -659,46 +625,46 @@
                 "name": "rule-count",
                 "value": "3"
               }
-            ]
-          },
-          {
-            "uuid": "e338b38f-185b-415a-a559-aed2fdd22326",
-            "title": "Control ac-2 assessment outcome",
-            "description": "Control ac-2 is partially-satisfied based on 15 passing and 5 failing mapped XCCDF rule evaluations across 5 assessed subjects.",
+            ],
             "methods": [
               "TEST"
             ],
             "types": [
               "finding"
             ],
-            "collected": "2026-06-21T15:53:17Z",
-            "relevant-evidence": [
-              {
-                "description": "Mapped rules: accounts_passwords_pam_faillock_deny, accounts_passwords_pam_faillock_enabled, accounts_passwords_pam_faillock_root_unlock_time, accounts_passwords_pam_faillock_unlock_time"
-              }
-            ],
             "subjects": [
               {
-                "subject-uuid": "e313c9ab-6224-4d72-a471-307499b02289",
+                "subject-uuid": "26085f3f-9ebf-487e-a778-40eabc73e11b",
                 "type": "component"
               },
               {
-                "subject-uuid": "1509c9df-1b35-41d3-b661-ce7b39dd7ff3",
+                "subject-uuid": "2b01bf2d-0d42-4019-a661-8b01d5481c5d",
                 "type": "component"
               },
               {
-                "subject-uuid": "d54bd900-0b34-4aa7-8692-0edfbff56df7",
+                "subject-uuid": "655526f2-a653-41df-8f3c-fc323017d56b",
                 "type": "component"
               },
               {
-                "subject-uuid": "5ed5a61a-4db3-4014-a407-6414cf08914a",
+                "subject-uuid": "69307396-043d-4063-8b07-91662afeaac2",
                 "type": "component"
               },
               {
-                "subject-uuid": "7fc14ee4-c110-4725-9792-02509c557049",
+                "subject-uuid": "d13e7e29-0ef4-4984-a733-780ef4471d8a",
                 "type": "component"
               }
             ],
+            "relevant-evidence": [
+              {
+                "description": "Mapped rules: sshd_use_strong_ciphers, sshd_use_strong_kex, sshd_use_strong_macs"
+              }
+            ],
+            "collected": "2026-05-07T16:31:42.080876+00:00"
+          },
+          {
+            "uuid": "c19a4757-3b03-4a19-9e2d-d4a86040f86f",
+            "title": "Control ac-2 assessment outcome",
+            "description": "Control ac-2 is partially-satisfied based on 15 passing and 5 failing mapped XCCDF rule evaluations across 5 assessed subjects.",
             "props": [
               {
                 "name": "control-id",
@@ -720,46 +686,46 @@
                 "name": "rule-count",
                 "value": "4"
               }
-            ]
-          },
-          {
-            "uuid": "1a62e866-c2ef-47a4-8729-a00beb1f2df7",
-            "title": "Control ac-2.1 assessment outcome",
-            "description": "Control ac-2.1 is partially-satisfied based on 15 passing and 5 failing mapped XCCDF rule evaluations across 5 assessed subjects.",
+            ],
             "methods": [
               "TEST"
             ],
             "types": [
               "finding"
             ],
-            "collected": "2026-06-21T15:53:17Z",
+            "subjects": [
+              {
+                "subject-uuid": "26085f3f-9ebf-487e-a778-40eabc73e11b",
+                "type": "component"
+              },
+              {
+                "subject-uuid": "2b01bf2d-0d42-4019-a661-8b01d5481c5d",
+                "type": "component"
+              },
+              {
+                "subject-uuid": "655526f2-a653-41df-8f3c-fc323017d56b",
+                "type": "component"
+              },
+              {
+                "subject-uuid": "69307396-043d-4063-8b07-91662afeaac2",
+                "type": "component"
+              },
+              {
+                "subject-uuid": "d13e7e29-0ef4-4984-a733-780ef4471d8a",
+                "type": "component"
+              }
+            ],
             "relevant-evidence": [
               {
                 "description": "Mapped rules: accounts_passwords_pam_faillock_deny, accounts_passwords_pam_faillock_enabled, accounts_passwords_pam_faillock_root_unlock_time, accounts_passwords_pam_faillock_unlock_time"
               }
             ],
-            "subjects": [
-              {
-                "subject-uuid": "e313c9ab-6224-4d72-a471-307499b02289",
-                "type": "component"
-              },
-              {
-                "subject-uuid": "1509c9df-1b35-41d3-b661-ce7b39dd7ff3",
-                "type": "component"
-              },
-              {
-                "subject-uuid": "d54bd900-0b34-4aa7-8692-0edfbff56df7",
-                "type": "component"
-              },
-              {
-                "subject-uuid": "5ed5a61a-4db3-4014-a407-6414cf08914a",
-                "type": "component"
-              },
-              {
-                "subject-uuid": "7fc14ee4-c110-4725-9792-02509c557049",
-                "type": "component"
-              }
-            ],
+            "collected": "2026-05-07T16:31:42.080876+00:00"
+          },
+          {
+            "uuid": "e7e3433c-33b4-47d9-b7b2-75e69fc35a2e",
+            "title": "Control ac-2.1 assessment outcome",
+            "description": "Control ac-2.1 is partially-satisfied based on 15 passing and 5 failing mapped XCCDF rule evaluations across 5 assessed subjects.",
             "props": [
               {
                 "name": "control-id",
@@ -781,46 +747,46 @@
                 "name": "rule-count",
                 "value": "4"
               }
-            ]
-          },
-          {
-            "uuid": "91bc59f4-48fa-498c-a4e9-bf92498f0fd4",
-            "title": "Control ac-2.5 assessment outcome",
-            "description": "Control ac-2.5 is partially-satisfied based on 3 passing and 2 failing mapped XCCDF rule evaluations across 5 assessed subjects.",
+            ],
             "methods": [
               "TEST"
             ],
             "types": [
               "finding"
             ],
-            "collected": "2026-06-21T15:53:17Z",
-            "relevant-evidence": [
-              {
-                "description": "Mapped rules: accounts_tmout"
-              }
-            ],
             "subjects": [
               {
-                "subject-uuid": "e313c9ab-6224-4d72-a471-307499b02289",
+                "subject-uuid": "26085f3f-9ebf-487e-a778-40eabc73e11b",
                 "type": "component"
               },
               {
-                "subject-uuid": "1509c9df-1b35-41d3-b661-ce7b39dd7ff3",
+                "subject-uuid": "2b01bf2d-0d42-4019-a661-8b01d5481c5d",
                 "type": "component"
               },
               {
-                "subject-uuid": "d54bd900-0b34-4aa7-8692-0edfbff56df7",
+                "subject-uuid": "655526f2-a653-41df-8f3c-fc323017d56b",
                 "type": "component"
               },
               {
-                "subject-uuid": "5ed5a61a-4db3-4014-a407-6414cf08914a",
+                "subject-uuid": "69307396-043d-4063-8b07-91662afeaac2",
                 "type": "component"
               },
               {
-                "subject-uuid": "7fc14ee4-c110-4725-9792-02509c557049",
+                "subject-uuid": "d13e7e29-0ef4-4984-a733-780ef4471d8a",
                 "type": "component"
               }
             ],
+            "relevant-evidence": [
+              {
+                "description": "Mapped rules: accounts_passwords_pam_faillock_deny, accounts_passwords_pam_faillock_enabled, accounts_passwords_pam_faillock_root_unlock_time, accounts_passwords_pam_faillock_unlock_time"
+              }
+            ],
+            "collected": "2026-05-07T16:31:42.080876+00:00"
+          },
+          {
+            "uuid": "14cc5a54-b158-4cfa-bb68-408047db57f5",
+            "title": "Control ac-2.5 assessment outcome",
+            "description": "Control ac-2.5 is partially-satisfied based on 3 passing and 2 failing mapped XCCDF rule evaluations across 5 assessed subjects.",
             "props": [
               {
                 "name": "control-id",
@@ -842,46 +808,46 @@
                 "name": "rule-count",
                 "value": "1"
               }
-            ]
-          },
-          {
-            "uuid": "263196a5-1aea-420f-b2ae-20067bd852d8",
-            "title": "Control ac-3 assessment outcome",
-            "description": "Control ac-3 is partially-satisfied based on 79 passing and 11 failing mapped XCCDF rule evaluations across 5 assessed subjects.",
+            ],
             "methods": [
               "TEST"
             ],
             "types": [
               "finding"
             ],
-            "collected": "2026-06-21T15:53:17Z",
-            "relevant-evidence": [
-              {
-                "description": "Mapped rules: accounts_password_pam_unix_enabled, accounts_root_gid_zero, accounts_umask_etc_bashrc, accounts_umask_etc_login_defs, accounts_umask_etc_profile, accounts_umask_root, ensure_pam_wheel_group_empty, ensure_root_access_controlled, file_groupowner_sshd_config, file_owner_sshd_config, file_permissions_sshd_config, file_permissions_sshd_private_key"
-              }
-            ],
             "subjects": [
               {
-                "subject-uuid": "e313c9ab-6224-4d72-a471-307499b02289",
+                "subject-uuid": "26085f3f-9ebf-487e-a778-40eabc73e11b",
                 "type": "component"
               },
               {
-                "subject-uuid": "1509c9df-1b35-41d3-b661-ce7b39dd7ff3",
+                "subject-uuid": "2b01bf2d-0d42-4019-a661-8b01d5481c5d",
                 "type": "component"
               },
               {
-                "subject-uuid": "d54bd900-0b34-4aa7-8692-0edfbff56df7",
+                "subject-uuid": "655526f2-a653-41df-8f3c-fc323017d56b",
                 "type": "component"
               },
               {
-                "subject-uuid": "5ed5a61a-4db3-4014-a407-6414cf08914a",
+                "subject-uuid": "69307396-043d-4063-8b07-91662afeaac2",
                 "type": "component"
               },
               {
-                "subject-uuid": "7fc14ee4-c110-4725-9792-02509c557049",
+                "subject-uuid": "d13e7e29-0ef4-4984-a733-780ef4471d8a",
                 "type": "component"
               }
             ],
+            "relevant-evidence": [
+              {
+                "description": "Mapped rules: accounts_tmout"
+              }
+            ],
+            "collected": "2026-05-07T16:31:42.080876+00:00"
+          },
+          {
+            "uuid": "d92f62e0-72f6-4e07-85ce-f89cec28383b",
+            "title": "Control ac-3 assessment outcome",
+            "description": "Control ac-3 is partially-satisfied based on 79 passing and 11 failing mapped XCCDF rule evaluations across 5 assessed subjects.",
             "props": [
               {
                 "name": "control-id",
@@ -903,46 +869,46 @@
                 "name": "rule-count",
                 "value": "18"
               }
-            ]
-          },
-          {
-            "uuid": "278ee6e5-dfee-4e9f-bb3a-60f91131f0c1",
-            "title": "Control ac-5 assessment outcome",
-            "description": "Control ac-5 is partially-satisfied based on 79 passing and 11 failing mapped XCCDF rule evaluations across 5 assessed subjects.",
+            ],
             "methods": [
               "TEST"
             ],
             "types": [
               "finding"
             ],
-            "collected": "2026-06-21T15:53:17Z",
-            "relevant-evidence": [
-              {
-                "description": "Mapped rules: accounts_password_pam_unix_enabled, accounts_root_gid_zero, accounts_umask_etc_bashrc, accounts_umask_etc_login_defs, accounts_umask_etc_profile, accounts_umask_root, ensure_pam_wheel_group_empty, ensure_root_access_controlled, file_groupowner_sshd_config, file_owner_sshd_config, file_permissions_sshd_config, file_permissions_sshd_private_key"
-              }
-            ],
             "subjects": [
               {
-                "subject-uuid": "e313c9ab-6224-4d72-a471-307499b02289",
+                "subject-uuid": "26085f3f-9ebf-487e-a778-40eabc73e11b",
                 "type": "component"
               },
               {
-                "subject-uuid": "1509c9df-1b35-41d3-b661-ce7b39dd7ff3",
+                "subject-uuid": "2b01bf2d-0d42-4019-a661-8b01d5481c5d",
                 "type": "component"
               },
               {
-                "subject-uuid": "d54bd900-0b34-4aa7-8692-0edfbff56df7",
+                "subject-uuid": "655526f2-a653-41df-8f3c-fc323017d56b",
                 "type": "component"
               },
               {
-                "subject-uuid": "5ed5a61a-4db3-4014-a407-6414cf08914a",
+                "subject-uuid": "69307396-043d-4063-8b07-91662afeaac2",
                 "type": "component"
               },
               {
-                "subject-uuid": "7fc14ee4-c110-4725-9792-02509c557049",
+                "subject-uuid": "d13e7e29-0ef4-4984-a733-780ef4471d8a",
                 "type": "component"
               }
             ],
+            "relevant-evidence": [
+              {
+                "description": "Mapped rules: accounts_password_pam_unix_enabled, accounts_root_gid_zero, accounts_umask_etc_bashrc, accounts_umask_etc_login_defs, accounts_umask_etc_profile, accounts_umask_root, ensure_pam_wheel_group_empty, ensure_root_access_controlled, file_groupowner_sshd_config, file_owner_sshd_config, file_permissions_sshd_config, file_permissions_sshd_private_key, file_permissions_sshd_pub_key, groups_no_zero_gid_except_root, no_invalid_shell_accounts_unlocked, no_shelllogin_for_systemaccounts, sshd_limit_user_access, use_pam_wheel_group_for_su"
+              }
+            ],
+            "collected": "2026-05-07T16:31:42.080876+00:00"
+          },
+          {
+            "uuid": "5ce42a47-bbfb-427c-9e4c-1a1020d4b603",
+            "title": "Control ac-5 assessment outcome",
+            "description": "Control ac-5 is partially-satisfied based on 79 passing and 11 failing mapped XCCDF rule evaluations across 5 assessed subjects.",
             "props": [
               {
                 "name": "control-id",
@@ -964,46 +930,46 @@
                 "name": "rule-count",
                 "value": "18"
               }
-            ]
-          },
-          {
-            "uuid": "f3c5baef-38be-42fd-afe3-49964d09932c",
-            "title": "Control ac-6 assessment outcome",
-            "description": "Control ac-6 is partially-satisfied based on 79 passing and 11 failing mapped XCCDF rule evaluations across 5 assessed subjects.",
+            ],
             "methods": [
               "TEST"
             ],
             "types": [
               "finding"
             ],
-            "collected": "2026-06-21T15:53:17Z",
-            "relevant-evidence": [
-              {
-                "description": "Mapped rules: accounts_password_pam_unix_enabled, accounts_root_gid_zero, accounts_umask_etc_bashrc, accounts_umask_etc_login_defs, accounts_umask_etc_profile, accounts_umask_root, ensure_pam_wheel_group_empty, ensure_root_access_controlled, file_groupowner_sshd_config, file_owner_sshd_config, file_permissions_sshd_config, file_permissions_sshd_private_key"
-              }
-            ],
             "subjects": [
               {
-                "subject-uuid": "e313c9ab-6224-4d72-a471-307499b02289",
+                "subject-uuid": "26085f3f-9ebf-487e-a778-40eabc73e11b",
                 "type": "component"
               },
               {
-                "subject-uuid": "1509c9df-1b35-41d3-b661-ce7b39dd7ff3",
+                "subject-uuid": "2b01bf2d-0d42-4019-a661-8b01d5481c5d",
                 "type": "component"
               },
               {
-                "subject-uuid": "d54bd900-0b34-4aa7-8692-0edfbff56df7",
+                "subject-uuid": "655526f2-a653-41df-8f3c-fc323017d56b",
                 "type": "component"
               },
               {
-                "subject-uuid": "5ed5a61a-4db3-4014-a407-6414cf08914a",
+                "subject-uuid": "69307396-043d-4063-8b07-91662afeaac2",
                 "type": "component"
               },
               {
-                "subject-uuid": "7fc14ee4-c110-4725-9792-02509c557049",
+                "subject-uuid": "d13e7e29-0ef4-4984-a733-780ef4471d8a",
                 "type": "component"
               }
             ],
+            "relevant-evidence": [
+              {
+                "description": "Mapped rules: accounts_password_pam_unix_enabled, accounts_root_gid_zero, accounts_umask_etc_bashrc, accounts_umask_etc_login_defs, accounts_umask_etc_profile, accounts_umask_root, ensure_pam_wheel_group_empty, ensure_root_access_controlled, file_groupowner_sshd_config, file_owner_sshd_config, file_permissions_sshd_config, file_permissions_sshd_private_key, file_permissions_sshd_pub_key, groups_no_zero_gid_except_root, no_invalid_shell_accounts_unlocked, no_shelllogin_for_systemaccounts, sshd_limit_user_access, use_pam_wheel_group_for_su"
+              }
+            ],
+            "collected": "2026-05-07T16:31:42.080876+00:00"
+          },
+          {
+            "uuid": "6f0450e2-379f-47de-a210-56b16e43f4f5",
+            "title": "Control ac-6 assessment outcome",
+            "description": "Control ac-6 is partially-satisfied based on 79 passing and 11 failing mapped XCCDF rule evaluations across 5 assessed subjects.",
             "props": [
               {
                 "name": "control-id",
@@ -1025,46 +991,46 @@
                 "name": "rule-count",
                 "value": "18"
               }
-            ]
-          },
-          {
-            "uuid": "32bc9287-aebc-468e-b59a-99e8a5fe43c4",
-            "title": "Control ac-6.2 assessment outcome",
-            "description": "Control ac-6.2 is partially-satisfied based on 25 passing and 5 failing mapped XCCDF rule evaluations across 5 assessed subjects.",
+            ],
             "methods": [
               "TEST"
             ],
             "types": [
               "finding"
             ],
-            "collected": "2026-06-21T15:53:17Z",
-            "relevant-evidence": [
-              {
-                "description": "Mapped rules: package_sudo_installed, sshd_disable_root_login, sudo_add_use_pty, sudo_remove_no_authenticate, sudo_require_authentication, sudo_require_reauthentication"
-              }
-            ],
             "subjects": [
               {
-                "subject-uuid": "e313c9ab-6224-4d72-a471-307499b02289",
+                "subject-uuid": "26085f3f-9ebf-487e-a778-40eabc73e11b",
                 "type": "component"
               },
               {
-                "subject-uuid": "1509c9df-1b35-41d3-b661-ce7b39dd7ff3",
+                "subject-uuid": "2b01bf2d-0d42-4019-a661-8b01d5481c5d",
                 "type": "component"
               },
               {
-                "subject-uuid": "d54bd900-0b34-4aa7-8692-0edfbff56df7",
+                "subject-uuid": "655526f2-a653-41df-8f3c-fc323017d56b",
                 "type": "component"
               },
               {
-                "subject-uuid": "5ed5a61a-4db3-4014-a407-6414cf08914a",
+                "subject-uuid": "69307396-043d-4063-8b07-91662afeaac2",
                 "type": "component"
               },
               {
-                "subject-uuid": "7fc14ee4-c110-4725-9792-02509c557049",
+                "subject-uuid": "d13e7e29-0ef4-4984-a733-780ef4471d8a",
                 "type": "component"
               }
             ],
+            "relevant-evidence": [
+              {
+                "description": "Mapped rules: accounts_password_pam_unix_enabled, accounts_root_gid_zero, accounts_umask_etc_bashrc, accounts_umask_etc_login_defs, accounts_umask_etc_profile, accounts_umask_root, ensure_pam_wheel_group_empty, ensure_root_access_controlled, file_groupowner_sshd_config, file_owner_sshd_config, file_permissions_sshd_config, file_permissions_sshd_private_key, file_permissions_sshd_pub_key, groups_no_zero_gid_except_root, no_invalid_shell_accounts_unlocked, no_shelllogin_for_systemaccounts, sshd_limit_user_access, use_pam_wheel_group_for_su"
+              }
+            ],
+            "collected": "2026-05-07T16:31:42.080876+00:00"
+          },
+          {
+            "uuid": "58bd4b15-8541-45db-8a0e-f614e8e2ae62",
+            "title": "Control ac-6.2 assessment outcome",
+            "description": "Control ac-6.2 is partially-satisfied based on 25 passing and 5 failing mapped XCCDF rule evaluations across 5 assessed subjects.",
             "props": [
               {
                 "name": "control-id",
@@ -1086,46 +1052,46 @@
                 "name": "rule-count",
                 "value": "6"
               }
-            ]
-          },
-          {
-            "uuid": "02763926-7949-40c5-ba89-e2fbdbe6e8d8",
-            "title": "Control ac-6.5 assessment outcome",
-            "description": "Control ac-6.5 is partially-satisfied based on 25 passing and 5 failing mapped XCCDF rule evaluations across 5 assessed subjects.",
+            ],
             "methods": [
               "TEST"
             ],
             "types": [
               "finding"
             ],
-            "collected": "2026-06-21T15:53:17Z",
+            "subjects": [
+              {
+                "subject-uuid": "26085f3f-9ebf-487e-a778-40eabc73e11b",
+                "type": "component"
+              },
+              {
+                "subject-uuid": "2b01bf2d-0d42-4019-a661-8b01d5481c5d",
+                "type": "component"
+              },
+              {
+                "subject-uuid": "655526f2-a653-41df-8f3c-fc323017d56b",
+                "type": "component"
+              },
+              {
+                "subject-uuid": "69307396-043d-4063-8b07-91662afeaac2",
+                "type": "component"
+              },
+              {
+                "subject-uuid": "d13e7e29-0ef4-4984-a733-780ef4471d8a",
+                "type": "component"
+              }
+            ],
             "relevant-evidence": [
               {
                 "description": "Mapped rules: package_sudo_installed, sshd_disable_root_login, sudo_add_use_pty, sudo_remove_no_authenticate, sudo_require_authentication, sudo_require_reauthentication"
               }
             ],
-            "subjects": [
-              {
-                "subject-uuid": "e313c9ab-6224-4d72-a471-307499b02289",
-                "type": "component"
-              },
-              {
-                "subject-uuid": "1509c9df-1b35-41d3-b661-ce7b39dd7ff3",
-                "type": "component"
-              },
-              {
-                "subject-uuid": "d54bd900-0b34-4aa7-8692-0edfbff56df7",
-                "type": "component"
-              },
-              {
-                "subject-uuid": "5ed5a61a-4db3-4014-a407-6414cf08914a",
-                "type": "component"
-              },
-              {
-                "subject-uuid": "7fc14ee4-c110-4725-9792-02509c557049",
-                "type": "component"
-              }
-            ],
+            "collected": "2026-05-07T16:31:42.080876+00:00"
+          },
+          {
+            "uuid": "06a42d0d-5989-46ea-a9e5-fc235b849b86",
+            "title": "Control ac-6.5 assessment outcome",
+            "description": "Control ac-6.5 is partially-satisfied based on 25 passing and 5 failing mapped XCCDF rule evaluations across 5 assessed subjects.",
             "props": [
               {
                 "name": "control-id",
@@ -1147,46 +1113,46 @@
                 "name": "rule-count",
                 "value": "6"
               }
-            ]
-          },
-          {
-            "uuid": "74501636-9eef-4a15-bc17-37f344c7ee35",
-            "title": "Control au-12 assessment outcome",
-            "description": "Control au-12 is partially-satisfied based on 13 passing and 2 failing mapped XCCDF rule evaluations across 5 assessed subjects.",
+            ],
             "methods": [
               "TEST"
             ],
             "types": [
               "finding"
             ],
-            "collected": "2026-06-21T15:53:17Z",
-            "relevant-evidence": [
-              {
-                "description": "Mapped rules: sshd_set_loglevel_info, sshd_set_max_auth_tries, sudo_custom_logfile"
-              }
-            ],
             "subjects": [
               {
-                "subject-uuid": "e313c9ab-6224-4d72-a471-307499b02289",
+                "subject-uuid": "26085f3f-9ebf-487e-a778-40eabc73e11b",
                 "type": "component"
               },
               {
-                "subject-uuid": "1509c9df-1b35-41d3-b661-ce7b39dd7ff3",
+                "subject-uuid": "2b01bf2d-0d42-4019-a661-8b01d5481c5d",
                 "type": "component"
               },
               {
-                "subject-uuid": "d54bd900-0b34-4aa7-8692-0edfbff56df7",
+                "subject-uuid": "655526f2-a653-41df-8f3c-fc323017d56b",
                 "type": "component"
               },
               {
-                "subject-uuid": "5ed5a61a-4db3-4014-a407-6414cf08914a",
+                "subject-uuid": "69307396-043d-4063-8b07-91662afeaac2",
                 "type": "component"
               },
               {
-                "subject-uuid": "7fc14ee4-c110-4725-9792-02509c557049",
+                "subject-uuid": "d13e7e29-0ef4-4984-a733-780ef4471d8a",
                 "type": "component"
               }
             ],
+            "relevant-evidence": [
+              {
+                "description": "Mapped rules: package_sudo_installed, sshd_disable_root_login, sudo_add_use_pty, sudo_remove_no_authenticate, sudo_require_authentication, sudo_require_reauthentication"
+              }
+            ],
+            "collected": "2026-05-07T16:31:42.080876+00:00"
+          },
+          {
+            "uuid": "02016e39-cf39-47b2-b75d-b5e8134762d6",
+            "title": "Control au-12 assessment outcome",
+            "description": "Control au-12 is partially-satisfied based on 13 passing and 2 failing mapped XCCDF rule evaluations across 5 assessed subjects.",
             "props": [
               {
                 "name": "control-id",
@@ -1208,46 +1174,46 @@
                 "name": "rule-count",
                 "value": "3"
               }
-            ]
-          },
-          {
-            "uuid": "ae5c4a1c-0eb2-4cfc-8fd9-e80e21ae4c32",
-            "title": "Control au-2 assessment outcome",
-            "description": "Control au-2 is satisfied based on 5 passing and 0 failing mapped XCCDF rule evaluations across 5 assessed subjects.",
+            ],
             "methods": [
               "TEST"
             ],
             "types": [
-              "statement"
-            ],
-            "collected": "2026-06-21T15:53:17Z",
-            "relevant-evidence": [
-              {
-                "description": "Mapped rules: sshd_set_loglevel_info"
-              }
+              "finding"
             ],
             "subjects": [
               {
-                "subject-uuid": "e313c9ab-6224-4d72-a471-307499b02289",
+                "subject-uuid": "26085f3f-9ebf-487e-a778-40eabc73e11b",
                 "type": "component"
               },
               {
-                "subject-uuid": "1509c9df-1b35-41d3-b661-ce7b39dd7ff3",
+                "subject-uuid": "2b01bf2d-0d42-4019-a661-8b01d5481c5d",
                 "type": "component"
               },
               {
-                "subject-uuid": "d54bd900-0b34-4aa7-8692-0edfbff56df7",
+                "subject-uuid": "655526f2-a653-41df-8f3c-fc323017d56b",
                 "type": "component"
               },
               {
-                "subject-uuid": "5ed5a61a-4db3-4014-a407-6414cf08914a",
+                "subject-uuid": "69307396-043d-4063-8b07-91662afeaac2",
                 "type": "component"
               },
               {
-                "subject-uuid": "7fc14ee4-c110-4725-9792-02509c557049",
+                "subject-uuid": "d13e7e29-0ef4-4984-a733-780ef4471d8a",
                 "type": "component"
               }
             ],
+            "relevant-evidence": [
+              {
+                "description": "Mapped rules: sshd_set_loglevel_info, sshd_set_max_auth_tries, sudo_custom_logfile"
+              }
+            ],
+            "collected": "2026-05-07T16:31:42.080876+00:00"
+          },
+          {
+            "uuid": "b77236f6-de4d-46fc-bb20-80fdb617f5be",
+            "title": "Control au-2 assessment outcome",
+            "description": "Control au-2 is satisfied based on 5 passing and 0 failing mapped XCCDF rule evaluations across 5 assessed subjects.",
             "props": [
               {
                 "name": "control-id",
@@ -1269,46 +1235,46 @@
                 "name": "rule-count",
                 "value": "1"
               }
-            ]
-          },
-          {
-            "uuid": "02962ea0-b967-4db5-b835-23dbdfd8c68c",
-            "title": "Control au-3 assessment outcome",
-            "description": "Control au-3 is partially-satisfied based on 8 passing and 2 failing mapped XCCDF rule evaluations across 5 assessed subjects.",
+            ],
             "methods": [
               "TEST"
             ],
             "types": [
               "finding"
             ],
-            "collected": "2026-06-21T15:53:17Z",
-            "relevant-evidence": [
-              {
-                "description": "Mapped rules: sshd_set_max_auth_tries, sudo_custom_logfile"
-              }
-            ],
             "subjects": [
               {
-                "subject-uuid": "e313c9ab-6224-4d72-a471-307499b02289",
+                "subject-uuid": "26085f3f-9ebf-487e-a778-40eabc73e11b",
                 "type": "component"
               },
               {
-                "subject-uuid": "1509c9df-1b35-41d3-b661-ce7b39dd7ff3",
+                "subject-uuid": "2b01bf2d-0d42-4019-a661-8b01d5481c5d",
                 "type": "component"
               },
               {
-                "subject-uuid": "d54bd900-0b34-4aa7-8692-0edfbff56df7",
+                "subject-uuid": "655526f2-a653-41df-8f3c-fc323017d56b",
                 "type": "component"
               },
               {
-                "subject-uuid": "5ed5a61a-4db3-4014-a407-6414cf08914a",
+                "subject-uuid": "69307396-043d-4063-8b07-91662afeaac2",
                 "type": "component"
               },
               {
-                "subject-uuid": "7fc14ee4-c110-4725-9792-02509c557049",
+                "subject-uuid": "d13e7e29-0ef4-4984-a733-780ef4471d8a",
                 "type": "component"
               }
             ],
+            "relevant-evidence": [
+              {
+                "description": "Mapped rules: sshd_set_loglevel_info"
+              }
+            ],
+            "collected": "2026-05-07T16:31:42.080876+00:00"
+          },
+          {
+            "uuid": "a8c40dd3-def4-4c4d-b9d0-c33026737123",
+            "title": "Control au-3 assessment outcome",
+            "description": "Control au-3 is partially-satisfied based on 8 passing and 2 failing mapped XCCDF rule evaluations across 5 assessed subjects.",
             "props": [
               {
                 "name": "control-id",
@@ -1330,46 +1296,46 @@
                 "name": "rule-count",
                 "value": "2"
               }
-            ]
-          },
-          {
-            "uuid": "b84f5c91-aeb6-4852-9937-933bcc705308",
-            "title": "Control au-3.1 assessment outcome",
-            "description": "Control au-3.1 is partially-satisfied based on 8 passing and 2 failing mapped XCCDF rule evaluations across 5 assessed subjects.",
+            ],
             "methods": [
               "TEST"
             ],
             "types": [
               "finding"
             ],
-            "collected": "2026-06-21T15:53:17Z",
+            "subjects": [
+              {
+                "subject-uuid": "26085f3f-9ebf-487e-a778-40eabc73e11b",
+                "type": "component"
+              },
+              {
+                "subject-uuid": "2b01bf2d-0d42-4019-a661-8b01d5481c5d",
+                "type": "component"
+              },
+              {
+                "subject-uuid": "655526f2-a653-41df-8f3c-fc323017d56b",
+                "type": "component"
+              },
+              {
+                "subject-uuid": "69307396-043d-4063-8b07-91662afeaac2",
+                "type": "component"
+              },
+              {
+                "subject-uuid": "d13e7e29-0ef4-4984-a733-780ef4471d8a",
+                "type": "component"
+              }
+            ],
             "relevant-evidence": [
               {
                 "description": "Mapped rules: sshd_set_max_auth_tries, sudo_custom_logfile"
               }
             ],
-            "subjects": [
-              {
-                "subject-uuid": "e313c9ab-6224-4d72-a471-307499b02289",
-                "type": "component"
-              },
-              {
-                "subject-uuid": "1509c9df-1b35-41d3-b661-ce7b39dd7ff3",
-                "type": "component"
-              },
-              {
-                "subject-uuid": "d54bd900-0b34-4aa7-8692-0edfbff56df7",
-                "type": "component"
-              },
-              {
-                "subject-uuid": "5ed5a61a-4db3-4014-a407-6414cf08914a",
-                "type": "component"
-              },
-              {
-                "subject-uuid": "7fc14ee4-c110-4725-9792-02509c557049",
-                "type": "component"
-              }
-            ],
+            "collected": "2026-05-07T16:31:42.080876+00:00"
+          },
+          {
+            "uuid": "c4883cef-b4b6-4f64-b078-dd39e79ce36b",
+            "title": "Control au-3.1 assessment outcome",
+            "description": "Control au-3.1 is partially-satisfied based on 8 passing and 2 failing mapped XCCDF rule evaluations across 5 assessed subjects.",
             "props": [
               {
                 "name": "control-id",
@@ -1391,46 +1357,46 @@
                 "name": "rule-count",
                 "value": "2"
               }
-            ]
-          },
-          {
-            "uuid": "110c1df8-43cf-417b-9705-c47cbcc63d8b",
-            "title": "Control au-7 assessment outcome",
-            "description": "Control au-7 is partially-satisfied based on 13 passing and 2 failing mapped XCCDF rule evaluations across 5 assessed subjects.",
+            ],
             "methods": [
               "TEST"
             ],
             "types": [
               "finding"
             ],
-            "collected": "2026-06-21T15:53:17Z",
-            "relevant-evidence": [
-              {
-                "description": "Mapped rules: sshd_set_loglevel_info, sshd_set_max_auth_tries, sudo_custom_logfile"
-              }
-            ],
             "subjects": [
               {
-                "subject-uuid": "e313c9ab-6224-4d72-a471-307499b02289",
+                "subject-uuid": "26085f3f-9ebf-487e-a778-40eabc73e11b",
                 "type": "component"
               },
               {
-                "subject-uuid": "1509c9df-1b35-41d3-b661-ce7b39dd7ff3",
+                "subject-uuid": "2b01bf2d-0d42-4019-a661-8b01d5481c5d",
                 "type": "component"
               },
               {
-                "subject-uuid": "d54bd900-0b34-4aa7-8692-0edfbff56df7",
+                "subject-uuid": "655526f2-a653-41df-8f3c-fc323017d56b",
                 "type": "component"
               },
               {
-                "subject-uuid": "5ed5a61a-4db3-4014-a407-6414cf08914a",
+                "subject-uuid": "69307396-043d-4063-8b07-91662afeaac2",
                 "type": "component"
               },
               {
-                "subject-uuid": "7fc14ee4-c110-4725-9792-02509c557049",
+                "subject-uuid": "d13e7e29-0ef4-4984-a733-780ef4471d8a",
                 "type": "component"
               }
             ],
+            "relevant-evidence": [
+              {
+                "description": "Mapped rules: sshd_set_max_auth_tries, sudo_custom_logfile"
+              }
+            ],
+            "collected": "2026-05-07T16:31:42.080876+00:00"
+          },
+          {
+            "uuid": "d1e4daac-61e0-434e-86cf-40be83732e1e",
+            "title": "Control au-7 assessment outcome",
+            "description": "Control au-7 is partially-satisfied based on 13 passing and 2 failing mapped XCCDF rule evaluations across 5 assessed subjects.",
             "props": [
               {
                 "name": "control-id",
@@ -1452,46 +1418,46 @@
                 "name": "rule-count",
                 "value": "3"
               }
-            ]
-          },
-          {
-            "uuid": "f8385565-990b-459b-849c-af9f1629612e",
-            "title": "Control cm-1 assessment outcome",
-            "description": "Control cm-1 is partially-satisfied based on 4 passing and 1 failing mapped XCCDF rule evaluations across 5 assessed subjects.",
+            ],
             "methods": [
               "TEST"
             ],
             "types": [
               "finding"
             ],
-            "collected": "2026-06-21T15:53:17Z",
-            "relevant-evidence": [
-              {
-                "description": "Mapped rules: accounts_password_warn_age_login_defs"
-              }
-            ],
             "subjects": [
               {
-                "subject-uuid": "e313c9ab-6224-4d72-a471-307499b02289",
+                "subject-uuid": "26085f3f-9ebf-487e-a778-40eabc73e11b",
                 "type": "component"
               },
               {
-                "subject-uuid": "1509c9df-1b35-41d3-b661-ce7b39dd7ff3",
+                "subject-uuid": "2b01bf2d-0d42-4019-a661-8b01d5481c5d",
                 "type": "component"
               },
               {
-                "subject-uuid": "d54bd900-0b34-4aa7-8692-0edfbff56df7",
+                "subject-uuid": "655526f2-a653-41df-8f3c-fc323017d56b",
                 "type": "component"
               },
               {
-                "subject-uuid": "5ed5a61a-4db3-4014-a407-6414cf08914a",
+                "subject-uuid": "69307396-043d-4063-8b07-91662afeaac2",
                 "type": "component"
               },
               {
-                "subject-uuid": "7fc14ee4-c110-4725-9792-02509c557049",
+                "subject-uuid": "d13e7e29-0ef4-4984-a733-780ef4471d8a",
                 "type": "component"
               }
             ],
+            "relevant-evidence": [
+              {
+                "description": "Mapped rules: sshd_set_loglevel_info, sshd_set_max_auth_tries, sudo_custom_logfile"
+              }
+            ],
+            "collected": "2026-05-07T16:31:42.080876+00:00"
+          },
+          {
+            "uuid": "3400ca5a-18a2-4dab-afd0-500863422197",
+            "title": "Control cm-1 assessment outcome",
+            "description": "Control cm-1 is partially-satisfied based on 4 passing and 1 failing mapped XCCDF rule evaluations across 5 assessed subjects.",
             "props": [
               {
                 "name": "control-id",
@@ -1513,46 +1479,46 @@
                 "name": "rule-count",
                 "value": "1"
               }
-            ]
-          },
-          {
-            "uuid": "7891eb4c-ab60-4a5f-8b83-b0eca9a9aef6",
-            "title": "Control cm-2 assessment outcome",
-            "description": "Control cm-2 is partially-satisfied based on 4 passing and 1 failing mapped XCCDF rule evaluations across 5 assessed subjects.",
+            ],
             "methods": [
               "TEST"
             ],
             "types": [
               "finding"
             ],
-            "collected": "2026-06-21T15:53:17Z",
+            "subjects": [
+              {
+                "subject-uuid": "26085f3f-9ebf-487e-a778-40eabc73e11b",
+                "type": "component"
+              },
+              {
+                "subject-uuid": "2b01bf2d-0d42-4019-a661-8b01d5481c5d",
+                "type": "component"
+              },
+              {
+                "subject-uuid": "655526f2-a653-41df-8f3c-fc323017d56b",
+                "type": "component"
+              },
+              {
+                "subject-uuid": "69307396-043d-4063-8b07-91662afeaac2",
+                "type": "component"
+              },
+              {
+                "subject-uuid": "d13e7e29-0ef4-4984-a733-780ef4471d8a",
+                "type": "component"
+              }
+            ],
             "relevant-evidence": [
               {
                 "description": "Mapped rules: accounts_password_warn_age_login_defs"
               }
             ],
-            "subjects": [
-              {
-                "subject-uuid": "e313c9ab-6224-4d72-a471-307499b02289",
-                "type": "component"
-              },
-              {
-                "subject-uuid": "1509c9df-1b35-41d3-b661-ce7b39dd7ff3",
-                "type": "component"
-              },
-              {
-                "subject-uuid": "d54bd900-0b34-4aa7-8692-0edfbff56df7",
-                "type": "component"
-              },
-              {
-                "subject-uuid": "5ed5a61a-4db3-4014-a407-6414cf08914a",
-                "type": "component"
-              },
-              {
-                "subject-uuid": "7fc14ee4-c110-4725-9792-02509c557049",
-                "type": "component"
-              }
-            ],
+            "collected": "2026-05-07T16:31:42.080876+00:00"
+          },
+          {
+            "uuid": "c49843ed-ae6b-4c61-baf4-7387f3637f30",
+            "title": "Control cm-2 assessment outcome",
+            "description": "Control cm-2 is partially-satisfied based on 4 passing and 1 failing mapped XCCDF rule evaluations across 5 assessed subjects.",
             "props": [
               {
                 "name": "control-id",
@@ -1574,46 +1540,46 @@
                 "name": "rule-count",
                 "value": "1"
               }
-            ]
-          },
-          {
-            "uuid": "654978b1-eee1-4b82-81a2-fa43ca166e34",
-            "title": "Control cm-6 assessment outcome",
-            "description": "Control cm-6 is partially-satisfied based on 9 passing and 1 failing mapped XCCDF rule evaluations across 5 assessed subjects.",
+            ],
             "methods": [
               "TEST"
             ],
             "types": [
               "finding"
             ],
-            "collected": "2026-06-21T15:53:17Z",
-            "relevant-evidence": [
-              {
-                "description": "Mapped rules: accounts_password_warn_age_login_defs, sshd_disable_forwarding"
-              }
-            ],
             "subjects": [
               {
-                "subject-uuid": "e313c9ab-6224-4d72-a471-307499b02289",
+                "subject-uuid": "26085f3f-9ebf-487e-a778-40eabc73e11b",
                 "type": "component"
               },
               {
-                "subject-uuid": "1509c9df-1b35-41d3-b661-ce7b39dd7ff3",
+                "subject-uuid": "2b01bf2d-0d42-4019-a661-8b01d5481c5d",
                 "type": "component"
               },
               {
-                "subject-uuid": "d54bd900-0b34-4aa7-8692-0edfbff56df7",
+                "subject-uuid": "655526f2-a653-41df-8f3c-fc323017d56b",
                 "type": "component"
               },
               {
-                "subject-uuid": "5ed5a61a-4db3-4014-a407-6414cf08914a",
+                "subject-uuid": "69307396-043d-4063-8b07-91662afeaac2",
                 "type": "component"
               },
               {
-                "subject-uuid": "7fc14ee4-c110-4725-9792-02509c557049",
+                "subject-uuid": "d13e7e29-0ef4-4984-a733-780ef4471d8a",
                 "type": "component"
               }
             ],
+            "relevant-evidence": [
+              {
+                "description": "Mapped rules: accounts_password_warn_age_login_defs"
+              }
+            ],
+            "collected": "2026-05-07T16:31:42.080876+00:00"
+          },
+          {
+            "uuid": "9357a1f8-abd4-4d41-b69b-f59202282af5",
+            "title": "Control cm-6 assessment outcome",
+            "description": "Control cm-6 is partially-satisfied based on 9 passing and 1 failing mapped XCCDF rule evaluations across 5 assessed subjects.",
             "props": [
               {
                 "name": "control-id",
@@ -1635,46 +1601,46 @@
                 "name": "rule-count",
                 "value": "2"
               }
-            ]
-          },
-          {
-            "uuid": "930ad56e-e41b-4ccc-b7dd-652cdf076e0b",
-            "title": "Control cm-7 assessment outcome",
-            "description": "Control cm-7 is partially-satisfied based on 9 passing and 1 failing mapped XCCDF rule evaluations across 5 assessed subjects.",
+            ],
             "methods": [
               "TEST"
             ],
             "types": [
               "finding"
             ],
-            "collected": "2026-06-21T15:53:17Z",
+            "subjects": [
+              {
+                "subject-uuid": "26085f3f-9ebf-487e-a778-40eabc73e11b",
+                "type": "component"
+              },
+              {
+                "subject-uuid": "2b01bf2d-0d42-4019-a661-8b01d5481c5d",
+                "type": "component"
+              },
+              {
+                "subject-uuid": "655526f2-a653-41df-8f3c-fc323017d56b",
+                "type": "component"
+              },
+              {
+                "subject-uuid": "69307396-043d-4063-8b07-91662afeaac2",
+                "type": "component"
+              },
+              {
+                "subject-uuid": "d13e7e29-0ef4-4984-a733-780ef4471d8a",
+                "type": "component"
+              }
+            ],
             "relevant-evidence": [
               {
                 "description": "Mapped rules: accounts_password_warn_age_login_defs, sshd_disable_forwarding"
               }
             ],
-            "subjects": [
-              {
-                "subject-uuid": "e313c9ab-6224-4d72-a471-307499b02289",
-                "type": "component"
-              },
-              {
-                "subject-uuid": "1509c9df-1b35-41d3-b661-ce7b39dd7ff3",
-                "type": "component"
-              },
-              {
-                "subject-uuid": "d54bd900-0b34-4aa7-8692-0edfbff56df7",
-                "type": "component"
-              },
-              {
-                "subject-uuid": "5ed5a61a-4db3-4014-a407-6414cf08914a",
-                "type": "component"
-              },
-              {
-                "subject-uuid": "7fc14ee4-c110-4725-9792-02509c557049",
-                "type": "component"
-              }
-            ],
+            "collected": "2026-05-07T16:31:42.080876+00:00"
+          },
+          {
+            "uuid": "b5d5f309-4f11-4b3a-b61e-bd418d6dc5b9",
+            "title": "Control cm-7 assessment outcome",
+            "description": "Control cm-7 is partially-satisfied based on 9 passing and 1 failing mapped XCCDF rule evaluations across 5 assessed subjects.",
             "props": [
               {
                 "name": "control-id",
@@ -1696,46 +1662,46 @@
                 "name": "rule-count",
                 "value": "2"
               }
-            ]
-          },
-          {
-            "uuid": "36df2096-7ab9-4888-ab72-3eaa82db3bc3",
-            "title": "Control cm-7.1 assessment outcome",
-            "description": "Control cm-7.1 is partially-satisfied based on 4 passing and 1 failing mapped XCCDF rule evaluations across 5 assessed subjects.",
+            ],
             "methods": [
               "TEST"
             ],
             "types": [
               "finding"
             ],
-            "collected": "2026-06-21T15:53:17Z",
-            "relevant-evidence": [
-              {
-                "description": "Mapped rules: accounts_password_warn_age_login_defs"
-              }
-            ],
             "subjects": [
               {
-                "subject-uuid": "e313c9ab-6224-4d72-a471-307499b02289",
+                "subject-uuid": "26085f3f-9ebf-487e-a778-40eabc73e11b",
                 "type": "component"
               },
               {
-                "subject-uuid": "1509c9df-1b35-41d3-b661-ce7b39dd7ff3",
+                "subject-uuid": "2b01bf2d-0d42-4019-a661-8b01d5481c5d",
                 "type": "component"
               },
               {
-                "subject-uuid": "d54bd900-0b34-4aa7-8692-0edfbff56df7",
+                "subject-uuid": "655526f2-a653-41df-8f3c-fc323017d56b",
                 "type": "component"
               },
               {
-                "subject-uuid": "5ed5a61a-4db3-4014-a407-6414cf08914a",
+                "subject-uuid": "69307396-043d-4063-8b07-91662afeaac2",
                 "type": "component"
               },
               {
-                "subject-uuid": "7fc14ee4-c110-4725-9792-02509c557049",
+                "subject-uuid": "d13e7e29-0ef4-4984-a733-780ef4471d8a",
                 "type": "component"
               }
             ],
+            "relevant-evidence": [
+              {
+                "description": "Mapped rules: accounts_password_warn_age_login_defs, sshd_disable_forwarding"
+              }
+            ],
+            "collected": "2026-05-07T16:31:42.080876+00:00"
+          },
+          {
+            "uuid": "6e86ee70-d0c9-42ce-b2b7-dd23c19cdf59",
+            "title": "Control cm-7.1 assessment outcome",
+            "description": "Control cm-7.1 is partially-satisfied based on 4 passing and 1 failing mapped XCCDF rule evaluations across 5 assessed subjects.",
             "props": [
               {
                 "name": "control-id",
@@ -1757,46 +1723,46 @@
                 "name": "rule-count",
                 "value": "1"
               }
-            ]
-          },
-          {
-            "uuid": "ee2d3b75-1afc-4fce-8872-318f3f464d31",
-            "title": "Control cm-9 assessment outcome",
-            "description": "Control cm-9 is partially-satisfied based on 4 passing and 1 failing mapped XCCDF rule evaluations across 5 assessed subjects.",
+            ],
             "methods": [
               "TEST"
             ],
             "types": [
               "finding"
             ],
-            "collected": "2026-06-21T15:53:17Z",
+            "subjects": [
+              {
+                "subject-uuid": "26085f3f-9ebf-487e-a778-40eabc73e11b",
+                "type": "component"
+              },
+              {
+                "subject-uuid": "2b01bf2d-0d42-4019-a661-8b01d5481c5d",
+                "type": "component"
+              },
+              {
+                "subject-uuid": "655526f2-a653-41df-8f3c-fc323017d56b",
+                "type": "component"
+              },
+              {
+                "subject-uuid": "69307396-043d-4063-8b07-91662afeaac2",
+                "type": "component"
+              },
+              {
+                "subject-uuid": "d13e7e29-0ef4-4984-a733-780ef4471d8a",
+                "type": "component"
+              }
+            ],
             "relevant-evidence": [
               {
                 "description": "Mapped rules: accounts_password_warn_age_login_defs"
               }
             ],
-            "subjects": [
-              {
-                "subject-uuid": "e313c9ab-6224-4d72-a471-307499b02289",
-                "type": "component"
-              },
-              {
-                "subject-uuid": "1509c9df-1b35-41d3-b661-ce7b39dd7ff3",
-                "type": "component"
-              },
-              {
-                "subject-uuid": "d54bd900-0b34-4aa7-8692-0edfbff56df7",
-                "type": "component"
-              },
-              {
-                "subject-uuid": "5ed5a61a-4db3-4014-a407-6414cf08914a",
-                "type": "component"
-              },
-              {
-                "subject-uuid": "7fc14ee4-c110-4725-9792-02509c557049",
-                "type": "component"
-              }
-            ],
+            "collected": "2026-05-07T16:31:42.080876+00:00"
+          },
+          {
+            "uuid": "cb05df18-0349-452d-a1e0-164216108b51",
+            "title": "Control cm-9 assessment outcome",
+            "description": "Control cm-9 is partially-satisfied based on 4 passing and 1 failing mapped XCCDF rule evaluations across 5 assessed subjects.",
             "props": [
               {
                 "name": "control-id",
@@ -1818,46 +1784,46 @@
                 "name": "rule-count",
                 "value": "1"
               }
-            ]
-          },
-          {
-            "uuid": "97b1f053-d9e6-497c-95d7-ab4b771e2aca",
-            "title": "Control ia-5 assessment outcome",
-            "description": "Control ia-5 is satisfied based on 15 passing and 0 failing mapped XCCDF rule evaluations across 5 assessed subjects.",
+            ],
             "methods": [
               "TEST"
             ],
             "types": [
-              "statement"
-            ],
-            "collected": "2026-06-21T15:53:17Z",
-            "relevant-evidence": [
-              {
-                "description": "Mapped rules: sshd_use_strong_ciphers, sshd_use_strong_kex, sshd_use_strong_macs"
-              }
+              "finding"
             ],
             "subjects": [
               {
-                "subject-uuid": "e313c9ab-6224-4d72-a471-307499b02289",
+                "subject-uuid": "26085f3f-9ebf-487e-a778-40eabc73e11b",
                 "type": "component"
               },
               {
-                "subject-uuid": "1509c9df-1b35-41d3-b661-ce7b39dd7ff3",
+                "subject-uuid": "2b01bf2d-0d42-4019-a661-8b01d5481c5d",
                 "type": "component"
               },
               {
-                "subject-uuid": "d54bd900-0b34-4aa7-8692-0edfbff56df7",
+                "subject-uuid": "655526f2-a653-41df-8f3c-fc323017d56b",
                 "type": "component"
               },
               {
-                "subject-uuid": "5ed5a61a-4db3-4014-a407-6414cf08914a",
+                "subject-uuid": "69307396-043d-4063-8b07-91662afeaac2",
                 "type": "component"
               },
               {
-                "subject-uuid": "7fc14ee4-c110-4725-9792-02509c557049",
+                "subject-uuid": "d13e7e29-0ef4-4984-a733-780ef4471d8a",
                 "type": "component"
               }
             ],
+            "relevant-evidence": [
+              {
+                "description": "Mapped rules: accounts_password_warn_age_login_defs"
+              }
+            ],
+            "collected": "2026-05-07T16:31:42.080876+00:00"
+          },
+          {
+            "uuid": "d90430d7-e680-4c0c-82c4-d24bbc29343f",
+            "title": "Control ia-5 assessment outcome",
+            "description": "Control ia-5 is satisfied based on 15 passing and 0 failing mapped XCCDF rule evaluations across 5 assessed subjects.",
             "props": [
               {
                 "name": "control-id",
@@ -1879,46 +1845,46 @@
                 "name": "rule-count",
                 "value": "3"
               }
-            ]
-          },
-          {
-            "uuid": "0cff1f25-9e9d-4970-89db-31276ef2db71",
-            "title": "Control ia-5.1 assessment outcome",
-            "description": "Control ia-5.1 is partially-satisfied based on 147 passing and 28 failing mapped XCCDF rule evaluations across 5 assessed subjects.",
+            ],
             "methods": [
               "TEST"
             ],
             "types": [
               "finding"
             ],
-            "collected": "2026-06-21T15:53:17Z",
-            "relevant-evidence": [
-              {
-                "description": "Mapped rules: account_disable_post_pw_expiration, accounts_maximum_age_login_defs, accounts_minimum_age_login_defs, accounts_password_last_change_is_in_past, accounts_password_pam_dcredit, accounts_password_pam_dictcheck, accounts_password_pam_difok, accounts_password_pam_enforce_root, accounts_password_pam_enforcing, accounts_password_pam_lcredit, accounts_password_pam_maxrepeat, accounts_password_pam_maxsequence"
-              }
-            ],
             "subjects": [
               {
-                "subject-uuid": "e313c9ab-6224-4d72-a471-307499b02289",
+                "subject-uuid": "26085f3f-9ebf-487e-a778-40eabc73e11b",
                 "type": "component"
               },
               {
-                "subject-uuid": "1509c9df-1b35-41d3-b661-ce7b39dd7ff3",
+                "subject-uuid": "2b01bf2d-0d42-4019-a661-8b01d5481c5d",
                 "type": "component"
               },
               {
-                "subject-uuid": "d54bd900-0b34-4aa7-8692-0edfbff56df7",
+                "subject-uuid": "655526f2-a653-41df-8f3c-fc323017d56b",
                 "type": "component"
               },
               {
-                "subject-uuid": "5ed5a61a-4db3-4014-a407-6414cf08914a",
+                "subject-uuid": "69307396-043d-4063-8b07-91662afeaac2",
                 "type": "component"
               },
               {
-                "subject-uuid": "7fc14ee4-c110-4725-9792-02509c557049",
+                "subject-uuid": "d13e7e29-0ef4-4984-a733-780ef4471d8a",
                 "type": "component"
               }
             ],
+            "relevant-evidence": [
+              {
+                "description": "Mapped rules: sshd_use_strong_ciphers, sshd_use_strong_kex, sshd_use_strong_macs"
+              }
+            ],
+            "collected": "2026-05-07T16:31:42.080876+00:00"
+          },
+          {
+            "uuid": "88744d9f-0fad-49a8-bbbf-180d32f4214b",
+            "title": "Control ia-5.1 assessment outcome",
+            "description": "Control ia-5.1 is partially-satisfied based on 147 passing and 28 failing mapped XCCDF rule evaluations across 5 assessed subjects.",
             "props": [
               {
                 "name": "control-id",
@@ -1940,46 +1906,46 @@
                 "name": "rule-count",
                 "value": "35"
               }
-            ]
-          },
-          {
-            "uuid": "07965997-3bf8-4f0f-a942-ba20be65854a",
-            "title": "Control mp-2 assessment outcome",
-            "description": "Control mp-2 is partially-satisfied based on 79 passing and 11 failing mapped XCCDF rule evaluations across 5 assessed subjects.",
+            ],
             "methods": [
               "TEST"
             ],
             "types": [
               "finding"
             ],
-            "collected": "2026-06-21T15:53:17Z",
-            "relevant-evidence": [
-              {
-                "description": "Mapped rules: accounts_password_pam_unix_enabled, accounts_root_gid_zero, accounts_umask_etc_bashrc, accounts_umask_etc_login_defs, accounts_umask_etc_profile, accounts_umask_root, ensure_pam_wheel_group_empty, ensure_root_access_controlled, file_groupowner_sshd_config, file_owner_sshd_config, file_permissions_sshd_config, file_permissions_sshd_private_key"
-              }
-            ],
             "subjects": [
               {
-                "subject-uuid": "e313c9ab-6224-4d72-a471-307499b02289",
+                "subject-uuid": "26085f3f-9ebf-487e-a778-40eabc73e11b",
                 "type": "component"
               },
               {
-                "subject-uuid": "1509c9df-1b35-41d3-b661-ce7b39dd7ff3",
+                "subject-uuid": "2b01bf2d-0d42-4019-a661-8b01d5481c5d",
                 "type": "component"
               },
               {
-                "subject-uuid": "d54bd900-0b34-4aa7-8692-0edfbff56df7",
+                "subject-uuid": "655526f2-a653-41df-8f3c-fc323017d56b",
                 "type": "component"
               },
               {
-                "subject-uuid": "5ed5a61a-4db3-4014-a407-6414cf08914a",
+                "subject-uuid": "69307396-043d-4063-8b07-91662afeaac2",
                 "type": "component"
               },
               {
-                "subject-uuid": "7fc14ee4-c110-4725-9792-02509c557049",
+                "subject-uuid": "d13e7e29-0ef4-4984-a733-780ef4471d8a",
                 "type": "component"
               }
             ],
+            "relevant-evidence": [
+              {
+                "description": "Mapped rules: account_disable_post_pw_expiration, accounts_maximum_age_login_defs, accounts_minimum_age_login_defs, accounts_password_last_change_is_in_past, accounts_password_pam_dcredit, accounts_password_pam_dictcheck, accounts_password_pam_difok, accounts_password_pam_enforce_root, accounts_password_pam_enforcing, accounts_password_pam_lcredit, accounts_password_pam_maxrepeat, accounts_password_pam_maxsequence, accounts_password_pam_minclass, accounts_password_pam_minlen, accounts_password_pam_ocredit, accounts_password_pam_pwhistory_enabled, accounts_password_pam_pwhistory_enforce_root, accounts_password_pam_pwhistory_remember, accounts_password_pam_pwhistory_use_authtok, accounts_password_pam_pwquality_enabled, accounts_password_pam_ucredit, accounts_password_pam_unix_authtok, accounts_password_pam_unix_no_remember, accounts_password_set_max_life_existing, accounts_password_set_min_life_existing, no_empty_passwords_unix, set_password_hashing_algorithm_logindefs, set_password_hashing_algorithm_systemauth, sshd_disable_empty_passwords, sshd_disable_gssapi_auth, sshd_disable_rhosts, sshd_enable_pam, sshd_use_strong_ciphers, sshd_use_strong_kex, sshd_use_strong_macs"
+              }
+            ],
+            "collected": "2026-05-07T16:31:42.080876+00:00"
+          },
+          {
+            "uuid": "fbd11d86-9201-4ef1-b8da-5d3a3cf12936",
+            "title": "Control mp-2 assessment outcome",
+            "description": "Control mp-2 is partially-satisfied based on 79 passing and 11 failing mapped XCCDF rule evaluations across 5 assessed subjects.",
             "props": [
               {
                 "name": "control-id",
@@ -2001,46 +1967,46 @@
                 "name": "rule-count",
                 "value": "18"
               }
-            ]
-          },
-          {
-            "uuid": "90d47f3d-e25f-488f-9fde-ddcf915b29af",
-            "title": "Control sa-10 assessment outcome",
-            "description": "Control sa-10 is partially-satisfied based on 4 passing and 1 failing mapped XCCDF rule evaluations across 5 assessed subjects.",
+            ],
             "methods": [
               "TEST"
             ],
             "types": [
               "finding"
             ],
-            "collected": "2026-06-21T15:53:17Z",
-            "relevant-evidence": [
-              {
-                "description": "Mapped rules: accounts_password_warn_age_login_defs"
-              }
-            ],
             "subjects": [
               {
-                "subject-uuid": "e313c9ab-6224-4d72-a471-307499b02289",
+                "subject-uuid": "26085f3f-9ebf-487e-a778-40eabc73e11b",
                 "type": "component"
               },
               {
-                "subject-uuid": "1509c9df-1b35-41d3-b661-ce7b39dd7ff3",
+                "subject-uuid": "2b01bf2d-0d42-4019-a661-8b01d5481c5d",
                 "type": "component"
               },
               {
-                "subject-uuid": "d54bd900-0b34-4aa7-8692-0edfbff56df7",
+                "subject-uuid": "655526f2-a653-41df-8f3c-fc323017d56b",
                 "type": "component"
               },
               {
-                "subject-uuid": "5ed5a61a-4db3-4014-a407-6414cf08914a",
+                "subject-uuid": "69307396-043d-4063-8b07-91662afeaac2",
                 "type": "component"
               },
               {
-                "subject-uuid": "7fc14ee4-c110-4725-9792-02509c557049",
+                "subject-uuid": "d13e7e29-0ef4-4984-a733-780ef4471d8a",
                 "type": "component"
               }
             ],
+            "relevant-evidence": [
+              {
+                "description": "Mapped rules: accounts_password_pam_unix_enabled, accounts_root_gid_zero, accounts_umask_etc_bashrc, accounts_umask_etc_login_defs, accounts_umask_etc_profile, accounts_umask_root, ensure_pam_wheel_group_empty, ensure_root_access_controlled, file_groupowner_sshd_config, file_owner_sshd_config, file_permissions_sshd_config, file_permissions_sshd_private_key, file_permissions_sshd_pub_key, groups_no_zero_gid_except_root, no_invalid_shell_accounts_unlocked, no_shelllogin_for_systemaccounts, sshd_limit_user_access, use_pam_wheel_group_for_su"
+              }
+            ],
+            "collected": "2026-05-07T16:31:42.080876+00:00"
+          },
+          {
+            "uuid": "d707fa09-9bba-40c9-a085-0751ebfbc497",
+            "title": "Control sa-10 assessment outcome",
+            "description": "Control sa-10 is partially-satisfied based on 4 passing and 1 failing mapped XCCDF rule evaluations across 5 assessed subjects.",
             "props": [
               {
                 "name": "control-id",
@@ -2062,46 +2028,46 @@
                 "name": "rule-count",
                 "value": "1"
               }
-            ]
-          },
-          {
-            "uuid": "3fcd9643-90e9-428f-8aca-d8a391a36bf7",
-            "title": "Control sa-3 assessment outcome",
-            "description": "Control sa-3 is partially-satisfied based on 4 passing and 1 failing mapped XCCDF rule evaluations across 5 assessed subjects.",
+            ],
             "methods": [
               "TEST"
             ],
             "types": [
               "finding"
             ],
-            "collected": "2026-06-21T15:53:17Z",
+            "subjects": [
+              {
+                "subject-uuid": "26085f3f-9ebf-487e-a778-40eabc73e11b",
+                "type": "component"
+              },
+              {
+                "subject-uuid": "2b01bf2d-0d42-4019-a661-8b01d5481c5d",
+                "type": "component"
+              },
+              {
+                "subject-uuid": "655526f2-a653-41df-8f3c-fc323017d56b",
+                "type": "component"
+              },
+              {
+                "subject-uuid": "69307396-043d-4063-8b07-91662afeaac2",
+                "type": "component"
+              },
+              {
+                "subject-uuid": "d13e7e29-0ef4-4984-a733-780ef4471d8a",
+                "type": "component"
+              }
+            ],
             "relevant-evidence": [
               {
                 "description": "Mapped rules: accounts_password_warn_age_login_defs"
               }
             ],
-            "subjects": [
-              {
-                "subject-uuid": "e313c9ab-6224-4d72-a471-307499b02289",
-                "type": "component"
-              },
-              {
-                "subject-uuid": "1509c9df-1b35-41d3-b661-ce7b39dd7ff3",
-                "type": "component"
-              },
-              {
-                "subject-uuid": "d54bd900-0b34-4aa7-8692-0edfbff56df7",
-                "type": "component"
-              },
-              {
-                "subject-uuid": "5ed5a61a-4db3-4014-a407-6414cf08914a",
-                "type": "component"
-              },
-              {
-                "subject-uuid": "7fc14ee4-c110-4725-9792-02509c557049",
-                "type": "component"
-              }
-            ],
+            "collected": "2026-05-07T16:31:42.080876+00:00"
+          },
+          {
+            "uuid": "f10ecbe3-bb30-41c8-a2af-c34655639cec",
+            "title": "Control sa-3 assessment outcome",
+            "description": "Control sa-3 is partially-satisfied based on 4 passing and 1 failing mapped XCCDF rule evaluations across 5 assessed subjects.",
             "props": [
               {
                 "name": "control-id",
@@ -2123,46 +2089,46 @@
                 "name": "rule-count",
                 "value": "1"
               }
-            ]
-          },
-          {
-            "uuid": "e995a7e3-cde9-4567-839a-ee3c55659f15",
-            "title": "Control sa-8 assessment outcome",
-            "description": "Control sa-8 is partially-satisfied based on 4 passing and 1 failing mapped XCCDF rule evaluations across 5 assessed subjects.",
+            ],
             "methods": [
               "TEST"
             ],
             "types": [
               "finding"
             ],
-            "collected": "2026-06-21T15:53:17Z",
+            "subjects": [
+              {
+                "subject-uuid": "26085f3f-9ebf-487e-a778-40eabc73e11b",
+                "type": "component"
+              },
+              {
+                "subject-uuid": "2b01bf2d-0d42-4019-a661-8b01d5481c5d",
+                "type": "component"
+              },
+              {
+                "subject-uuid": "655526f2-a653-41df-8f3c-fc323017d56b",
+                "type": "component"
+              },
+              {
+                "subject-uuid": "69307396-043d-4063-8b07-91662afeaac2",
+                "type": "component"
+              },
+              {
+                "subject-uuid": "d13e7e29-0ef4-4984-a733-780ef4471d8a",
+                "type": "component"
+              }
+            ],
             "relevant-evidence": [
               {
                 "description": "Mapped rules: accounts_password_warn_age_login_defs"
               }
             ],
-            "subjects": [
-              {
-                "subject-uuid": "e313c9ab-6224-4d72-a471-307499b02289",
-                "type": "component"
-              },
-              {
-                "subject-uuid": "1509c9df-1b35-41d3-b661-ce7b39dd7ff3",
-                "type": "component"
-              },
-              {
-                "subject-uuid": "d54bd900-0b34-4aa7-8692-0edfbff56df7",
-                "type": "component"
-              },
-              {
-                "subject-uuid": "5ed5a61a-4db3-4014-a407-6414cf08914a",
-                "type": "component"
-              },
-              {
-                "subject-uuid": "7fc14ee4-c110-4725-9792-02509c557049",
-                "type": "component"
-              }
-            ],
+            "collected": "2026-05-07T16:31:42.080876+00:00"
+          },
+          {
+            "uuid": "e3254383-74a6-4ecf-9a5d-90bdb1b3cb72",
+            "title": "Control sa-8 assessment outcome",
+            "description": "Control sa-8 is partially-satisfied based on 4 passing and 1 failing mapped XCCDF rule evaluations across 5 assessed subjects.",
             "props": [
               {
                 "name": "control-id",
@@ -2184,46 +2150,46 @@
                 "name": "rule-count",
                 "value": "1"
               }
-            ]
-          },
-          {
-            "uuid": "dc2fb79d-d695-440d-ba49-a611c46db3bd",
-            "title": "Control sc-28 assessment outcome",
-            "description": "Control sc-28 is partially-satisfied based on 16 passing and 4 failing mapped XCCDF rule evaluations across 5 assessed subjects.",
+            ],
             "methods": [
               "TEST"
             ],
             "types": [
               "finding"
             ],
-            "collected": "2026-06-21T15:53:17Z",
-            "relevant-evidence": [
-              {
-                "description": "Mapped rules: accounts_password_pam_pwhistory_use_authtok, accounts_password_pam_unix_authtok, set_password_hashing_algorithm_logindefs, set_password_hashing_algorithm_systemauth"
-              }
-            ],
             "subjects": [
               {
-                "subject-uuid": "e313c9ab-6224-4d72-a471-307499b02289",
+                "subject-uuid": "26085f3f-9ebf-487e-a778-40eabc73e11b",
                 "type": "component"
               },
               {
-                "subject-uuid": "1509c9df-1b35-41d3-b661-ce7b39dd7ff3",
+                "subject-uuid": "2b01bf2d-0d42-4019-a661-8b01d5481c5d",
                 "type": "component"
               },
               {
-                "subject-uuid": "d54bd900-0b34-4aa7-8692-0edfbff56df7",
+                "subject-uuid": "655526f2-a653-41df-8f3c-fc323017d56b",
                 "type": "component"
               },
               {
-                "subject-uuid": "5ed5a61a-4db3-4014-a407-6414cf08914a",
+                "subject-uuid": "69307396-043d-4063-8b07-91662afeaac2",
                 "type": "component"
               },
               {
-                "subject-uuid": "7fc14ee4-c110-4725-9792-02509c557049",
+                "subject-uuid": "d13e7e29-0ef4-4984-a733-780ef4471d8a",
                 "type": "component"
               }
             ],
+            "relevant-evidence": [
+              {
+                "description": "Mapped rules: accounts_password_warn_age_login_defs"
+              }
+            ],
+            "collected": "2026-05-07T16:31:42.080876+00:00"
+          },
+          {
+            "uuid": "cfaa1193-ce47-466c-ad7c-5eae061b8574",
+            "title": "Control sc-28 assessment outcome",
+            "description": "Control sc-28 is partially-satisfied based on 16 passing and 4 failing mapped XCCDF rule evaluations across 5 assessed subjects.",
             "props": [
               {
                 "name": "control-id",
@@ -2245,46 +2211,46 @@
                 "name": "rule-count",
                 "value": "4"
               }
-            ]
-          },
-          {
-            "uuid": "a6297544-fc0b-49c6-9871-3a6a0d263165",
-            "title": "Control sc-28.1 assessment outcome",
-            "description": "Control sc-28.1 is partially-satisfied based on 16 passing and 4 failing mapped XCCDF rule evaluations across 5 assessed subjects.",
+            ],
             "methods": [
               "TEST"
             ],
             "types": [
               "finding"
             ],
-            "collected": "2026-06-21T15:53:17Z",
+            "subjects": [
+              {
+                "subject-uuid": "26085f3f-9ebf-487e-a778-40eabc73e11b",
+                "type": "component"
+              },
+              {
+                "subject-uuid": "2b01bf2d-0d42-4019-a661-8b01d5481c5d",
+                "type": "component"
+              },
+              {
+                "subject-uuid": "655526f2-a653-41df-8f3c-fc323017d56b",
+                "type": "component"
+              },
+              {
+                "subject-uuid": "69307396-043d-4063-8b07-91662afeaac2",
+                "type": "component"
+              },
+              {
+                "subject-uuid": "d13e7e29-0ef4-4984-a733-780ef4471d8a",
+                "type": "component"
+              }
+            ],
             "relevant-evidence": [
               {
                 "description": "Mapped rules: accounts_password_pam_pwhistory_use_authtok, accounts_password_pam_unix_authtok, set_password_hashing_algorithm_logindefs, set_password_hashing_algorithm_systemauth"
               }
             ],
-            "subjects": [
-              {
-                "subject-uuid": "e313c9ab-6224-4d72-a471-307499b02289",
-                "type": "component"
-              },
-              {
-                "subject-uuid": "1509c9df-1b35-41d3-b661-ce7b39dd7ff3",
-                "type": "component"
-              },
-              {
-                "subject-uuid": "d54bd900-0b34-4aa7-8692-0edfbff56df7",
-                "type": "component"
-              },
-              {
-                "subject-uuid": "5ed5a61a-4db3-4014-a407-6414cf08914a",
-                "type": "component"
-              },
-              {
-                "subject-uuid": "7fc14ee4-c110-4725-9792-02509c557049",
-                "type": "component"
-              }
-            ],
+            "collected": "2026-05-07T16:31:42.080876+00:00"
+          },
+          {
+            "uuid": "2f034569-a9b2-485f-9a29-3880cb3193cf",
+            "title": "Control sc-28.1 assessment outcome",
+            "description": "Control sc-28.1 is partially-satisfied based on 16 passing and 4 failing mapped XCCDF rule evaluations across 5 assessed subjects.",
             "props": [
               {
                 "name": "control-id",
@@ -2306,46 +2272,46 @@
                 "name": "rule-count",
                 "value": "4"
               }
-            ]
-          },
-          {
-            "uuid": "bb4cb6a8-539b-460e-8c7f-05f41682c18c",
-            "title": "Control sc-8 assessment outcome",
-            "description": "Control sc-8 is satisfied based on 15 passing and 0 failing mapped XCCDF rule evaluations across 5 assessed subjects.",
+            ],
             "methods": [
               "TEST"
             ],
             "types": [
-              "statement"
-            ],
-            "collected": "2026-06-21T15:53:17Z",
-            "relevant-evidence": [
-              {
-                "description": "Mapped rules: sshd_use_strong_ciphers, sshd_use_strong_kex, sshd_use_strong_macs"
-              }
+              "finding"
             ],
             "subjects": [
               {
-                "subject-uuid": "e313c9ab-6224-4d72-a471-307499b02289",
+                "subject-uuid": "26085f3f-9ebf-487e-a778-40eabc73e11b",
                 "type": "component"
               },
               {
-                "subject-uuid": "1509c9df-1b35-41d3-b661-ce7b39dd7ff3",
+                "subject-uuid": "2b01bf2d-0d42-4019-a661-8b01d5481c5d",
                 "type": "component"
               },
               {
-                "subject-uuid": "d54bd900-0b34-4aa7-8692-0edfbff56df7",
+                "subject-uuid": "655526f2-a653-41df-8f3c-fc323017d56b",
                 "type": "component"
               },
               {
-                "subject-uuid": "5ed5a61a-4db3-4014-a407-6414cf08914a",
+                "subject-uuid": "69307396-043d-4063-8b07-91662afeaac2",
                 "type": "component"
               },
               {
-                "subject-uuid": "7fc14ee4-c110-4725-9792-02509c557049",
+                "subject-uuid": "d13e7e29-0ef4-4984-a733-780ef4471d8a",
                 "type": "component"
               }
             ],
+            "relevant-evidence": [
+              {
+                "description": "Mapped rules: accounts_password_pam_pwhistory_use_authtok, accounts_password_pam_unix_authtok, set_password_hashing_algorithm_logindefs, set_password_hashing_algorithm_systemauth"
+              }
+            ],
+            "collected": "2026-05-07T16:31:42.080876+00:00"
+          },
+          {
+            "uuid": "34c35304-14ab-44e3-b4ee-a76171451911",
+            "title": "Control sc-8 assessment outcome",
+            "description": "Control sc-8 is satisfied based on 15 passing and 0 failing mapped XCCDF rule evaluations across 5 assessed subjects.",
             "props": [
               {
                 "name": "control-id",
@@ -2367,46 +2333,46 @@
                 "name": "rule-count",
                 "value": "3"
               }
-            ]
-          },
-          {
-            "uuid": "25214143-af28-44ec-9b0f-d8ad0a97099a",
-            "title": "Control sc-8.1 assessment outcome",
-            "description": "Control sc-8.1 is satisfied based on 15 passing and 0 failing mapped XCCDF rule evaluations across 5 assessed subjects.",
+            ],
             "methods": [
               "TEST"
             ],
             "types": [
-              "statement"
+              "finding"
             ],
-            "collected": "2026-06-21T15:53:17Z",
+            "subjects": [
+              {
+                "subject-uuid": "26085f3f-9ebf-487e-a778-40eabc73e11b",
+                "type": "component"
+              },
+              {
+                "subject-uuid": "2b01bf2d-0d42-4019-a661-8b01d5481c5d",
+                "type": "component"
+              },
+              {
+                "subject-uuid": "655526f2-a653-41df-8f3c-fc323017d56b",
+                "type": "component"
+              },
+              {
+                "subject-uuid": "69307396-043d-4063-8b07-91662afeaac2",
+                "type": "component"
+              },
+              {
+                "subject-uuid": "d13e7e29-0ef4-4984-a733-780ef4471d8a",
+                "type": "component"
+              }
+            ],
             "relevant-evidence": [
               {
                 "description": "Mapped rules: sshd_use_strong_ciphers, sshd_use_strong_kex, sshd_use_strong_macs"
               }
             ],
-            "subjects": [
-              {
-                "subject-uuid": "e313c9ab-6224-4d72-a471-307499b02289",
-                "type": "component"
-              },
-              {
-                "subject-uuid": "1509c9df-1b35-41d3-b661-ce7b39dd7ff3",
-                "type": "component"
-              },
-              {
-                "subject-uuid": "d54bd900-0b34-4aa7-8692-0edfbff56df7",
-                "type": "component"
-              },
-              {
-                "subject-uuid": "5ed5a61a-4db3-4014-a407-6414cf08914a",
-                "type": "component"
-              },
-              {
-                "subject-uuid": "7fc14ee4-c110-4725-9792-02509c557049",
-                "type": "component"
-              }
-            ],
+            "collected": "2026-05-07T16:31:42.080876+00:00"
+          },
+          {
+            "uuid": "3f851c98-0f6e-4749-9c2f-66210831ce8c",
+            "title": "Control sc-8.1 assessment outcome",
+            "description": "Control sc-8.1 is satisfied based on 15 passing and 0 failing mapped XCCDF rule evaluations across 5 assessed subjects.",
             "props": [
               {
                 "name": "control-id",
@@ -2428,187 +2394,45 @@
                 "name": "rule-count",
                 "value": "3"
               }
-            ]
+            ],
+            "methods": [
+              "TEST"
+            ],
+            "types": [
+              "finding"
+            ],
+            "subjects": [
+              {
+                "subject-uuid": "26085f3f-9ebf-487e-a778-40eabc73e11b",
+                "type": "component"
+              },
+              {
+                "subject-uuid": "2b01bf2d-0d42-4019-a661-8b01d5481c5d",
+                "type": "component"
+              },
+              {
+                "subject-uuid": "655526f2-a653-41df-8f3c-fc323017d56b",
+                "type": "component"
+              },
+              {
+                "subject-uuid": "69307396-043d-4063-8b07-91662afeaac2",
+                "type": "component"
+              },
+              {
+                "subject-uuid": "d13e7e29-0ef4-4984-a733-780ef4471d8a",
+                "type": "component"
+              }
+            ],
+            "relevant-evidence": [
+              {
+                "description": "Mapped rules: sshd_use_strong_ciphers, sshd_use_strong_kex, sshd_use_strong_macs"
+              }
+            ],
+            "collected": "2026-05-07T16:31:42.080876+00:00"
           }
         ],
-        "risks": [
-          {
-            "uuid": "7d27b91f-70a8-4489-896a-7fd26efcbca9",
-            "title": "Open findings for ac-1",
-            "description": "Failed mapped XCCDF rules for ac-1: accounts_passwords_pam_faillock_deny, accounts_passwords_pam_faillock_enabled, accounts_passwords_pam_faillock_root_unlock_time, accounts_passwords_pam_faillock_unlock_time",
-            "statement": "ac-1 retains unresolved technical findings based on mapped XCCDF evidence.",
-            "status": "open"
-          },
-          {
-            "uuid": "c7abe122-dfb9-463d-9c3e-9cc060ec6a97",
-            "title": "Open findings for ac-11",
-            "description": "Failed mapped XCCDF rules for ac-11: accounts_tmout",
-            "statement": "ac-11 retains unresolved technical findings based on mapped XCCDF evidence.",
-            "status": "open"
-          },
-          {
-            "uuid": "e59fe114-6b0c-4f03-bfb6-13a23b0f7302",
-            "title": "Open findings for ac-11.1",
-            "description": "Failed mapped XCCDF rules for ac-11.1: accounts_tmout",
-            "statement": "ac-11.1 retains unresolved technical findings based on mapped XCCDF evidence.",
-            "status": "open"
-          },
-          {
-            "uuid": "7a69568e-42ae-4ae2-b712-bcaca56a47a8",
-            "title": "Open findings for ac-12",
-            "description": "Failed mapped XCCDF rules for ac-12: accounts_tmout",
-            "statement": "ac-12 retains unresolved technical findings based on mapped XCCDF evidence.",
-            "status": "open"
-          },
-          {
-            "uuid": "c6295e85-653b-4f2c-8b06-82f8a2836996",
-            "title": "Open findings for ac-2",
-            "description": "Failed mapped XCCDF rules for ac-2: accounts_passwords_pam_faillock_deny, accounts_passwords_pam_faillock_enabled, accounts_passwords_pam_faillock_root_unlock_time, accounts_passwords_pam_faillock_unlock_time",
-            "statement": "ac-2 retains unresolved technical findings based on mapped XCCDF evidence.",
-            "status": "open"
-          },
-          {
-            "uuid": "1e75f6be-8de5-4b91-9f5d-a094a64e979a",
-            "title": "Open findings for ac-2.1",
-            "description": "Failed mapped XCCDF rules for ac-2.1: accounts_passwords_pam_faillock_deny, accounts_passwords_pam_faillock_enabled, accounts_passwords_pam_faillock_root_unlock_time, accounts_passwords_pam_faillock_unlock_time",
-            "statement": "ac-2.1 retains unresolved technical findings based on mapped XCCDF evidence.",
-            "status": "open"
-          },
-          {
-            "uuid": "1d31c1ce-954b-4499-8817-47baed87d7da",
-            "title": "Open findings for ac-2.5",
-            "description": "Failed mapped XCCDF rules for ac-2.5: accounts_tmout",
-            "statement": "ac-2.5 retains unresolved technical findings based on mapped XCCDF evidence.",
-            "status": "open"
-          },
-          {
-            "uuid": "e09fa025-3455-4a5d-8cbf-94b12f5776cc",
-            "title": "Open findings for ac-3",
-            "description": "Failed mapped XCCDF rules for ac-3: accounts_password_pam_unix_enabled, accounts_umask_etc_profile, file_owner_sshd_config, file_permissions_sshd_config, file_permissions_sshd_private_key, file_permissions_sshd_pub_key, groups_no_zero_gid_except_root, sshd_limit_user_access",
-            "statement": "ac-3 retains unresolved technical findings based on mapped XCCDF evidence.",
-            "status": "open"
-          },
-          {
-            "uuid": "c0cbca60-c17d-4a72-b6cc-7a78832a65a5",
-            "title": "Open findings for ac-5",
-            "description": "Failed mapped XCCDF rules for ac-5: accounts_password_pam_unix_enabled, accounts_umask_etc_profile, file_owner_sshd_config, file_permissions_sshd_config, file_permissions_sshd_private_key, file_permissions_sshd_pub_key, groups_no_zero_gid_except_root, sshd_limit_user_access",
-            "statement": "ac-5 retains unresolved technical findings based on mapped XCCDF evidence.",
-            "status": "open"
-          },
-          {
-            "uuid": "b11bb3fc-ccd5-4fe5-ba26-4fef862bdfa5",
-            "title": "Open findings for ac-6",
-            "description": "Failed mapped XCCDF rules for ac-6: accounts_password_pam_unix_enabled, accounts_umask_etc_profile, file_owner_sshd_config, file_permissions_sshd_config, file_permissions_sshd_private_key, file_permissions_sshd_pub_key, groups_no_zero_gid_except_root, sshd_limit_user_access",
-            "statement": "ac-6 retains unresolved technical findings based on mapped XCCDF evidence.",
-            "status": "open"
-          },
-          {
-            "uuid": "b9ffd5de-ae4c-4cd7-925e-c7230df8ada7",
-            "title": "Open findings for ac-6.2",
-            "description": "Failed mapped XCCDF rules for ac-6.2: sudo_add_use_pty, sudo_remove_no_authenticate, sudo_require_authentication",
-            "statement": "ac-6.2 retains unresolved technical findings based on mapped XCCDF evidence.",
-            "status": "open"
-          },
-          {
-            "uuid": "00f2112a-93ca-4a09-8a6d-4643f41c68a3",
-            "title": "Open findings for ac-6.5",
-            "description": "Failed mapped XCCDF rules for ac-6.5: sudo_add_use_pty, sudo_remove_no_authenticate, sudo_require_authentication",
-            "statement": "ac-6.5 retains unresolved technical findings based on mapped XCCDF evidence.",
-            "status": "open"
-          },
-          {
-            "uuid": "9d93c5c9-3930-49af-91ea-6766f59adb06",
-            "title": "Open findings for au-12",
-            "description": "Failed mapped XCCDF rules for au-12: sshd_set_max_auth_tries",
-            "statement": "au-12 retains unresolved technical findings based on mapped XCCDF evidence.",
-            "status": "open"
-          },
-          {
-            "uuid": "06c1a23e-cdfe-49c7-9983-d39f5e68b9c2",
-            "title": "Open findings for au-3",
-            "description": "Failed mapped XCCDF rules for au-3: sshd_set_max_auth_tries",
-            "statement": "au-3 retains unresolved technical findings based on mapped XCCDF evidence.",
-            "status": "open"
-          },
-          {
-            "uuid": "29b279d6-3e18-4ccc-8402-79da23d5330c",
-            "title": "Open findings for au-3.1",
-            "description": "Failed mapped XCCDF rules for au-3.1: sshd_set_max_auth_tries",
-            "statement": "au-3.1 retains unresolved technical findings based on mapped XCCDF evidence.",
-            "status": "open"
-          },
-          {
-            "uuid": "7baa27e7-f5ec-45aa-a2c9-74f681c1869c",
-            "title": "Open findings for au-7",
-            "description": "Failed mapped XCCDF rules for au-7: sshd_set_max_auth_tries",
-            "statement": "au-7 retains unresolved technical findings based on mapped XCCDF evidence.",
-            "status": "open"
-          },
-          {
-            "uuid": "723fcf4c-2fb4-4061-ac10-69f40f70f9e8",
-            "title": "Open findings for cm-1",
-            "description": "Failed mapped XCCDF rules for cm-1: accounts_password_warn_age_login_defs",
-            "statement": "cm-1 retains unresolved technical findings based on mapped XCCDF evidence.",
-            "status": "open"
-          },
-          {
-            "uuid": "ac346c38-991b-43af-b38a-b09fd02fe9c8",
-            "title": "Open findings for cm-2",
-            "description": "Failed mapped XCCDF rules for cm-2: accounts_password_warn_age_login_defs",
-            "statement": "cm-2 retains unresolved technical findings based on mapped XCCDF evidence.",
-            "status": "open"
-          },
-          {
-            "uuid": "d95125a5-83b1-482a-80ac-a45624fd8ab1",
-            "title": "Open findings for cm-6",
-            "description": "Failed mapped XCCDF rules for cm-6: accounts_password_warn_age_login_defs",
-            "statement": "cm-6 retains unresolved technical findings based on mapped XCCDF evidence.",
-            "status": "open"
-          },
-          {
-            "uuid": "7df84137-5683-4d77-a365-dabdccbfa943",
-            "title": "Open findings for cm-7",
-            "description": "Failed mapped XCCDF rules for cm-7: accounts_password_warn_age_login_defs",
-            "statement": "cm-7 retains unresolved technical findings based on mapped XCCDF evidence.",
-            "status": "open"
-          },
-          {
-            "uuid": "e6588e13-ae3c-4510-b6de-a8b9b547ce23",
-            "title": "Open findings for cm-7.1",
-            "description": "Failed mapped XCCDF rules for cm-7.1: accounts_password_warn_age_login_defs",
-            "statement": "cm-7.1 retains unresolved technical findings based on mapped XCCDF evidence.",
-            "status": "open"
-          },
-          {
-            "uuid": "847dc12b-b2ef-4789-85f1-f7a0a76013ae",
-            "title": "Open findings for cm-9",
-            "description": "Failed mapped XCCDF rules for cm-9: accounts_password_warn_age_login_defs",
-            "statement": "cm-9 retains unresolved technical findings based on mapped XCCDF evidence.",
-            "status": "open"
-          },
-          {
-            "uuid": "9007e0c1-b503-40f6-bf7e-16e89dcdf75c",
-            "title": "Open findings for ia-5.1",
-            "description": "Failed mapped XCCDF rules for ia-5.1: account_disable_post_pw_expiration, accounts_maximum_age_login_defs, accounts_minimum_age_login_defs, accounts_password_last_change_is_in_past, accounts_password_pam_dcredit, accounts_password_pam_dictcheck, accounts_password_pam_maxrepeat, accounts_password_pam_maxsequence, accounts_password_pam_minclass, accounts_password_pam_minlen, accounts_password_pam_pwhistory_remember, accounts_password_pam_pwquality_enabled",
-            "statement": "ia-5.1 retains unresolved technical findings based on mapped XCCDF evidence.",
-            "status": "open"
-          },
-          {
-            "uuid": "befc7d82-282f-4566-8160-c5bdb655c62f",
-            "title": "Open findings for mp-2",
-            "description": "Failed mapped XCCDF rules for mp-2: accounts_password_pam_unix_enabled, accounts_umask_etc_profile, file_owner_sshd_config, file_permissions_sshd_config, file_permissions_sshd_private_key, file_permissions_sshd_pub_key, groups_no_zero_gid_except_root, sshd_limit_user_access",
-            "statement": "mp-2 retains unresolved technical findings based on mapped XCCDF evidence.",
-            "status": "open"
-          },
-          {
-            "uuid": "1e5d49a2-af78-4b1f-b7af-4f6fcec71b18",
-            "title": "Open findings for sa-10",
-            "description": "Failed mapped XCCDF rules for sa-10: accounts_password_warn_age_login_defs",
-            "statement": "sa-10 retains unresolved technical findings based on mapped XCCDF evidence.",
-            "status": "open"
-          }
-        ],
-        "remarks": "Referenced SSP: ../system-security-plans/Ubuntu-System-ssp-fedramp-high/system-security-plan.json"
+        "risks": [],
+        "remarks": "Assessment results generated from XCCDF scan data for 5 servers with 34 controls evaluated."
       }
     ]
   }

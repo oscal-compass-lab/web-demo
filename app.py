@@ -1,3 +1,17 @@
+# Copyright (c) 2026 The OSCAL Compass Authors. All rights reserved.
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     https://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
 """
 OSCAL Compliance Demo - Flask Web Application
 Reads OSCAL documents from trestle workspace using compliance-trestle
@@ -9,7 +23,6 @@ import json
 from pathlib import Path
 from datetime import datetime
 from trestle_api import TrestleAPI
-from trestle_helpers import catalog_to_dict, profile_to_dict, component_to_dict, ssp_to_dict, resolve_regulation_reference, assessment_results_to_dict
 
 app = Flask(__name__, template_folder='app-config/templates', static_folder='app-config/static')
 
@@ -27,31 +40,19 @@ def get_profiles():
 
 def load_catalog(catalog_name):
     """Load a specific catalog using trestle API"""
-    catalog_obj = trestle_api.load_catalog(catalog_name)
-    if catalog_obj:
-        return catalog_to_dict(catalog_obj)
-    return None
+    return trestle_api.load_catalog_dict(catalog_name)
 
 def load_profile(profile_name):
     """Load a specific profile using trestle API"""
-    profile_obj = trestle_api.load_profile(profile_name)
-    if profile_obj:
-        return profile_to_dict(profile_obj)
+    return trestle_api.load_profile_dict(profile_name)
 
 def load_component(component_name):
     """Load a specific component definition using trestle API"""
-    comp_obj = trestle_api.load_component(component_name)
-    if comp_obj:
-        return component_to_dict(comp_obj)
-    return None
+    return trestle_api.load_component_dict(component_name)
 
 def load_ssp(ssp_name):
     """Load a specific SSP using trestle API"""
-    ssp_obj = trestle_api.load_ssp(ssp_name)
-    if ssp_obj:
-        return ssp_to_dict(ssp_obj)
-    return None
-    return None
+    return trestle_api.load_ssp_dict(ssp_name)
 
 def get_components():
     """Get list of available component definitions using trestle API"""
@@ -264,8 +265,8 @@ def index():
             </div>
             
             <div class="footer">
-                <p><strong>OSCAL Compliance Demo</strong> | <a href="/health">Health Check</a> | <a href="/api/all">API: All Documents</a></p>
-                <p><a href="https://pages.nist.gov/OSCAL/">OSCAL Documentation</a> | <a href="https://ibm.github.io/compliance-trestle/">Trestle Docs</a> | <a href="https://github.com/oscal-compass">OSCAL Compass</a></p>
+                <p><strong>OSCAL Compliance Demo</strong></p>
+                <p><a href="https://pages.nist.gov/OSCAL/">OSCAL Documentation</a> | <a href="https://oscal-compass.github.io/compliance-trestle/">Trestle Docs</a> | <a href="https://github.com/oscal-compass">OSCAL Compass</a></p>
             </div>
         </div>
     </body>
@@ -1191,11 +1192,9 @@ def profile_resolved(profile_name):
 @app.route('/component/<component_name>')
 def component(component_name):
     """View specific component definition with control implementations"""
-    comp_obj = trestle_api.load_component(component_name)
-    if not comp_obj:
+    data = trestle_api.load_component_dict(component_name)
+    if not data:
         return f"Component definition '{component_name}' not found", 404
-    
-    data = component_to_dict(comp_obj)
     
     comp_data = data.get('component-definition', {})
     metadata = comp_data.get('metadata', {})
@@ -1203,9 +1202,8 @@ def component(component_name):
     
     # Load software component to get rule-to-control mapping for validation components
     rule_to_controls_map = {}
-    software_comp_obj = trestle_api.load_component('Ubuntu_Linux_24_04_LTS')
-    if software_comp_obj:
-        software_data = component_to_dict(software_comp_obj)
+    software_data = trestle_api.load_component_dict('Ubuntu_Linux_24_04_LTS')
+    if software_data:
         software_comps = software_data.get('component-definition', {}).get('components', [])
         for sw_comp in software_comps:
             for ctrl_impl in sw_comp.get('control-implementations', []):
@@ -1484,11 +1482,9 @@ def component(component_name):
 @app.route('/ssp/<ssp_name>')
 def ssp(ssp_name):
     """View specific SSP with control implementations"""
-    ssp_obj = trestle_api.load_ssp(ssp_name)
-    if not ssp_obj:
+    data = trestle_api.load_ssp_dict(ssp_name)
+    if not data:
         return f"SSP '{ssp_name}' not found", 404
-    
-    data = ssp_to_dict(ssp_obj)
     
     ssp_data = data.get('system-security-plan', {})
     metadata = ssp_data.get('metadata', {})
@@ -1498,9 +1494,8 @@ def ssp(ssp_name):
     
     import_profile = ssp_data.get('import-profile', {})
     regulation_href = import_profile.get('href', 'N/A')
-    regulation_info = resolve_regulation_reference(
-        regulation_href if regulation_href != 'N/A' else None,
-        trestle_api
+    regulation_info = trestle_api.resolve_regulation_reference(
+        regulation_href if regulation_href != 'N/A' else None
     )
     regulation = regulation_info.get('label', 'N/A')
     
@@ -1721,26 +1716,19 @@ def ssp(ssp_name):
 @app.route('/assessment-plan/<plan_name>')
 def assessment_plan(plan_name):
     """View specific assessment plan"""
-    from trestle_helpers import assessment_plan_to_dict
-    
-    plan_obj = trestle_api.load_assessment_plan(plan_name)
-    if not plan_obj:
+    data = trestle_api.load_assessment_plan_dict(plan_name)
+    if not data:
         return f"Assessment plan '{plan_name}' not found", 404
     
-    data = assessment_plan_to_dict(plan_obj)
-    return render_template('assessment_plan.html', plan_name=plan_name, data=data)
+    return render_template('assessment_plan.html', plan_name=plan_name, data=data.get('assessment-plan', {}))
 
 @app.route('/assessment-results/<results_name>')
 def assessment_results_view(results_name):
     """View specific assessment results"""
-    results_file = trestle_api.assessment_results_dir / results_name / 'assessment-results.json'
-    if not results_file.exists():
+    data = trestle_api.load_assessment_results_view(results_name)
+    if not data:
         return f"Assessment results '{results_name}' not found", 404
     
-    with open(results_file, 'r') as f:
-        raw_data = json.load(f)
-    
-    data = assessment_results_to_dict(raw_data)
     return render_template('assessment_results.html', results_name=results_name, data=data)
 
 @app.route('/poam/<poam_name>')
@@ -1797,8 +1785,9 @@ def mapping(mapping_name):
     if not mapping_file.exists():
         return f"Mapping '{mapping_name}' not found", 404
     
-    with open(mapping_file, 'r') as f:
-        data = json.load(f)
+    data = trestle_api.load_mapping_dict(mapping_name)
+    if not data:
+        return f"Mapping '{mapping_name}' could not be loaded", 500
     
     mapping_collection = data.get('mapping-collection', {})
     metadata = mapping_collection.get('metadata', {})
@@ -1873,24 +1862,18 @@ def mapping(mapping_name):
 @app.route('/api/mapping/<mapping_name>')
 def api_mapping(mapping_name):
     """Get mapping collection JSON"""
-    mapping_file = trestle_api.mappings_dir / mapping_name / 'mapping-collection.json'
-    if not mapping_file.exists():
+    data = trestle_api.load_mapping_dict(mapping_name)
+    if not data:
         return jsonify({'error': f"Mapping '{mapping_name}' not found"}), 404
-    
-    with open(mapping_file, 'r') as f:
-        data = json.load(f)
     
     return jsonify(data)
 
 @app.route('/api/assessment-results/<results_name>')
 def api_assessment_results(results_name):
     """Get assessment results JSON"""
-    results_file = trestle_api.assessment_results_dir / results_name / 'assessment-results.json'
-    if not results_file.exists():
+    data = trestle_api.load_assessment_results_dict(results_name)
+    if not data:
         return jsonify({'error': f"Assessment results '{results_name}' not found"}), 404
-    
-    with open(results_file, 'r') as f:
-        data = json.load(f)
     
     return jsonify(data)
 
