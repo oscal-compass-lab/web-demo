@@ -360,7 +360,7 @@ def index():
                 <p><strong>📊 Visual Dashboard:</strong> View all compliance status charts in one place showing control compliance across regulatory frameworks.</p>
                 <p><strong>Available Charts:</strong> FedRAMP (Low, Moderate, High), DORA, and Cross-Regulation Comparison</p>
                 <p style="text-align: center; margin-top: 15px;">
-                    <a href="/charts" style="display: inline-block; padding: 12px 24px; background: #667eea; color: white; text-decoration: none; border-radius: 6px; font-weight: bold; font-size: 1.1em;">📈 View All Charts</a>
+                    <a href="/charts" style="display: inline-block; padding: 12px 24px; background: #667eea; color: white; text-decoration: none; border-radius: 6px; font-weight: bold; font-size: 1.1em;">📈 View Assessment Charts</a>
                 </p>
             </div>
             

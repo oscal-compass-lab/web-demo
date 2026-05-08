@@ -22,6 +22,7 @@ from pathlib import Path
 import json
 import re
 from typing import Dict, List, Tuple
+import numpy as np
 import matplotlib
 matplotlib.use('Agg')  # Use non-interactive backend
 import matplotlib.pyplot as plt
@@ -188,10 +189,22 @@ def create_regulation_summary_chart(stats: Dict, output_file: Path):
             textprops={'fontsize': 11}
         )
         
-        for autotext in autotexts:
+        # Adjust percentage text positions based on label type
+        for i, (autotext, label) in enumerate(zip(autotexts, labels)):
             autotext.set_color('white')
             autotext.set_fontweight('bold')
             autotext.set_fontsize(13)
+            
+            # Get current position
+            x, y = autotext.get_position()
+            
+            # Adjust distance from center based on label type
+            if 'Satisfied' in label and 'Not' not in label and 'Partially' not in label:
+                # "Satisfied" - move 12.5% closer to center
+                autotext.set_position((x * 0.875, y * 0.875))
+            elif 'Not Satisfied' in label:
+                # "Not Satisfied" - move 12.5% farther from center
+                autotext.set_position((x * 1.125, y * 1.125))
         
         ax1.set_title(f"Control Status Distribution\n({summary['total_controls']} controls)", 
                      fontsize=13, fontweight='bold', pad=15)
@@ -315,6 +328,22 @@ def create_cross_regulation_comparison(all_stats: List[Dict], output_file: Path)
     if not all_stats:
         return
     
+    # Sort regulations in desired order: Low, Moderate, High, DORA
+    def sort_key(stat):
+        reg = stat['regulation'].lower()
+        if 'low' in reg:
+            return 0
+        elif 'moderate' in reg:
+            return 1
+        elif 'high' in reg:
+            return 2
+        elif 'dora' in reg:
+            return 3
+        else:
+            return 4
+    
+    all_stats = sorted(all_stats, key=sort_key)
+    
     # Create figure
     fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(16, 6))
     
@@ -368,7 +397,7 @@ def create_cross_regulation_comparison(all_stats: List[Dict], output_file: Path)
     # Set y-axis limit to leave room for legend at top
     max_controls = max(total_controls)
     ax1.set_ylim(0, max_controls * 1.2)  # 20% headroom
-    ax1.legend(fontsize=10, loc='upper right', framealpha=0.95)
+    ax1.legend(fontsize=10, loc='upper left', framealpha=0.95)
     ax1.grid(axis='y', alpha=0.3, linestyle='--')
     
     # Right chart: Pass/Fail by Regulation (Average per system)

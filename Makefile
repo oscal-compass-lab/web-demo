@@ -41,7 +41,9 @@ create-catalogs: venv ws
 			cp -r $$catalog $(TRESTLE_WORKSPACE)/catalogs/; \
 		fi; \
 	done
-	@echo "✅ Catalogs copied"
+	@echo "Updating OSCAL versions in catalogs..."
+	@. $(VENV_DIR)/bin/activate && python3 update_oscal_version.py
+	@echo "✅ Catalogs copied and updated"
 
 create-profiles: venv ws create-catalogs
 	@echo "Copying profiles from source-data to trestle workspace..."
@@ -53,7 +55,9 @@ create-profiles: venv ws create-catalogs
 			cp -r $$profile $(TRESTLE_WORKSPACE)/profiles/; \
 		fi; \
 	done
-	@echo "✅ Profiles copied"
+	@echo "Updating OSCAL versions in profiles..."
+	@. $(VENV_DIR)/bin/activate && python3 update_oscal_version.py
+	@echo "✅ Profiles copied and updated"
 
 create-resolve: venv ws create-profiles
 	@cd $(TRESTLE_WORKSPACE) && \
@@ -84,10 +88,12 @@ create-compdefs: venv ws
 			cp -r $$compdef $(TRESTLE_WORKSPACE)/component-definitions/; \
 		fi; \
 	done
+	@echo "Updating OSCAL versions in component definitions..."
+	@. $(VENV_DIR)/bin/activate && python3 update_oscal_version.py
 	@echo "Enhancing component definitions with FedRAMP Moderate/High controls..."
 	@. $(VENV_DIR)/bin/activate && \
 		COMP_DEF_DIR=$(TRESTLE_WORKSPACE)/component-definitions python3 update_component_definitions.py
-	@echo "✅ Component definitions copied and enhanced"
+	@echo "✅ Component definitions copied, updated, and enhanced"
 
 # Clean targets (in reverse order of creation)
 clean-catalogs:

@@ -27,6 +27,7 @@ import trestle.oscal.component as component_module
 import trestle.oscal.ssp as ssp_module
 import trestle.oscal.mapping as mapping_module
 import trestle.oscal.assessment_results as assessment_results_module
+from trestle.oscal.common import OSCAL_VERSION
 from trestle.common.model_utils import ModelUtils
 
 
@@ -778,5 +779,88 @@ class TrestleAPI:
         if mapping_obj:
             return mapping_obj.oscal_dict()
         return None
+    
+    def update_oscal_version(self, file_path: Path, target_version: str = OSCAL_VERSION) -> bool:
+        """
+        Update OSCAL version in a specific OSCAL JSON file.
+        
+        Args:
+            file_path: Path to the OSCAL JSON file
+            target_version: Target OSCAL version (default: trestle's OSCAL_VERSION)
+        
+        Returns:
+            True if successful, False otherwise
+        """
+        if not file_path.exists():
+            print(f"Error: File not found: {file_path}")
+            return False
+        
+        try:
+            # Determine document type from filename
+            filename = file_path.name
+            
+            if filename == 'catalog.json':
+                catalog = catalog_module.Catalog.oscal_read(file_path)
+                if catalog and catalog.metadata:
+                    old_version = catalog.metadata.oscal_version
+                    if old_version != target_version:
+                        catalog.metadata.oscal_version = target_version
+                        catalog.oscal_write(file_path)
+                        print(f"✓ Updated {file_path}: {old_version} -> {target_version}")
+                        return True
+                    else:
+                        print(f"  {file_path}: already {target_version}")
+                        return True
+                return False
+            
+            elif filename == 'profile.json':
+                profile = profile_module.Profile.oscal_read(file_path)
+                if profile and profile.metadata:
+                    old_version = profile.metadata.oscal_version
+                    if old_version != target_version:
+                        profile.metadata.oscal_version = target_version
+                        profile.oscal_write(file_path)
+                        print(f"✓ Updated {file_path}: {old_version} -> {target_version}")
+                        return True
+                    else:
+                        print(f"  {file_path}: already {target_version}")
+                        return True
+                return False
+            
+            elif filename == 'component-definition.json':
+                component = component_module.ComponentDefinition.oscal_read(file_path)
+                if component and component.metadata:
+                    old_version = component.metadata.oscal_version
+                    if old_version != target_version:
+                        component.metadata.oscal_version = target_version
+                        component.oscal_write(file_path)
+                        print(f"✓ Updated {file_path}: {old_version} -> {target_version}")
+                        return True
+                    else:
+                        print(f"  {file_path}: already {target_version}")
+                        return True
+                return False
+            
+            elif filename == 'mapping-collection.json':
+                mapping = mapping_module.MappingCollection.oscal_read(file_path)
+                if mapping and mapping.metadata:
+                    old_version = mapping.metadata.oscal_version
+                    if old_version != target_version:
+                        mapping.metadata.oscal_version = target_version
+                        mapping.oscal_write(file_path)
+                        print(f"✓ Updated {file_path}: {old_version} -> {target_version}")
+                        return True
+                    else:
+                        print(f"  {file_path}: already {target_version}")
+                        return True
+                return False
+            
+            else:
+                print(f"Warning: Unknown OSCAL document type: {filename}")
+                return False
+        
+        except Exception as e:
+            print(f"Error updating {file_path}: {e}")
+            return False
 
 # Made with Bob

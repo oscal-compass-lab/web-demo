@@ -55,6 +55,14 @@ print("Creating XCCDF result files for Ubuntu servers...\n")
 
 base_time = datetime.now()
 
+# Force certain rules to always fail to create exactly 2 "not-satisfied" controls
+# au-2 has 1 unique rule: sshd_set_loglevel_info
+# au-3 has 2 rules, one unique: sudo_custom_logfile
+ALWAYS_FAIL_RULES = [
+    'sshd_set_loglevel_info',  # au-2 control (1 control affected)
+    'sudo_custom_logfile'       # au-3 control (1 control affected)
+]
+
 for server in servers:
     filename = results_dir / f"{server['name']}-xccdf-results.xml"
     
@@ -66,6 +74,11 @@ for server in servers:
     # Randomly assign pass/fail to rules
     results = ['pass'] * num_pass + ['fail'] * num_fail
     random.shuffle(results)
+    
+    # Force specific rules to always fail (creates not-satisfied controls)
+    for i, rule_id in enumerate(rules):
+        if rule_id in ALWAYS_FAIL_RULES:
+            results[i] = 'fail'
     
     # Assign random severity to each rule
     severities = ['high', 'medium', 'low']

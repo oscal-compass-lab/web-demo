@@ -333,7 +333,14 @@ def create_assessment_results(plan_name: str, xccdf_dir: Path) -> bool:
         else:
             adjusted_pass = cr['pass_count']
             adjusted_fail = cr['fail_count']
-            status = 'satisfied' if cr['fail_count'] == 0 else 'partially-satisfied'
+            
+            # Determine status: not-satisfied if ALL failures (no passes)
+            if adjusted_pass == 0 and adjusted_fail > 0:
+                status = 'not-satisfied'
+            elif adjusted_fail == 0:
+                status = 'satisfied'
+            else:
+                status = 'partially-satisfied'
             coverage_note = ""
         
         reviewed_controls_list.append({
@@ -357,8 +364,17 @@ def create_assessment_results(plan_name: str, xccdf_dir: Path) -> bool:
         else:
             adjusted_pass = cr['pass_count']
             adjusted_fail = cr['fail_count']
-            status = 'satisfied' if cr['fail_count'] == 0 else 'partially-satisfied'
-            coverage_desc = ""
+            
+            # Determine status: not-satisfied if ALL failures (no passes)
+            if adjusted_pass == 0 and adjusted_fail > 0:
+                status = 'not-satisfied'
+                coverage_desc = " (all rule evaluations failed)"
+            elif adjusted_fail == 0:
+                status = 'satisfied'
+                coverage_desc = ""
+            else:
+                status = 'partially-satisfied'
+                coverage_desc = ""
         
         rules_list = ', '.join(sorted(cr['rules']))
         

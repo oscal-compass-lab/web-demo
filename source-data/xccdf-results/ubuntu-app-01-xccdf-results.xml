@@ -21,8 +21,8 @@
   </Profile>
   
   <TestResult id="xccdf_org.open-scap_testresult_xccdf_org.ssgproject.content_profile_fedramp_moderate"
-              start-time="2026-05-07T17:27:40.302451"
-              end-time="2026-05-07T17:34:40.302451"
+              start-time="2026-05-07T21:26:50.445030"
+              end-time="2026-05-07T21:31:50.445030"
               version="1.2"
               test-system="cpe:/a:open-scap:openscap:1.3.9">
     
@@ -49,1050 +49,1051 @@
     <score system="urn:xccdf:scoring:default" maximum="100.000000">75.0</score>
     
     <rule-result idref="xccdf_org.ssgproject.content_rule_accounts_password_pam_unix_enabled"
-                 time="2026-05-07T17:27:46.302451"
+                 time="2026-05-07T21:27:00.445030"
                  severity="low"
                  weight="1.000000">
       <result>fail</result>
-      <ident system="https://nvd.nist.gov/cce/index.cfm">CCE-86591-3</ident>
+      <ident system="https://nvd.nist.gov/cce/index.cfm">CCE-81071-3</ident>
       <check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
-        <check-content-ref name="oval:ssg:def:347" href="ssg-ubuntu2404-oval.xml"/>
+        <check-content-ref name="oval:ssg:def:745" href="ssg-ubuntu2404-oval.xml"/>
       </check>
       <message severity="error">Check failed: accounts_password_pam_unix_enabled</message>
     </rule-result>
     
     <rule-result idref="xccdf_org.ssgproject.content_rule_accounts_root_gid_zero"
-                 time="2026-05-07T17:27:51.302451"
-                 severity="medium"
-                 weight="1.000000">
-      <result>fail</result>
-      <ident system="https://nvd.nist.gov/cce/index.cfm">CCE-80073-4</ident>
-      <check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
-        <check-content-ref name="oval:ssg:def:116" href="ssg-ubuntu2404-oval.xml"/>
-      </check>
-      <message severity="error">Check failed: accounts_root_gid_zero</message>
-    </rule-result>
-    
-    <rule-result idref="xccdf_org.ssgproject.content_rule_accounts_umask_etc_bashrc"
-                 time="2026-05-07T17:27:59.302451"
+                 time="2026-05-07T21:27:13.445030"
                  severity="high"
                  weight="1.000000">
       <result>pass</result>
-      <ident system="https://nvd.nist.gov/cce/index.cfm">CCE-88097-3</ident>
+      <ident system="https://nvd.nist.gov/cce/index.cfm">CCE-80818-5</ident>
       <check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
-        <check-content-ref name="oval:ssg:def:310" href="ssg-ubuntu2404-oval.xml"/>
+        <check-content-ref name="oval:ssg:def:995" href="ssg-ubuntu2404-oval.xml"/>
+      </check>
+    </rule-result>
+    
+    <rule-result idref="xccdf_org.ssgproject.content_rule_accounts_umask_etc_bashrc"
+                 time="2026-05-07T21:27:22.445030"
+                 severity="low"
+                 weight="1.000000">
+      <result>pass</result>
+      <ident system="https://nvd.nist.gov/cce/index.cfm">CCE-83117-6</ident>
+      <check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
+        <check-content-ref name="oval:ssg:def:109" href="ssg-ubuntu2404-oval.xml"/>
       </check>
     </rule-result>
     
     <rule-result idref="xccdf_org.ssgproject.content_rule_accounts_umask_etc_login_defs"
-                 time="2026-05-07T17:28:09.302451"
-                 severity="medium"
+                 time="2026-05-07T21:27:34.445030"
+                 severity="high"
                  weight="1.000000">
       <result>pass</result>
-      <ident system="https://nvd.nist.gov/cce/index.cfm">CCE-81020-9</ident>
+      <ident system="https://nvd.nist.gov/cce/index.cfm">CCE-89742-8</ident>
       <check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
-        <check-content-ref name="oval:ssg:def:632" href="ssg-ubuntu2404-oval.xml"/>
+        <check-content-ref name="oval:ssg:def:625" href="ssg-ubuntu2404-oval.xml"/>
       </check>
     </rule-result>
     
     <rule-result idref="xccdf_org.ssgproject.content_rule_accounts_umask_etc_profile"
-                 time="2026-05-07T17:28:20.302451"
-                 severity="low"
+                 time="2026-05-07T21:27:48.445030"
+                 severity="medium"
                  weight="1.000000">
       <result>pass</result>
-      <ident system="https://nvd.nist.gov/cce/index.cfm">CCE-82657-4</ident>
+      <ident system="https://nvd.nist.gov/cce/index.cfm">CCE-83368-2</ident>
       <check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
-        <check-content-ref name="oval:ssg:def:674" href="ssg-ubuntu2404-oval.xml"/>
+        <check-content-ref name="oval:ssg:def:844" href="ssg-ubuntu2404-oval.xml"/>
       </check>
     </rule-result>
     
     <rule-result idref="xccdf_org.ssgproject.content_rule_accounts_umask_root"
-                 time="2026-05-07T17:28:30.302451"
-                 severity="medium"
+                 time="2026-05-07T21:28:02.445030"
+                 severity="low"
                  weight="1.000000">
       <result>pass</result>
-      <ident system="https://nvd.nist.gov/cce/index.cfm">CCE-87792-3</ident>
+      <ident system="https://nvd.nist.gov/cce/index.cfm">CCE-86358-2</ident>
       <check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
-        <check-content-ref name="oval:ssg:def:382" href="ssg-ubuntu2404-oval.xml"/>
+        <check-content-ref name="oval:ssg:def:729" href="ssg-ubuntu2404-oval.xml"/>
       </check>
     </rule-result>
     
     <rule-result idref="xccdf_org.ssgproject.content_rule_ensure_pam_wheel_group_empty"
-                 time="2026-05-07T17:28:39.302451"
-                 severity="medium"
+                 time="2026-05-07T21:28:15.445030"
+                 severity="high"
                  weight="1.000000">
       <result>fail</result>
-      <ident system="https://nvd.nist.gov/cce/index.cfm">CCE-80533-7</ident>
+      <ident system="https://nvd.nist.gov/cce/index.cfm">CCE-86990-2</ident>
       <check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
-        <check-content-ref name="oval:ssg:def:741" href="ssg-ubuntu2404-oval.xml"/>
+        <check-content-ref name="oval:ssg:def:992" href="ssg-ubuntu2404-oval.xml"/>
       </check>
       <message severity="error">Check failed: ensure_pam_wheel_group_empty</message>
     </rule-result>
     
     <rule-result idref="xccdf_org.ssgproject.content_rule_ensure_root_access_controlled"
-                 time="2026-05-07T17:28:46.302451"
-                 severity="high"
+                 time="2026-05-07T21:28:24.445030"
+                 severity="low"
                  weight="1.000000">
-      <result>fail</result>
-      <ident system="https://nvd.nist.gov/cce/index.cfm">CCE-81164-7</ident>
+      <result>pass</result>
+      <ident system="https://nvd.nist.gov/cce/index.cfm">CCE-86603-6</ident>
       <check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
-        <check-content-ref name="oval:ssg:def:943" href="ssg-ubuntu2404-oval.xml"/>
+        <check-content-ref name="oval:ssg:def:760" href="ssg-ubuntu2404-oval.xml"/>
       </check>
-      <message severity="error">Check failed: ensure_root_access_controlled</message>
     </rule-result>
     
     <rule-result idref="xccdf_org.ssgproject.content_rule_file_groupowner_sshd_config"
-                 time="2026-05-07T17:28:54.302451"
+                 time="2026-05-07T21:28:30.445030"
                  severity="high"
                  weight="1.000000">
       <result>pass</result>
-      <ident system="https://nvd.nist.gov/cce/index.cfm">CCE-86550-6</ident>
+      <ident system="https://nvd.nist.gov/cce/index.cfm">CCE-85141-0</ident>
       <check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
-        <check-content-ref name="oval:ssg:def:313" href="ssg-ubuntu2404-oval.xml"/>
+        <check-content-ref name="oval:ssg:def:622" href="ssg-ubuntu2404-oval.xml"/>
       </check>
     </rule-result>
     
     <rule-result idref="xccdf_org.ssgproject.content_rule_file_owner_sshd_config"
-                 time="2026-05-07T17:29:06.302451"
-                 severity="high"
+                 time="2026-05-07T21:28:36.445030"
+                 severity="low"
                  weight="1.000000">
-      <result>pass</result>
-      <ident system="https://nvd.nist.gov/cce/index.cfm">CCE-81495-4</ident>
+      <result>fail</result>
+      <ident system="https://nvd.nist.gov/cce/index.cfm">CCE-84177-8</ident>
       <check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
-        <check-content-ref name="oval:ssg:def:487" href="ssg-ubuntu2404-oval.xml"/>
+        <check-content-ref name="oval:ssg:def:777" href="ssg-ubuntu2404-oval.xml"/>
       </check>
+      <message severity="error">Check failed: file_owner_sshd_config</message>
     </rule-result>
     
     <rule-result idref="xccdf_org.ssgproject.content_rule_file_permissions_sshd_config"
-                 time="2026-05-07T17:29:19.302451"
-                 severity="high"
+                 time="2026-05-07T21:28:47.445030"
+                 severity="medium"
                  weight="1.000000">
       <result>pass</result>
-      <ident system="https://nvd.nist.gov/cce/index.cfm">CCE-82098-4</ident>
+      <ident system="https://nvd.nist.gov/cce/index.cfm">CCE-83983-2</ident>
       <check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
-        <check-content-ref name="oval:ssg:def:162" href="ssg-ubuntu2404-oval.xml"/>
+        <check-content-ref name="oval:ssg:def:709" href="ssg-ubuntu2404-oval.xml"/>
       </check>
     </rule-result>
     
     <rule-result idref="xccdf_org.ssgproject.content_rule_file_permissions_sshd_private_key"
-                 time="2026-05-07T17:29:25.302451"
+                 time="2026-05-07T21:28:57.445030"
                  severity="low"
                  weight="1.000000">
-      <result>fail</result>
-      <ident system="https://nvd.nist.gov/cce/index.cfm">CCE-81709-3</ident>
+      <result>pass</result>
+      <ident system="https://nvd.nist.gov/cce/index.cfm">CCE-85124-3</ident>
       <check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
-        <check-content-ref name="oval:ssg:def:709" href="ssg-ubuntu2404-oval.xml"/>
+        <check-content-ref name="oval:ssg:def:430" href="ssg-ubuntu2404-oval.xml"/>
       </check>
-      <message severity="error">Check failed: file_permissions_sshd_private_key</message>
     </rule-result>
     
     <rule-result idref="xccdf_org.ssgproject.content_rule_file_permissions_sshd_pub_key"
-                 time="2026-05-07T17:29:35.302451"
-                 severity="low"
+                 time="2026-05-07T21:29:12.445030"
+                 severity="medium"
                  weight="1.000000">
-      <result>pass</result>
-      <ident system="https://nvd.nist.gov/cce/index.cfm">CCE-87097-0</ident>
+      <result>fail</result>
+      <ident system="https://nvd.nist.gov/cce/index.cfm">CCE-89018-5</ident>
       <check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
-        <check-content-ref name="oval:ssg:def:780" href="ssg-ubuntu2404-oval.xml"/>
+        <check-content-ref name="oval:ssg:def:481" href="ssg-ubuntu2404-oval.xml"/>
       </check>
+      <message severity="error">Check failed: file_permissions_sshd_pub_key</message>
     </rule-result>
     
     <rule-result idref="xccdf_org.ssgproject.content_rule_groups_no_zero_gid_except_root"
-                 time="2026-05-07T17:29:46.302451"
+                 time="2026-05-07T21:29:24.445030"
                  severity="high"
                  weight="1.000000">
       <result>pass</result>
-      <ident system="https://nvd.nist.gov/cce/index.cfm">CCE-86779-3</ident>
+      <ident system="https://nvd.nist.gov/cce/index.cfm">CCE-81428-8</ident>
       <check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
-        <check-content-ref name="oval:ssg:def:922" href="ssg-ubuntu2404-oval.xml"/>
+        <check-content-ref name="oval:ssg:def:865" href="ssg-ubuntu2404-oval.xml"/>
       </check>
     </rule-result>
     
     <rule-result idref="xccdf_org.ssgproject.content_rule_no_invalid_shell_accounts_unlocked"
-                 time="2026-05-07T17:29:56.302451"
-                 severity="low"
+                 time="2026-05-07T21:29:31.445030"
+                 severity="high"
                  weight="1.000000">
       <result>pass</result>
-      <ident system="https://nvd.nist.gov/cce/index.cfm">CCE-83640-4</ident>
+      <ident system="https://nvd.nist.gov/cce/index.cfm">CCE-83809-8</ident>
       <check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
-        <check-content-ref name="oval:ssg:def:196" href="ssg-ubuntu2404-oval.xml"/>
+        <check-content-ref name="oval:ssg:def:591" href="ssg-ubuntu2404-oval.xml"/>
       </check>
     </rule-result>
     
     <rule-result idref="xccdf_org.ssgproject.content_rule_no_shelllogin_for_systemaccounts"
-                 time="2026-05-07T17:30:11.302451"
+                 time="2026-05-07T21:29:44.445030"
                  severity="high"
                  weight="1.000000">
       <result>pass</result>
-      <ident system="https://nvd.nist.gov/cce/index.cfm">CCE-81000-2</ident>
+      <ident system="https://nvd.nist.gov/cce/index.cfm">CCE-81009-0</ident>
       <check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
-        <check-content-ref name="oval:ssg:def:980" href="ssg-ubuntu2404-oval.xml"/>
+        <check-content-ref name="oval:ssg:def:147" href="ssg-ubuntu2404-oval.xml"/>
       </check>
     </rule-result>
     
     <rule-result idref="xccdf_org.ssgproject.content_rule_sshd_limit_user_access"
-                 time="2026-05-07T17:30:20.302451"
+                 time="2026-05-07T21:29:52.445030"
                  severity="medium"
                  weight="1.000000">
       <result>fail</result>
-      <ident system="https://nvd.nist.gov/cce/index.cfm">CCE-83832-0</ident>
+      <ident system="https://nvd.nist.gov/cce/index.cfm">CCE-85751-7</ident>
       <check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
-        <check-content-ref name="oval:ssg:def:680" href="ssg-ubuntu2404-oval.xml"/>
+        <check-content-ref name="oval:ssg:def:119" href="ssg-ubuntu2404-oval.xml"/>
       </check>
       <message severity="error">Check failed: sshd_limit_user_access</message>
     </rule-result>
     
     <rule-result idref="xccdf_org.ssgproject.content_rule_use_pam_wheel_group_for_su"
-                 time="2026-05-07T17:30:28.302451"
-                 severity="high"
+                 time="2026-05-07T21:30:01.445030"
+                 severity="medium"
                  weight="1.000000">
       <result>pass</result>
-      <ident system="https://nvd.nist.gov/cce/index.cfm">CCE-82614-7</ident>
+      <ident system="https://nvd.nist.gov/cce/index.cfm">CCE-88859-2</ident>
       <check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
-        <check-content-ref name="oval:ssg:def:358" href="ssg-ubuntu2404-oval.xml"/>
+        <check-content-ref name="oval:ssg:def:419" href="ssg-ubuntu2404-oval.xml"/>
       </check>
     </rule-result>
     
     <rule-result idref="xccdf_org.ssgproject.content_rule_sshd_use_strong_ciphers"
-                 time="2026-05-07T17:30:36.302451"
-                 severity="high"
+                 time="2026-05-07T21:30:10.445030"
+                 severity="low"
                  weight="1.000000">
       <result>pass</result>
-      <ident system="https://nvd.nist.gov/cce/index.cfm">CCE-83718-5</ident>
+      <ident system="https://nvd.nist.gov/cce/index.cfm">CCE-87575-0</ident>
       <check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
-        <check-content-ref name="oval:ssg:def:381" href="ssg-ubuntu2404-oval.xml"/>
+        <check-content-ref name="oval:ssg:def:877" href="ssg-ubuntu2404-oval.xml"/>
       </check>
     </rule-result>
     
     <rule-result idref="xccdf_org.ssgproject.content_rule_sshd_use_strong_kex"
-                 time="2026-05-07T17:30:51.302451"
-                 severity="high"
+                 time="2026-05-07T21:30:21.445030"
+                 severity="medium"
                  weight="1.000000">
       <result>pass</result>
-      <ident system="https://nvd.nist.gov/cce/index.cfm">CCE-88642-6</ident>
+      <ident system="https://nvd.nist.gov/cce/index.cfm">CCE-88846-3</ident>
       <check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
-        <check-content-ref name="oval:ssg:def:846" href="ssg-ubuntu2404-oval.xml"/>
+        <check-content-ref name="oval:ssg:def:953" href="ssg-ubuntu2404-oval.xml"/>
       </check>
     </rule-result>
     
     <rule-result idref="xccdf_org.ssgproject.content_rule_sshd_use_strong_macs"
-                 time="2026-05-07T17:31:01.302451"
-                 severity="high"
+                 time="2026-05-07T21:30:31.445030"
+                 severity="low"
                  weight="1.000000">
       <result>pass</result>
-      <ident system="https://nvd.nist.gov/cce/index.cfm">CCE-84296-5</ident>
+      <ident system="https://nvd.nist.gov/cce/index.cfm">CCE-81371-9</ident>
       <check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
-        <check-content-ref name="oval:ssg:def:562" href="ssg-ubuntu2404-oval.xml"/>
+        <check-content-ref name="oval:ssg:def:239" href="ssg-ubuntu2404-oval.xml"/>
       </check>
     </rule-result>
     
     <rule-result idref="xccdf_org.ssgproject.content_rule_accounts_password_pam_pwhistory_use_authtok"
-                 time="2026-05-07T17:31:13.302451"
-                 severity="low"
-                 weight="1.000000">
-      <result>fail</result>
-      <ident system="https://nvd.nist.gov/cce/index.cfm">CCE-85512-8</ident>
-      <check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
-        <check-content-ref name="oval:ssg:def:625" href="ssg-ubuntu2404-oval.xml"/>
-      </check>
-      <message severity="error">Check failed: accounts_password_pam_pwhistory_use_authtok</message>
-    </rule-result>
-    
-    <rule-result idref="xccdf_org.ssgproject.content_rule_accounts_password_pam_unix_authtok"
-                 time="2026-05-07T17:31:21.302451"
+                 time="2026-05-07T21:30:41.445030"
                  severity="medium"
                  weight="1.000000">
       <result>pass</result>
-      <ident system="https://nvd.nist.gov/cce/index.cfm">CCE-85050-4</ident>
+      <ident system="https://nvd.nist.gov/cce/index.cfm">CCE-84665-3</ident>
       <check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
-        <check-content-ref name="oval:ssg:def:373" href="ssg-ubuntu2404-oval.xml"/>
+        <check-content-ref name="oval:ssg:def:938" href="ssg-ubuntu2404-oval.xml"/>
       </check>
+    </rule-result>
+    
+    <rule-result idref="xccdf_org.ssgproject.content_rule_accounts_password_pam_unix_authtok"
+                 time="2026-05-07T21:30:52.445030"
+                 severity="medium"
+                 weight="1.000000">
+      <result>fail</result>
+      <ident system="https://nvd.nist.gov/cce/index.cfm">CCE-83311-4</ident>
+      <check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
+        <check-content-ref name="oval:ssg:def:495" href="ssg-ubuntu2404-oval.xml"/>
+      </check>
+      <message severity="error">Check failed: accounts_password_pam_unix_authtok</message>
     </rule-result>
     
     <rule-result idref="xccdf_org.ssgproject.content_rule_set_password_hashing_algorithm_logindefs"
-                 time="2026-05-07T17:31:28.302451"
-                 severity="low"
+                 time="2026-05-07T21:31:01.445030"
+                 severity="high"
                  weight="1.000000">
-      <result>pass</result>
-      <ident system="https://nvd.nist.gov/cce/index.cfm">CCE-82127-1</ident>
+      <result>fail</result>
+      <ident system="https://nvd.nist.gov/cce/index.cfm">CCE-88403-8</ident>
       <check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
-        <check-content-ref name="oval:ssg:def:459" href="ssg-ubuntu2404-oval.xml"/>
+        <check-content-ref name="oval:ssg:def:479" href="ssg-ubuntu2404-oval.xml"/>
       </check>
+      <message severity="error">Check failed: set_password_hashing_algorithm_logindefs</message>
     </rule-result>
     
     <rule-result idref="xccdf_org.ssgproject.content_rule_set_password_hashing_algorithm_systemauth"
-                 time="2026-05-07T17:31:38.302451"
-                 severity="high"
+                 time="2026-05-07T21:31:15.445030"
+                 severity="medium"
                  weight="1.000000">
       <result>pass</result>
-      <ident system="https://nvd.nist.gov/cce/index.cfm">CCE-83091-1</ident>
+      <ident system="https://nvd.nist.gov/cce/index.cfm">CCE-89523-9</ident>
       <check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
-        <check-content-ref name="oval:ssg:def:588" href="ssg-ubuntu2404-oval.xml"/>
+        <check-content-ref name="oval:ssg:def:335" href="ssg-ubuntu2404-oval.xml"/>
       </check>
     </rule-result>
     
     <rule-result idref="xccdf_org.ssgproject.content_rule_account_disable_post_pw_expiration"
-                 time="2026-05-07T17:31:45.302451"
+                 time="2026-05-07T21:31:22.445030"
                  severity="high"
                  weight="1.000000">
       <result>fail</result>
-      <ident system="https://nvd.nist.gov/cce/index.cfm">CCE-80249-7</ident>
+      <ident system="https://nvd.nist.gov/cce/index.cfm">CCE-83065-9</ident>
       <check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
-        <check-content-ref name="oval:ssg:def:513" href="ssg-ubuntu2404-oval.xml"/>
+        <check-content-ref name="oval:ssg:def:866" href="ssg-ubuntu2404-oval.xml"/>
       </check>
       <message severity="error">Check failed: account_disable_post_pw_expiration</message>
     </rule-result>
     
     <rule-result idref="xccdf_org.ssgproject.content_rule_accounts_maximum_age_login_defs"
-                 time="2026-05-07T17:31:59.302451"
-                 severity="low"
-                 weight="1.000000">
-      <result>fail</result>
-      <ident system="https://nvd.nist.gov/cce/index.cfm">CCE-83588-2</ident>
-      <check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
-        <check-content-ref name="oval:ssg:def:977" href="ssg-ubuntu2404-oval.xml"/>
-      </check>
-      <message severity="error">Check failed: accounts_maximum_age_login_defs</message>
-    </rule-result>
-    
-    <rule-result idref="xccdf_org.ssgproject.content_rule_accounts_minimum_age_login_defs"
-                 time="2026-05-07T17:32:05.302451"
+                 time="2026-05-07T21:31:28.445030"
                  severity="medium"
                  weight="1.000000">
       <result>pass</result>
-      <ident system="https://nvd.nist.gov/cce/index.cfm">CCE-87212-7</ident>
+      <ident system="https://nvd.nist.gov/cce/index.cfm">CCE-80408-4</ident>
       <check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
-        <check-content-ref name="oval:ssg:def:508" href="ssg-ubuntu2404-oval.xml"/>
+        <check-content-ref name="oval:ssg:def:607" href="ssg-ubuntu2404-oval.xml"/>
+      </check>
+    </rule-result>
+    
+    <rule-result idref="xccdf_org.ssgproject.content_rule_accounts_minimum_age_login_defs"
+                 time="2026-05-07T21:31:35.445030"
+                 severity="low"
+                 weight="1.000000">
+      <result>pass</result>
+      <ident system="https://nvd.nist.gov/cce/index.cfm">CCE-81204-3</ident>
+      <check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
+        <check-content-ref name="oval:ssg:def:950" href="ssg-ubuntu2404-oval.xml"/>
       </check>
     </rule-result>
     
     <rule-result idref="xccdf_org.ssgproject.content_rule_accounts_password_last_change_is_in_past"
-                 time="2026-05-07T17:32:18.302451"
-                 severity="medium"
+                 time="2026-05-07T21:31:41.445030"
+                 severity="high"
                  weight="1.000000">
       <result>pass</result>
-      <ident system="https://nvd.nist.gov/cce/index.cfm">CCE-89447-1</ident>
+      <ident system="https://nvd.nist.gov/cce/index.cfm">CCE-87309-9</ident>
       <check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
-        <check-content-ref name="oval:ssg:def:188" href="ssg-ubuntu2404-oval.xml"/>
+        <check-content-ref name="oval:ssg:def:337" href="ssg-ubuntu2404-oval.xml"/>
       </check>
     </rule-result>
     
     <rule-result idref="xccdf_org.ssgproject.content_rule_accounts_password_pam_dcredit"
-                 time="2026-05-07T17:32:28.302451"
-                 severity="low"
-                 weight="1.000000">
-      <result>fail</result>
-      <ident system="https://nvd.nist.gov/cce/index.cfm">CCE-88558-6</ident>
-      <check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
-        <check-content-ref name="oval:ssg:def:833" href="ssg-ubuntu2404-oval.xml"/>
-      </check>
-      <message severity="error">Check failed: accounts_password_pam_dcredit</message>
-    </rule-result>
-    
-    <rule-result idref="xccdf_org.ssgproject.content_rule_accounts_password_pam_dictcheck"
-                 time="2026-05-07T17:32:42.302451"
+                 time="2026-05-07T21:31:56.445030"
                  severity="high"
                  weight="1.000000">
       <result>pass</result>
-      <ident system="https://nvd.nist.gov/cce/index.cfm">CCE-83518-1</ident>
+      <ident system="https://nvd.nist.gov/cce/index.cfm">CCE-87187-3</ident>
       <check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
-        <check-content-ref name="oval:ssg:def:449" href="ssg-ubuntu2404-oval.xml"/>
+        <check-content-ref name="oval:ssg:def:488" href="ssg-ubuntu2404-oval.xml"/>
+      </check>
+    </rule-result>
+    
+    <rule-result idref="xccdf_org.ssgproject.content_rule_accounts_password_pam_dictcheck"
+                 time="2026-05-07T21:32:10.445030"
+                 severity="low"
+                 weight="1.000000">
+      <result>pass</result>
+      <ident system="https://nvd.nist.gov/cce/index.cfm">CCE-80951-3</ident>
+      <check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
+        <check-content-ref name="oval:ssg:def:925" href="ssg-ubuntu2404-oval.xml"/>
       </check>
     </rule-result>
     
     <rule-result idref="xccdf_org.ssgproject.content_rule_accounts_password_pam_difok"
-                 time="2026-05-07T17:32:54.302451"
-                 severity="low"
+                 time="2026-05-07T21:32:18.445030"
+                 severity="high"
                  weight="1.000000">
       <result>pass</result>
-      <ident system="https://nvd.nist.gov/cce/index.cfm">CCE-85105-0</ident>
+      <ident system="https://nvd.nist.gov/cce/index.cfm">CCE-82395-0</ident>
       <check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
-        <check-content-ref name="oval:ssg:def:501" href="ssg-ubuntu2404-oval.xml"/>
+        <check-content-ref name="oval:ssg:def:727" href="ssg-ubuntu2404-oval.xml"/>
       </check>
     </rule-result>
     
     <rule-result idref="xccdf_org.ssgproject.content_rule_accounts_password_pam_enforce_root"
-                 time="2026-05-07T17:33:08.302451"
-                 severity="low"
+                 time="2026-05-07T21:32:31.445030"
+                 severity="medium"
                  weight="1.000000">
       <result>pass</result>
-      <ident system="https://nvd.nist.gov/cce/index.cfm">CCE-82740-9</ident>
+      <ident system="https://nvd.nist.gov/cce/index.cfm">CCE-89384-2</ident>
       <check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
-        <check-content-ref name="oval:ssg:def:656" href="ssg-ubuntu2404-oval.xml"/>
+        <check-content-ref name="oval:ssg:def:432" href="ssg-ubuntu2404-oval.xml"/>
       </check>
     </rule-result>
     
     <rule-result idref="xccdf_org.ssgproject.content_rule_accounts_password_pam_enforcing"
-                 time="2026-05-07T17:33:13.302451"
-                 severity="high"
+                 time="2026-05-07T21:32:40.445030"
+                 severity="low"
                  weight="1.000000">
       <result>pass</result>
-      <ident system="https://nvd.nist.gov/cce/index.cfm">CCE-87358-0</ident>
+      <ident system="https://nvd.nist.gov/cce/index.cfm">CCE-83460-1</ident>
       <check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
-        <check-content-ref name="oval:ssg:def:770" href="ssg-ubuntu2404-oval.xml"/>
+        <check-content-ref name="oval:ssg:def:430" href="ssg-ubuntu2404-oval.xml"/>
       </check>
     </rule-result>
     
     <rule-result idref="xccdf_org.ssgproject.content_rule_accounts_password_pam_lcredit"
-                 time="2026-05-07T17:33:21.302451"
+                 time="2026-05-07T21:32:46.445030"
                  severity="high"
                  weight="1.000000">
-      <result>pass</result>
-      <ident system="https://nvd.nist.gov/cce/index.cfm">CCE-89313-2</ident>
+      <result>fail</result>
+      <ident system="https://nvd.nist.gov/cce/index.cfm">CCE-85057-8</ident>
       <check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
-        <check-content-ref name="oval:ssg:def:384" href="ssg-ubuntu2404-oval.xml"/>
+        <check-content-ref name="oval:ssg:def:494" href="ssg-ubuntu2404-oval.xml"/>
       </check>
+      <message severity="error">Check failed: accounts_password_pam_lcredit</message>
     </rule-result>
     
     <rule-result idref="xccdf_org.ssgproject.content_rule_accounts_password_pam_maxrepeat"
-                 time="2026-05-07T17:33:27.302451"
+                 time="2026-05-07T21:32:54.445030"
                  severity="medium"
                  weight="1.000000">
       <result>pass</result>
-      <ident system="https://nvd.nist.gov/cce/index.cfm">CCE-88443-5</ident>
+      <ident system="https://nvd.nist.gov/cce/index.cfm">CCE-82647-3</ident>
       <check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
-        <check-content-ref name="oval:ssg:def:200" href="ssg-ubuntu2404-oval.xml"/>
+        <check-content-ref name="oval:ssg:def:949" href="ssg-ubuntu2404-oval.xml"/>
       </check>
     </rule-result>
     
     <rule-result idref="xccdf_org.ssgproject.content_rule_accounts_password_pam_maxsequence"
-                 time="2026-05-07T17:33:42.302451"
-                 severity="medium"
+                 time="2026-05-07T21:33:07.445030"
+                 severity="high"
                  weight="1.000000">
-      <result>pass</result>
-      <ident system="https://nvd.nist.gov/cce/index.cfm">CCE-80679-4</ident>
+      <result>fail</result>
+      <ident system="https://nvd.nist.gov/cce/index.cfm">CCE-89786-1</ident>
       <check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
-        <check-content-ref name="oval:ssg:def:783" href="ssg-ubuntu2404-oval.xml"/>
+        <check-content-ref name="oval:ssg:def:383" href="ssg-ubuntu2404-oval.xml"/>
       </check>
+      <message severity="error">Check failed: accounts_password_pam_maxsequence</message>
     </rule-result>
     
     <rule-result idref="xccdf_org.ssgproject.content_rule_accounts_password_pam_minclass"
-                 time="2026-05-07T17:33:55.302451"
-                 severity="high"
+                 time="2026-05-07T21:33:20.445030"
+                 severity="low"
                  weight="1.000000">
-      <result>pass</result>
-      <ident system="https://nvd.nist.gov/cce/index.cfm">CCE-83958-0</ident>
+      <result>fail</result>
+      <ident system="https://nvd.nist.gov/cce/index.cfm">CCE-80323-7</ident>
       <check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
-        <check-content-ref name="oval:ssg:def:140" href="ssg-ubuntu2404-oval.xml"/>
+        <check-content-ref name="oval:ssg:def:106" href="ssg-ubuntu2404-oval.xml"/>
       </check>
+      <message severity="error">Check failed: accounts_password_pam_minclass</message>
     </rule-result>
     
     <rule-result idref="xccdf_org.ssgproject.content_rule_accounts_password_pam_minlen"
-                 time="2026-05-07T17:34:08.302451"
-                 severity="high"
+                 time="2026-05-07T21:33:30.445030"
+                 severity="medium"
                  weight="1.000000">
       <result>pass</result>
-      <ident system="https://nvd.nist.gov/cce/index.cfm">CCE-83871-1</ident>
+      <ident system="https://nvd.nist.gov/cce/index.cfm">CCE-81218-7</ident>
       <check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
-        <check-content-ref name="oval:ssg:def:118" href="ssg-ubuntu2404-oval.xml"/>
+        <check-content-ref name="oval:ssg:def:110" href="ssg-ubuntu2404-oval.xml"/>
       </check>
     </rule-result>
     
     <rule-result idref="xccdf_org.ssgproject.content_rule_accounts_password_pam_ocredit"
-                 time="2026-05-07T17:34:19.302451"
-                 severity="low"
+                 time="2026-05-07T21:33:37.445030"
+                 severity="high"
                  weight="1.000000">
       <result>pass</result>
-      <ident system="https://nvd.nist.gov/cce/index.cfm">CCE-80455-2</ident>
+      <ident system="https://nvd.nist.gov/cce/index.cfm">CCE-85555-8</ident>
       <check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
-        <check-content-ref name="oval:ssg:def:638" href="ssg-ubuntu2404-oval.xml"/>
+        <check-content-ref name="oval:ssg:def:999" href="ssg-ubuntu2404-oval.xml"/>
       </check>
     </rule-result>
     
     <rule-result idref="xccdf_org.ssgproject.content_rule_accounts_password_pam_pwhistory_enabled"
-                 time="2026-05-07T17:34:31.302451"
-                 severity="low"
+                 time="2026-05-07T21:33:42.445030"
+                 severity="medium"
                  weight="1.000000">
       <result>pass</result>
-      <ident system="https://nvd.nist.gov/cce/index.cfm">CCE-83545-0</ident>
+      <ident system="https://nvd.nist.gov/cce/index.cfm">CCE-83710-4</ident>
       <check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
-        <check-content-ref name="oval:ssg:def:610" href="ssg-ubuntu2404-oval.xml"/>
+        <check-content-ref name="oval:ssg:def:288" href="ssg-ubuntu2404-oval.xml"/>
       </check>
     </rule-result>
     
     <rule-result idref="xccdf_org.ssgproject.content_rule_accounts_password_pam_pwhistory_enforce_root"
-                 time="2026-05-07T17:34:37.302451"
+                 time="2026-05-07T21:33:47.445030"
                  severity="low"
                  weight="1.000000">
-      <result>fail</result>
-      <ident system="https://nvd.nist.gov/cce/index.cfm">CCE-80808-6</ident>
+      <result>pass</result>
+      <ident system="https://nvd.nist.gov/cce/index.cfm">CCE-87571-6</ident>
       <check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
-        <check-content-ref name="oval:ssg:def:182" href="ssg-ubuntu2404-oval.xml"/>
+        <check-content-ref name="oval:ssg:def:325" href="ssg-ubuntu2404-oval.xml"/>
       </check>
-      <message severity="error">Check failed: accounts_password_pam_pwhistory_enforce_root</message>
     </rule-result>
     
     <rule-result idref="xccdf_org.ssgproject.content_rule_accounts_password_pam_pwhistory_remember"
-                 time="2026-05-07T17:34:47.302451"
-                 severity="medium"
+                 time="2026-05-07T21:33:59.445030"
+                 severity="high"
                  weight="1.000000">
       <result>pass</result>
-      <ident system="https://nvd.nist.gov/cce/index.cfm">CCE-84672-1</ident>
+      <ident system="https://nvd.nist.gov/cce/index.cfm">CCE-87475-8</ident>
       <check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
-        <check-content-ref name="oval:ssg:def:663" href="ssg-ubuntu2404-oval.xml"/>
+        <check-content-ref name="oval:ssg:def:590" href="ssg-ubuntu2404-oval.xml"/>
       </check>
     </rule-result>
     
     <rule-result idref="xccdf_org.ssgproject.content_rule_accounts_password_pam_pwquality_enabled"
-                 time="2026-05-07T17:35:02.302451"
-                 severity="high"
+                 time="2026-05-07T21:34:11.445030"
+                 severity="low"
                  weight="1.000000">
       <result>pass</result>
-      <ident system="https://nvd.nist.gov/cce/index.cfm">CCE-87629-0</ident>
+      <ident system="https://nvd.nist.gov/cce/index.cfm">CCE-82466-0</ident>
       <check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
-        <check-content-ref name="oval:ssg:def:443" href="ssg-ubuntu2404-oval.xml"/>
+        <check-content-ref name="oval:ssg:def:371" href="ssg-ubuntu2404-oval.xml"/>
       </check>
     </rule-result>
     
     <rule-result idref="xccdf_org.ssgproject.content_rule_accounts_password_pam_ucredit"
-                 time="2026-05-07T17:35:08.302451"
-                 severity="low"
+                 time="2026-05-07T21:34:19.445030"
+                 severity="medium"
                  weight="1.000000">
-      <result>pass</result>
-      <ident system="https://nvd.nist.gov/cce/index.cfm">CCE-82989-1</ident>
+      <result>fail</result>
+      <ident system="https://nvd.nist.gov/cce/index.cfm">CCE-89837-4</ident>
       <check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
-        <check-content-ref name="oval:ssg:def:832" href="ssg-ubuntu2404-oval.xml"/>
+        <check-content-ref name="oval:ssg:def:522" href="ssg-ubuntu2404-oval.xml"/>
       </check>
+      <message severity="error">Check failed: accounts_password_pam_ucredit</message>
     </rule-result>
     
     <rule-result idref="xccdf_org.ssgproject.content_rule_accounts_password_pam_unix_no_remember"
-                 time="2026-05-07T17:35:22.302451"
-                 severity="medium"
-                 weight="1.000000">
-      <result>pass</result>
-      <ident system="https://nvd.nist.gov/cce/index.cfm">CCE-82024-5</ident>
-      <check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
-        <check-content-ref name="oval:ssg:def:181" href="ssg-ubuntu2404-oval.xml"/>
-      </check>
-    </rule-result>
-    
-    <rule-result idref="xccdf_org.ssgproject.content_rule_accounts_password_set_max_life_existing"
-                 time="2026-05-07T17:35:33.302451"
+                 time="2026-05-07T21:34:27.445030"
                  severity="high"
                  weight="1.000000">
       <result>fail</result>
-      <ident system="https://nvd.nist.gov/cce/index.cfm">CCE-88050-2</ident>
+      <ident system="https://nvd.nist.gov/cce/index.cfm">CCE-87773-1</ident>
       <check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
-        <check-content-ref name="oval:ssg:def:240" href="ssg-ubuntu2404-oval.xml"/>
+        <check-content-ref name="oval:ssg:def:452" href="ssg-ubuntu2404-oval.xml"/>
       </check>
-      <message severity="error">Check failed: accounts_password_set_max_life_existing</message>
+      <message severity="error">Check failed: accounts_password_pam_unix_no_remember</message>
+    </rule-result>
+    
+    <rule-result idref="xccdf_org.ssgproject.content_rule_accounts_password_set_max_life_existing"
+                 time="2026-05-07T21:34:37.445030"
+                 severity="low"
+                 weight="1.000000">
+      <result>pass</result>
+      <ident system="https://nvd.nist.gov/cce/index.cfm">CCE-84196-1</ident>
+      <check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
+        <check-content-ref name="oval:ssg:def:402" href="ssg-ubuntu2404-oval.xml"/>
+      </check>
     </rule-result>
     
     <rule-result idref="xccdf_org.ssgproject.content_rule_accounts_password_set_min_life_existing"
-                 time="2026-05-07T17:35:48.302451"
-                 severity="high"
+                 time="2026-05-07T21:34:46.445030"
+                 severity="medium"
                  weight="1.000000">
       <result>pass</result>
-      <ident system="https://nvd.nist.gov/cce/index.cfm">CCE-84505-0</ident>
+      <ident system="https://nvd.nist.gov/cce/index.cfm">CCE-87769-9</ident>
       <check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
-        <check-content-ref name="oval:ssg:def:835" href="ssg-ubuntu2404-oval.xml"/>
+        <check-content-ref name="oval:ssg:def:545" href="ssg-ubuntu2404-oval.xml"/>
       </check>
     </rule-result>
     
     <rule-result idref="xccdf_org.ssgproject.content_rule_no_empty_passwords_unix"
-                 time="2026-05-07T17:36:00.302451"
-                 severity="low"
+                 time="2026-05-07T21:34:53.445030"
+                 severity="medium"
                  weight="1.000000">
       <result>pass</result>
-      <ident system="https://nvd.nist.gov/cce/index.cfm">CCE-86211-8</ident>
+      <ident system="https://nvd.nist.gov/cce/index.cfm">CCE-87894-8</ident>
       <check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
-        <check-content-ref name="oval:ssg:def:877" href="ssg-ubuntu2404-oval.xml"/>
+        <check-content-ref name="oval:ssg:def:670" href="ssg-ubuntu2404-oval.xml"/>
       </check>
     </rule-result>
     
     <rule-result idref="xccdf_org.ssgproject.content_rule_sshd_disable_empty_passwords"
-                 time="2026-05-07T17:36:12.302451"
-                 severity="medium"
-                 weight="1.000000">
-      <result>fail</result>
-      <ident system="https://nvd.nist.gov/cce/index.cfm">CCE-85600-3</ident>
-      <check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
-        <check-content-ref name="oval:ssg:def:997" href="ssg-ubuntu2404-oval.xml"/>
-      </check>
-      <message severity="error">Check failed: sshd_disable_empty_passwords</message>
-    </rule-result>
-    
-    <rule-result idref="xccdf_org.ssgproject.content_rule_sshd_disable_gssapi_auth"
-                 time="2026-05-07T17:36:20.302451"
+                 time="2026-05-07T21:35:08.445030"
                  severity="medium"
                  weight="1.000000">
       <result>pass</result>
-      <ident system="https://nvd.nist.gov/cce/index.cfm">CCE-89407-9</ident>
+      <ident system="https://nvd.nist.gov/cce/index.cfm">CCE-85650-3</ident>
       <check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
-        <check-content-ref name="oval:ssg:def:843" href="ssg-ubuntu2404-oval.xml"/>
+        <check-content-ref name="oval:ssg:def:323" href="ssg-ubuntu2404-oval.xml"/>
+      </check>
+    </rule-result>
+    
+    <rule-result idref="xccdf_org.ssgproject.content_rule_sshd_disable_gssapi_auth"
+                 time="2026-05-07T21:35:21.445030"
+                 severity="low"
+                 weight="1.000000">
+      <result>pass</result>
+      <ident system="https://nvd.nist.gov/cce/index.cfm">CCE-89078-0</ident>
+      <check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
+        <check-content-ref name="oval:ssg:def:153" href="ssg-ubuntu2404-oval.xml"/>
       </check>
     </rule-result>
     
     <rule-result idref="xccdf_org.ssgproject.content_rule_sshd_disable_rhosts"
-                 time="2026-05-07T17:36:28.302451"
+                 time="2026-05-07T21:35:33.445030"
                  severity="medium"
                  weight="1.000000">
-      <result>pass</result>
-      <ident system="https://nvd.nist.gov/cce/index.cfm">CCE-81601-9</ident>
+      <result>fail</result>
+      <ident system="https://nvd.nist.gov/cce/index.cfm">CCE-87722-8</ident>
       <check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
-        <check-content-ref name="oval:ssg:def:139" href="ssg-ubuntu2404-oval.xml"/>
+        <check-content-ref name="oval:ssg:def:482" href="ssg-ubuntu2404-oval.xml"/>
       </check>
+      <message severity="error">Check failed: sshd_disable_rhosts</message>
     </rule-result>
     
     <rule-result idref="xccdf_org.ssgproject.content_rule_sshd_enable_pam"
-                 time="2026-05-07T17:36:35.302451"
-                 severity="medium"
+                 time="2026-05-07T21:35:46.445030"
+                 severity="high"
                  weight="1.000000">
       <result>pass</result>
-      <ident system="https://nvd.nist.gov/cce/index.cfm">CCE-82447-5</ident>
+      <ident system="https://nvd.nist.gov/cce/index.cfm">CCE-80815-4</ident>
       <check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
-        <check-content-ref name="oval:ssg:def:859" href="ssg-ubuntu2404-oval.xml"/>
+        <check-content-ref name="oval:ssg:def:948" href="ssg-ubuntu2404-oval.xml"/>
       </check>
     </rule-result>
     
     <rule-result idref="xccdf_org.ssgproject.content_rule_accounts_password_warn_age_login_defs"
-                 time="2026-05-07T17:36:44.302451"
+                 time="2026-05-07T21:35:54.445030"
                  severity="low"
                  weight="1.000000">
-      <result>fail</result>
-      <ident system="https://nvd.nist.gov/cce/index.cfm">CCE-89056-5</ident>
+      <result>pass</result>
+      <ident system="https://nvd.nist.gov/cce/index.cfm">CCE-86233-4</ident>
       <check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
-        <check-content-ref name="oval:ssg:def:271" href="ssg-ubuntu2404-oval.xml"/>
+        <check-content-ref name="oval:ssg:def:130" href="ssg-ubuntu2404-oval.xml"/>
       </check>
-      <message severity="error">Check failed: accounts_password_warn_age_login_defs</message>
     </rule-result>
     
     <rule-result idref="xccdf_org.ssgproject.content_rule_sshd_disable_forwarding"
-                 time="2026-05-07T17:36:55.302451"
+                 time="2026-05-07T21:36:08.445030"
                  severity="medium"
                  weight="1.000000">
       <result>pass</result>
-      <ident system="https://nvd.nist.gov/cce/index.cfm">CCE-83346-6</ident>
+      <ident system="https://nvd.nist.gov/cce/index.cfm">CCE-89525-4</ident>
       <check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
-        <check-content-ref name="oval:ssg:def:403" href="ssg-ubuntu2404-oval.xml"/>
+        <check-content-ref name="oval:ssg:def:462" href="ssg-ubuntu2404-oval.xml"/>
       </check>
     </rule-result>
     
     <rule-result idref="xccdf_org.ssgproject.content_rule_accounts_tmout"
-                 time="2026-05-07T17:37:09.302451"
-                 severity="low"
+                 time="2026-05-07T21:36:18.445030"
+                 severity="high"
                  weight="1.000000">
       <result>pass</result>
-      <ident system="https://nvd.nist.gov/cce/index.cfm">CCE-88850-4</ident>
+      <ident system="https://nvd.nist.gov/cce/index.cfm">CCE-80626-1</ident>
       <check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
-        <check-content-ref name="oval:ssg:def:279" href="ssg-ubuntu2404-oval.xml"/>
+        <check-content-ref name="oval:ssg:def:777" href="ssg-ubuntu2404-oval.xml"/>
       </check>
     </rule-result>
     
     <rule-result idref="xccdf_org.ssgproject.content_rule_package_sudo_installed"
-                 time="2026-05-07T17:37:22.302451"
+                 time="2026-05-07T21:36:32.445030"
                  severity="high"
                  weight="1.000000">
       <result>pass</result>
-      <ident system="https://nvd.nist.gov/cce/index.cfm">CCE-86624-0</ident>
+      <ident system="https://nvd.nist.gov/cce/index.cfm">CCE-84408-6</ident>
       <check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
-        <check-content-ref name="oval:ssg:def:156" href="ssg-ubuntu2404-oval.xml"/>
+        <check-content-ref name="oval:ssg:def:387" href="ssg-ubuntu2404-oval.xml"/>
       </check>
     </rule-result>
     
     <rule-result idref="xccdf_org.ssgproject.content_rule_sshd_disable_root_login"
-                 time="2026-05-07T17:37:32.302451"
+                 time="2026-05-07T21:36:37.445030"
                  severity="low"
                  weight="1.000000">
-      <result>fail</result>
-      <ident system="https://nvd.nist.gov/cce/index.cfm">CCE-82584-5</ident>
+      <result>pass</result>
+      <ident system="https://nvd.nist.gov/cce/index.cfm">CCE-86892-9</ident>
       <check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
-        <check-content-ref name="oval:ssg:def:268" href="ssg-ubuntu2404-oval.xml"/>
+        <check-content-ref name="oval:ssg:def:389" href="ssg-ubuntu2404-oval.xml"/>
       </check>
-      <message severity="error">Check failed: sshd_disable_root_login</message>
     </rule-result>
     
     <rule-result idref="xccdf_org.ssgproject.content_rule_sudo_add_use_pty"
-                 time="2026-05-07T17:37:46.302451"
-                 severity="low"
+                 time="2026-05-07T21:36:42.445030"
+                 severity="medium"
                  weight="1.000000">
-      <result>pass</result>
-      <ident system="https://nvd.nist.gov/cce/index.cfm">CCE-84750-3</ident>
+      <result>fail</result>
+      <ident system="https://nvd.nist.gov/cce/index.cfm">CCE-88417-7</ident>
       <check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
-        <check-content-ref name="oval:ssg:def:480" href="ssg-ubuntu2404-oval.xml"/>
+        <check-content-ref name="oval:ssg:def:980" href="ssg-ubuntu2404-oval.xml"/>
       </check>
+      <message severity="error">Check failed: sudo_add_use_pty</message>
     </rule-result>
     
     <rule-result idref="xccdf_org.ssgproject.content_rule_sudo_remove_no_authenticate"
-                 time="2026-05-07T17:37:55.302451"
-                 severity="medium"
+                 time="2026-05-07T21:36:53.445030"
+                 severity="high"
                  weight="1.000000">
       <result>pass</result>
-      <ident system="https://nvd.nist.gov/cce/index.cfm">CCE-89446-5</ident>
+      <ident system="https://nvd.nist.gov/cce/index.cfm">CCE-81025-5</ident>
       <check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
-        <check-content-ref name="oval:ssg:def:309" href="ssg-ubuntu2404-oval.xml"/>
+        <check-content-ref name="oval:ssg:def:238" href="ssg-ubuntu2404-oval.xml"/>
       </check>
     </rule-result>
     
     <rule-result idref="xccdf_org.ssgproject.content_rule_sudo_require_authentication"
-                 time="2026-05-07T17:38:06.302451"
-                 severity="medium"
+                 time="2026-05-07T21:37:03.445030"
+                 severity="high"
                  weight="1.000000">
       <result>fail</result>
-      <ident system="https://nvd.nist.gov/cce/index.cfm">CCE-86825-6</ident>
+      <ident system="https://nvd.nist.gov/cce/index.cfm">CCE-88537-7</ident>
       <check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
-        <check-content-ref name="oval:ssg:def:784" href="ssg-ubuntu2404-oval.xml"/>
+        <check-content-ref name="oval:ssg:def:986" href="ssg-ubuntu2404-oval.xml"/>
       </check>
       <message severity="error">Check failed: sudo_require_authentication</message>
     </rule-result>
     
     <rule-result idref="xccdf_org.ssgproject.content_rule_sudo_require_reauthentication"
-                 time="2026-05-07T17:38:20.302451"
+                 time="2026-05-07T21:37:14.445030"
                  severity="low"
                  weight="1.000000">
       <result>pass</result>
-      <ident system="https://nvd.nist.gov/cce/index.cfm">CCE-83846-5</ident>
+      <ident system="https://nvd.nist.gov/cce/index.cfm">CCE-81580-9</ident>
       <check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
-        <check-content-ref name="oval:ssg:def:583" href="ssg-ubuntu2404-oval.xml"/>
+        <check-content-ref name="oval:ssg:def:783" href="ssg-ubuntu2404-oval.xml"/>
       </check>
     </rule-result>
     
     <rule-result idref="xccdf_org.ssgproject.content_rule_accounts_passwords_pam_faillock_deny"
-                 time="2026-05-07T17:38:30.302451"
-                 severity="high"
+                 time="2026-05-07T21:37:22.445030"
+                 severity="medium"
                  weight="1.000000">
       <result>pass</result>
-      <ident system="https://nvd.nist.gov/cce/index.cfm">CCE-86243-4</ident>
+      <ident system="https://nvd.nist.gov/cce/index.cfm">CCE-89800-0</ident>
       <check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
-        <check-content-ref name="oval:ssg:def:801" href="ssg-ubuntu2404-oval.xml"/>
+        <check-content-ref name="oval:ssg:def:674" href="ssg-ubuntu2404-oval.xml"/>
       </check>
     </rule-result>
     
     <rule-result idref="xccdf_org.ssgproject.content_rule_accounts_passwords_pam_faillock_enabled"
-                 time="2026-05-07T17:38:45.302451"
-                 severity="high"
+                 time="2026-05-07T21:37:32.445030"
+                 severity="medium"
                  weight="1.000000">
       <result>pass</result>
-      <ident system="https://nvd.nist.gov/cce/index.cfm">CCE-81667-7</ident>
+      <ident system="https://nvd.nist.gov/cce/index.cfm">CCE-87420-8</ident>
       <check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
-        <check-content-ref name="oval:ssg:def:572" href="ssg-ubuntu2404-oval.xml"/>
+        <check-content-ref name="oval:ssg:def:751" href="ssg-ubuntu2404-oval.xml"/>
       </check>
     </rule-result>
     
     <rule-result idref="xccdf_org.ssgproject.content_rule_accounts_passwords_pam_faillock_root_unlock_time"
-                 time="2026-05-07T17:38:54.302451"
-                 severity="high"
+                 time="2026-05-07T21:37:43.445030"
+                 severity="low"
                  weight="1.000000">
       <result>pass</result>
-      <ident system="https://nvd.nist.gov/cce/index.cfm">CCE-86581-2</ident>
+      <ident system="https://nvd.nist.gov/cce/index.cfm">CCE-84150-2</ident>
       <check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
-        <check-content-ref name="oval:ssg:def:877" href="ssg-ubuntu2404-oval.xml"/>
+        <check-content-ref name="oval:ssg:def:810" href="ssg-ubuntu2404-oval.xml"/>
       </check>
     </rule-result>
     
     <rule-result idref="xccdf_org.ssgproject.content_rule_accounts_passwords_pam_faillock_unlock_time"
-                 time="2026-05-07T17:39:09.302451"
-                 severity="low"
+                 time="2026-05-07T21:37:55.445030"
+                 severity="medium"
                  weight="1.000000">
       <result>pass</result>
-      <ident system="https://nvd.nist.gov/cce/index.cfm">CCE-81850-2</ident>
+      <ident system="https://nvd.nist.gov/cce/index.cfm">CCE-82229-0</ident>
       <check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
-        <check-content-ref name="oval:ssg:def:533" href="ssg-ubuntu2404-oval.xml"/>
+        <check-content-ref name="oval:ssg:def:543" href="ssg-ubuntu2404-oval.xml"/>
       </check>
     </rule-result>
     
     <rule-result idref="xccdf_org.ssgproject.content_rule_sshd_set_loglevel_info"
-                 time="2026-05-07T17:39:15.302451"
+                 time="2026-05-07T21:38:06.445030"
                  severity="high"
                  weight="1.000000">
-      <result>pass</result>
-      <ident system="https://nvd.nist.gov/cce/index.cfm">CCE-89155-0</ident>
+      <result>fail</result>
+      <ident system="https://nvd.nist.gov/cce/index.cfm">CCE-81698-0</ident>
       <check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
-        <check-content-ref name="oval:ssg:def:912" href="ssg-ubuntu2404-oval.xml"/>
+        <check-content-ref name="oval:ssg:def:928" href="ssg-ubuntu2404-oval.xml"/>
       </check>
+      <message severity="error">Check failed: sshd_set_loglevel_info</message>
     </rule-result>
     
     <rule-result idref="xccdf_org.ssgproject.content_rule_sshd_set_max_auth_tries"
-                 time="2026-05-07T17:39:24.302451"
-                 severity="high"
+                 time="2026-05-07T21:38:12.445030"
+                 severity="low"
                  weight="1.000000">
-      <result>pass</result>
-      <ident system="https://nvd.nist.gov/cce/index.cfm">CCE-80417-3</ident>
+      <result>fail</result>
+      <ident system="https://nvd.nist.gov/cce/index.cfm">CCE-89620-2</ident>
       <check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
-        <check-content-ref name="oval:ssg:def:961" href="ssg-ubuntu2404-oval.xml"/>
+        <check-content-ref name="oval:ssg:def:994" href="ssg-ubuntu2404-oval.xml"/>
       </check>
+      <message severity="error">Check failed: sshd_set_max_auth_tries</message>
     </rule-result>
     
     <rule-result idref="xccdf_org.ssgproject.content_rule_sudo_custom_logfile"
-                 time="2026-05-07T17:39:38.302451"
+                 time="2026-05-07T21:38:21.445030"
+                 severity="medium"
+                 weight="1.000000">
+      <result>fail</result>
+      <ident system="https://nvd.nist.gov/cce/index.cfm">CCE-86276-8</ident>
+      <check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
+        <check-content-ref name="oval:ssg:def:988" href="ssg-ubuntu2404-oval.xml"/>
+      </check>
+      <message severity="error">Check failed: sudo_custom_logfile</message>
+    </rule-result>
+    
+    <rule-result idref="xccdf_org.ssgproject.content_rule_account_automated_provisioning_enabled"
+                 time="2026-05-07T21:38:35.445030"
+                 severity="high"
+                 weight="1.000000">
+      <result>fail</result>
+      <ident system="https://nvd.nist.gov/cce/index.cfm">CCE-88631-1</ident>
+      <check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
+        <check-content-ref name="oval:ssg:def:839" href="ssg-ubuntu2404-oval.xml"/>
+      </check>
+      <message severity="error">Check failed: account_automated_provisioning_enabled</message>
+    </rule-result>
+    
+    <rule-result idref="xccdf_org.ssgproject.content_rule_account_temporary_expiration_configured"
+                 time="2026-05-07T21:38:48.445030"
                  severity="high"
                  weight="1.000000">
       <result>pass</result>
-      <ident system="https://nvd.nist.gov/cce/index.cfm">CCE-82940-3</ident>
+      <ident system="https://nvd.nist.gov/cce/index.cfm">CCE-82477-7</ident>
+      <check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
+        <check-content-ref name="oval:ssg:def:826" href="ssg-ubuntu2404-oval.xml"/>
+      </check>
+    </rule-result>
+    
+    <rule-result idref="xccdf_org.ssgproject.content_rule_account_disable_inactive_accounts"
+                 time="2026-05-07T21:38:54.445030"
+                 severity="high"
+                 weight="1.000000">
+      <result>pass</result>
+      <ident system="https://nvd.nist.gov/cce/index.cfm">CCE-89415-4</ident>
+      <check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
+        <check-content-ref name="oval:ssg:def:411" href="ssg-ubuntu2404-oval.xml"/>
+      </check>
+    </rule-result>
+    
+    <rule-result idref="xccdf_org.ssgproject.content_rule_sudo_security_function_authorization"
+                 time="2026-05-07T21:39:09.445030"
+                 severity="high"
+                 weight="1.000000">
+      <result>pass</result>
+      <ident system="https://nvd.nist.gov/cce/index.cfm">CCE-86343-3</ident>
+      <check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
+        <check-content-ref name="oval:ssg:def:486" href="ssg-ubuntu2404-oval.xml"/>
+      </check>
+    </rule-result>
+    
+    <rule-result idref="xccdf_org.ssgproject.content_rule_service_nonprivileged_user_execution"
+                 time="2026-05-07T21:39:17.445030"
+                 severity="high"
+                 weight="1.000000">
+      <result>pass</result>
+      <ident system="https://nvd.nist.gov/cce/index.cfm">CCE-89989-5</ident>
+      <check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
+        <check-content-ref name="oval:ssg:def:861" href="ssg-ubuntu2404-oval.xml"/>
+      </check>
+    </rule-result>
+    
+    <rule-result idref="xccdf_org.ssgproject.content_rule_screen_lock_timeout_configured"
+                 time="2026-05-07T21:39:27.445030"
+                 severity="high"
+                 weight="1.000000">
+      <result>pass</result>
+      <ident system="https://nvd.nist.gov/cce/index.cfm">CCE-81651-4</ident>
+      <check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
+        <check-content-ref name="oval:ssg:def:317" href="ssg-ubuntu2404-oval.xml"/>
+      </check>
+    </rule-result>
+    
+    <rule-result idref="xccdf_org.ssgproject.content_rule_screen_lock_pattern_hiding_enabled"
+                 time="2026-05-07T21:39:32.445030"
+                 severity="low"
+                 weight="1.000000">
+      <result>pass</result>
+      <ident system="https://nvd.nist.gov/cce/index.cfm">CCE-84524-1</ident>
+      <check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
+        <check-content-ref name="oval:ssg:def:722" href="ssg-ubuntu2404-oval.xml"/>
+      </check>
+    </rule-result>
+    
+    <rule-result idref="xccdf_org.ssgproject.content_rule_sshd_logging_enabled"
+                 time="2026-05-07T21:39:43.445030"
+                 severity="medium"
+                 weight="1.000000">
+      <result>pass</result>
+      <ident system="https://nvd.nist.gov/cce/index.cfm">CCE-87638-9</ident>
+      <check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
+        <check-content-ref name="oval:ssg:def:589" href="ssg-ubuntu2404-oval.xml"/>
+      </check>
+    </rule-result>
+    
+    <rule-result idref="xccdf_org.ssgproject.content_rule_auditd_extended_information_enabled"
+                 time="2026-05-07T21:39:55.445030"
+                 severity="high"
+                 weight="1.000000">
+      <result>pass</result>
+      <ident system="https://nvd.nist.gov/cce/index.cfm">CCE-80831-6</ident>
+      <check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
+        <check-content-ref name="oval:ssg:def:663" href="ssg-ubuntu2404-oval.xml"/>
+      </check>
+    </rule-result>
+    
+    <rule-result idref="xccdf_org.ssgproject.content_rule_log_analysis_tool_configured"
+                 time="2026-05-07T21:40:00.445030"
+                 severity="medium"
+                 weight="1.000000">
+      <result>fail</result>
+      <ident system="https://nvd.nist.gov/cce/index.cfm">CCE-80034-8</ident>
+      <check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
+        <check-content-ref name="oval:ssg:def:723" href="ssg-ubuntu2404-oval.xml"/>
+      </check>
+      <message severity="error">Check failed: log_analysis_tool_configured</message>
+    </rule-result>
+    
+    <rule-result idref="xccdf_org.ssgproject.content_rule_change_control_documentation_required"
+                 time="2026-05-07T21:40:14.445030"
+                 severity="high"
+                 weight="1.000000">
+      <result>pass</result>
+      <ident system="https://nvd.nist.gov/cce/index.cfm">CCE-82456-0</ident>
       <check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
         <check-content-ref name="oval:ssg:def:366" href="ssg-ubuntu2404-oval.xml"/>
       </check>
     </rule-result>
     
-    <rule-result idref="xccdf_org.ssgproject.content_rule_account_automated_provisioning_enabled"
-                 time="2026-05-07T17:39:48.302451"
-                 severity="medium"
-                 weight="1.000000">
-      <result>pass</result>
-      <ident system="https://nvd.nist.gov/cce/index.cfm">CCE-89599-3</ident>
-      <check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
-        <check-content-ref name="oval:ssg:def:918" href="ssg-ubuntu2404-oval.xml"/>
-      </check>
-    </rule-result>
-    
-    <rule-result idref="xccdf_org.ssgproject.content_rule_account_temporary_expiration_configured"
-                 time="2026-05-07T17:40:02.302451"
-                 severity="medium"
-                 weight="1.000000">
-      <result>pass</result>
-      <ident system="https://nvd.nist.gov/cce/index.cfm">CCE-86677-6</ident>
-      <check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
-        <check-content-ref name="oval:ssg:def:553" href="ssg-ubuntu2404-oval.xml"/>
-      </check>
-    </rule-result>
-    
-    <rule-result idref="xccdf_org.ssgproject.content_rule_account_disable_inactive_accounts"
-                 time="2026-05-07T17:40:13.302451"
-                 severity="medium"
-                 weight="1.000000">
-      <result>fail</result>
-      <ident system="https://nvd.nist.gov/cce/index.cfm">CCE-80861-5</ident>
-      <check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
-        <check-content-ref name="oval:ssg:def:408" href="ssg-ubuntu2404-oval.xml"/>
-      </check>
-      <message severity="error">Check failed: account_disable_inactive_accounts</message>
-    </rule-result>
-    
-    <rule-result idref="xccdf_org.ssgproject.content_rule_sudo_security_function_authorization"
-                 time="2026-05-07T17:40:25.302451"
-                 severity="low"
-                 weight="1.000000">
-      <result>pass</result>
-      <ident system="https://nvd.nist.gov/cce/index.cfm">CCE-80532-5</ident>
-      <check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
-        <check-content-ref name="oval:ssg:def:805" href="ssg-ubuntu2404-oval.xml"/>
-      </check>
-    </rule-result>
-    
-    <rule-result idref="xccdf_org.ssgproject.content_rule_service_nonprivileged_user_execution"
-                 time="2026-05-07T17:40:37.302451"
-                 severity="low"
-                 weight="1.000000">
-      <result>pass</result>
-      <ident system="https://nvd.nist.gov/cce/index.cfm">CCE-87961-5</ident>
-      <check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
-        <check-content-ref name="oval:ssg:def:586" href="ssg-ubuntu2404-oval.xml"/>
-      </check>
-    </rule-result>
-    
-    <rule-result idref="xccdf_org.ssgproject.content_rule_screen_lock_timeout_configured"
-                 time="2026-05-07T17:40:47.302451"
-                 severity="medium"
-                 weight="1.000000">
-      <result>pass</result>
-      <ident system="https://nvd.nist.gov/cce/index.cfm">CCE-87085-9</ident>
-      <check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
-        <check-content-ref name="oval:ssg:def:747" href="ssg-ubuntu2404-oval.xml"/>
-      </check>
-    </rule-result>
-    
-    <rule-result idref="xccdf_org.ssgproject.content_rule_screen_lock_pattern_hiding_enabled"
-                 time="2026-05-07T17:40:52.302451"
-                 severity="low"
-                 weight="1.000000">
-      <result>pass</result>
-      <ident system="https://nvd.nist.gov/cce/index.cfm">CCE-80199-9</ident>
-      <check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
-        <check-content-ref name="oval:ssg:def:572" href="ssg-ubuntu2404-oval.xml"/>
-      </check>
-    </rule-result>
-    
-    <rule-result idref="xccdf_org.ssgproject.content_rule_sshd_logging_enabled"
-                 time="2026-05-07T17:41:02.302451"
-                 severity="low"
-                 weight="1.000000">
-      <result>pass</result>
-      <ident system="https://nvd.nist.gov/cce/index.cfm">CCE-89840-5</ident>
-      <check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
-        <check-content-ref name="oval:ssg:def:290" href="ssg-ubuntu2404-oval.xml"/>
-      </check>
-    </rule-result>
-    
-    <rule-result idref="xccdf_org.ssgproject.content_rule_auditd_extended_information_enabled"
-                 time="2026-05-07T17:41:11.302451"
-                 severity="medium"
-                 weight="1.000000">
-      <result>pass</result>
-      <ident system="https://nvd.nist.gov/cce/index.cfm">CCE-83964-5</ident>
-      <check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
-        <check-content-ref name="oval:ssg:def:306" href="ssg-ubuntu2404-oval.xml"/>
-      </check>
-    </rule-result>
-    
-    <rule-result idref="xccdf_org.ssgproject.content_rule_log_analysis_tool_configured"
-                 time="2026-05-07T17:41:22.302451"
-                 severity="medium"
-                 weight="1.000000">
-      <result>pass</result>
-      <ident system="https://nvd.nist.gov/cce/index.cfm">CCE-82969-8</ident>
-      <check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
-        <check-content-ref name="oval:ssg:def:501" href="ssg-ubuntu2404-oval.xml"/>
-      </check>
-    </rule-result>
-    
-    <rule-result idref="xccdf_org.ssgproject.content_rule_change_control_documentation_required"
-                 time="2026-05-07T17:41:28.302451"
-                 severity="medium"
-                 weight="1.000000">
-      <result>fail</result>
-      <ident system="https://nvd.nist.gov/cce/index.cfm">CCE-81983-7</ident>
-      <check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
-        <check-content-ref name="oval:ssg:def:624" href="ssg-ubuntu2404-oval.xml"/>
-      </check>
-      <message severity="error">Check failed: change_control_documentation_required</message>
-    </rule-result>
-    
     <rule-result idref="xccdf_org.ssgproject.content_rule_service_periodic_review_enabled"
-                 time="2026-05-07T17:41:36.302451"
-                 severity="high"
+                 time="2026-05-07T21:40:21.445030"
+                 severity="low"
                  weight="1.000000">
-      <result>pass</result>
-      <ident system="https://nvd.nist.gov/cce/index.cfm">CCE-81300-8</ident>
+      <result>fail</result>
+      <ident system="https://nvd.nist.gov/cce/index.cfm">CCE-88383-7</ident>
       <check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
-        <check-content-ref name="oval:ssg:def:983" href="ssg-ubuntu2404-oval.xml"/>
+        <check-content-ref name="oval:ssg:def:584" href="ssg-ubuntu2404-oval.xml"/>
       </check>
+      <message severity="error">Check failed: service_periodic_review_enabled</message>
     </rule-result>
     
     <rule-result idref="xccdf_org.ssgproject.content_rule_package_update_automation_configured"
-                 time="2026-05-07T17:41:44.302451"
-                 severity="medium"
-                 weight="1.000000">
-      <result>fail</result>
-      <ident system="https://nvd.nist.gov/cce/index.cfm">CCE-83980-5</ident>
-      <check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
-        <check-content-ref name="oval:ssg:def:379" href="ssg-ubuntu2404-oval.xml"/>
-      </check>
-      <message severity="error">Check failed: package_update_automation_configured</message>
-    </rule-result>
-    
-    <rule-result idref="xccdf_org.ssgproject.content_rule_intrusion_detection_tool_installed"
-                 time="2026-05-07T17:41:57.302451"
+                 time="2026-05-07T21:40:31.445030"
                  severity="high"
                  weight="1.000000">
       <result>pass</result>
-      <ident system="https://nvd.nist.gov/cce/index.cfm">CCE-81620-0</ident>
+      <ident system="https://nvd.nist.gov/cce/index.cfm">CCE-80332-4</ident>
       <check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
-        <check-content-ref name="oval:ssg:def:766" href="ssg-ubuntu2404-oval.xml"/>
+        <check-content-ref name="oval:ssg:def:467" href="ssg-ubuntu2404-oval.xml"/>
       </check>
     </rule-result>
     
+    <rule-result idref="xccdf_org.ssgproject.content_rule_intrusion_detection_tool_installed"
+                 time="2026-05-07T21:40:38.445030"
+                 severity="high"
+                 weight="1.000000">
+      <result>fail</result>
+      <ident system="https://nvd.nist.gov/cce/index.cfm">CCE-81544-9</ident>
+      <check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
+        <check-content-ref name="oval:ssg:def:142" href="ssg-ubuntu2404-oval.xml"/>
+      </check>
+      <message severity="error">Check failed: intrusion_detection_tool_installed</message>
+    </rule-result>
+    
     <rule-result idref="xccdf_org.ssgproject.content_rule_encrypted_traffic_inspection_configured"
-                 time="2026-05-07T17:42:12.302451"
-                 severity="medium"
+                 time="2026-05-07T21:40:46.445030"
+                 severity="high"
                  weight="1.000000">
       <result>pass</result>
-      <ident system="https://nvd.nist.gov/cce/index.cfm">CCE-88794-7</ident>
+      <ident system="https://nvd.nist.gov/cce/index.cfm">CCE-87660-7</ident>
       <check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
-        <check-content-ref name="oval:ssg:def:386" href="ssg-ubuntu2404-oval.xml"/>
+        <check-content-ref name="oval:ssg:def:349" href="ssg-ubuntu2404-oval.xml"/>
       </check>
     </rule-result>
     
     <rule-result idref="xccdf_org.ssgproject.content_rule_privileged_command_network_restriction"
-                 time="2026-05-07T17:42:27.302451"
+                 time="2026-05-07T21:40:56.445030"
                  severity="low"
                  weight="1.000000">
-      <result>fail</result>
-      <ident system="https://nvd.nist.gov/cce/index.cfm">CCE-83008-5</ident>
+      <result>pass</result>
+      <ident system="https://nvd.nist.gov/cce/index.cfm">CCE-85176-1</ident>
       <check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
-        <check-content-ref name="oval:ssg:def:163" href="ssg-ubuntu2404-oval.xml"/>
+        <check-content-ref name="oval:ssg:def:578" href="ssg-ubuntu2404-oval.xml"/>
       </check>
-      <message severity="error">Check failed: privileged_command_network_restriction</message>
     </rule-result>
     
     <rule-result idref="xccdf_org.ssgproject.content_rule_concurrent_session_limit_configured"
-                 time="2026-05-07T17:42:38.302451"
-                 severity="medium"
+                 time="2026-05-07T21:41:07.445030"
+                 severity="low"
                  weight="1.000000">
       <result>pass</result>
-      <ident system="https://nvd.nist.gov/cce/index.cfm">CCE-81667-2</ident>
+      <ident system="https://nvd.nist.gov/cce/index.cfm">CCE-84251-8</ident>
       <check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
-        <check-content-ref name="oval:ssg:def:261" href="ssg-ubuntu2404-oval.xml"/>
+        <check-content-ref name="oval:ssg:def:653" href="ssg-ubuntu2404-oval.xml"/>
       </check>
     </rule-result>
     
     <rule-result idref="xccdf_org.ssgproject.content_rule_auditd_storage_threshold_alert"
-                 time="2026-05-07T17:42:47.302451"
+                 time="2026-05-07T21:41:21.445030"
                  severity="medium"
                  weight="1.000000">
-      <result>pass</result>
-      <ident system="https://nvd.nist.gov/cce/index.cfm">CCE-82243-7</ident>
+      <result>fail</result>
+      <ident system="https://nvd.nist.gov/cce/index.cfm">CCE-80906-8</ident>
       <check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
-        <check-content-ref name="oval:ssg:def:320" href="ssg-ubuntu2404-oval.xml"/>
+        <check-content-ref name="oval:ssg:def:639" href="ssg-ubuntu2404-oval.xml"/>
       </check>
+      <message severity="error">Check failed: auditd_storage_threshold_alert</message>
     </rule-result>
     
     <rule-result idref="xccdf_org.ssgproject.content_rule_auditd_realtime_alerts_enabled"
-                 time="2026-05-07T17:42:55.302451"
+                 time="2026-05-07T21:41:34.445030"
                  severity="high"
                  weight="1.000000">
-      <result>fail</result>
-      <ident system="https://nvd.nist.gov/cce/index.cfm">CCE-87265-2</ident>
+      <result>pass</result>
+      <ident system="https://nvd.nist.gov/cce/index.cfm">CCE-80885-1</ident>
       <check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
-        <check-content-ref name="oval:ssg:def:892" href="ssg-ubuntu2404-oval.xml"/>
+        <check-content-ref name="oval:ssg:def:112" href="ssg-ubuntu2404-oval.xml"/>
       </check>
-      <message severity="error">Check failed: auditd_realtime_alerts_enabled</message>
     </rule-result>
     
     <rule-result idref="xccdf_org.ssgproject.content_rule_centralized_logging_configured"
-                 time="2026-05-07T17:43:00.302451"
-                 severity="high"
+                 time="2026-05-07T21:41:46.445030"
+                 severity="medium"
                  weight="1.000000">
-      <result>fail</result>
-      <ident system="https://nvd.nist.gov/cce/index.cfm">CCE-85556-7</ident>
+      <result>pass</result>
+      <ident system="https://nvd.nist.gov/cce/index.cfm">CCE-88215-8</ident>
       <check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
-        <check-content-ref name="oval:ssg:def:323" href="ssg-ubuntu2404-oval.xml"/>
+        <check-content-ref name="oval:ssg:def:716" href="ssg-ubuntu2404-oval.xml"/>
       </check>
-      <message severity="error">Check failed: centralized_logging_configured</message>
     </rule-result>
     
     <rule-result idref="xccdf_org.ssgproject.content_rule_audit_logs_remote_storage"
-                 time="2026-05-07T17:43:14.302451"
-                 severity="high"
-                 weight="1.000000">
-      <result>pass</result>
-      <ident system="https://nvd.nist.gov/cce/index.cfm">CCE-84197-6</ident>
-      <check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
-        <check-content-ref name="oval:ssg:def:983" href="ssg-ubuntu2404-oval.xml"/>
-      </check>
-    </rule-result>
-    
-    <rule-result idref="xccdf_org.ssgproject.content_rule_audit_logs_encrypted"
-                 time="2026-05-07T17:43:28.302451"
+                 time="2026-05-07T21:41:51.445030"
                  severity="medium"
                  weight="1.000000">
       <result>fail</result>
-      <ident system="https://nvd.nist.gov/cce/index.cfm">CCE-85864-7</ident>
+      <ident system="https://nvd.nist.gov/cce/index.cfm">CCE-86441-3</ident>
       <check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
-        <check-content-ref name="oval:ssg:def:448" href="ssg-ubuntu2404-oval.xml"/>
+        <check-content-ref name="oval:ssg:def:109" href="ssg-ubuntu2404-oval.xml"/>
       </check>
-      <message severity="error">Check failed: audit_logs_encrypted</message>
+      <message severity="error">Check failed: audit_logs_remote_storage</message>
+    </rule-result>
+    
+    <rule-result idref="xccdf_org.ssgproject.content_rule_audit_logs_encrypted"
+                 time="2026-05-07T21:42:06.445030"
+                 severity="high"
+                 weight="1.000000">
+      <result>pass</result>
+      <ident system="https://nvd.nist.gov/cce/index.cfm">CCE-80332-2</ident>
+      <check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
+        <check-content-ref name="oval:ssg:def:712" href="ssg-ubuntu2404-oval.xml"/>
+      </check>
     </rule-result>
     
     <rule-result idref="xccdf_org.ssgproject.content_rule_critical_action_signing_enabled"
-                 time="2026-05-07T17:43:37.302451"
+                 time="2026-05-07T21:42:18.445030"
                  severity="low"
                  weight="1.000000">
       <result>pass</result>
-      <ident system="https://nvd.nist.gov/cce/index.cfm">CCE-87879-4</ident>
+      <ident system="https://nvd.nist.gov/cce/index.cfm">CCE-84922-5</ident>
       <check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
-        <check-content-ref name="oval:ssg:def:570" href="ssg-ubuntu2404-oval.xml"/>
+        <check-content-ref name="oval:ssg:def:855" href="ssg-ubuntu2404-oval.xml"/>
       </check>
     </rule-result>
     
     <rule-result idref="xccdf_org.ssgproject.content_rule_time_synchronization_configured"
-                 time="2026-05-07T17:43:49.302451"
-                 severity="medium"
+                 time="2026-05-07T21:42:27.445030"
+                 severity="low"
                  weight="1.000000">
-      <result>fail</result>
-      <ident system="https://nvd.nist.gov/cce/index.cfm">CCE-82591-6</ident>
+      <result>pass</result>
+      <ident system="https://nvd.nist.gov/cce/index.cfm">CCE-89112-0</ident>
       <check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
-        <check-content-ref name="oval:ssg:def:739" href="ssg-ubuntu2404-oval.xml"/>
+        <check-content-ref name="oval:ssg:def:875" href="ssg-ubuntu2404-oval.xml"/>
       </check>
-      <message severity="error">Check failed: time_synchronization_configured</message>
     </rule-result>
     
   </TestResult>
