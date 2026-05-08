@@ -228,27 +228,6 @@ class TrestleAPI:
         """Get the path to an assessment plan JSON file."""
         plan_file = self.assessment_plans_dir / plan_name / 'assessment-plan.json'
         return plan_file if plan_file.exists() else None
-    def save_component(self, component: component_module.ComponentDefinition, component_name: str) -> bool:
-        """
-        Save a component definition.
-        
-        Args:
-            component: ComponentDefinition object to save
-            component_name: Name of the component directory
-            
-        Returns:
-            True if successful, False otherwise
-        """
-        comp_dir = self.components_dir / component_name
-        comp_dir.mkdir(parents=True, exist_ok=True)
-        comp_file = comp_dir / 'component-definition.json'
-        try:
-            component.oscal_write(comp_file)
-            return True
-        except Exception as e:
-            print(f"Error saving component {component_name}: {e}")
-            return False
-    
     def update_component_from_file(self, comp_file_path: Path, update_func) -> bool:
         """
         Load a component definition from a file path, apply updates, and save it back.
@@ -392,27 +371,6 @@ class TrestleAPI:
             return True
         except Exception as e:
             print(f"Error saving assessment results {results_name}: {e}")
-            return False
-    
-    def save_poam(self, poam: poam_module.PlanOfActionAndMilestones, poam_name: str) -> bool:
-        """
-        Save a Plan of Action and Milestones (POA&M).
-        
-        Args:
-            poam: PlanOfActionAndMilestones object to save
-            poam_name: Name of the POA&M directory
-            
-        Returns:
-            True if successful, False otherwise
-        """
-        poam_dir = self.poams_dir / poam_name
-        poam_dir.mkdir(parents=True, exist_ok=True)
-        poam_file = poam_dir / 'plan-of-action-and-milestones.json'
-        try:
-            poam.oscal_write(poam_file)
-            return True
-        except Exception as e:
-            print(f"Error saving POA&M {poam_name}: {e}")
             return False
     
     def load_assessment_plan(self, plan_name: str):
