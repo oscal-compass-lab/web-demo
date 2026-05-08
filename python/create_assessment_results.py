@@ -151,17 +151,13 @@ def load_mapping_coverage(regulation: str) -> Dict[str, float]:
     if 'DORA' not in regulation:
         return coverage_map
     
-    # Load the NIST to DORA mapping collection
-    mapping_path = Path('trestle-workspace/mapping-collections/nist-800-53-rev5-to-EU-Dora/mapping-collection.json')
-    if not mapping_path.exists():
-        print(f"  Warning: Mapping collection not found at {mapping_path}")
+    # Load the NIST to DORA mapping collection using trestle_api
+    mapping_data = trestle_api.load_mapping_dict('nist-800-53-rev5-to-EU-Dora')
+    if not mapping_data:
+        print(f"  Warning: Mapping collection 'nist-800-53-rev5-to-EU-Dora' not found")
         return coverage_map
     
     try:
-        import json
-        with open(mapping_path) as f:
-            mapping_data = json.load(f)
-        
         # Extract coverage from mappings
         mappings = mapping_data.get('mapping-collection', {}).get('mappings', [])
         for mapping in mappings:

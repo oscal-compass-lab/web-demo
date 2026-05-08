@@ -26,6 +26,7 @@ from pathlib import Path
 from datetime import datetime, timedelta
 import uuid
 from typing import Dict, List, Any
+import traceback
 sys.path.insert(0, str(Path(__file__).parent.parent))
 from trestle_api import TrestleAPI
 import trestle.oscal.poam as poam_module
@@ -310,7 +311,6 @@ def create_poam(ar_name: str) -> bool:
         return True
     except Exception as e:
         print(f"✗ Error creating POA&M: {e}")
-        import traceback
         traceback.print_exc()
         return False
 

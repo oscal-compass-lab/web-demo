@@ -234,62 +234,6 @@
                 </div>
             </div>
 
-            {% if data.regulation %}
-            <div class="section">
-                <h2>📊 Compliance Status Charts</h2>
-                <div style="background: #f8f9fa; padding: 20px; border-radius: 8px;">
-                    {% set reg_lower = data.regulation.lower() %}
-                    {% if 'fedramp' in reg_lower %}
-                        {% if 'low' in reg_lower %}
-                            <h3 style="color: #495057; margin-bottom: 15px;">FedRAMP Low Baseline</h3>
-                            <div style="margin-bottom: 20px;">
-                                <h4 style="color: #6c757d; margin-bottom: 10px;">Summary</h4>
-                                <img src="/charts/fedramp-low-summary.png" alt="FedRAMP Low Summary" style="max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
-                            </div>
-                            <div>
-                                <h4 style="color: #6c757d; margin-bottom: 10px;">Control Details</h4>
-                                <img src="/charts/fedramp-low-controls.png" alt="FedRAMP Low Controls" style="max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
-                            </div>
-                        {% elif 'moderate' in reg_lower %}
-                            <h3 style="color: #495057; margin-bottom: 15px;">FedRAMP Moderate Baseline</h3>
-                            <div style="margin-bottom: 20px;">
-                                <h4 style="color: #6c757d; margin-bottom: 10px;">Summary</h4>
-                                <img src="/charts/fedramp-moderate-summary.png" alt="FedRAMP Moderate Summary" style="max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
-                            </div>
-                            <div>
-                                <h4 style="color: #6c757d; margin-bottom: 10px;">Control Details</h4>
-                                <img src="/charts/fedramp-moderate-controls.png" alt="FedRAMP Moderate Controls" style="max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
-                            </div>
-                        {% elif 'high' in reg_lower %}
-                            <h3 style="color: #495057; margin-bottom: 15px;">FedRAMP High Baseline</h3>
-                            <div style="margin-bottom: 20px;">
-                                <h4 style="color: #6c757d; margin-bottom: 10px;">Summary</h4>
-                                <img src="/charts/fedramp-high-summary.png" alt="FedRAMP High Summary" style="max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
-                            </div>
-                            <div>
-                                <h4 style="color: #6c757d; margin-bottom: 10px;">Control Details</h4>
-                                <img src="/charts/fedramp-high-controls.png" alt="FedRAMP High Controls" style="max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
-                            </div>
-                        {% endif %}
-                    {% elif 'dora' in reg_lower %}
-                        <h3 style="color: #495057; margin-bottom: 15px;">DORA (Digital Operational Resilience Act)</h3>
-                        <div style="margin-bottom: 20px;">
-                            <h4 style="color: #6c757d; margin-bottom: 10px;">Summary</h4>
-                            <img src="/charts/dora-summary.png" alt="DORA Summary" style="max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
-                        </div>
-                        <div>
-                            <h4 style="color: #6c757d; margin-bottom: 10px;">Control Details</h4>
-                            <img src="/charts/dora-controls.png" alt="DORA Controls" style="max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
-                        </div>
-                    {% endif %}
-                    
-                    <div style="margin-top: 20px;">
-                        <h4 style="color: #6c757d; margin-bottom: 10px;">Cross-Regulation Comparison</h4>
-                        <img src="/charts/cross-regulation-comparison.png" alt="Cross-Regulation Comparison" style="max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
-                    </div>
-                </div>
-            </div>
-            {% endif %}
 
             {% if data.get('import-ap') %}
             <div class="section">

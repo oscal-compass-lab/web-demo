@@ -7,11 +7,13 @@ By default, updates files in source-data/component-definitions/
 Set COMP_DEF_DIR environment variable to update files in a different location (e.g., trestle-workspace)
 """
 
-import json
+import sys
 from pathlib import Path
 from datetime import datetime
 import uuid
 import os
+sys.path.insert(0, str(Path(__file__).parent.parent))
+from trestle_api import TrestleAPI
 
 # New rules for FedRAMP Moderate (not in Low)
 MODERATE_RULES = [
@@ -71,75 +73,95 @@ def get_next_rule_set_number(props):
 def add_rules_to_software_component(comp_def_path):
     """Add Rule_Id props AND control-implementations to software component."""
     print(f"\nUpdating software component: {comp_def_path}")
-    with open(comp_def_path, 'r') as f:
-        data = json.load(f)
     
-    component = data['component-definition']['components'][0]
-    props = component['props']
-    
-    # Add Rule_Id properties
-    start_num = get_next_rule_set_number(props)
     props_added = 0
-    for idx, rule in enumerate(ALL_NEW_RULES):
-        rule_set_num = start_num + idx
-        rule_set_id = f"rule_set_{rule_set_num:02d}"
-        props.append({"name": "Rule_Id", "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd", "value": rule['rule_id'], "remarks": rule_set_id})
-        props.append({"name": "Rule_Description", "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd", "value": rule['description'], "remarks": rule_set_id})
-        props_added += 1
-    
-    # Add control-implementations
-    rules_by_control = group_rules_by_control(ALL_NEW_RULES)
-    ci = component['control-implementations'][0]
-    existing_reqs = ci['implemented-requirements']
-    existing_control_ids = [r['control-id'] for r in existing_reqs]
-    
     controls_added = 0
-    for control_id, rules in sorted(rules_by_control.items()):
-        if control_id not in existing_control_ids:
-            new_req = {
-                "uuid": str(uuid.uuid4()),
-                "control-id": control_id,
-                "description": f"Implementation of {control_id.upper()} via XCCDF validation",
-                "props": [
-                    {"name": "Rule_Id", "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd", "value": rule['rule_id']}
-                    for rule in rules
-                ]
-            }
-            existing_reqs.append(new_req)
-            controls_added += 1
     
-    data['component-definition']['metadata']['last-modified'] = datetime.now().isoformat()
-    data['component-definition']['metadata']['version'] = 'V1.2'
+    def update_software_component(comp_dict):
+        nonlocal props_added, controls_added
+        
+        component = comp_dict['component-definition']['components'][0]
+        props = component.get('props', [])
+        
+        # Add Rule_Id properties
+        start_num = get_next_rule_set_number(props)
+        for idx, rule in enumerate(ALL_NEW_RULES):
+            rule_set_num = start_num + idx
+            rule_set_id = f"rule_set_{rule_set_num:02d}"
+            props.append({"name": "Rule_Id", "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd", "value": rule['rule_id'], "remarks": rule_set_id})
+            props.append({"name": "Rule_Description", "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd", "value": rule['description'], "remarks": rule_set_id})
+            props_added += 1
+        
+        component['props'] = props
+        
+        # Add control-implementations
+        rules_by_control = group_rules_by_control(ALL_NEW_RULES)
+        ci = component['control-implementations'][0]
+        existing_reqs = ci.get('implemented-requirements', [])
+        existing_control_ids = [r['control-id'] for r in existing_reqs]
+        
+        for control_id, rules in sorted(rules_by_control.items()):
+            if control_id not in existing_control_ids:
+                new_req = {
+                    "uuid": str(uuid.uuid4()),
+                    "control-id": control_id,
+                    "description": f"Implementation of {control_id.upper()} via XCCDF validation",
+                    "props": [
+                        {"name": "Rule_Id", "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd", "value": rule['rule_id']}
+                        for rule in rules
+                    ]
+                }
+                existing_reqs.append(new_req)
+                controls_added += 1
+        
+        ci['implemented-requirements'] = existing_reqs
+        
+        # Update metadata
+        comp_dict['component-definition']['metadata']['last-modified'] = datetime.now().isoformat()
+        comp_dict['component-definition']['metadata']['version'] = 'V1.2'
     
-    with open(comp_def_path, 'w') as f:
-        json.dump(data, f, indent=2)
+    # Use trestle_api to update
+    trestle_api = TrestleAPI(Path('trestle-workspace'))
+    success = trestle_api.update_component_from_file(comp_def_path, update_software_component)
     
-    print(f"  ✓ Added {props_added} rule properties")
-    print(f"  ✓ Added {controls_added} control implementations")
-    print(f"  ✓ Total controls: {len(existing_reqs)}")
+    if success:
+        print(f"  ✓ Added {props_added} rule properties")
+        print(f"  ✓ Added {controls_added} control implementations")
+    
     return props_added, controls_added
 
 def add_rules_to_validation_component(comp_def_path):
     print(f"\nUpdating validation component: {comp_def_path}")
-    with open(comp_def_path, 'r') as f:
-        data = json.load(f)
-    component = data['component-definition']['components'][0]
-    props = component['props']
-    start_num = get_next_rule_set_number(props)
+    
     added_count = 0
-    for idx, rule in enumerate(ALL_NEW_RULES):
-        rule_set_num = start_num + idx
-        rule_set_id = f"rule_set_{rule_set_num:02d}"
-        props.append({"name": "Rule_Id", "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd", "value": rule['rule_id'], "remarks": rule_set_id})
-        props.append({"name": "Check_Id", "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd", "value": f"xccdf_org.ssgproject.content_rule_{rule['rule_id']}", "remarks": rule_set_id})
-        props.append({"name": "Check_Description", "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd", "value": rule['description'], "remarks": rule_set_id})
-        props.append({"name": "Target_Component", "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd", "value": "Ubuntu_Linux_24.04_LTS", "remarks": rule_set_id})
-        added_count += 1
-    data['component-definition']['metadata']['last-modified'] = datetime.now().isoformat()
-    data['component-definition']['metadata']['version'] = 'V1.1'
-    with open(comp_def_path, 'w') as f:
-        json.dump(data, f, indent=2)
-    print(f"  ✓ Added {added_count} new rules")
+    
+    def update_validation_component(comp_dict):
+        nonlocal added_count
+        
+        component = comp_dict['component-definition']['components'][0]
+        props = component.get('props', [])
+        start_num = get_next_rule_set_number(props)
+        
+        for idx, rule in enumerate(ALL_NEW_RULES):
+            rule_set_num = start_num + idx
+            rule_set_id = f"rule_set_{rule_set_num:02d}"
+            props.append({"name": "Rule_Id", "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd", "value": rule['rule_id'], "remarks": rule_set_id})
+            props.append({"name": "Check_Id", "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd", "value": f"xccdf_org.ssgproject.content_rule_{rule['rule_id']}", "remarks": rule_set_id})
+            props.append({"name": "Check_Description", "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd", "value": rule['description'], "remarks": rule_set_id})
+            props.append({"name": "Target_Component", "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd", "value": "Ubuntu_Linux_24.04_LTS", "remarks": rule_set_id})
+            added_count += 1
+        
+        component['props'] = props
+        comp_dict['component-definition']['metadata']['last-modified'] = datetime.now().isoformat()
+        comp_dict['component-definition']['metadata']['version'] = 'V1.1'
+    
+    # Use trestle_api to update
+    trestle_api = TrestleAPI(Path('trestle-workspace'))
+    success = trestle_api.update_component_from_file(comp_def_path, update_validation_component)
+    
+    if success:
+        print(f"  ✓ Added {added_count} new rules")
+    
     return added_count
 
 def main():

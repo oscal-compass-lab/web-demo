@@ -27,11 +27,12 @@ from pathlib import Path
 from datetime import datetime
 import uuid
 import xml.etree.ElementTree as ET
-import json
 from typing import Dict, List, Any
+import traceback
 sys.path.insert(0, str(Path(__file__).parent.parent))
 from trestle_api import TrestleAPI
 import trestle.oscal.ssp as ssp_module
+from trestle.oscal import OSCAL_VERSION
 from server_config import get_all_servers, get_server_by_name
 
 # Initialize Trestle API
@@ -174,14 +175,11 @@ def create_ssp(profile_config: Dict[str, str], inventory: List[Dict[str, str]]) 
         print(f"  Warning: Could not load profile controls, including all")
         profile_controls = None
     
-    # Load component definition from workspace (has control-implementations)
-    source_comp_file = SOURCE_COMP_DEF_DIR / 'Ubuntu_Linux_24_04_LTS' / 'component-definition.json'
-    if not source_comp_file.exists():
-        print(f"Error: Source component definition not found: {source_comp_file}")
+    # Load component definition using trestle_api
+    source_comp_data = trestle_api.load_component_dict('Ubuntu_Linux_24_04_LTS')
+    if not source_comp_data:
+        print(f"Error: Could not load component definition Ubuntu_Linux_24_04_LTS")
         return False
-    
-    with open(source_comp_file) as f:
-        source_comp_data = json.load(f)
     
     source_comp_def = source_comp_data.get('component-definition', {})
     source_components = source_comp_def.get('components', [])
@@ -192,7 +190,7 @@ def create_ssp(profile_config: Dict[str, str], inventory: List[Dict[str, str]]) 
     
     source_component_data = source_components[0]
     
-    # Also load via trestle API for basic info
+    # Also load via trestle API for component object
     comp_def = trestle_api.load_component('Ubuntu_Linux_24_04_LTS')
     if not comp_def:
         print(f"Error: Could not load component definition via trestle API")
@@ -275,7 +273,7 @@ def create_ssp(profile_config: Dict[str, str], inventory: List[Dict[str, str]]) 
                 'title': f'Ubuntu System Security Plan - {profile_title}',
                 'last-modified': now.isoformat(),
                 'version': '1.0',
-                'oscal-version': ssp_module.OSCAL_VERSION
+                'oscal-version': OSCAL_VERSION
             },
             'import-profile': {
                 'href': f"trestle://{'profiles' if ref_type == 'profile' else 'catalogs'}/{profile_ref}/{'profile' if ref_type == 'profile' else 'catalog'}.json"
@@ -343,7 +341,6 @@ def create_ssp(profile_config: Dict[str, str], inventory: List[Dict[str, str]]) 
             return False
     except Exception as e:
         print(f"✗ Error creating SSP: {e}")
-        import traceback
         traceback.print_exc()
         return False
 

@@ -17,12 +17,13 @@ OSCAL Compliance Demo - Flask Web Application
 Reads OSCAL documents from trestle workspace using compliance-trestle
 """
 
-from flask import Flask, render_template, jsonify, redirect
+from flask import Flask, render_template, jsonify, redirect, send_from_directory
 import flask
 import os
-import json
 from pathlib import Path
 from datetime import datetime
+import xml.etree.ElementTree as ET
+import json
 from trestle_api import TrestleAPI
 
 app = Flask(__name__, template_folder='app-config/templates', static_folder='app-config/static')
@@ -31,7 +32,6 @@ app = Flask(__name__, template_folder='app-config/templates', static_folder='app
 @app.route('/charts/<path:filename>')
 def serve_chart(filename):
     """Serve chart images from source-data/charts directory"""
-    from flask import send_from_directory
     return send_from_directory('source-data/charts', filename)
 
 # Initialize Trestle API
@@ -117,7 +117,7 @@ def get_components():
     for comp_info in components:
         comp_obj = trestle_api.load_component(comp_info['name'])
         if comp_obj and comp_obj.components:
-            comp_info['type'] = comp_obj.components[0].type
+            comp_info['type'] = str(comp_obj.components[0].type)
         else:
             comp_info['type'] = 'N/A'
     return components
@@ -1059,17 +1059,20 @@ def api_profiles():
 @app.route('/api/catalog/<catalog_name>')
 def api_catalog(catalog_name):
     """API: Get specific catalog"""
-    data = load_catalog(catalog_name)
-    if data:
-        return jsonify(data)
+    json_file = trestle_api.load_catalog_json_file(catalog_name)
+    if json_file and json_file.exists():
+        with open(json_file, 'r') as f:
+            return jsonify(json.load(f))
     return jsonify({'error': 'Catalog not found'}), 404
 
 @app.route('/api/profile/<profile_name>')
 def api_profile(profile_name):
     """API: Get specific profile"""
-    data = load_profile(profile_name)
-    if data:
-        return jsonify(data)
+    json_file = trestle_api.load_profile_json_file(profile_name)
+    if json_file and json_file.exists():
+        with open(json_file, 'r') as f:
+            return jsonify(json.load(f))
+    return jsonify({'error': 'Profile not found'}), 404
 
 @app.route('/api/components')
 def api_components():
@@ -1078,9 +1081,9 @@ def api_components():
 
 @app.route('/api/component/<component_name>')
 def api_component(component_name):
-    """API: Get specific component definition - serve raw JSON file"""
-    json_file = TRESTLE_ROOT / 'component-definitions' / component_name / 'component-definition.json'
-    if json_file.exists():
+    """API: Get specific component definition"""
+    json_file = trestle_api.load_component_json_file(component_name)
+    if json_file and json_file.exists():
         with open(json_file, 'r') as f:
             return jsonify(json.load(f))
     return jsonify({'error': 'Component not found'}), 404
@@ -1092,9 +1095,9 @@ def api_ssps():
 
 @app.route('/api/ssp/<ssp_name>')
 def api_ssp(ssp_name):
-    """API: Get specific system security plan - serve raw JSON file"""
-    json_file = TRESTLE_ROOT / 'system-security-plans' / ssp_name / 'system-security-plan.json'
-    if json_file.exists():
+    """API: Get specific system security plan"""
+    json_file = trestle_api.load_ssp_json_file(ssp_name)
+    if json_file and json_file.exists():
         with open(json_file, 'r') as f:
             return jsonify(json.load(f))
     return jsonify({'error': 'SSP not found'}), 404
@@ -1106,9 +1109,9 @@ def api_assessment_plans():
 
 @app.route('/api/assessment-plan/<plan_name>')
 def api_assessment_plan_json(plan_name):
-    """API: Get specific assessment plan - serve raw JSON file"""
-    json_file = TRESTLE_ROOT / 'assessment-plans' / plan_name / 'assessment-plan.json'
-    if json_file.exists():
+    """API: Get specific assessment plan"""
+    json_file = trestle_api.load_assessment_plan_json_file(plan_name)
+    if json_file and json_file.exists():
         with open(json_file, 'r') as f:
             return jsonify(json.load(f))
     return jsonify({'error': 'Assessment plan not found'}), 404
@@ -1122,7 +1125,6 @@ def xccdf_result(result_name):
         return f"<h1>XCCDF Result Not Found</h1><p>File: {xml_file}</p>", 404
     
     # Parse XML to extract key information
-    import xml.etree.ElementTree as ET
     try:
         tree = ET.parse(xml_file)
         root = tree.getroot()

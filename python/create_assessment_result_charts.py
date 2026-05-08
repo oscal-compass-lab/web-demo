@@ -19,7 +19,7 @@ Generates visual charts showing pass/fail statistics by regulation and by contro
 """
 
 from pathlib import Path
-import json
+import sys
 import re
 from typing import Dict, List, Tuple
 import numpy as np
@@ -27,10 +27,15 @@ import matplotlib
 matplotlib.use('Agg')  # Use non-interactive backend
 import matplotlib.pyplot as plt
 import matplotlib.patches as mpatches
+sys.path.insert(0, str(Path(__file__).parent.parent))
+from trestle_api import TrestleAPI
 
 # Directories
 ASSESSMENT_RESULTS_DIR = Path('trestle-workspace/assessment-results')
 CHARTS_OUTPUT_DIR = Path('source-data/charts')
+
+# Initialize TrestleAPI
+trestle_api = TrestleAPI(Path('trestle-workspace'))
 
 # Chart styling
 COLORS = {
@@ -81,8 +86,12 @@ def parse_assessment_result(ar_file: Path) -> Dict:
     Returns:
         Dictionary with statistics
     """
-    with open(ar_file) as f:
-        data = json.load(f)
+    # Use trestle_api to load assessment results
+    ar_name = ar_file.parent.name
+    data = trestle_api.load_assessment_results_dict(ar_name)
+    
+    if not data:
+        return {}
     
     ar = data.get('assessment-results', {})
     

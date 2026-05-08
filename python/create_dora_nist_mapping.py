@@ -20,23 +20,29 @@ Uses transitive mapping through Harmonized controls:
 Includes confidence scores and coverage metrics
 """
 
-import json
+import sys
 import uuid
 from datetime import datetime, timezone
 from pathlib import Path
 from collections import defaultdict
+sys.path.insert(0, str(Path(__file__).parent.parent))
+from trestle_api import TrestleAPI
+import trestle.oscal.mapping as mapping_module
 
 print("Creating NIST 800-53 Rev 5 to DORA Mapping Collection...\n")
 
-# Load Harmonized to DORA mapping
-harmonized_dora_path = Path("source-data/mapping-collections/Harmonized-to-EU-Dora/mapping-collection.json")
-with open(harmonized_dora_path) as f:
-    harmonized_dora = json.load(f)
+# Initialize TrestleAPI
+trestle_api = TrestleAPI(Path('trestle-workspace'))
 
-# Load Harmonized to NIST mapping
+# Load Harmonized to DORA mapping using trestle_api
+harmonized_dora_path = Path("source-data/mapping-collections/Harmonized-to-EU-Dora/mapping-collection.json")
+harmonized_dora_obj = mapping_module.MappingCollection.oscal_read(harmonized_dora_path)
+harmonized_dora = harmonized_dora_obj.oscal_dict() if harmonized_dora_obj else {}
+
+# Load Harmonized to NIST mapping using trestle_api
 harmonized_nist_path = Path("source-data/mapping-collections/Harmonized-to-nist-800-53-rev5/mapping-collection.json")
-with open(harmonized_nist_path) as f:
-    harmonized_nist = json.load(f)
+harmonized_nist_obj = mapping_module.MappingCollection.oscal_read(harmonized_nist_path)
+harmonized_nist = harmonized_nist_obj.oscal_dict() if harmonized_nist_obj else {}
 
 print(f"✓ Loaded Harmonized to DORA mapping: {len(harmonized_dora['mapping-collection']['mappings'])} mappings")
 print(f"✓ Loaded Harmonized to NIST mapping: {len(harmonized_nist['mapping-collection']['mappings'])} mappings\n")
@@ -186,16 +192,15 @@ for nist_id in sorted(nist_to_dora.keys()):
     avg_coverage = sum(c['coverage'] for c in dora_articles.values()) / len(dora_articles)
     print(f"  → Avg confidence: {avg_confidence:.2f}, Avg coverage: {avg_coverage:.2f}")
 
-# Save mapping collection
-mapping_dir = Path("trestle-workspace/mapping-collections/nist-800-53-rev5-to-EU-Dora")
-mapping_dir.mkdir(parents=True, exist_ok=True)
-mapping_file = mapping_dir / "mapping-collection.json"
+# Save mapping collection using trestle_api
+mapping_obj = mapping_module.MappingCollection(**mapping_collection['mapping-collection'])
+success = trestle_api.save_mapping(mapping_obj, "nist-800-53-rev5-to-EU-Dora")
 
-with open(mapping_file, 'w') as f:
-    json.dump(mapping_collection, f, indent=2)
-
-print(f"\n✓ Mapping collection created successfully!")
-print(f"  Location: {mapping_file}")
+if success:
+    print(f"\n✓ Mapping collection created successfully!")
+    print(f"  Location: trestle-workspace/mapping-collections/nist-800-53-rev5-to-EU-Dora/mapping-collection.json")
+else:
+    print(f"\n✗ Failed to save mapping collection")
 print(f"  Total NIST controls: {len(nist_to_dora)}")
 
 # Count total DORA articles

@@ -21,12 +21,15 @@ and SSPs using trestle's built-in functionality.
 
 from pathlib import Path
 from typing import Optional, Dict, Any, List
+from io import StringIO
 import trestle.oscal.catalog as catalog_module
 import trestle.oscal.profile as profile_module
 import trestle.oscal.component as component_module
 import trestle.oscal.ssp as ssp_module
 import trestle.oscal.mapping as mapping_module
 import trestle.oscal.assessment_results as assessment_results_module
+import trestle.oscal.assessment_plan as ap_module
+import trestle.oscal.poam as poam_module
 from trestle.oscal.common import OSCAL_VERSION
 from trestle.common.model_utils import ModelUtils
 
@@ -200,6 +203,84 @@ class TrestleAPI:
         if comp_obj:
             return comp_obj.oscal_dict()
         return None
+    
+    def load_catalog_json_file(self, catalog_name: str) -> Optional[Path]:
+        """Get the path to a catalog JSON file."""
+        catalog_file = self.catalogs_dir / catalog_name / 'catalog.json'
+        return catalog_file if catalog_file.exists() else None
+    
+    def load_profile_json_file(self, profile_name: str) -> Optional[Path]:
+        """Get the path to a profile JSON file."""
+        profile_file = self.profiles_dir / profile_name / 'profile.json'
+        return profile_file if profile_file.exists() else None
+    
+    def load_component_json_file(self, component_name: str) -> Optional[Path]:
+        """Get the path to a component definition JSON file."""
+        comp_file = self.components_dir / component_name / 'component-definition.json'
+        return comp_file if comp_file.exists() else None
+    
+    def load_ssp_json_file(self, ssp_name: str) -> Optional[Path]:
+        """Get the path to an SSP JSON file."""
+        ssp_file = self.ssps_dir / ssp_name / 'system-security-plan.json'
+        return ssp_file if ssp_file.exists() else None
+    
+    def load_assessment_plan_json_file(self, plan_name: str) -> Optional[Path]:
+        """Get the path to an assessment plan JSON file."""
+        plan_file = self.assessment_plans_dir / plan_name / 'assessment-plan.json'
+        return plan_file if plan_file.exists() else None
+    def save_component(self, component: component_module.ComponentDefinition, component_name: str) -> bool:
+        """
+        Save a component definition.
+        
+        Args:
+            component: ComponentDefinition object to save
+            component_name: Name of the component directory
+            
+        Returns:
+            True if successful, False otherwise
+        """
+        comp_dir = self.components_dir / component_name
+        comp_dir.mkdir(parents=True, exist_ok=True)
+        comp_file = comp_dir / 'component-definition.json'
+        try:
+            component.oscal_write(comp_file)
+            return True
+        except Exception as e:
+            print(f"Error saving component {component_name}: {e}")
+            return False
+    
+    def update_component_from_file(self, comp_file_path: Path, update_func) -> bool:
+        """
+        Load a component definition from a file path, apply updates, and save it back.
+        
+        Args:
+            comp_file_path: Path to component-definition.json file
+            update_func: Function that takes component dict and modifies it in place
+            
+        Returns:
+            True if successful, False otherwise
+        """
+        try:
+            # Load component definition
+            comp_def = component_module.ComponentDefinition.oscal_read(comp_file_path)
+            if not comp_def:
+                return False
+            
+            # Convert to dict for easier manipulation
+            comp_dict = comp_def.oscal_dict()
+            
+            # Apply updates
+            update_func(comp_dict)
+            
+            # Convert back to trestle object and save
+            comp_def_updated = component_module.ComponentDefinition(**comp_dict['component-definition'])
+            comp_def_updated.oscal_write(comp_file_path)
+            return True
+        except Exception as e:
+            print(f"Error updating component definition: {e}")
+            return False
+
+
 
     def list_ssps(self) -> List[Dict[str, str]]:
         """
@@ -313,12 +394,12 @@ class TrestleAPI:
             print(f"Error saving assessment results {results_name}: {e}")
             return False
     
-    def save_poam(self, poam_dict: Dict[str, Any], poam_name: str) -> bool:
+    def save_poam(self, poam: poam_module.PlanOfActionAndMilestones, poam_name: str) -> bool:
         """
         Save a Plan of Action and Milestones (POA&M).
         
         Args:
-            poam_dict: POA&M dictionary to save
+            poam: PlanOfActionAndMilestones object to save
             poam_name: Name of the POA&M directory
             
         Returns:
@@ -328,9 +409,7 @@ class TrestleAPI:
         poam_dir.mkdir(parents=True, exist_ok=True)
         poam_file = poam_dir / 'plan-of-action-and-milestones.json'
         try:
-            import json
-            with open(poam_file, 'w') as f:
-                json.dump(poam_dict, f, indent=2)
+            poam.oscal_write(poam_file)
             return True
         except Exception as e:
             print(f"Error saving POA&M {poam_name}: {e}")
@@ -350,7 +429,6 @@ class TrestleAPI:
         if not plan_file.exists():
             return None
         try:
-            import trestle.oscal.assessment_plan as ap_module
             return ap_module.AssessmentPlan.oscal_read(plan_file)
         except Exception as e:
             print(f"Error loading assessment plan {plan_name}: {e}")
@@ -375,7 +453,6 @@ class TrestleAPI:
                     version = 'N/A'
                     if plan_file.exists():
                         try:
-                            import trestle.oscal.assessment_plan as ap_module
                             plan_obj = ap_module.AssessmentPlan.oscal_read(plan_file)
                             title = plan_obj.metadata.title or plan_dir.name
                             version = plan_obj.metadata.version or 'N/A'
@@ -608,15 +685,10 @@ class TrestleAPI:
                     # Try to read the actual POA&M file to get title and version
                     if poam_file.exists():
                         try:
-                            import json
-                            with open(poam_file, 'r') as f:
-                                data = json.load(f)
-                                poam = data.get('plan-of-action-and-milestones', data)
-                                metadata = poam.get('metadata', {})
-                                if 'title' in metadata:
-                                    title = metadata['title']
-                                if 'version' in metadata:
-                                    version = metadata['version']
+                            poam_obj = poam_module.PlanOfActionAndMilestones.oscal_read(poam_file)
+                            if poam_obj and poam_obj.metadata:
+                                title = poam_obj.metadata.title or poam_dir.name
+                                version = poam_obj.metadata.version or 'N/A'
                         except Exception as e:
                             print(f"Error reading POA&M metadata {poam_dir.name}: {e}")
                     
@@ -628,16 +700,21 @@ class TrestleAPI:
                     })
         return poams
     
-    def load_poam_dict(self, poam_name: str) -> Optional[Dict[str, Any]]:
-        """Load a specific POA&M by name and return as dictionary"""
+    def load_poam(self, poam_name: str) -> Optional[poam_module.PlanOfActionAndMilestones]:
+        """Load a specific POA&M by name and return as trestle object"""
         poam_file = self.poams_dir / poam_name / 'plan-of-action-and-milestones.json'
         if poam_file.exists():
             try:
-                import json
-                with open(poam_file, 'r') as f:
-                    return json.load(f)
+                return poam_module.PlanOfActionAndMilestones.oscal_read(poam_file)
             except Exception as e:
                 print(f"Error loading POA&M {poam_name}: {e}")
+        return None
+    
+    def load_poam_dict(self, poam_name: str) -> Optional[Dict[str, Any]]:
+        """Load a specific POA&M by name and return as dictionary"""
+        poam_obj = self.load_poam(poam_name)
+        if poam_obj:
+            return poam_obj.oscal_dict()
         return None
     
     def load_poam_view(self, poam_name: str) -> Optional[Dict[str, Any]]:
@@ -779,6 +856,28 @@ class TrestleAPI:
         if mapping_obj:
             return mapping_obj.oscal_dict()
         return None
+    
+    def save_mapping(self, mapping: mapping_module.MappingCollection, mapping_name: str) -> bool:
+        """
+        Save a mapping collection.
+        
+        Args:
+            mapping: MappingCollection object to save
+            mapping_name: Name of the mapping directory
+            
+        Returns:
+            True if successful, False otherwise
+        """
+        mapping_dir = self.mappings_dir / mapping_name
+        mapping_dir.mkdir(parents=True, exist_ok=True)
+        mapping_file = mapping_dir / 'mapping-collection.json'
+        try:
+            mapping.oscal_write(mapping_file)
+            return True
+        except Exception as e:
+            print(f"Error saving mapping collection {mapping_name}: {e}")
+            return False
+
     
     def update_oscal_version(self, file_path: Path, target_version: str = OSCAL_VERSION) -> bool:
         """
