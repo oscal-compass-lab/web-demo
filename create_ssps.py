@@ -30,6 +30,7 @@ import json
 from typing import Dict, List, Any
 from trestle_api import TrestleAPI
 import trestle.oscal.ssp as ssp_module
+from server_config import get_all_servers, get_server_by_name
 
 # Initialize Trestle API
 trestle_api = TrestleAPI(Path('trestle-workspace'))
@@ -76,6 +77,7 @@ PROFILES = [
 def extract_inventory_from_xccdf() -> List[Dict[str, str]]:
     """
     Extract inventory information from XCCDF scan result files.
+    Uses common server configuration for consistent data.
     
     Returns:
         List of inventory item dictionaries
@@ -86,84 +88,52 @@ def extract_inventory_from_xccdf() -> List[Dict[str, str]]:
         print(f"Warning: XCCDF directory not found: {XCCDF_DIR}")
         return inventory
     
+    # Get all server configurations
+    all_servers = get_all_servers()
+    
     # Find all XCCDF result files
     xccdf_files = sorted(XCCDF_DIR.glob('*-xccdf-results.xml'))
     
     for xccdf_file in xccdf_files:
         try:
-            # Parse XCCDF file
-            tree = ET.parse(xccdf_file)
-            root = tree.getroot()
+            # Extract server name from filename: ubuntu-web-01-xccdf-results.xml -> ubuntu-web-01
+            server_name = xccdf_file.stem.replace('-xccdf-results', '')
             
-            # Extract namespace
-            ns = {'xccdf': 'http://checklists.nist.gov/xccdf/1.2'}
+            # Get server config from common data
+            server_config = get_server_by_name(server_name)
             
-            # Get target information
-            target_elem = root.find('.//xccdf:target', ns)
-            target_facts = root.findall('.//xccdf:target-facts/xccdf:fact', ns)
+            if not server_config:
+                print(f"Warning: No configuration found for {server_name}, skipping")
+                continue
             
-            hostname = None
-            ip_address = None
+            # Use data from common configuration
+            hostname = server_config['hostname']
+            ip_address = server_config['ip']
+            role = server_config['role']
+            description = server_config['description']
             
-            # Extract hostname from target element or filename
-            if target_elem is not None and target_elem.text:
-                hostname = target_elem.text
-            else:
-                # Extract from filename: ubuntu-web-01-xccdf-results.xml -> ubuntu-web-01
-                hostname = xccdf_file.stem.replace('-xccdf-results', '')
-            
-            # Extract IP address from target facts
-            for fact in target_facts:
-                fact_name = fact.get('name', '')
-                if 'ip' in fact_name.lower() or 'address' in fact_name.lower():
-                    ip_address = fact.text
-                    break
-            
-            # Generate IP if not found (for demo purposes)
-            if not ip_address:
-                # Assign IPs based on hostname pattern
-                if 'web-01' in hostname:
-                    ip_address = '10.0.1.10'
-                elif 'web-02' in hostname:
-                    ip_address = '10.0.1.11'
-                elif 'web-03' in hostname:
-                    ip_address = '10.0.1.12'
-                elif 'db' in hostname:
-                    ip_address = '10.0.2.10'
-                elif 'app' in hostname:
-                    ip_address = '10.0.3.10'
-                elif 'mgmt' in hostname:
-                    ip_address = '10.0.4.10'
-                else:
-                    ip_address = '10.0.0.10'
-            
-            # Determine role and title from hostname
-            if 'web' in hostname:
-                role = 'web-server'
-                title = f"Ubuntu Web Server {hostname.split('-')[-1].upper()}"
-            elif 'db' in hostname:
-                role = 'database-server'
+            # Determine title from role
+            if role == 'web':
+                title = f"Ubuntu Web Server {server_name.split('-')[-1].upper()}"
+            elif role == 'database':
                 title = "Ubuntu Database Server"
-            elif 'app' in hostname:
-                role = 'application-server'
+            elif role == 'application':
                 title = "Ubuntu Application Server"
-            elif 'mgmt' in hostname:
-                role = 'management-server'
+            elif role == 'management':
                 title = "Ubuntu Management Server"
             else:
-                role = 'server'
-                title = f"Ubuntu Server {hostname}"
+                title = f"Ubuntu Server {server_name}"
             
             inventory.append({
                 'hostname': hostname,
                 'title': title,
-                'description': f'{title} running Ubuntu 24.04 LTS',
+                'description': description,
                 'ip': ip_address,
-                'role': role
+                'role': f"{role}-server"
             })
             
         except Exception as e:
-            print(f"Warning: Could not parse {xccdf_file.name}: {e}")
+            print(f"Warning: Could not process {xccdf_file.name}: {e}")
             continue
     
     return inventory

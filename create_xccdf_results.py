@@ -22,6 +22,7 @@ from pathlib import Path
 from datetime import datetime, timedelta
 import random
 from trestle_api import TrestleAPI
+from server_config import get_all_servers
 
 # Initialize Trestle API
 trestle_api = TrestleAPI(Path('trestle-workspace'))
@@ -43,44 +44,8 @@ if oscap_component.props:
 
 print(f"Found {len(rules)} rules in OSCAP component\n")
 
-# Server configurations
-servers = [
-    {
-        "name": "ubuntu-web-01",
-        "hostname": "ubuntu-web-01.example.com",
-        "ip": "192.168.1.101",
-        "description": "Primary web server running Ubuntu 24.04 LTS",
-        "compliance_rate": 0.85  # 85% pass rate
-    },
-    {
-        "name": "ubuntu-web-02",
-        "hostname": "ubuntu-web-02.example.com",
-        "ip": "192.168.1.102",
-        "description": "Secondary web server running Ubuntu 24.04 LTS",
-        "compliance_rate": 0.80  # 80% pass rate
-    },
-    {
-        "name": "ubuntu-db-01",
-        "hostname": "ubuntu-db-01.example.com",
-        "ip": "192.168.1.103",
-        "description": "Database server running Ubuntu 24.04 LTS",
-        "compliance_rate": 0.90  # 90% pass rate
-    },
-    {
-        "name": "ubuntu-app-01",
-        "hostname": "ubuntu-app-01.example.com",
-        "ip": "192.168.1.104",
-        "description": "Application server running Ubuntu 24.04 LTS",
-        "compliance_rate": 0.75  # 75% pass rate
-    },
-    {
-        "name": "ubuntu-mgmt-01",
-        "hostname": "ubuntu-mgmt-01.example.com",
-        "ip": "192.168.1.105",
-        "description": "Management and monitoring server running Ubuntu 24.04 LTS",
-        "compliance_rate": 0.95  # 95% pass rate
-    }
-]
+# Get server configurations from common data file
+servers = get_all_servers()
 
 # Create results directory
 results_dir = Path("source-data/xccdf-results")

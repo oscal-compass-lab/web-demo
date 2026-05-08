@@ -1211,10 +1211,6 @@ def xccdf_result(result_name):
             
             <div class="stats">
                 <div class="stat-box">
-                    <div class="score">{score:.1f}%</div>
-                    <p>Compliance Score</p>
-                </div>
-                <div class="stat-box">
                     <h3 class="pass">{pass_count}</h3>
                     <p>Passed</p>
                 </div>

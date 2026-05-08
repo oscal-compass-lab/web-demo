@@ -1,4 +1,4 @@
-.PHONY: all venv help ws run validate create-catalogs create-profiles create-resolve create-mappings create-xccdf create-compdefs create-ssps create-aps create-ars create-poams create-oscal clean-catalogs clean-profiles clean-resolve clean-mappings clean-compdefs clean-ssps clean-aps clean-ars clean-poams clean-oscal clean-ws clean-venv
+.PHONY: all venv help ws run validate create-catalogs create-profiles create-resolve create-mappings create-xccdf create-compdefs create-ssps create-aps create-ars create-poams create-oscal artifacts clean-artifacts clean-catalogs clean-profiles clean-resolve clean-mappings clean-compdefs clean-ssps clean-aps clean-ars clean-poams clean-xccdf clean-oscal clean-ws clean-venv
 
 # Python virtual environment directory
 VENV_DIR = .venv
@@ -10,40 +10,24 @@ help:
 	@echo "Available targets:"
 	@echo "  all            - Default target, sets up environment, validates, and runs app"
 	@echo "  venv           - Create virtual environment and install dependencies from requirements.txt"
+	@echo "  clean-venv     - Remove virtual environment"
 	@echo "  ws             - Create trestle-workspace and initialize trestle"
-	@echo "  create-xccdf   - Generate XCCDF scan result files"
-	@echo "  create-catalogs - Copy catalogs from source-data to trestle workspace"
-	@echo "  create-profiles - Copy profiles from source-data to trestle workspace"
-	@echo "  create-resolve - Resolve profiles to catalogs"
-	@echo "  create-mappings - Create NIST to DORA mapping collection"
-	@echo "  create-compdefs - Copy component definitions from source-data to trestle workspace"
-	@echo "  create-ssps    - Generate SSPs from component definitions and XCCDF inventory"
-	@echo "  create-aps     - Generate assessment plans from SSPs"
-	@echo "  create-ars     - Generate assessment results from XCCDF scan files"
-	@echo "  create-poams   - Generate POA&Ms from assessment results"
-	@echo "  create-oscal   - Create all OSCAL documents (catalogs, profiles, resolve, mappings, compdefs, ssps, aps, ars, poams)"
+	@echo "  clean-ws       - Remove trestle-workspace folder and contents"
+	@echo "  artifacts      - Generate all artifacts (XCCDF results and OSCAL documents) in correct order"
+	@echo "  clean-artifacts - Remove all generated/copied artifacts (XCCDF results and OSCAL documents)"
 	@echo "  validate       - Validate all OSCAL documents with trestle"
 	@echo "  run            - Launch Flask application"
-	@echo "  clean-catalogs - Remove catalogs from trestle workspace"
-	@echo "  clean-profiles - Remove profiles from trestle workspace"
-	@echo "  clean-resolve  - Remove resolved catalogs"
-	@echo "  clean-mappings - Remove NIST to DORA mapping collection"
-	@echo "  clean-compdefs - Remove component definitions from trestle workspace"
-	@echo "  clean-ssps     - Remove all generated SSPs"
-	@echo "  clean-aps      - Remove all generated assessment plans"
-	@echo "  clean-ars      - Remove all generated assessment results"
-	@echo "  clean-poams    - Remove all generated POA&Ms"
-	@echo "  clean-oscal    - Remove all OSCAL documents (catalogs, profiles, resolve, mappings, compdefs, ssps, aps, ars, poams)"
-	@echo "  clean-ws       - Remove trestle-workspace folder and contents"
-	@echo "  clean-venv     - Remove virtual environment"
+	
+
 
 create-xccdf: venv ws
-	@if [ ! -f "source-data/xccdf-results/ubuntu-web-01-xccdf-results.xml" ]; then \
-		echo "Creating XCCDF scan result files..."; \
-		. $(VENV_DIR)/bin/activate && python3 create_xccdf_results.py; \
-	else \
-		echo "XCCDF results already exist: source-data/xccdf-results/"; \
-	fi
+	@echo "Creating XCCDF scan result files..."
+	@. $(VENV_DIR)/bin/activate && python3 create_xccdf_results.py
+
+clean-xccdf:
+	@echo "Removing generated XCCDF scan result files..."
+	@rm -rf source-data/xccdf-results/*.xml
+	@echo "✅ XCCDF results removed"
 
 create-catalogs: venv ws
 	@echo "Copying catalogs from source-data to trestle workspace..."
@@ -82,17 +66,8 @@ create-resolve: venv ws create-profiles
 	@echo "✅ Profiles resolved to catalogs"
 
 create-mappings: venv ws
-	@if [ ! -f "$(TRESTLE_WORKSPACE)/mapping-collections/nist-800-53-rev5-to-EU-Dora/mapping-collection.json" ]; then \
-		echo "Creating NIST to DORA mapping collection..."; \
-		. $(VENV_DIR)/bin/activate && python3 create_dora_nist_mapping.py; \
-	else \
-		echo "DORA mapping already exists: mapping-collections/nist-800-53-rev5-to-EU-Dora"; \
-	fi
-
-clean-mappings:
-	@echo "Removing NIST to DORA mapping collection..."
-	@rm -rf $(TRESTLE_WORKSPACE)/mapping-collections/nist-800-53-rev5-to-EU-Dora
-	@echo "✅ Mapping collection removed"
+	@echo "Creating NIST to DORA mapping collection..."
+	@. $(VENV_DIR)/bin/activate && python3 create_dora_nist_mapping.py
 
 create-oscal: create-catalogs create-profiles create-resolve create-mappings create-compdefs create-ssps create-aps create-ars create-poams
 	@echo "✅ All OSCAL documents created"
@@ -173,6 +148,30 @@ clean-poams:
 
 clean-oscal: clean-poams clean-ars clean-aps clean-ssps clean-compdefs clean-mappings clean-resolve clean-profiles clean-catalogs
 	@echo "✅ All OSCAL documents removed"
+
+# Artifacts targets - generate/clean all artifacts in correct order
+artifacts: venv ws clean-xccdf create-xccdf create-oscal
+	@echo ""
+	@echo "=========================================="
+	@echo "✅ All artifacts generated successfully!"
+	@echo "=========================================="
+	@echo "  XCCDF Results: source-data/xccdf-results/"
+	@echo "  Catalogs: $(TRESTLE_WORKSPACE)/catalogs/"
+	@echo "  Profiles: $(TRESTLE_WORKSPACE)/profiles/"
+	@echo "  Resolved Catalogs: $(TRESTLE_WORKSPACE)/catalogs/resolved-*"
+	@echo "  Mappings: $(TRESTLE_WORKSPACE)/mapping-collections/"
+	@echo "  Component Definitions: $(TRESTLE_WORKSPACE)/component-definitions/"
+	@echo "  SSPs: $(TRESTLE_WORKSPACE)/system-security-plans/"
+	@echo "  Assessment Plans: $(TRESTLE_WORKSPACE)/assessment-plans/"
+	@echo "  Assessment Results: $(TRESTLE_WORKSPACE)/assessment-results/"
+	@echo "  POA&Ms: $(TRESTLE_WORKSPACE)/plan-of-action-and-milestones/"
+	@echo "=========================================="
+
+clean-artifacts: clean-xccdf clean-oscal
+	@echo ""
+	@echo "=========================================="
+	@echo "✅ All artifacts cleaned successfully!"
+	@echo "=========================================="
 
 validate: venv ws
 	@echo "Validating all OSCAL documents in trestle workspace..."
