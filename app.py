@@ -193,7 +193,8 @@ def index():
         <title>OSCAL Compliance Demo</title>
         <style>
             body {{ font-family: Arial, sans-serif; margin: 40px; background: #f5f5f5; }}
-            .container {{ max-width: 1200px; margin: 0 auto; background: white; padding: 30px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }}
+            .container {{ max-width: 1200px; margin: 0 auto; background: white; padding: 30px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); position: relative; }}
+            .powered-by {{ position: absolute; top: 10px; right: 20px; font-size: 11px; color: #7f8c8d; background: #f8f9fa; padding: 5px 10px; border-radius: 4px; border: 1px solid #e0e0e0; }}
             .header {{ display: flex; align-items: center; gap: 20px; margin-bottom: 20px; }}
             .logo {{ height: 60px; width: auto; }}
             .header-text {{ flex: 1; }}
@@ -211,18 +212,28 @@ def index():
             .status.pending {{ background: #f39c12; color: white; }}
             .footer {{ margin-top: 40px; padding-top: 20px; border-top: 1px solid #ddd; text-align: center; color: #7f8c8d; }}
             .info {{ background: #e8f4f8; padding: 15px; border-radius: 8px; margin: 20px 0; border-left: 4px solid #3498db; }}
+            .frameworks-image {{ width: 100%; max-width: 800px; height: auto; display: block; margin: 20px auto; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }}
         </style>
     </head>
     <body>
         <div class="container">
+            <div class="powered-by">
+                <strong>Powered by:</strong> compliance-trestle 4.0+ | Flask {flask.__version__}
+            </div>
             <div class="header">
                 <img src="/static/images/oscal-compass-logo.png" alt="OSCAL Compass Logo" class="logo">
                 <div class="header-text">
                     <h1>OSCAL Compass Compliance Demo</h1>
                 </div>
             </div>
-            <p>Comprehensive demonstration comprising complete set of OSCAL documents using OSCAL Compass compliance-trestle</p>
-            <p><strong>Powered by:</strong> compliance-trestle 4.0+ | Flask {flask.__version__}</p>
+            <p>Comprehensive demonstration comprising complete set of OSCAL documents using OSCAL Compass <a href="https://pypi.org/project/compliance-trestle/" target="_blank" style="color: #3498db; text-decoration: none; font-weight: bold;">compliance-trestle</a></p>
+            
+            <p>Presented are a complete set of OSCAL documents covering:</p>
+            <ul>
+                <li>2 regulations DORA and FedRAMP (Low, Moderate, and High levels)</li>
+                <li>6 inventory items (ubuntu VMs)</li>
+            </ul>
+            <p>The documents have been constructed using OSCAL Compass Compliance-trestle.</p>
             
             <div class="info">
                 <strong>📊 Total Documents:</strong> {total_docs} OSCAL documents + <a href="#xccdf-results">{len(xccdf_results)} XCCDF results</a><br>
@@ -237,6 +248,8 @@ def index():
                 <a href="#assessment-results">{len(assessment_results)} assessment results</a>,
                 <a href="#poams">{len(poams)} POA&Ms</a>
             </div>
+            
+            <img src="/static/images/oscal-framework-layers.png" alt="OSCAL Framework Layers" class="frameworks-image">
             
             <h2 id="catalogs">📚 OSCAL Catalogs and Resolved Profiles ({len(catalogs)})</h2>
             <div class="grid">
