@@ -15,8 +15,8 @@
 
 """
 Create OSCAL Mapping Collection: NIST 800-53 Rev 5 to DORA
-Uses transitive mapping through ISCF:
-  NIST 800-53 Rev 5 → ISCF → DORA
+Uses transitive mapping through Harmonized controls:
+  NIST 800-53 Rev 5 → Harmonized → DORA
 Includes confidence scores and coverage metrics
 """
 
@@ -28,43 +28,43 @@ from collections import defaultdict
 
 print("Creating NIST 800-53 Rev 5 to DORA Mapping Collection...\n")
 
-# Load ISCF to DORA mapping
-iscf_dora_path = Path("source-data/mapping-collections/ISCF-to-EU-Dora/mapping-collection.json")
-with open(iscf_dora_path) as f:
-    iscf_dora = json.load(f)
+# Load Harmonized to DORA mapping
+harmonized_dora_path = Path("source-data/mapping-collections/Harmonized-to-EU-Dora/mapping-collection.json")
+with open(harmonized_dora_path) as f:
+    harmonized_dora = json.load(f)
 
-# Load ISCF to NIST mapping
-iscf_nist_path = Path("source-data/mapping-collections/ISCF-to-nist-800-53-rev5/mapping-collection.json")
-with open(iscf_nist_path) as f:
-    iscf_nist = json.load(f)
+# Load Harmonized to NIST mapping
+harmonized_nist_path = Path("source-data/mapping-collections/Harmonized-to-nist-800-53-rev5/mapping-collection.json")
+with open(harmonized_nist_path) as f:
+    harmonized_nist = json.load(f)
 
-print(f"✓ Loaded ISCF to DORA mapping: {len(iscf_dora['mapping-collection']['mappings'])} mappings")
-print(f"✓ Loaded ISCF to NIST mapping: {len(iscf_nist['mapping-collection']['mappings'])} mappings\n")
+print(f"✓ Loaded Harmonized to DORA mapping: {len(harmonized_dora['mapping-collection']['mappings'])} mappings")
+print(f"✓ Loaded Harmonized to NIST mapping: {len(harmonized_nist['mapping-collection']['mappings'])} mappings\n")
 
-# Build ISCF → DORA lookup (ISCF control → DORA articles)
-iscf_to_dora = defaultdict(list)
-for mapping in iscf_dora['mapping-collection']['mappings']:
+# Build Harmonized → DORA lookup (Harmonized control → DORA articles)
+harmonized_to_dora = defaultdict(list)
+for mapping in harmonized_dora['mapping-collection']['mappings']:
     for map_entry in mapping['maps']:
         for source in map_entry['sources']:
-            iscf_id = source['id-ref']
+            harmonized_id = source['id-ref']
             for target in map_entry['targets']:
                 dora_id = target['id-ref']
-                iscf_to_dora[iscf_id].append({
+                harmonized_to_dora[harmonized_id].append({
                     'dora_id': dora_id,
                     'confidence': map_entry.get('confidence-score', {}).get('percentage', 0.5),
                     'coverage': map_entry.get('coverage', {}).get('target-coverage', 0.5),
                     'relationship': map_entry.get('relationship', 'intersects-with')
                 })
 
-# Build ISCF → NIST lookup (ISCF control → NIST controls)
-iscf_to_nist = defaultdict(list)
-for mapping in iscf_nist['mapping-collection']['mappings']:
+# Build Harmonized → NIST lookup (Harmonized control → NIST controls)
+harmonized_to_nist = defaultdict(list)
+for mapping in harmonized_nist['mapping-collection']['mappings']:
     for map_entry in mapping['maps']:
         for source in map_entry['sources']:
-            iscf_id = source['id-ref']
+            harmonized_id = source['id-ref']
             for target in map_entry['targets']:
                 nist_id = target['id-ref']
-                iscf_to_nist[iscf_id].append({
+                harmonized_to_nist[harmonized_id].append({
                     'nist_id': nist_id,
                     'confidence': map_entry.get('confidence-score', {}).get('percentage', 0.5),
                     'coverage': map_entry.get('coverage', {}).get('target-coverage', 0.5),
@@ -74,17 +74,17 @@ for mapping in iscf_nist['mapping-collection']['mappings']:
 # Create transitive NIST → DORA mapping
 nist_to_dora = defaultdict(lambda: defaultdict(list))
 
-for iscf_id in iscf_to_dora.keys():
-    if iscf_id in iscf_to_nist:
-        for dora_info in iscf_to_dora[iscf_id]:
-            for nist_info in iscf_to_nist[iscf_id]:
+for harmonized_id in harmonized_to_dora.keys():
+    if harmonized_id in harmonized_to_nist:
+        for dora_info in harmonized_to_dora[harmonized_id]:
+            for nist_info in harmonized_to_nist[harmonized_id]:
                 # Calculate transitive confidence (multiply probabilities)
                 transitive_confidence = dora_info['confidence'] * nist_info['confidence']
                 # Calculate transitive coverage (minimum of both)
                 transitive_coverage = min(dora_info['coverage'], nist_info['coverage'])
                 
                 nist_to_dora[nist_info['nist_id']][dora_info['dora_id']].append({
-                    'via_iscf': iscf_id,
+                    'via_harmonized': harmonized_id,
                     'confidence': transitive_confidence,
                     'coverage': transitive_coverage
                 })
@@ -100,13 +100,13 @@ mapping_collection = {
             "last-modified": datetime.now(timezone.utc).isoformat(),
             "version": "1.0",
             "oscal-version": "1.2.1",
-            "remarks": "Transitive mapping from NIST 800-53 Rev 5 to DORA through IBM Sovereign Controls Framework (ISCF)"
+            "remarks": "Transitive mapping from NIST 800-53 Rev 5 to DORA through Harmonized Controls Framework"
         },
         "provenance": {
             "method": "automation",
             "matching-rationale": "semantic",
             "status": "draft",
-            "mapping-description": "Mapping collection from NIST SP 800-53 Rev 5 to Digital Operational Resilience Act (DORA) created through transitive mapping via ISCF"
+            "mapping-description": "Mapping collection from NIST SP 800-53 Rev 5 to Digital Operational Resilience Act (DORA) created through transitive mapping via Harmonized controls"
         },
         "mappings": []
     }
@@ -122,12 +122,12 @@ for nist_id in sorted(nist_to_dora.keys()):
         # Use maximum confidence and coverage across all paths
         max_confidence = max(p['confidence'] for p in paths)
         max_coverage = max(p['coverage'] for p in paths)
-        via_iscf = [p['via_iscf'] for p in paths]
+        via_harmonized = [p['via_harmonized'] for p in paths]
         
         dora_articles[dora_id] = {
             'confidence': max_confidence,
             'coverage': max_coverage,
-            'via_iscf': via_iscf
+            'via_harmonized': via_harmonized
         }
     
     # Create map entries
@@ -151,7 +151,7 @@ for nist_id in sorted(nist_to_dora.keys()):
             "props": [
                 {
                     "name": "mapping-rationale",
-                    "value": f"Transitive mapping via ISCF controls: {', '.join(info['via_iscf'])}",
+                    "value": f"Transitive mapping via Harmonized controls: {', '.join(info['via_harmonized'])}",
                     "ns": "https://ibm.com/concert/ns/oscal"
                 }
             ],

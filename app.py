@@ -253,7 +253,7 @@ def index():
                 <a href="#assessment-plans">{len(assessment_plans)} assessment plans</a>,
                 <a href="#xccdf-results">{len(xccdf_results)} XCCDF results</a>,
                 <a href="#assessment-results">{len(assessment_results)} assessment results</a>,
-                <a href="#charts">📈 compliance charts</a>,
+                <a href="#charts">compliance charts</a>,
                 <a href="#poams">{len(poams)} POA&Ms</a>
             </div>
             

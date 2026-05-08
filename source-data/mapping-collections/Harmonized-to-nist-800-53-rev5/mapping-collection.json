@@ -2,7 +2,7 @@
   "mapping-collection": {
     "uuid": "1a4a33c9-674d-4415-8c71-030ee6db7b18",
     "metadata": {
-      "title": "IBM Sovereign Controls Framework (ISCF) to Electronic (OSCAL) Version of NIST SP 800-53 Rev 5.2.0 Controls and SP 800-53A Rev 5.2.0 Assessment Procedures",
+      "title": "Harmonized Controls Framework to Electronic (OSCAL) Version of NIST SP 800-53 Rev 5.2.0 Controls and SP 800-53A Rev 5.2.0 Assessment Procedures",
       "last-modified": "2026-04-13T15:09:53+00:00",
       "version": "1.0",
       "oscal-version": "1.2.1"
@@ -11,14 +11,14 @@
       "method": "automation",
       "matching-rationale": "semantic",
       "status": "complete",
-      "mapping-description": "Mapping collection from IBM Sovereign Controls Framework (ISCF) to Electronic (OSCAL) Version of NIST SP 800-53 Rev 5.2.0 Controls and SP 800-53A Rev 5.2.0 Assessment Procedures"
+      "mapping-description": "Mapping collection from Harmonized Controls Framework to Electronic (OSCAL) Version of NIST SP 800-53 Rev 5.2.0 Controls and SP 800-53A Rev 5.2.0 Assessment Procedures"
     },
     "mappings": [
       {
         "uuid": "453a071a-c84f-4862-aeaf-aae00b4f5563",
         "source-resource": {
           "type": "catalog",
-          "href": "catalogs/ISCF/catalog.json",
+          "href": "catalogs/Harmonized/catalog.json",
           "props": [
             {
               "name": "catalog_uuid",
@@ -45,7 +45,7 @@
             "sources": [
               {
                 "type": "control",
-                "id-ref": "iscf-dr-01"
+                "id-ref": "harmonized-dr-01"
               }
             ],
             "targets": [
@@ -65,7 +65,7 @@
             "props": [
               {
                 "name": "mapping-rationale",
-                "value": "ISCF-DR-01 requires data to be stored and processed exclusively within boundary and region locations. NIST SC-7 (Boundary Protection) addresses controlling communications at system boundaries. NIST AC-4 (Information Flow Enforcement) enforces approved authorizations for controlling information flow. NIST SA-9 (External System Services) addresses requirements for external service providers. The shared requirement is controlling where data resides and flows, though ISCF focuses specifically on sovereign jurisdiction while NIST addresses general boundary and flow controls.",
+                "value": "Harmonized-DR-01 requires data to be stored and processed exclusively within boundary and region locations. NIST SC-7 (Boundary Protection) addresses controlling communications at system boundaries. NIST AC-4 (Information Flow Enforcement) enforces approved authorizations for controlling information flow. NIST SA-9 (External System Services) addresses requirements for external service providers. The shared requirement is controlling where data resides and flows, though Harmonized focuses specifically on sovereign jurisdiction while NIST addresses general boundary and flow controls.",
                 "ns": "https://ibm.com/concert/ns/oscal"
               }
             ],
@@ -82,7 +82,7 @@
             "sources": [
               {
                 "type": "control",
-                "id-ref": "iscf-dr-02"
+                "id-ref": "harmonized-dr-02"
               }
             ],
             "targets": [
@@ -102,7 +102,7 @@
             "props": [
               {
                 "name": "mapping-rationale",
-                "value": "ISCF-DR-02 requires derived, cached, and temporary data to remain region-resident. NIST SC-4 (Information in Shared System Resources) prevents unauthorized information transfer via shared resources. NIST SI-12 (Information Management and Retention) addresses information lifecycle management. NIST CM-12 (Information Location) addresses identifying and documenting information location. Both frameworks address data handling but ISCF specifically requires geographic residency for all data artifacts.",
+                "value": "Harmonized-DR-02 requires derived, cached, and temporary data to remain region-resident. NIST SC-4 (Information in Shared System Resources) prevents unauthorized information transfer via shared resources. NIST SI-12 (Information Management and Retention) addresses information lifecycle management. NIST CM-12 (Information Location) addresses identifying and documenting information location. Both frameworks address data handling but Harmonized specifically requires geographic residency for all data artifacts.",
                 "ns": "https://ibm.com/concert/ns/oscal"
               }
             ],
@@ -119,7 +119,7 @@
             "sources": [
               {
                 "type": "control",
-                "id-ref": "iscf-dr-03"
+                "id-ref": "harmonized-dr-03"
               }
             ],
             "targets": [
@@ -143,7 +143,7 @@
             "props": [
               {
                 "name": "mapping-rationale",
-                "value": "ISCF-DR-03 requires all outbound network traffic to be explicitly controlled and auditable to prevent unauthorized data transfer outside sovereign boundaries. NIST SC-7 (Boundary Protection) and SC-7.10 (Prevent Exfiltration) directly address controlling outbound communications and preventing data exfiltration. NIST AC-4 (Information Flow Enforcement) and AC-4.4 (Flow Control of Encrypted Information) address controlling information flows. Both frameworks share the objective of controlling egress traffic, though ISCF emphasizes sovereignty while NIST focuses on security.",
+                "value": "Harmonized-DR-03 requires all outbound network traffic to be explicitly controlled and auditable to prevent unauthorized data transfer outside sovereign boundaries. NIST SC-7 (Boundary Protection) and SC-7.10 (Prevent Exfiltration) directly address controlling outbound communications and preventing data exfiltration. NIST AC-4 (Information Flow Enforcement) and AC-4.4 (Flow Control of Encrypted Information) address controlling information flows. Both frameworks share the objective of controlling egress traffic, though Harmonized emphasizes sovereignty while NIST focuses on security.",
                 "ns": "https://ibm.com/concert/ns/oscal"
               }
             ],
@@ -160,7 +160,7 @@
             "sources": [
               {
                 "type": "control",
-                "id-ref": "iscf-dr-04"
+                "id-ref": "harmonized-dr-04"
               }
             ],
             "targets": [
@@ -184,7 +184,7 @@
             "props": [
               {
                 "name": "mapping-rationale",
-                "value": "ISCF-DR-04 requires data flows between namespaces to be explicitly restricted to approved paths to prevent lateral movement and cross-tenant exposure. NIST AC-4 (Information Flow Enforcement) enforces approved authorizations for information flow. NIST AC-4.21 (Physical or Logical Separation of Information Flows) addresses separating information flows. NIST SC-7.20 (Dynamic Isolation and Segregation) and SC-7.21 (Isolation of System Components) address isolating system components. Both frameworks address controlling internal data flows and isolation.",
+                "value": "Harmonized-DR-04 requires data flows between namespaces to be explicitly restricted to approved paths to prevent lateral movement and cross-tenant exposure. NIST AC-4 (Information Flow Enforcement) enforces approved authorizations for information flow. NIST AC-4.21 (Physical or Logical Separation of Information Flows) addresses separating information flows. NIST SC-7.20 (Dynamic Isolation and Segregation) and SC-7.21 (Isolation of System Components) address isolating system components. Both frameworks address controlling internal data flows and isolation.",
                 "ns": "https://ibm.com/concert/ns/oscal"
               }
             ],
@@ -201,7 +201,7 @@
             "sources": [
               {
                 "type": "control",
-                "id-ref": "iscf-dr-05"
+                "id-ref": "harmonized-dr-05"
               }
             ],
             "targets": [
@@ -221,7 +221,7 @@
             "props": [
               {
                 "name": "mapping-rationale",
-                "value": "ISCF-DR-05 requires all backups and snapshots to remain region-resident and inherit the same encryption and access controls as production data. NIST CP-9 (System Backup) addresses backup requirements including protection. NIST SC-28 (Protection of Information at Rest) addresses protecting stored information including backups. NIST CP-6 (Alternate Storage Site) addresses storage site requirements. Both frameworks address backup protection, though ISCF specifically requires geographic residency while NIST focuses on availability and protection.",
+                "value": "Harmonized-DR-05 requires all backups and snapshots to remain region-resident and inherit the same encryption and access controls as production data. NIST CP-9 (System Backup) addresses backup requirements including protection. NIST SC-28 (Protection of Information at Rest) addresses protecting stored information including backups. NIST CP-6 (Alternate Storage Site) addresses storage site requirements. Both frameworks address backup protection, though Harmonized specifically requires geographic residency while NIST focuses on availability and protection.",
                 "ns": "https://ibm.com/concert/ns/oscal"
               }
             ],
@@ -238,7 +238,7 @@
             "sources": [
               {
                 "type": "control",
-                "id-ref": "iscf-dr-06"
+                "id-ref": "harmonized-dr-06"
               }
             ],
             "targets": [
@@ -258,7 +258,7 @@
             "props": [
               {
                 "name": "mapping-rationale",
-                "value": "ISCF-DR-06 requires all customer data to be encrypted at rest using approved cryptographic mechanisms. NIST SC-28 (Protection of Information at Rest) directly addresses protecting stored information through encryption. NIST SC-28.1 (Cryptographic Protection) specifically requires cryptographic mechanisms for data at rest. NIST SC-13 (Cryptographic Protection) addresses the use of approved cryptography. Both frameworks share the core requirement of encrypting stored data, with ISCF emphasizing sovereignty protection while NIST focuses on general security.",
+                "value": "Harmonized-DR-06 requires all customer data to be encrypted at rest using approved cryptographic mechanisms. NIST SC-28 (Protection of Information at Rest) directly addresses protecting stored information through encryption. NIST SC-28.1 (Cryptographic Protection) specifically requires cryptographic mechanisms for data at rest. NIST SC-13 (Cryptographic Protection) addresses the use of approved cryptography. Both frameworks share the core requirement of encrypting stored data, with Harmonized emphasizing sovereignty protection while NIST focuses on general security.",
                 "ns": "https://ibm.com/concert/ns/oscal"
               }
             ],
@@ -275,7 +275,7 @@
             "sources": [
               {
                 "type": "control",
-                "id-ref": "iscf-dr-07"
+                "id-ref": "harmonized-dr-07"
               }
             ],
             "targets": [
@@ -295,7 +295,7 @@
             "props": [
               {
                 "name": "mapping-rationale",
-                "value": "ISCF-DR-07 requires all data in transit to be encrypted using approved cryptographic protocols. NIST SC-8 (Transmission Confidentiality and Integrity) addresses protecting transmitted information. NIST SC-8.1 (Cryptographic Protection) specifically requires cryptographic mechanisms for transmission protection. NIST SC-13 (Cryptographic Protection) addresses approved cryptographic mechanisms. Both frameworks require encryption for data in transit, with ISCF focusing on preventing interception outside sovereign boundaries.",
+                "value": "Harmonized-DR-07 requires all data in transit to be encrypted using approved cryptographic protocols. NIST SC-8 (Transmission Confidentiality and Integrity) addresses protecting transmitted information. NIST SC-8.1 (Cryptographic Protection) specifically requires cryptographic mechanisms for transmission protection. NIST SC-13 (Cryptographic Protection) addresses approved cryptographic mechanisms. Both frameworks require encryption for data in transit, with Harmonized focusing on preventing interception outside sovereign boundaries.",
                 "ns": "https://ibm.com/concert/ns/oscal"
               }
             ],
@@ -312,7 +312,7 @@
             "sources": [
               {
                 "type": "control",
-                "id-ref": "iscf-dr-08"
+                "id-ref": "harmonized-dr-08"
               }
             ],
             "targets": [
@@ -336,7 +336,7 @@
             "props": [
               {
                 "name": "mapping-rationale",
-                "value": "ISCF-DR-08 requires deleted customer data to not persist in backups or snapshots beyond approved retention periods, ensuring secure deletion. NIST SI-12 (Information Management and Retention) addresses information lifecycle including disposal. NIST MP-6 (Media Sanitization) addresses sanitizing media before disposal or reuse. NIST MP-6.1 (Review, Approve, Track, Document, and Verify) and MP-6.2 (Equipment Testing) address verification of sanitization. Both frameworks address secure data deletion, though ISCF specifically addresses backup/snapshot sovereignty.",
+                "value": "Harmonized-DR-08 requires deleted customer data to not persist in backups or snapshots beyond approved retention periods, ensuring secure deletion. NIST SI-12 (Information Management and Retention) addresses information lifecycle including disposal. NIST MP-6 (Media Sanitization) addresses sanitizing media before disposal or reuse. NIST MP-6.1 (Review, Approve, Track, Document, and Verify) and MP-6.2 (Equipment Testing) address verification of sanitization. Both frameworks address secure data deletion, though Harmonized specifically addresses backup/snapshot sovereignty.",
                 "ns": "https://ibm.com/concert/ns/oscal"
               }
             ],
@@ -353,7 +353,7 @@
             "sources": [
               {
                 "type": "control",
-                "id-ref": "iscf-dr-09"
+                "id-ref": "harmonized-dr-09"
               }
             ],
             "targets": [
@@ -377,7 +377,7 @@
             "props": [
               {
                 "name": "mapping-rationale",
-                "value": "ISCF-DR-09 requires continuous validation that data belonging to one tenant cannot be accessed by another tenant, maintaining strict tenant isolation. NIST SC-4 (Information in Shared System Resources) prevents unauthorized information transfer via shared resources. NIST AC-4 (Information Flow Enforcement) enforces approved authorizations for information flow. NIST AC-4.21 (Physical or Logical Separation) addresses separating information flows. NIST SC-39 (Process Isolation) addresses isolating processes. Both frameworks address multi-tenant isolation and preventing cross-tenant data exposure.",
+                "value": "Harmonized-DR-09 requires continuous validation that data belonging to one tenant cannot be accessed by another tenant, maintaining strict tenant isolation. NIST SC-4 (Information in Shared System Resources) prevents unauthorized information transfer via shared resources. NIST AC-4 (Information Flow Enforcement) enforces approved authorizations for information flow. NIST AC-4.21 (Physical or Logical Separation) addresses separating information flows. NIST SC-39 (Process Isolation) addresses isolating processes. Both frameworks address multi-tenant isolation and preventing cross-tenant data exposure.",
                 "ns": "https://ibm.com/concert/ns/oscal"
               }
             ],
@@ -394,7 +394,7 @@
             "sources": [
               {
                 "type": "control",
-                "id-ref": "iscf-dr-10"
+                "id-ref": "harmonized-dr-10"
               }
             ],
             "targets": [
@@ -418,7 +418,7 @@
             "props": [
               {
                 "name": "mapping-rationale",
-                "value": "ISCF-DR-10 requires operational metadata, telemetry, metrics, and logs to not be exported outside the boundary, preventing sovereignty violations through monitoring pipelines. NIST AU-4 (Audit Log Storage Capacity) addresses audit log storage. NIST AU-9 (Protection of Audit Information) addresses protecting audit information. NIST SC-7 (Boundary Protection) addresses controlling communications at boundaries. NIST SI-4 (System Monitoring) addresses monitoring system activities. Both frameworks address protecting monitoring data, though ISCF specifically requires geographic residency for telemetry.",
+                "value": "Harmonized-DR-10 requires operational metadata, telemetry, metrics, and logs to not be exported outside the boundary, preventing sovereignty violations through monitoring pipelines. NIST AU-4 (Audit Log Storage Capacity) addresses audit log storage. NIST AU-9 (Protection of Audit Information) addresses protecting audit information. NIST SC-7 (Boundary Protection) addresses controlling communications at boundaries. NIST SI-4 (System Monitoring) addresses monitoring system activities. Both frameworks address protecting monitoring data, though Harmonized specifically requires geographic residency for telemetry.",
                 "ns": "https://ibm.com/concert/ns/oscal"
               }
             ],
@@ -435,7 +435,7 @@
             "sources": [
               {
                 "type": "control",
-                "id-ref": "iscf-ia-01"
+                "id-ref": "harmonized-ia-01"
               }
             ],
             "targets": [
@@ -459,7 +459,7 @@
             "props": [
               {
                 "name": "mapping-rationale",
-                "value": "ISCF-IA-01 requires identity and access management to be controlled by the MSP (Managed Service Provider) to ensure sovereign authority over user identity, authentication mechanisms, and access policies. NIST AC-2 (Account Management) addresses managing system accounts. NIST IA-1 (Policy and Procedures) addresses identification and authentication policies. NIST IA-2 (Identification and Authentication) addresses authenticating users. NIST IA-4 (Identifier Management) addresses managing identifiers. Both frameworks address IAM controls, though ISCF specifically requires MSP control for sovereignty while NIST focuses on general IAM security.",
+                "value": "Harmonized-IA-01 requires identity and access management to be controlled by the MSP (Managed Service Provider) to ensure sovereign authority over user identity, authentication mechanisms, and access policies. NIST AC-2 (Account Management) addresses managing system accounts. NIST IA-1 (Policy and Procedures) addresses identification and authentication policies. NIST IA-2 (Identification and Authentication) addresses authenticating users. NIST IA-4 (Identifier Management) addresses managing identifiers. Both frameworks address IAM controls, though Harmonized specifically requires MSP control for sovereignty while NIST focuses on general IAM security.",
                 "ns": "https://ibm.com/concert/ns/oscal"
               }
             ],
@@ -476,7 +476,7 @@
             "sources": [
               {
                 "type": "control",
-                "id-ref": "iscf-ia-02"
+                "id-ref": "harmonized-ia-02"
               }
             ],
             "targets": [
@@ -500,7 +500,7 @@
             "props": [
               {
                 "name": "mapping-rationale",
-                "value": "ISCF-IA-02 requires vendors to not retain standing administrative access, preventing persistent external privileged access. NIST AC-2 (Account Management) addresses account lifecycle including termination. NIST AC-6 (Least Privilege) addresses limiting access to necessary functions. NIST AC-6.5 (Privileged Accounts) restricts privileged accounts. NIST AC-6.6 (Privileged Access by Non-organizational Users) prohibits privileged access by non-organizational users. Both frameworks address limiting privileged access, with ISCF specifically targeting vendor standing access.",
+                "value": "Harmonized-IA-02 requires vendors to not retain standing administrative access, preventing persistent external privileged access. NIST AC-2 (Account Management) addresses account lifecycle including termination. NIST AC-6 (Least Privilege) addresses limiting access to necessary functions. NIST AC-6.5 (Privileged Accounts) restricts privileged accounts. NIST AC-6.6 (Privileged Access by Non-organizational Users) prohibits privileged access by non-organizational users. Both frameworks address limiting privileged access, with Harmonized specifically targeting vendor standing access.",
                 "ns": "https://ibm.com/concert/ns/oscal"
               }
             ],
@@ -517,7 +517,7 @@
             "sources": [
               {
                 "type": "control",
-                "id-ref": "iscf-ia-03"
+                "id-ref": "harmonized-ia-03"
               }
             ],
             "targets": [
@@ -545,7 +545,7 @@
             "props": [
               {
                 "name": "mapping-rationale",
-                "value": "ISCF-IA-03 requires emergency access to be approved by MSP, fully auditable, logged, alerted, and reviewed. NIST AC-2 (Account Management) addresses account management including emergency accounts. NIST AC-2.2 (Automated Temporary and Emergency Account Management) specifically addresses emergency accounts. NIST AU-2 (Event Logging) addresses logging events. NIST AU-6 (Audit Record Review) addresses reviewing audit records. NIST IR-6 (Incident Reporting) addresses reporting incidents. Both frameworks address emergency access governance with audit requirements.",
+                "value": "Harmonized-IA-03 requires emergency access to be approved by MSP, fully auditable, logged, alerted, and reviewed. NIST AC-2 (Account Management) addresses account management including emergency accounts. NIST AC-2.2 (Automated Temporary and Emergency Account Management) specifically addresses emergency accounts. NIST AU-2 (Event Logging) addresses logging events. NIST AU-6 (Audit Record Review) addresses reviewing audit records. NIST IR-6 (Incident Reporting) addresses reporting incidents. Both frameworks address emergency access governance with audit requirements.",
                 "ns": "https://ibm.com/concert/ns/oscal"
               }
             ],
@@ -562,7 +562,7 @@
             "sources": [
               {
                 "type": "control",
-                "id-ref": "iscf-ia-04"
+                "id-ref": "harmonized-ia-04"
               }
             ],
             "targets": [
@@ -586,7 +586,7 @@
             "props": [
               {
                 "name": "mapping-rationale",
-                "value": "ISCF-IA-04 requires all account creation, modification, and deletion to be monitored for complete visibility and accountability. NIST AC-2.4 (Automated Audit Actions) automatically audits account creation, modification, enabling, disabling, and removal actions. NIST AU-2 (Event Logging) addresses logging security-relevant events. NIST AU-12 (Audit Record Generation) addresses generating audit records. NIST AU-3 (Content of Audit Records) addresses audit record content. Both frameworks directly address monitoring account lifecycle events.",
+                "value": "Harmonized-IA-04 requires all account creation, modification, and deletion to be monitored for complete visibility and accountability. NIST AC-2.4 (Automated Audit Actions) automatically audits account creation, modification, enabling, disabling, and removal actions. NIST AU-2 (Event Logging) addresses logging security-relevant events. NIST AU-12 (Audit Record Generation) addresses generating audit records. NIST AU-3 (Content of Audit Records) addresses audit record content. Both frameworks directly address monitoring account lifecycle events.",
                 "ns": "https://ibm.com/concert/ns/oscal"
               }
             ],
@@ -603,7 +603,7 @@
             "sources": [
               {
                 "type": "control",
-                "id-ref": "iscf-ia-05"
+                "id-ref": "harmonized-ia-05"
               }
             ],
             "targets": [
@@ -623,7 +623,7 @@
             "props": [
               {
                 "name": "mapping-rationale",
-                "value": "ISCF-IA-05 requires periodic access reviews to ensure user access privileges remain appropriate over time. NIST AC-2 (Account Management) addresses reviewing accounts periodically. NIST AC-6.7 (Review of User Privileges) specifically addresses reviewing user privileges. NIST AC-5 (Separation of Duties) addresses reviewing separation of duties. Both frameworks require periodic review of access privileges to maintain appropriate access levels.",
+                "value": "Harmonized-IA-05 requires periodic access reviews to ensure user access privileges remain appropriate over time. NIST AC-2 (Account Management) addresses reviewing accounts periodically. NIST AC-6.7 (Review of User Privileges) specifically addresses reviewing user privileges. NIST AC-5 (Separation of Duties) addresses reviewing separation of duties. Both frameworks require periodic review of access privileges to maintain appropriate access levels.",
                 "ns": "https://ibm.com/concert/ns/oscal"
               }
             ],
@@ -640,7 +640,7 @@
             "sources": [
               {
                 "type": "control",
-                "id-ref": "iscf-ia-06"
+                "id-ref": "harmonized-ia-06"
               }
             ],
             "targets": [
@@ -664,7 +664,7 @@
             "props": [
               {
                 "name": "mapping-rationale",
-                "value": "ISCF-IA-06 requires all interactive user access to use phishing-resistant authentication by default, with password authentication only permitted with mandatory MFA. NIST IA-2 (Identification and Authentication) addresses authenticating organizational users. NIST IA-2.1 (Multi-factor Authentication to Privileged Accounts) requires MFA for privileged accounts. NIST IA-2.2 (Multi-factor Authentication to Non-privileged Accounts) requires MFA for non-privileged accounts. NIST IA-2.6 (Access to Accounts - Separate Device) addresses separate device authentication. Both frameworks require strong authentication, with ISCF specifically mandating phishing-resistant methods.",
+                "value": "Harmonized-IA-06 requires all interactive user access to use phishing-resistant authentication by default, with password authentication only permitted with mandatory MFA. NIST IA-2 (Identification and Authentication) addresses authenticating organizational users. NIST IA-2.1 (Multi-factor Authentication to Privileged Accounts) requires MFA for privileged accounts. NIST IA-2.2 (Multi-factor Authentication to Non-privileged Accounts) requires MFA for non-privileged accounts. NIST IA-2.6 (Access to Accounts - Separate Device) addresses separate device authentication. Both frameworks require strong authentication, with Harmonized specifically mandating phishing-resistant methods.",
                 "ns": "https://ibm.com/concert/ns/oscal"
               }
             ],
@@ -681,7 +681,7 @@
             "sources": [
               {
                 "type": "control",
-                "id-ref": "iscf-cr-01"
+                "id-ref": "harmonized-cr-01"
               }
             ],
             "targets": [
@@ -705,7 +705,7 @@
             "props": [
               {
                 "name": "mapping-rationale",
-                "value": "ISCF-CR-01 requires encryption keys to be controlled by the MSP for sovereign authority over cryptographic material. NIST SC-12 (Cryptographic Key Establishment and Management) addresses key management requirements. NIST SC-12.1 (Availability) addresses key availability. NIST SC-12.2 (Symmetric Keys) addresses symmetric key management. NIST SC-12.3 (Asymmetric Keys) addresses asymmetric key management. Both frameworks address key management, though ISCF specifically requires MSP control for sovereignty.",
+                "value": "Harmonized-CR-01 requires encryption keys to be controlled by the MSP for sovereign authority over cryptographic material. NIST SC-12 (Cryptographic Key Establishment and Management) addresses key management requirements. NIST SC-12.1 (Availability) addresses key availability. NIST SC-12.2 (Symmetric Keys) addresses symmetric key management. NIST SC-12.3 (Asymmetric Keys) addresses asymmetric key management. Both frameworks address key management, though Harmonized specifically requires MSP control for sovereignty.",
                 "ns": "https://ibm.com/concert/ns/oscal"
               }
             ],
@@ -722,7 +722,7 @@
             "sources": [
               {
                 "type": "control",
-                "id-ref": "iscf-cr-02"
+                "id-ref": "harmonized-cr-02"
               }
             ],
             "targets": [
@@ -738,7 +738,7 @@
             "props": [
               {
                 "name": "mapping-rationale",
-                "value": "ISCF-CR-02 requires the provider to not retain escrow or recovery keys for customer data encryption, ensuring the platform provider cannot decrypt customer data without MSP authorization. NIST SC-12 (Cryptographic Key Establishment and Management) addresses key management. NIST SC-12.6 (Physical Control of Keys) specifically addresses maintaining physical control of cryptographic keys when stored information is encrypted by external service providers. Both frameworks address preventing unauthorized key access, with ISCF specifically prohibiting vendor key escrow.",
+                "value": "Harmonized-CR-02 requires the provider to not retain escrow or recovery keys for customer data encryption, ensuring the platform provider cannot decrypt customer data without MSP authorization. NIST SC-12 (Cryptographic Key Establishment and Management) addresses key management. NIST SC-12.6 (Physical Control of Keys) specifically addresses maintaining physical control of cryptographic keys when stored information is encrypted by external service providers. Both frameworks address preventing unauthorized key access, with Harmonized specifically prohibiting vendor key escrow.",
                 "ns": "https://ibm.com/concert/ns/oscal"
               }
             ],
@@ -755,7 +755,7 @@
             "sources": [
               {
                 "type": "control",
-                "id-ref": "iscf-cr-03"
+                "id-ref": "harmonized-cr-03"
               }
             ],
             "targets": [
@@ -771,7 +771,7 @@
             "props": [
               {
                 "name": "mapping-rationale",
-                "value": "ISCF-CR-03 requires cryptographic mechanisms to meet modern security standards and align with regional security authority guidance. NIST SC-13 (Cryptographic Protection) addresses implementing cryptography in accordance with applicable laws and policies. NIST SC-13.1 (FIPS-validated Cryptography) requires FIPS-validated cryptographic modules. Both frameworks require approved cryptographic algorithms, with ISCF emphasizing regional authority guidance while NIST references FIPS standards.",
+                "value": "Harmonized-CR-03 requires cryptographic mechanisms to meet modern security standards and align with regional security authority guidance. NIST SC-13 (Cryptographic Protection) addresses implementing cryptography in accordance with applicable laws and policies. NIST SC-13.1 (FIPS-validated Cryptography) requires FIPS-validated cryptographic modules. Both frameworks require approved cryptographic algorithms, with Harmonized emphasizing regional authority guidance while NIST references FIPS standards.",
                 "ns": "https://ibm.com/concert/ns/oscal"
               }
             ],
@@ -788,7 +788,7 @@
             "sources": [
               {
                 "type": "control",
-                "id-ref": "iscf-cr-04"
+                "id-ref": "harmonized-cr-04"
               }
             ],
             "targets": [
@@ -812,7 +812,7 @@
             "props": [
               {
                 "name": "mapping-rationale",
-                "value": "ISCF-CR-04 requires cryptographic configurations to be validated periodically to ensure compliance with approved cipher policies and prevent configuration drift. NIST SC-13 (Cryptographic Protection) addresses cryptographic implementation. NIST CM-6 (Configuration Settings) addresses establishing and documenting configuration settings. NIST CM-3 (Configuration Change Control) addresses controlling configuration changes. NIST CA-7 (Continuous Monitoring) addresses continuous monitoring of security controls. Both frameworks address maintaining proper cryptographic configurations over time.",
+                "value": "Harmonized-CR-04 requires cryptographic configurations to be validated periodically to ensure compliance with approved cipher policies and prevent configuration drift. NIST SC-13 (Cryptographic Protection) addresses cryptographic implementation. NIST CM-6 (Configuration Settings) addresses establishing and documenting configuration settings. NIST CM-3 (Configuration Change Control) addresses controlling configuration changes. NIST CA-7 (Continuous Monitoring) addresses continuous monitoring of security controls. Both frameworks address maintaining proper cryptographic configurations over time.",
                 "ns": "https://ibm.com/concert/ns/oscal"
               }
             ],
@@ -829,7 +829,7 @@
             "sources": [
               {
                 "type": "control",
-                "id-ref": "iscf-op-01"
+                "id-ref": "harmonized-op-01"
               }
             ],
             "targets": [
@@ -853,7 +853,7 @@
             "props": [
               {
                 "name": "mapping-rationale",
-                "value": "ISCF-OP-01 requires operational activities to be executed by region-based teams operating under regional jurisdiction, ensuring operational authority remains within the region. NIST PS-1 (Personnel Security Policy and Procedures) addresses personnel security policies. NIST PS-3 (Personnel Screening) addresses screening personnel. NIST SA-9 (External System Services) addresses requirements for external service providers. NIST SA-9.1 (Risk Assessments and Organizational Approvals) addresses risk assessments for external services. Both frameworks address operational personnel controls, though ISCF specifically requires regional jurisdiction.",
+                "value": "Harmonized-OP-01 requires operational activities to be executed by region-based teams operating under regional jurisdiction, ensuring operational authority remains within the region. NIST PS-1 (Personnel Security Policy and Procedures) addresses personnel security policies. NIST PS-3 (Personnel Screening) addresses screening personnel. NIST SA-9 (External System Services) addresses requirements for external service providers. NIST SA-9.1 (Risk Assessments and Organizational Approvals) addresses risk assessments for external services. Both frameworks address operational personnel controls, though Harmonized specifically requires regional jurisdiction.",
                 "ns": "https://ibm.com/concert/ns/oscal"
               }
             ],
@@ -870,7 +870,7 @@
             "sources": [
               {
                 "type": "control",
-                "id-ref": "iscf-op-02"
+                "id-ref": "harmonized-op-02"
               }
             ],
             "targets": [
@@ -894,7 +894,7 @@
             "props": [
               {
                 "name": "mapping-rationale",
-                "value": "ISCF-OP-02 requires the sovereign platform to remain operationally independent and not be disrupted by external service providers through offline deployment capability. NIST CP-2 (Contingency Plan) addresses contingency planning. NIST CP-2.5 (Continue Mission and Business Functions) addresses continuity with minimal loss. NIST SA-9 (External System Services) addresses external service provider dependencies. NIST SC-36 (Distributed Processing and Storage) addresses distributed processing. Both frameworks address operational independence, though ISCF specifically requires offline capability for sovereignty.",
+                "value": "Harmonized-OP-02 requires the sovereign platform to remain operationally independent and not be disrupted by external service providers through offline deployment capability. NIST CP-2 (Contingency Plan) addresses contingency planning. NIST CP-2.5 (Continue Mission and Business Functions) addresses continuity with minimal loss. NIST SA-9 (External System Services) addresses external service provider dependencies. NIST SC-36 (Distributed Processing and Storage) addresses distributed processing. Both frameworks address operational independence, though Harmonized specifically requires offline capability for sovereignty.",
                 "ns": "https://ibm.com/concert/ns/oscal"
               }
             ],
@@ -911,7 +911,7 @@
             "sources": [
               {
                 "type": "control",
-                "id-ref": "iscf-op-03"
+                "id-ref": "harmonized-op-03"
               }
             ],
             "targets": [
@@ -935,7 +935,7 @@
             "props": [
               {
                 "name": "mapping-rationale",
-                "value": "ISCF-OP-03 requires emergency operational decisions to be executed under region-based authority, including isolation, shutdown, or override actions by authorized regional personnel. NIST CP-2 (Contingency Plan) addresses contingency planning including emergency procedures. NIST IR-4 (Incident Handling) addresses incident handling capabilities. NIST IR-4.1 (Automated Incident Handling Processes) addresses automated incident handling. NIST IR-5 (Incident Monitoring) addresses monitoring incidents. Both frameworks address emergency operations, though ISCF specifically requires regional authority.",
+                "value": "Harmonized-OP-03 requires emergency operational decisions to be executed under region-based authority, including isolation, shutdown, or override actions by authorized regional personnel. NIST CP-2 (Contingency Plan) addresses contingency planning including emergency procedures. NIST IR-4 (Incident Handling) addresses incident handling capabilities. NIST IR-4.1 (Automated Incident Handling Processes) addresses automated incident handling. NIST IR-5 (Incident Monitoring) addresses monitoring incidents. Both frameworks address emergency operations, though Harmonized specifically requires regional authority.",
                 "ns": "https://ibm.com/concert/ns/oscal"
               }
             ],
@@ -952,7 +952,7 @@
             "sources": [
               {
                 "type": "control",
-                "id-ref": "iscf-sc-01"
+                "id-ref": "harmonized-sc-01"
               }
             ],
             "targets": [
@@ -976,7 +976,7 @@
             "props": [
               {
                 "name": "mapping-rationale",
-                "value": "ISCF-SC-01 requires MSPs to be able to inspect relevant source artifacts associated with the sovereign platform for transparency into software components. NIST SA-4 (Acquisition Process) addresses acquisition requirements including source code access. NIST SA-4.2 (Design and Implementation Information for Controls) addresses obtaining design and implementation information. NIST SA-11 (Developer Testing and Evaluation) addresses developer security testing. NIST SR-4 (Provenance) addresses tracking component provenance. Both frameworks address software transparency, though ISCF specifically requires MSP inspection capability.",
+                "value": "Harmonized-SC-01 requires MSPs to be able to inspect relevant source artifacts associated with the sovereign platform for transparency into software components. NIST SA-4 (Acquisition Process) addresses acquisition requirements including source code access. NIST SA-4.2 (Design and Implementation Information for Controls) addresses obtaining design and implementation information. NIST SA-11 (Developer Testing and Evaluation) addresses developer security testing. NIST SR-4 (Provenance) addresses tracking component provenance. Both frameworks address software transparency, though Harmonized specifically requires MSP inspection capability.",
                 "ns": "https://ibm.com/concert/ns/oscal"
               }
             ],
@@ -993,7 +993,7 @@
             "sources": [
               {
                 "type": "control",
-                "id-ref": "iscf-sc-02"
+                "id-ref": "harmonized-sc-02"
               }
             ],
             "targets": [
@@ -1017,7 +1017,7 @@
             "props": [
               {
                 "name": "mapping-rationale",
-                "value": "ISCF-SC-02 requires Software Bill of Materials (SBOM) to document software components and dependencies. NIST SR-4 (Provenance) addresses tracking component provenance. NIST SR-4.3 (Validate as Genuine and Not Altered) addresses validating component authenticity. NIST CM-8 (System Component Inventory) addresses maintaining component inventory. NIST CM-8.1 (Updates During Installation and Removal) addresses updating inventory. Both frameworks address software component documentation and tracking.",
+                "value": "Harmonized-SC-02 requires Software Bill of Materials (SBOM) to document software components and dependencies. NIST SR-4 (Provenance) addresses tracking component provenance. NIST SR-4.3 (Validate as Genuine and Not Altered) addresses validating component authenticity. NIST CM-8 (System Component Inventory) addresses maintaining component inventory. NIST CM-8.1 (Updates During Installation and Removal) addresses updating inventory. Both frameworks address software component documentation and tracking.",
                 "ns": "https://ibm.com/concert/ns/oscal"
               }
             ],
@@ -1034,7 +1034,7 @@
             "sources": [
               {
                 "type": "control",
-                "id-ref": "iscf-sc-03"
+                "id-ref": "harmonized-sc-03"
               }
             ],
             "targets": [
@@ -1058,7 +1058,7 @@
             "props": [
               {
                 "name": "mapping-rationale",
-                "value": "ISCF-SC-03 requires vulnerability disclosure and patching processes to address security vulnerabilities in a timely manner. NIST SI-2 (Flaw Remediation) addresses identifying, reporting, and correcting system flaws. NIST SI-2.2 (Automated Flaw Remediation Status) addresses automated tracking of flaw remediation. NIST RA-5 (Vulnerability Monitoring and Scanning) addresses vulnerability scanning. NIST RA-5.5 (Privileged Access) addresses privileged access for vulnerability scanning. Both frameworks address vulnerability management and remediation.",
+                "value": "Harmonized-SC-03 requires vulnerability disclosure and patching processes to address security vulnerabilities in a timely manner. NIST SI-2 (Flaw Remediation) addresses identifying, reporting, and correcting system flaws. NIST SI-2.2 (Automated Flaw Remediation Status) addresses automated tracking of flaw remediation. NIST RA-5 (Vulnerability Monitoring and Scanning) addresses vulnerability scanning. NIST RA-5.5 (Privileged Access) addresses privileged access for vulnerability scanning. Both frameworks address vulnerability management and remediation.",
                 "ns": "https://ibm.com/concert/ns/oscal"
               }
             ],
@@ -1075,7 +1075,7 @@
             "sources": [
               {
                 "type": "control",
-                "id-ref": "iscf-ra-01"
+                "id-ref": "harmonized-ra-01"
               }
             ],
             "targets": [
@@ -1099,7 +1099,7 @@
             "props": [
               {
                 "name": "mapping-rationale",
-                "value": "ISCF-RA-01 requires continuous vulnerability scanning across all in-scope components to identify security vulnerabilities and maintain an accurate risk posture. NIST RA-5 (Vulnerability Monitoring and Scanning) addresses scanning for vulnerabilities. NIST RA-5.2 (Update Vulnerabilities to Be Scanned) addresses updating vulnerability databases. NIST RA-5.5 (Privileged Access) addresses privileged access for scanning. NIST CA-7 (Continuous Monitoring) addresses continuous monitoring of security controls. Both frameworks require continuous vulnerability assessment.",
+                "value": "Harmonized-RA-01 requires continuous vulnerability scanning across all in-scope components to identify security vulnerabilities and maintain an accurate risk posture. NIST RA-5 (Vulnerability Monitoring and Scanning) addresses scanning for vulnerabilities. NIST RA-5.2 (Update Vulnerabilities to Be Scanned) addresses updating vulnerability databases. NIST RA-5.5 (Privileged Access) addresses privileged access for scanning. NIST CA-7 (Continuous Monitoring) addresses continuous monitoring of security controls. Both frameworks require continuous vulnerability assessment.",
                 "ns": "https://ibm.com/concert/ns/oscal"
               }
             ],
@@ -1116,7 +1116,7 @@
             "sources": [
               {
                 "type": "control",
-                "id-ref": "iscf-ra-02"
+                "id-ref": "harmonized-ra-02"
               }
             ],
             "targets": [
@@ -1140,7 +1140,7 @@
             "props": [
               {
                 "name": "mapping-rationale",
-                "value": "ISCF-RA-02 requires remediation timelines for identified vulnerabilities to be tracked and enforced within defined SLAs. NIST SI-2 (Flaw Remediation) addresses correcting system flaws within defined timeframes. NIST RA-5 (Vulnerability Monitoring and Scanning) addresses vulnerability remediation tracking. NIST CA-5 (Plan of Action and Milestones) addresses tracking remediation actions. NIST PM-4 (Plan of Action and Milestones Process) addresses the POA&M process. Both frameworks address tracking and enforcing vulnerability remediation timelines.",
+                "value": "Harmonized-RA-02 requires remediation timelines for identified vulnerabilities to be tracked and enforced within defined SLAs. NIST SI-2 (Flaw Remediation) addresses correcting system flaws within defined timeframes. NIST RA-5 (Vulnerability Monitoring and Scanning) addresses vulnerability remediation tracking. NIST CA-5 (Plan of Action and Milestones) addresses tracking remediation actions. NIST PM-4 (Plan of Action and Milestones Process) addresses the POA&M process. Both frameworks address tracking and enforcing vulnerability remediation timelines.",
                 "ns": "https://ibm.com/concert/ns/oscal"
               }
             ],
@@ -1157,7 +1157,7 @@
             "sources": [
               {
                 "type": "control",
-                "id-ref": "iscf-ra-03"
+                "id-ref": "harmonized-ra-03"
               }
             ],
             "targets": [
@@ -1181,7 +1181,7 @@
             "props": [
               {
                 "name": "mapping-rationale",
-                "value": "ISCF-RA-03 requires monthly security and sovereignty health reviews to maintain oversight of the security posture. NIST CA-7 (Continuous Monitoring) addresses ongoing monitoring of security controls. NIST PM-6 (Measures of Performance) addresses measuring security performance. NIST PM-9 (Risk Management Strategy) addresses risk management strategy. NIST RA-3 (Risk Assessment) addresses conducting risk assessments. Both frameworks address periodic security posture reviews, though ISCF specifically includes sovereignty aspects.",
+                "value": "Harmonized-RA-03 requires monthly security and sovereignty health reviews to maintain oversight of the security posture. NIST CA-7 (Continuous Monitoring) addresses ongoing monitoring of security controls. NIST PM-6 (Measures of Performance) addresses measuring security performance. NIST PM-9 (Risk Management Strategy) addresses risk management strategy. NIST RA-3 (Risk Assessment) addresses conducting risk assessments. Both frameworks address periodic security posture reviews, though Harmonized specifically includes sovereignty aspects.",
                 "ns": "https://ibm.com/concert/ns/oscal"
               }
             ],
@@ -1198,7 +1198,7 @@
             "sources": [
               {
                 "type": "control",
-                "id-ref": "iscf-re-01"
+                "id-ref": "harmonized-re-01"
               }
             ],
             "targets": [
@@ -1226,7 +1226,7 @@
             "props": [
               {
                 "name": "mapping-rationale",
-                "value": "ISCF-RE-01 requires disaster recovery operations to be executed within the region without dependency on external providers. NIST CP-2 (Contingency Plan) addresses contingency planning. NIST CP-6 (Alternate Storage Site) addresses alternate storage sites. NIST CP-7 (Alternate Processing Site) addresses alternate processing sites. NIST CP-9 (System Backup) addresses system backup. NIST CP-10 (System Recovery and Reconstitution) addresses system recovery. Both frameworks address disaster recovery, though ISCF specifically requires regional execution without external dependencies.",
+                "value": "Harmonized-RE-01 requires disaster recovery operations to be executed within the region without dependency on external providers. NIST CP-2 (Contingency Plan) addresses contingency planning. NIST CP-6 (Alternate Storage Site) addresses alternate storage sites. NIST CP-7 (Alternate Processing Site) addresses alternate processing sites. NIST CP-9 (System Backup) addresses system backup. NIST CP-10 (System Recovery and Reconstitution) addresses system recovery. Both frameworks address disaster recovery, though Harmonized specifically requires regional execution without external dependencies.",
                 "ns": "https://ibm.com/concert/ns/oscal"
               }
             ],
@@ -1243,7 +1243,7 @@
             "sources": [
               {
                 "type": "control",
-                "id-ref": "iscf-re-02"
+                "id-ref": "harmonized-re-02"
               }
             ],
             "targets": [
@@ -1263,7 +1263,7 @@
             "props": [
               {
                 "name": "mapping-rationale",
-                "value": "ISCF-RE-02 requires MSPs and tenants to be able to export and delete their data without vendor lock-in, ensuring data portability. NIST SI-12 (Information Management and Retention) addresses information lifecycle including disposal. NIST AC-3.9 (Controlled Release) addresses releasing information outside the system. NIST SA-9 (External System Services) addresses requirements for external service providers including data portability. Both frameworks address data portability and exit capabilities, though ISCF specifically emphasizes avoiding vendor lock-in.",
+                "value": "Harmonized-RE-02 requires MSPs and tenants to be able to export and delete their data without vendor lock-in, ensuring data portability. NIST SI-12 (Information Management and Retention) addresses information lifecycle including disposal. NIST AC-3.9 (Controlled Release) addresses releasing information outside the system. NIST SA-9 (External System Services) addresses requirements for external service providers including data portability. Both frameworks address data portability and exit capabilities, though Harmonized specifically emphasizes avoiding vendor lock-in.",
                 "ns": "https://ibm.com/concert/ns/oscal"
               }
             ],
@@ -1280,7 +1280,7 @@
             "sources": [
               {
                 "type": "control",
-                "id-ref": "iscf-trn-01"
+                "id-ref": "harmonized-trn-01"
               }
             ],
             "targets": [
@@ -1300,7 +1300,7 @@
             "props": [
               {
                 "name": "mapping-rationale",
-                "value": "ISCF-TRN-01 requires documentation describing sovereignty controls, scope, and limitations as a transparency commitment. NIST PL-1 (Policy and Procedures) addresses security planning policies and procedures. NIST PM-1 (Information Security Program Plan) addresses the information security program plan. NIST PL-2 (System Security and Privacy Plans) addresses system security plans. Both frameworks address documentation of security controls, though ISCF specifically requires sovereignty-focused transparency documentation.",
+                "value": "Harmonized-TRN-01 requires documentation describing sovereignty controls, scope, and limitations as a transparency commitment. NIST PL-1 (Policy and Procedures) addresses security planning policies and procedures. NIST PM-1 (Information Security Program Plan) addresses the information security program plan. NIST PL-2 (System Security and Privacy Plans) addresses system security plans. Both frameworks address documentation of security controls, though Harmonized specifically requires sovereignty-focused transparency documentation.",
                 "ns": "https://ibm.com/concert/ns/oscal"
               }
             ],
@@ -1317,7 +1317,7 @@
             "sources": [
               {
                 "type": "control",
-                "id-ref": "iscf-trn-02"
+                "id-ref": "harmonized-trn-02"
               }
             ],
             "targets": [
@@ -1341,7 +1341,7 @@
             "props": [
               {
                 "name": "mapping-rationale",
-                "value": "ISCF-TRN-02 requires customers to have visibility into sovereignty-relevant configurations and monitoring results to independently verify sovereignty enforcement. NIST CA-7 (Continuous Monitoring) addresses ongoing monitoring of security controls. NIST AU-6 (Audit Record Review, Analysis, and Reporting) addresses reviewing audit records. NIST PM-14 (Testing, Training, and Monitoring) addresses monitoring activities. NIST PM-31 (Continuous Monitoring Strategy) addresses monitoring strategy. Both frameworks address visibility into security monitoring, though ISCF specifically requires customer access for sovereignty verification.",
+                "value": "Harmonized-TRN-02 requires customers to have visibility into sovereignty-relevant configurations and monitoring results to independently verify sovereignty enforcement. NIST CA-7 (Continuous Monitoring) addresses ongoing monitoring of security controls. NIST AU-6 (Audit Record Review, Analysis, and Reporting) addresses reviewing audit records. NIST PM-14 (Testing, Training, and Monitoring) addresses monitoring activities. NIST PM-31 (Continuous Monitoring Strategy) addresses monitoring strategy. Both frameworks address visibility into security monitoring, though Harmonized specifically requires customer access for sovereignty verification.",
                 "ns": "https://ibm.com/concert/ns/oscal"
               }
             ],
@@ -1358,7 +1358,7 @@
             "sources": [
               {
                 "type": "control",
-                "id-ref": "iscf-trn-03"
+                "id-ref": "harmonized-trn-03"
               }
             ],
             "targets": [
@@ -1382,7 +1382,7 @@
             "props": [
               {
                 "name": "mapping-rationale",
-                "value": "ISCF-TRN-03 requires customers to control their own users, roles, and access policies, ensuring identity governance remains under customer authority. NIST AC-2 (Account Management) addresses managing system accounts. NIST IA-4 (Identifier Management) addresses managing identifiers. NIST IA-5 (Authenticator Management) addresses managing authenticators. NIST AC-6 (Least Privilege) addresses access control. Both frameworks address identity and access management, though ISCF specifically requires customer control for sovereignty.",
+                "value": "Harmonized-TRN-03 requires customers to control their own users, roles, and access policies, ensuring identity governance remains under customer authority. NIST AC-2 (Account Management) addresses managing system accounts. NIST IA-4 (Identifier Management) addresses managing identifiers. NIST IA-5 (Authenticator Management) addresses managing authenticators. NIST AC-6 (Least Privilege) addresses access control. Both frameworks address identity and access management, though Harmonized specifically requires customer control for sovereignty.",
                 "ns": "https://ibm.com/concert/ns/oscal"
               }
             ],
@@ -1399,7 +1399,7 @@
             "sources": [
               {
                 "type": "control",
-                "id-ref": "iscf-trn-04"
+                "id-ref": "harmonized-trn-04"
               }
             ],
             "targets": [
@@ -1419,7 +1419,7 @@
             "props": [
               {
                 "name": "mapping-rationale",
-                "value": "ISCF-TRN-04 requires customers to retain control over cryptographic keys used to protect their data, ensuring cryptographic sovereignty remains with the customer. NIST SC-12 (Cryptographic Key Establishment and Management) addresses key management. NIST SC-12.1 (Availability) addresses key availability. NIST SC-12.6 (Physical Control of Keys) addresses maintaining physical control of keys. Both frameworks address cryptographic key management, though ISCF specifically requires customer control for sovereignty.",
+                "value": "Harmonized-TRN-04 requires customers to retain control over cryptographic keys used to protect their data, ensuring cryptographic sovereignty remains with the customer. NIST SC-12 (Cryptographic Key Establishment and Management) addresses key management. NIST SC-12.1 (Availability) addresses key availability. NIST SC-12.6 (Physical Control of Keys) addresses maintaining physical control of keys. Both frameworks address cryptographic key management, though Harmonized specifically requires customer control for sovereignty.",
                 "ns": "https://ibm.com/concert/ns/oscal"
               }
             ],
@@ -1436,7 +1436,7 @@
             "sources": [
               {
                 "type": "control",
-                "id-ref": "iscf-trn-05"
+                "id-ref": "harmonized-trn-05"
               }
             ],
             "targets": [
@@ -1460,7 +1460,7 @@
             "props": [
               {
                 "name": "mapping-rationale",
-                "value": "ISCF-TRN-05 requires customers to access sovereignty-related audit evidence relevant to their deployment to verify compliance with sovereignty requirements. NIST AU-9 (Protection of Audit Information) addresses protecting audit information. NIST AU-11 (Audit Record Retention) addresses retaining audit records. NIST AU-6 (Audit Record Review, Analysis, and Reporting) addresses reviewing audit records. NIST CA-2 (Control Assessments) addresses security control assessments. Both frameworks address audit evidence access, though ISCF specifically requires customer access for sovereignty verification.",
+                "value": "Harmonized-TRN-05 requires customers to access sovereignty-related audit evidence relevant to their deployment to verify compliance with sovereignty requirements. NIST AU-9 (Protection of Audit Information) addresses protecting audit information. NIST AU-11 (Audit Record Retention) addresses retaining audit records. NIST AU-6 (Audit Record Review, Analysis, and Reporting) addresses reviewing audit records. NIST CA-2 (Control Assessments) addresses security control assessments. Both frameworks address audit evidence access, though Harmonized specifically requires customer access for sovereignty verification.",
                 "ns": "https://ibm.com/concert/ns/oscal"
               }
             ],
@@ -1477,7 +1477,7 @@
             "sources": [
               {
                 "type": "control",
-                "id-ref": "iscf-trn-06"
+                "id-ref": "harmonized-trn-06"
               }
             ],
             "targets": [
@@ -1501,7 +1501,7 @@
             "props": [
               {
                 "name": "mapping-rationale",
-                "value": "ISCF-TRN-06 requires customers to be informed of sub-processors and external dependencies impacting sovereignty to prevent undisclosed third-party dependencies. NIST SA-9 (External System Services) addresses requirements for external service providers. NIST SR-6 (Supplier Assessments and Reviews) addresses assessing suppliers. NIST SR-3 (Supply Chain Controls and Processes) addresses supply chain risk management. NIST PM-30 (Supply Chain Risk Management Strategy) addresses supply chain strategy. Both frameworks address third-party transparency, though ISCF specifically requires disclosure for sovereignty impact.",
+                "value": "Harmonized-TRN-06 requires customers to be informed of sub-processors and external dependencies impacting sovereignty to prevent undisclosed third-party dependencies. NIST SA-9 (External System Services) addresses requirements for external service providers. NIST SR-6 (Supplier Assessments and Reviews) addresses assessing suppliers. NIST SR-3 (Supply Chain Controls and Processes) addresses supply chain risk management. NIST PM-30 (Supply Chain Risk Management Strategy) addresses supply chain strategy. Both frameworks address third-party transparency, though Harmonized specifically requires disclosure for sovereignty impact.",
                 "ns": "https://ibm.com/concert/ns/oscal"
               }
             ],
@@ -1518,7 +1518,7 @@
             "sources": [
               {
                 "type": "control",
-                "id-ref": "iscf-trn-07"
+                "id-ref": "harmonized-trn-07"
               }
             ],
             "targets": [
@@ -1538,7 +1538,7 @@
             "props": [
               {
                 "name": "mapping-rationale",
-                "value": "ISCF-TRN-07 requires exit procedures and data portability mechanisms to be documented and transparent. NIST SA-9 (External System Services) addresses requirements for external service providers including data portability. NIST SI-12 (Information Management and Retention) addresses information lifecycle. NIST AC-3.9 (Controlled Release) addresses releasing information outside the system. Both frameworks address data portability and exit procedures, though ISCF specifically requires transparency for sovereignty.",
+                "value": "Harmonized-TRN-07 requires exit procedures and data portability mechanisms to be documented and transparent. NIST SA-9 (External System Services) addresses requirements for external service providers including data portability. NIST SI-12 (Information Management and Retention) addresses information lifecycle. NIST AC-3.9 (Controlled Release) addresses releasing information outside the system. Both frameworks address data portability and exit procedures, though Harmonized specifically requires transparency for sovereignty.",
                 "ns": "https://ibm.com/concert/ns/oscal"
               }
             ],
@@ -1555,7 +1555,7 @@
             "sources": [
               {
                 "type": "control",
-                "id-ref": "iscf-gov-01"
+                "id-ref": "harmonized-gov-01"
               }
             ],
             "targets": [
@@ -1575,7 +1575,7 @@
             "props": [
               {
                 "name": "mapping-rationale",
-                "value": "ISCF-GOV-01 requires ownership of sovereignty controls to be assigned to a region-based function or role with authority to define, enforce, and update sovereignty controls. NIST PM-2 (Information Security Program Leadership Role) addresses senior leadership roles for information security. NIST PM-1 (Information Security Program Plan) addresses the security program plan. NIST PL-1 (Policy and Procedures) addresses security planning policies. Both frameworks address security governance ownership, though ISCF specifically requires regional jurisdiction.",
+                "value": "Harmonized-GOV-01 requires ownership of sovereignty controls to be assigned to a region-based function or role with authority to define, enforce, and update sovereignty controls. NIST PM-2 (Information Security Program Leadership Role) addresses senior leadership roles for information security. NIST PM-1 (Information Security Program Plan) addresses the security program plan. NIST PL-1 (Policy and Procedures) addresses security planning policies. Both frameworks address security governance ownership, though Harmonized specifically requires regional jurisdiction.",
                 "ns": "https://ibm.com/concert/ns/oscal"
               }
             ],
@@ -1592,7 +1592,7 @@
             "sources": [
               {
                 "type": "control",
-                "id-ref": "iscf-gov-02"
+                "id-ref": "harmonized-gov-02"
               }
             ],
             "targets": [
@@ -1612,7 +1612,7 @@
             "props": [
               {
                 "name": "mapping-rationale",
-                "value": "ISCF-GOV-02 requires acceptance of sovereignty-related risks to be formally approved by region-based management with documented authority. NIST PM-9 (Risk Management Strategy) addresses the risk management strategy. NIST RA-3 (Risk Assessment) addresses conducting risk assessments. NIST PM-28 (Risk Framing) addresses risk framing. Both frameworks address risk acceptance authority, though ISCF specifically requires regional management approval for sovereignty risks.",
+                "value": "Harmonized-GOV-02 requires acceptance of sovereignty-related risks to be formally approved by region-based management with documented authority. NIST PM-9 (Risk Management Strategy) addresses the risk management strategy. NIST RA-3 (Risk Assessment) addresses conducting risk assessments. NIST PM-28 (Risk Framing) addresses risk framing. Both frameworks address risk acceptance authority, though Harmonized specifically requires regional management approval for sovereignty risks.",
                 "ns": "https://ibm.com/concert/ns/oscal"
               }
             ],
@@ -1629,7 +1629,7 @@
             "sources": [
               {
                 "type": "control",
-                "id-ref": "iscf-gov-03"
+                "id-ref": "harmonized-gov-03"
               }
             ],
             "targets": [
@@ -1649,7 +1649,7 @@
             "props": [
               {
                 "name": "mapping-rationale",
-                "value": "ISCF-GOV-03 requires exceptions to sovereignty controls to be documented and approved by region-based authority, ensuring exceptions are controlled and temporary. NIST PM-10 (Authorization Process) addresses the authorization process. NIST CA-6 (Authorization) addresses security authorization. NIST CA-7 (Continuous Monitoring) addresses monitoring including exception tracking. Both frameworks address exception management and authorization, though ISCF specifically requires regional authority approval for sovereignty exceptions.",
+                "value": "Harmonized-GOV-03 requires exceptions to sovereignty controls to be documented and approved by region-based authority, ensuring exceptions are controlled and temporary. NIST PM-10 (Authorization Process) addresses the authorization process. NIST CA-6 (Authorization) addresses security authorization. NIST CA-7 (Continuous Monitoring) addresses monitoring including exception tracking. Both frameworks address exception management and authorization, though Harmonized specifically requires regional authority approval for sovereignty exceptions.",
                 "ns": "https://ibm.com/concert/ns/oscal"
               }
             ],
@@ -1666,7 +1666,7 @@
             "sources": [
               {
                 "type": "control",
-                "id-ref": "iscf-gov-04"
+                "id-ref": "harmonized-gov-04"
               }
             ],
             "targets": [
@@ -1686,7 +1686,7 @@
             "props": [
               {
                 "name": "mapping-rationale",
-                "value": "ISCF-GOV-04 requires the sovereignty posture to be reviewed periodically by region-based management to maintain oversight and accountability. NIST PM-6 (Measures of Performance) addresses measuring security performance. NIST CA-7 (Continuous Monitoring) addresses ongoing monitoring of security controls. NIST PM-9 (Risk Management Strategy) addresses risk management strategy. Both frameworks address management review of security posture, though ISCF specifically requires regional management review for sovereignty.",
+                "value": "Harmonized-GOV-04 requires the sovereignty posture to be reviewed periodically by region-based management to maintain oversight and accountability. NIST PM-6 (Measures of Performance) addresses measuring security performance. NIST CA-7 (Continuous Monitoring) addresses ongoing monitoring of security controls. NIST PM-9 (Risk Management Strategy) addresses risk management strategy. Both frameworks address management review of security posture, though Harmonized specifically requires regional management review for sovereignty.",
                 "ns": "https://ibm.com/concert/ns/oscal"
               }
             ],
@@ -1703,7 +1703,7 @@
             "sources": [
               {
                 "type": "control",
-                "id-ref": "iscf-lj-01"
+                "id-ref": "harmonized-lj-01"
               }
             ],
             "targets": [
@@ -1723,7 +1723,7 @@
             "props": [
               {
                 "name": "mapping-rationale",
-                "value": "ISCF-LJ-01 requires the service to be governed exclusively by region or region member-state law. NIST SA-9 (External System Services) addresses requirements for external service providers including legal requirements. NIST PM-1 (Information Security Program Plan) addresses the security program plan. NIST PL-1 (Policy and Procedures) addresses security planning policies. NIST does not directly address legal jurisdiction exclusivity, but these controls provide partial coverage for contractual and policy requirements.",
+                "value": "Harmonized-LJ-01 requires the service to be governed exclusively by region or region member-state law. NIST SA-9 (External System Services) addresses requirements for external service providers including legal requirements. NIST PM-1 (Information Security Program Plan) addresses the security program plan. NIST PL-1 (Policy and Procedures) addresses security planning policies. NIST does not directly address legal jurisdiction exclusivity, but these controls provide partial coverage for contractual and policy requirements.",
                 "ns": "https://ibm.com/concert/ns/oscal"
               }
             ],
@@ -1740,7 +1740,7 @@
             "sources": [
               {
                 "type": "control",
-                "id-ref": "iscf-lj-02"
+                "id-ref": "harmonized-lj-02"
               }
             ],
             "targets": [
@@ -1760,7 +1760,7 @@
             "props": [
               {
                 "name": "mapping-rationale",
-                "value": "ISCF-LJ-02 requires documentation of exposure to, or exclusion from, non-regional extraterritorial laws that could compel access to data or systems. NIST SA-9 (External System Services) addresses external service provider requirements. NIST PM-1 (Information Security Program Plan) addresses the security program plan. NIST PT-1 (Policy and Procedures for PII Processing) addresses privacy policies. NIST does not directly address extraterritorial law exclusion, but these controls provide partial coverage for legal risk documentation.",
+                "value": "Harmonized-LJ-02 requires documentation of exposure to, or exclusion from, non-regional extraterritorial laws that could compel access to data or systems. NIST SA-9 (External System Services) addresses external service provider requirements. NIST PM-1 (Information Security Program Plan) addresses the security program plan. NIST PT-1 (Policy and Procedures for PII Processing) addresses privacy policies. NIST does not directly address extraterritorial law exclusion, but these controls provide partial coverage for legal risk documentation.",
                 "ns": "https://ibm.com/concert/ns/oscal"
               }
             ],
@@ -1777,7 +1777,7 @@
             "sources": [
               {
                 "type": "control",
-                "id-ref": "iscf-lj-03"
+                "id-ref": "harmonized-lj-03"
               }
             ],
             "targets": [
@@ -1797,7 +1797,7 @@
             "props": [
               {
                 "name": "mapping-rationale",
-                "value": "ISCF-LJ-03 requires the service to be operated by a region-incorporated legal entity to ensure operational and contractual control remains under regional governance. NIST SA-9 (External System Services) addresses external service provider requirements. NIST PM-1 (Information Security Program Plan) addresses the security program plan. NIST PM-2 (Information Security Program Leadership Role) addresses leadership roles. NIST does not directly address legal entity incorporation requirements, but these controls provide partial coverage for organizational governance.",
+                "value": "Harmonized-LJ-03 requires the service to be operated by a region-incorporated legal entity to ensure operational and contractual control remains under regional governance. NIST SA-9 (External System Services) addresses external service provider requirements. NIST PM-1 (Information Security Program Plan) addresses the security program plan. NIST PM-2 (Information Security Program Leadership Role) addresses leadership roles. NIST does not directly address legal entity incorporation requirements, but these controls provide partial coverage for organizational governance.",
                 "ns": "https://ibm.com/concert/ns/oscal"
               }
             ],
@@ -1814,7 +1814,7 @@
             "sources": [
               {
                 "type": "control",
-                "id-ref": "iscf-ai-01"
+                "id-ref": "harmonized-ai-01"
               }
             ],
             "targets": [
@@ -1838,7 +1838,7 @@
             "props": [
               {
                 "name": "mapping-rationale",
-                "value": "ISCF-AI-01 requires AI model inventory and approval monitoring to ensure only authorized AI models operate within the sovereign environment. NIST CM-8 (System Component Inventory) addresses maintaining component inventory. NIST CM-8.1 (Updates During Installation and Removal) addresses updating inventory. NIST PM-32 (Purposing) addresses system purposing. NIST SA-4 (Acquisition Process) addresses acquisition requirements. Both frameworks address component inventory, though ISCF specifically requires AI model authorization for sovereignty.",
+                "value": "Harmonized-AI-01 requires AI model inventory and approval monitoring to ensure only authorized AI models operate within the sovereign environment. NIST CM-8 (System Component Inventory) addresses maintaining component inventory. NIST CM-8.1 (Updates During Installation and Removal) addresses updating inventory. NIST PM-32 (Purposing) addresses system purposing. NIST SA-4 (Acquisition Process) addresses acquisition requirements. Both frameworks address component inventory, though Harmonized specifically requires AI model authorization for sovereignty.",
                 "ns": "https://ibm.com/concert/ns/oscal"
               }
             ],
@@ -1855,7 +1855,7 @@
             "sources": [
               {
                 "type": "control",
-                "id-ref": "iscf-ai-02"
+                "id-ref": "harmonized-ai-02"
               }
             ],
             "targets": [
@@ -1879,7 +1879,7 @@
             "props": [
               {
                 "name": "mapping-rationale",
-                "value": "ISCF-AI-02 requires only cryptographically signed and approved AI models to be deployed, ensuring AI model artifacts cannot be tampered with. NIST CM-14 (Signed Components) prevents installation of components without verification of digital signatures. NIST SI-7 (Software, Firmware, and Information Integrity) addresses software integrity verification. NIST SI-7.1 (Integrity Checks) addresses integrity checking mechanisms. NIST SA-12 (Supply Chain Protection) addresses supply chain integrity. Both frameworks address component signing and integrity verification.",
+                "value": "Harmonized-AI-02 requires only cryptographically signed and approved AI models to be deployed, ensuring AI model artifacts cannot be tampered with. NIST CM-14 (Signed Components) prevents installation of components without verification of digital signatures. NIST SI-7 (Software, Firmware, and Information Integrity) addresses software integrity verification. NIST SI-7.1 (Integrity Checks) addresses integrity checking mechanisms. NIST SA-12 (Supply Chain Protection) addresses supply chain integrity. Both frameworks address component signing and integrity verification.",
                 "ns": "https://ibm.com/concert/ns/oscal"
               }
             ],
@@ -1896,7 +1896,7 @@
             "sources": [
               {
                 "type": "control",
-                "id-ref": "iscf-ai-03"
+                "id-ref": "harmonized-ai-03"
               }
             ],
             "targets": [
@@ -1920,7 +1920,7 @@
             "props": [
               {
                 "name": "mapping-rationale",
-                "value": "ISCF-AI-03 requires AI workloads to not communicate with external networks except explicitly approved sovereign endpoints, preventing data transfer outside the sovereign boundary. NIST SC-7 (Boundary Protection) addresses controlling communications at system boundaries. NIST SC-7.5 (Deny by Default - Allow by Exception) addresses default deny policies. NIST AC-4 (Information Flow Enforcement) addresses controlling information flow. NIST SC-7.21 (Isolation of System Components) addresses isolating components. Both frameworks address network isolation and egress control.",
+                "value": "Harmonized-AI-03 requires AI workloads to not communicate with external networks except explicitly approved sovereign endpoints, preventing data transfer outside the sovereign boundary. NIST SC-7 (Boundary Protection) addresses controlling communications at system boundaries. NIST SC-7.5 (Deny by Default - Allow by Exception) addresses default deny policies. NIST AC-4 (Information Flow Enforcement) addresses controlling information flow. NIST SC-7.21 (Isolation of System Components) addresses isolating components. Both frameworks address network isolation and egress control.",
                 "ns": "https://ibm.com/concert/ns/oscal"
               }
             ],
@@ -1937,7 +1937,7 @@
             "sources": [
               {
                 "type": "control",
-                "id-ref": "iscf-ai-04"
+                "id-ref": "harmonized-ai-04"
               }
             ],
             "targets": [
@@ -1961,7 +1961,7 @@
             "props": [
               {
                 "name": "mapping-rationale",
-                "value": "ISCF-AI-04 requires all AI usage to be logged and traceable for accountability and auditability. NIST AU-2 (Event Logging) addresses logging security-relevant events. NIST AU-12 (Audit Record Generation) addresses generating audit records. NIST AU-3 (Content of Audit Records) addresses audit record content. NIST AU-6 (Audit Record Review, Analysis, and Reporting) addresses reviewing audit records. Both frameworks address comprehensive logging and traceability requirements.",
+                "value": "Harmonized-AI-04 requires all AI usage to be logged and traceable for accountability and auditability. NIST AU-2 (Event Logging) addresses logging security-relevant events. NIST AU-12 (Audit Record Generation) addresses generating audit records. NIST AU-3 (Content of Audit Records) addresses audit record content. NIST AU-6 (Audit Record Review, Analysis, and Reporting) addresses reviewing audit records. Both frameworks address comprehensive logging and traceability requirements.",
                 "ns": "https://ibm.com/concert/ns/oscal"
               }
             ],
@@ -1978,7 +1978,7 @@
             "sources": [
               {
                 "type": "control",
-                "id-ref": "iscf-ai-05"
+                "id-ref": "harmonized-ai-05"
               }
             ],
             "targets": [
@@ -1998,7 +1998,7 @@
             "props": [
               {
                 "name": "mapping-rationale",
-                "value": "ISCF-AI-05 requires AI systems to support human oversight and manual override capability, ensuring AI systems do not operate autonomously without human control. NIST PM-32 (Purposing) addresses system purposing and use limitations. NIST AC-3.10 (Audited Override of Access Control Mechanisms) addresses audited override capabilities. NIST IR-4 (Incident Handling) addresses incident response including manual intervention. NIST has limited direct coverage for AI human oversight, but these controls provide partial coverage for override and control capabilities.",
+                "value": "Harmonized-AI-05 requires AI systems to support human oversight and manual override capability, ensuring AI systems do not operate autonomously without human control. NIST PM-32 (Purposing) addresses system purposing and use limitations. NIST AC-3.10 (Audited Override of Access Control Mechanisms) addresses audited override capabilities. NIST IR-4 (Incident Handling) addresses incident response including manual intervention. NIST has limited direct coverage for AI human oversight, but these controls provide partial coverage for override and control capabilities.",
                 "ns": "https://ibm.com/concert/ns/oscal"
               }
             ],
@@ -2015,7 +2015,7 @@
             "sources": [
               {
                 "type": "control",
-                "id-ref": "iscf-ai-06"
+                "id-ref": "harmonized-ai-06"
               }
             ],
             "targets": [
@@ -2039,7 +2039,7 @@
             "props": [
               {
                 "name": "mapping-rationale",
-                "value": "ISCF-AI-06 requires AI risk classification and impact assessment to ensure AI risks are properly evaluated. NIST RA-3 (Risk Assessment) addresses conducting risk assessments. NIST RA-5 (Vulnerability Monitoring and Scanning) addresses vulnerability assessment. NIST PM-9 (Risk Management Strategy) addresses risk management strategy. NIST RA-7 (Risk Response) addresses risk response. Both frameworks address risk assessment, though ISCF specifically requires AI-focused risk classification.",
+                "value": "Harmonized-AI-06 requires AI risk classification and impact assessment to ensure AI risks are properly evaluated. NIST RA-3 (Risk Assessment) addresses conducting risk assessments. NIST RA-5 (Vulnerability Monitoring and Scanning) addresses vulnerability assessment. NIST PM-9 (Risk Management Strategy) addresses risk management strategy. NIST RA-7 (Risk Response) addresses risk response. Both frameworks address risk assessment, though Harmonized specifically requires AI-focused risk classification.",
                 "ns": "https://ibm.com/concert/ns/oscal"
               }
             ],
@@ -2056,7 +2056,7 @@
             "sources": [
               {
                 "type": "control",
-                "id-ref": "iscf-ai-07"
+                "id-ref": "harmonized-ai-07"
               }
             ],
             "targets": [
@@ -2092,7 +2092,7 @@
             "props": [
               {
                 "name": "mapping-rationale",
-                "value": "ISCF-AI-07 requires privileged access controls for AI systems including model training, fine-tuning, and deployment operations. NIST AC-6 (Least Privilege) and its enhancements address privileged access management: AC-6.1 (authorize access to security functions), AC-6.5 (privileged accounts), AC-6.9 (log privileged function use), AC-6.10 (prohibit non-privileged users from executing privileged functions). CM-5 (Access Restrictions for Change) and CM-5.1 (Automated Access Enforcement) address restricting system changes to authorized personnel. Both frameworks require limiting privileged access, but ISCF specifically focuses on AI-specific operations while NIST provides general privileged access controls.",
+                "value": "Harmonized-AI-07 requires privileged access controls for AI systems including model training, fine-tuning, and deployment operations. NIST AC-6 (Least Privilege) and its enhancements address privileged access management: AC-6.1 (authorize access to security functions), AC-6.5 (privileged accounts), AC-6.9 (log privileged function use), AC-6.10 (prohibit non-privileged users from executing privileged functions). CM-5 (Access Restrictions for Change) and CM-5.1 (Automated Access Enforcement) address restricting system changes to authorized personnel. Both frameworks require limiting privileged access, but Harmonized specifically focuses on AI-specific operations while NIST provides general privileged access controls.",
                 "ns": "https://ibm.com/concert/ns/oscal"
               }
             ],
@@ -2109,7 +2109,7 @@
             "sources": [
               {
                 "type": "control",
-                "id-ref": "iscf-ai-08"
+                "id-ref": "harmonized-ai-08"
               }
             ],
             "targets": [
@@ -2145,7 +2145,7 @@
             "props": [
               {
                 "name": "mapping-rationale",
-                "value": "ISCF-AI-08 requires comprehensive logging and monitoring of AI system activities including model inference, training operations, and decision outputs. NIST AU-2 (Event Logging) defines auditable events, AU-3 (Content of Audit Records) specifies required information, AU-3.1 (Additional Audit Information) adds context, AU-6 (Audit Record Review, Analysis, and Reporting) addresses log analysis, AU-6.1 (Automated Process Integration) enables automated analysis, AU-12 (Audit Record Generation) ensures logging capability, and SI-4 (System Monitoring) provides continuous monitoring. Both frameworks require comprehensive logging, but ISCF specifically addresses AI-specific events while NIST provides general audit requirements.",
+                "value": "Harmonized-AI-08 requires comprehensive logging and monitoring of AI system activities including model inference, training operations, and decision outputs. NIST AU-2 (Event Logging) defines auditable events, AU-3 (Content of Audit Records) specifies required information, AU-3.1 (Additional Audit Information) adds context, AU-6 (Audit Record Review, Analysis, and Reporting) addresses log analysis, AU-6.1 (Automated Process Integration) enables automated analysis, AU-12 (Audit Record Generation) ensures logging capability, and SI-4 (System Monitoring) provides continuous monitoring. Both frameworks require comprehensive logging, but Harmonized specifically addresses AI-specific events while NIST provides general audit requirements.",
                 "ns": "https://ibm.com/concert/ns/oscal"
               }
             ],
@@ -2162,7 +2162,7 @@
             "sources": [
               {
                 "type": "control",
-                "id-ref": "iscf-ai-09"
+                "id-ref": "harmonized-ai-09"
               }
             ],
             "targets": [
@@ -2198,7 +2198,7 @@
             "props": [
               {
                 "name": "mapping-rationale",
-                "value": "ISCF-AI-09 requires incident response capabilities specific to AI systems including model failures, adversarial attacks, and unexpected behaviors. NIST IR-4 (Incident Handling) provides incident response procedures, IR-4.1 (Automated Incident Handling Processes) enables automation, IR-5 (Incident Monitoring) tracks incidents, IR-6 (Incident Reporting) addresses communication, IR-8 (Incident Response Plan) documents procedures. CP-2 (Contingency Plan) and CP-10 (System Recovery and Reconstitution) address recovery from AI system failures. Both frameworks require incident response, but ISCF specifically addresses AI-related incidents while NIST provides general incident handling.",
+                "value": "Harmonized-AI-09 requires incident response capabilities specific to AI systems including model failures, adversarial attacks, and unexpected behaviors. NIST IR-4 (Incident Handling) provides incident response procedures, IR-4.1 (Automated Incident Handling Processes) enables automation, IR-5 (Incident Monitoring) tracks incidents, IR-6 (Incident Reporting) addresses communication, IR-8 (Incident Response Plan) documents procedures. CP-2 (Contingency Plan) and CP-10 (System Recovery and Reconstitution) address recovery from AI system failures. Both frameworks require incident response, but Harmonized specifically addresses AI-related incidents while NIST provides general incident handling.",
                 "ns": "https://ibm.com/concert/ns/oscal"
               }
             ],
@@ -2215,7 +2215,7 @@
             "sources": [
               {
                 "type": "control",
-                "id-ref": "iscf-ai-10"
+                "id-ref": "harmonized-ai-10"
               }
             ],
             "targets": [
@@ -2247,7 +2247,7 @@
             "props": [
               {
                 "name": "mapping-rationale",
-                "value": "ISCF-AI-10 requires continuous risk assessment and vulnerability management for AI systems including model drift detection, adversarial vulnerability testing, and performance degradation monitoring. NIST PM-28 (Risk Framing) establishes risk context, RA-3 (Risk Assessment) identifies and evaluates risks, RA-5 (Vulnerability Monitoring and Scanning) addresses vulnerability identification, CA-7 (Continuous Monitoring) provides ongoing assessment, SI-2 (Flaw Remediation) addresses vulnerability remediation, and SI-3 (Malicious Code Protection) protects against adversarial inputs. Both frameworks require ongoing risk management, but ISCF specifically addresses AI-specific risks while NIST provides general risk assessment controls.",
+                "value": "Harmonized-AI-10 requires continuous risk assessment and vulnerability management for AI systems including model drift detection, adversarial vulnerability testing, and performance degradation monitoring. NIST PM-28 (Risk Framing) establishes risk context, RA-3 (Risk Assessment) identifies and evaluates risks, RA-5 (Vulnerability Monitoring and Scanning) addresses vulnerability identification, CA-7 (Continuous Monitoring) provides ongoing assessment, SI-2 (Flaw Remediation) addresses vulnerability remediation, and SI-3 (Malicious Code Protection) protects against adversarial inputs. Both frameworks require ongoing risk management, but Harmonized specifically addresses AI-specific risks while NIST provides general risk assessment controls.",
                 "ns": "https://ibm.com/concert/ns/oscal"
               }
             ],
