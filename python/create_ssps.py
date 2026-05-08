@@ -22,12 +22,14 @@ This script generates OSCAL SSPs by:
 4. One SSP per profile (fedramp-low, fedramp-moderate, fedramp-high, dora)
 """
 
+import sys
 from pathlib import Path
 from datetime import datetime
 import uuid
 import xml.etree.ElementTree as ET
 import json
 from typing import Dict, List, Any
+sys.path.insert(0, str(Path(__file__).parent.parent))
 from trestle_api import TrestleAPI
 import trestle.oscal.ssp as ssp_module
 from server_config import get_all_servers, get_server_by_name

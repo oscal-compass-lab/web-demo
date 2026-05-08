@@ -22,12 +22,14 @@ This script generates OSCAL assessment results for each assessment plan by:
 4. Creating observations and findings for each control
 """
 
+import sys
 from pathlib import Path
 from datetime import datetime, timedelta
 import xml.etree.ElementTree as ET
 from collections import defaultdict
 import uuid
 from typing import Dict, List, Tuple, Set
+sys.path.insert(0, str(Path(__file__).parent.parent))
 from trestle_api import TrestleAPI
 import trestle.oscal.assessment_results as ar_module
 import trestle.oscal.common as common

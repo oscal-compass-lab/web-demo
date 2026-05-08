@@ -18,9 +18,11 @@ Create XCCDF result files for each Ubuntu server component
 Uses all rules from the OSCAP validation component definition
 """
 
+import sys
 from pathlib import Path
 from datetime import datetime, timedelta
 import random
+sys.path.insert(0, str(Path(__file__).parent.parent))
 from trestle_api import TrestleAPI
 from server_config import get_all_servers
 

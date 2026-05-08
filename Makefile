@@ -24,7 +24,7 @@ help:
 
 create-xccdf: venv ws create-compdefs
 	@echo "Creating XCCDF scan result files..."
-	@. $(VENV_DIR)/bin/activate && python3 create_xccdf_results.py
+	@. $(VENV_DIR)/bin/activate && python3 python/create_xccdf_results.py
 
 clean-xccdf:
 	@echo "Removing generated XCCDF scan result files..."
@@ -42,7 +42,7 @@ create-catalogs: venv ws
 		fi; \
 	done
 	@echo "Updating OSCAL versions in catalogs..."
-	@. $(VENV_DIR)/bin/activate && python3 update_oscal_version.py
+	@. $(VENV_DIR)/bin/activate && python3 python/update_oscal_version.py
 	@echo "✅ Catalogs copied and updated"
 
 create-profiles: venv ws create-catalogs
@@ -56,7 +56,7 @@ create-profiles: venv ws create-catalogs
 		fi; \
 	done
 	@echo "Updating OSCAL versions in profiles..."
-	@. $(VENV_DIR)/bin/activate && python3 update_oscal_version.py
+	@. $(VENV_DIR)/bin/activate && python3 python/update_oscal_version.py
 	@echo "✅ Profiles copied and updated"
 
 create-resolve: venv ws create-profiles
@@ -73,7 +73,7 @@ create-resolve: venv ws create-profiles
 
 create-mappings: venv ws
 	@echo "Creating NIST to DORA mapping collection..."
-	@. $(VENV_DIR)/bin/activate && python3 create_dora_nist_mapping.py
+	@. $(VENV_DIR)/bin/activate && python3 python/create_dora_nist_mapping.py
 
 create-oscal: create-catalogs create-profiles create-resolve create-mappings create-compdefs create-ssps create-aps create-ars create-poams
 	@echo "✅ All OSCAL documents created"
@@ -89,10 +89,10 @@ create-compdefs: venv ws
 		fi; \
 	done
 	@echo "Updating OSCAL versions in component definitions..."
-	@. $(VENV_DIR)/bin/activate && python3 update_oscal_version.py
+	@. $(VENV_DIR)/bin/activate && python3 python/update_oscal_version.py
 	@echo "Enhancing component definitions with FedRAMP Moderate/High controls..."
 	@. $(VENV_DIR)/bin/activate && \
-		COMP_DEF_DIR=$(TRESTLE_WORKSPACE)/component-definitions python3 update_component_definitions.py
+		COMP_DEF_DIR=$(TRESTLE_WORKSPACE)/component-definitions python3 python/update_component_definitions.py
 	@echo "✅ Component definitions copied, updated, and enhanced"
 
 # Clean targets (in reverse order of creation)
@@ -123,7 +123,7 @@ clean-compdefs:
 
 create-ssps: clean-ssps venv ws create-xccdf create-compdefs
 	@echo "Creating SSPs from component definitions and XCCDF inventory..."
-	@. $(VENV_DIR)/bin/activate && python3 create_ssps.py
+	@. $(VENV_DIR)/bin/activate && python3 python/create_ssps.py
 
 clean-ssps:
 	@echo "Removing all generated SSPs..."
@@ -132,7 +132,7 @@ clean-ssps:
 
 create-aps: clean-aps venv ws create-ssps
 	@echo "Creating assessment plans from SSPs..."
-	@. $(VENV_DIR)/bin/activate && python3 create_assessment_plans.py
+	@. $(VENV_DIR)/bin/activate && python3 python/create_assessment_plans.py
 
 clean-aps:
 	@echo "Removing all generated assessment plans..."
@@ -141,7 +141,7 @@ clean-aps:
 
 create-ars: clean-ars venv ws create-xccdf
 	@echo "Creating assessment results from XCCDF scan files..."
-	@. $(VENV_DIR)/bin/activate && python3 create_assessment_results.py
+	@. $(VENV_DIR)/bin/activate && python3 python/create_assessment_results.py
 
 clean-ars:
 	@echo "Removing all generated assessment results..."
@@ -150,7 +150,7 @@ clean-ars:
 
 create-poams: clean-poams venv ws create-ars
 	@echo "Creating POA&Ms from assessment results..."
-	@. $(VENV_DIR)/bin/activate && python3 create_poams.py
+	@. $(VENV_DIR)/bin/activate && python3 python/create_poams.py
 
 clean-poams:
 	@echo "Removing all generated POA&Ms..."
@@ -159,7 +159,7 @@ clean-poams:
 
 charts: clean-charts venv ws create-ars
 	@echo "Creating compliance status charts from assessment results..."
-	@. $(VENV_DIR)/bin/activate && python3 create_assessment_result_charts.py
+	@. $(VENV_DIR)/bin/activate && python3 python/create_assessment_result_charts.py
 
 clean-charts:
 	@echo "Removing all generated charts..."
@@ -199,7 +199,7 @@ validate: venv ws
 	trestle validate -a && \
 	echo "✅ All OSCAL documents validated successfully!"
 
-run: venv ws create-resolve create-ssps validate
+run: venv
 	@. $(VENV_DIR)/bin/activate && python app.py
 
 copy-images:

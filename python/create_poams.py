@@ -21,10 +21,12 @@ This script generates OSCAL POA&Ms by:
 3. Defining milestones, responsible parties, and remediation timelines
 """
 
+import sys
 from pathlib import Path
 from datetime import datetime, timedelta
 import uuid
 from typing import Dict, List, Any
+sys.path.insert(0, str(Path(__file__).parent.parent))
 from trestle_api import TrestleAPI
 import trestle.oscal.poam as poam_module
 import trestle.oscal.common as common

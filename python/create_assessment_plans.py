@@ -22,10 +22,12 @@ This script generates OSCAL assessment plans for each SSP by:
 4. Defining assessment activities, subjects, and tasks
 """
 
+import sys
 from pathlib import Path
 from datetime import datetime, timedelta
 import uuid
 from typing import Dict, List
+sys.path.insert(0, str(Path(__file__).parent.parent))
 from trestle_api import TrestleAPI
 import trestle.oscal.assessment_plan as ap_module
 
