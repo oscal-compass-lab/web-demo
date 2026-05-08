@@ -160,6 +160,21 @@ def get_xccdf_results():
         })
     return results
 
+def get_charts():
+    """Get list of compliance chart files"""
+    charts_dir = Path('source-data/charts')
+    if not charts_dir.exists():
+        return []
+    
+    charts = []
+    for chart_file in sorted(charts_dir.glob('*.png')):
+        charts.append({
+            'name': chart_file.stem,
+            'filename': chart_file.name,
+            'path': str(chart_file)
+        })
+    return charts
+
 @app.route('/')
 def index():
     """Main navigation page"""
@@ -172,6 +187,7 @@ def index():
     assessment_results = get_assessment_results()
     poams = get_poams()
     mappings = get_mappings()
+    charts = get_charts()
     
     # Apply display title mapping to profiles, catalogs, mappings, components, SSPs, assessment plans, assessment results, and POA&Ms
     for profile in profiles:
@@ -191,7 +207,8 @@ def index():
     for poam in poams:
         poam['display_title'] = get_display_title(poam['title'])
     
-    total_docs = len(catalogs) + len(profiles) + len(components) + len(ssps) + len(assessment_plans) + len(xccdf_results) + len(assessment_results) + len(poams) + len(mappings)
+    # Calculate separate totals
+    oscal_docs = len(catalogs) + len(profiles) + len(components) + len(ssps) + len(assessment_plans) + len(assessment_results) + len(poams) + len(mappings)
     
     return f"""
     <!DOCTYPE html>
@@ -243,17 +260,15 @@ def index():
             <p>The documents have been constructed using OSCAL Compass Compliance-trestle.</p>
             
             <div class="info">
-                <strong>📊 Total Documents:</strong> {total_docs} OSCAL documents + <a href="#xccdf-results">{len(xccdf_results)} XCCDF results</a><br>
-                <strong>📚 Breakdown:</strong>
+                <strong>📊 Total Documents:</strong> {oscal_docs} OSCAL documents + <a href="#xccdf-results">{len(xccdf_results)} XCCDF results</a> + <a href="#charts">{len(charts)} compliance charts</a><br>
+                <strong>📚 OSCAL Breakdown:</strong>
                 <a href="#catalogs">{len(catalogs)} catalogs</a>,
                 <a href="#profiles">{len(profiles)} profiles</a>,
                 <a href="#mappings">{len(mappings)} mapping-collections</a>,
                 <a href="#components">{len(components)} component definitions</a>,
                 <a href="#ssps">{len(ssps)} SSPs</a>,
                 <a href="#assessment-plans">{len(assessment_plans)} assessment plans</a>,
-                <a href="#xccdf-results">{len(xccdf_results)} XCCDF results</a>,
                 <a href="#assessment-results">{len(assessment_results)} assessment results</a>,
-                <a href="#charts">compliance charts</a>,
                 <a href="#poams">{len(poams)} POA&Ms</a>
             </div>
             
