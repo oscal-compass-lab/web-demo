@@ -312,6 +312,29 @@ class TrestleAPI:
             print(f"Error saving assessment results {results_name}: {e}")
             return False
     
+    def save_poam(self, poam_dict: Dict[str, Any], poam_name: str) -> bool:
+        """
+        Save a Plan of Action and Milestones (POA&M).
+        
+        Args:
+            poam_dict: POA&M dictionary to save
+            poam_name: Name of the POA&M directory
+            
+        Returns:
+            True if successful, False otherwise
+        """
+        poam_dir = self.poams_dir / poam_name
+        poam_dir.mkdir(parents=True, exist_ok=True)
+        poam_file = poam_dir / 'plan-of-action-and-milestones.json'
+        try:
+            import json
+            with open(poam_file, 'w') as f:
+                json.dump(poam_dict, f, indent=2)
+            return True
+        except Exception as e:
+            print(f"Error saving POA&M {poam_name}: {e}")
+            return False
+    
     def load_assessment_plan(self, plan_name: str):
         """
         Load an assessment plan by name.
@@ -577,14 +600,141 @@ class TrestleAPI:
         if self.poams_dir.exists():
             for poam_dir in self.poams_dir.iterdir():
                 if poam_dir.is_dir() and poam_dir.name != '.keep':
-                    # POAMs not yet implemented in trestle, return basic info
+                    poam_file = poam_dir / 'plan-of-action-and-milestones.json'
+                    title = poam_dir.name
+                    version = 'N/A'
+                    
+                    # Try to read the actual POA&M file to get title and version
+                    if poam_file.exists():
+                        try:
+                            import json
+                            with open(poam_file, 'r') as f:
+                                data = json.load(f)
+                                poam = data.get('plan-of-action-and-milestones', data)
+                                metadata = poam.get('metadata', {})
+                                if 'title' in metadata:
+                                    title = metadata['title']
+                                if 'version' in metadata:
+                                    version = metadata['version']
+                        except Exception as e:
+                            print(f"Error reading POA&M metadata {poam_dir.name}: {e}")
+                    
                     poams.append({
                         'name': poam_dir.name,
-                        'title': poam_dir.name,
-                        'version': 'N/A',
+                        'title': title,
+                        'version': version,
                         'path': str(poam_dir)
                     })
         return poams
+    
+    def load_poam_dict(self, poam_name: str) -> Optional[Dict[str, Any]]:
+        """Load a specific POA&M by name and return as dictionary"""
+        poam_file = self.poams_dir / poam_name / 'plan-of-action-and-milestones.json'
+        if poam_file.exists():
+            try:
+                import json
+                with open(poam_file, 'r') as f:
+                    return json.load(f)
+            except Exception as e:
+                print(f"Error loading POA&M {poam_name}: {e}")
+        return None
+    
+    def load_poam_view(self, poam_name: str) -> Optional[Dict[str, Any]]:
+        """Load POA&M by name and return normalized data for the web view."""
+        data = self.load_poam_dict(poam_name)
+        if not data:
+            return None
+
+        poam = data.get('plan-of-action-and-milestones', data)
+
+        metadata = poam.get('metadata', {})
+        props = metadata.get('props', []) or []
+
+        regulation = 'N/A'
+        poam_item_count = 'N/A'
+        source_assessment = 'N/A'
+        for prop in props:
+            name = prop.get('name')
+            value = prop.get('value')
+            if name == 'regulation':
+                regulation = value
+            elif name == 'poam-item-count':
+                poam_item_count = value
+            elif name == 'source-assessment':
+                source_assessment = value
+
+        # Normalize findings
+        findings = []
+        for finding in poam.get('findings', []) or []:
+            target = finding.get('target', {})
+            findings.append({
+                'uuid': finding.get('uuid', 'N/A'),
+                'title': finding.get('title', 'Untitled Finding'),
+                'description': finding.get('description', 'N/A'),
+                'target_type': target.get('type', 'N/A'),
+                'target_id': target.get('target-id', 'N/A'),
+                'target_title': target.get('title', 'N/A')
+            })
+
+        # Normalize risks
+        risks = []
+        for risk in poam.get('risks', []) or []:
+            risks.append({
+                'uuid': risk.get('uuid', 'N/A'),
+                'title': risk.get('title', 'Untitled Risk'),
+                'description': risk.get('description', 'N/A'),
+                'statement': risk.get('statement', 'N/A'),
+                'status': risk.get('status', 'N/A')
+            })
+
+        # Normalize POA&M items
+        poam_items = []
+        for item in poam.get('poam-items', []) or []:
+            item_props = {}
+            for prop in item.get('props', []) or []:
+                item_props[prop.get('name')] = prop.get('value')
+            
+            related_findings = []
+            for rf in item.get('related-findings', []) or []:
+                related_findings.append(rf.get('finding-uuid', 'N/A'))
+            
+            related_observations = []
+            for ro in item.get('related-observations', []) or []:
+                related_observations.append(ro.get('observation-uuid', 'N/A'))
+            
+            related_risks = []
+            for rr in item.get('related-risks', []) or []:
+                related_risks.append(rr.get('risk-uuid', 'N/A'))
+            
+            poam_items.append({
+                'uuid': item.get('uuid', 'N/A'),
+                'title': item.get('title', 'Untitled Item'),
+                'description': item.get('description', 'N/A'),
+                'props': item_props,
+                'related_findings': related_findings,
+                'related_observations': related_observations,
+                'related_risks': related_risks,
+                'remarks': item.get('remarks', '')
+            })
+
+        return {
+            'uuid': poam.get('uuid', 'N/A'),
+            'metadata': {
+                'title': metadata.get('title', 'N/A'),
+                'version': metadata.get('version', 'N/A'),
+                'last-modified': metadata.get('last-modified', 'N/A'),
+                'oscal-version': metadata.get('oscal-version', 'N/A'),
+                'published': metadata.get('published', 'N/A')
+            },
+            'import-ssp': poam.get('import-ssp'),
+            'system-id': poam.get('system-id', {}).get('id', 'N/A'),
+            'regulation': regulation,
+            'poam-item-count': poam_item_count,
+            'source-assessment': source_assessment,
+            'findings': findings,
+            'risks': risks,
+            'poam-items': poam_items
+        }
     
     def list_mappings(self) -> List[Dict[str, str]]:
         """List all available mapping collections"""

@@ -126,6 +126,8 @@ def extract_inventory_from_xccdf() -> List[Dict[str, str]]:
                     ip_address = '10.0.1.10'
                 elif 'web-02' in hostname:
                     ip_address = '10.0.1.11'
+                elif 'web-03' in hostname:
+                    ip_address = '10.0.1.12'
                 elif 'db' in hostname:
                     ip_address = '10.0.2.10'
                 elif 'app' in hostname:

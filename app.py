@@ -18,6 +18,7 @@ Reads OSCAL documents from trestle workspace using compliance-trestle
 """
 
 from flask import Flask, render_template, jsonify, redirect
+import flask
 import os
 import json
 from pathlib import Path
@@ -29,6 +30,54 @@ app = Flask(__name__, template_folder='app-config/templates', static_folder='app
 # Initialize Trestle API
 TRESTLE_ROOT = Path('trestle-workspace')
 trestle_api = TrestleAPI(TRESTLE_ROOT)
+
+# Title display mapping - simplify certain titles for display
+TITLE_DISPLAY_MAP = {
+    # FedRAMP Profiles and Catalogs
+    'FedRAMP High Baseline (NIST 800-53 Rev5)': 'FedRAMP',
+    'FedRAMP Moderate Baseline (NIST 800-53 Rev5)': 'FedRAMP',
+    'FedRAMP Low Baseline (NIST 800-53 Rev5)': 'FedRAMP',
+    'FedRAMP Rev 5 High Baseline': 'FedRAMP',
+    'FedRAMP Rev 5 Moderate Baseline': 'FedRAMP',
+    'FedRAMP Rev 5 Low Baseline': 'FedRAMP',
+    # DORA
+    'Digital Operational Resilience Act (DORA)': 'DORA',
+    # NIST 800-53
+    'Electronic (OSCAL) Version of NIST SP 800-53 Rev 5.2.0 Controls and SP 800-53A Rev 5.2.0 Assessment Procedures': 'NIST SP 800-53',
+    # Mappings
+    'NIST SP 800-53 Rev 5 to Digital Operational Resilience Act (DORA)': 'NIST SP 800-53 Rev 5 to DORA',
+    # Components
+    'Component definition for Ubuntu_Linux_24.04_LTS': 'Ubuntu 24.04 LTS',
+    # SSPs
+    'Ubuntu System Security Plan - FedRAMP Low': 'Ubuntu FedRAMP Low',
+    'Ubuntu System Security Plan - FedRAMP Moderate': 'Ubuntu FedRAMP Moderate',
+    'Ubuntu System Security Plan - FedRAMP High': 'Ubuntu FedRAMP High',
+    'Ubuntu System Security Plan - DORA': 'Ubuntu DORA',
+    # Assessment Plans
+    'Ubuntu System Assessment Plan - FedRAMP Low': 'Ubuntu FedRAMP Low',
+    'Ubuntu System Assessment Plan - FedRAMP Moderate': 'Ubuntu FedRAMP Moderate',
+    'Ubuntu System Assessment Plan - FedRAMP High': 'Ubuntu FedRAMP High',
+    'Ubuntu System Assessment Plan - DORA': 'Ubuntu DORA',
+    # Assessment Results
+    'Ubuntu System Assessment Results - FedRAMP Low': 'Ubuntu FedRAMP Low',
+    'Ubuntu System Assessment Results - FedRAMP Moderate': 'Ubuntu FedRAMP Moderate',
+    'Ubuntu System Assessment Results - FedRAMP High': 'Ubuntu FedRAMP High',
+    'Ubuntu System Assessment Results - DORA': 'Ubuntu DORA',
+    # POA&Ms (directory names)
+    'Ubuntu-System-poam-fedramp-low': 'Ubuntu FedRAMP Low',
+    'Ubuntu-System-poam-fedramp-moderate': 'Ubuntu FedRAMP Moderate',
+    'Ubuntu-System-poam-fedramp-high': 'Ubuntu FedRAMP High',
+    'Ubuntu-System-poam-dora': 'Ubuntu DORA',
+    # POA&Ms (full titles from JSON)
+    'Ubuntu System Plan of Action and Milestones - FedRAMP Low': 'Ubuntu FedRAMP Low',
+    'Ubuntu System Plan of Action and Milestones - FedRAMP Moderate': 'Ubuntu FedRAMP Moderate',
+    'Ubuntu System Plan of Action and Milestones - FedRAMP High': 'Ubuntu FedRAMP High',
+    'Ubuntu System Plan of Action and Milestones - DORA': 'Ubuntu DORA',
+}
+
+def get_display_title(title):
+    """Get simplified display title if mapping exists, otherwise return original"""
+    return TITLE_DISPLAY_MAP.get(title, title)
 
 def get_catalogs():
     """Get list of available catalogs using trestle API"""
@@ -99,7 +148,7 @@ def get_xccdf_results():
         results.append({
             'name': name,
             'filename': xml_file.name,
-            'title': f"OSCAP Scan Results - {name}",
+            'title': f"XCCDF {name}",
             'path': str(xml_file.relative_to(Path('.')))
         })
     return results
@@ -117,6 +166,24 @@ def index():
     poams = get_poams()
     mappings = get_mappings()
     
+    # Apply display title mapping to profiles, catalogs, mappings, components, SSPs, assessment plans, assessment results, and POA&Ms
+    for profile in profiles:
+        profile['display_title'] = get_display_title(profile['title'])
+    for catalog in catalogs:
+        catalog['display_title'] = get_display_title(catalog['title'])
+    for mapping in mappings:
+        mapping['display_title'] = get_display_title(mapping['title'])
+    for component in components:
+        component['display_title'] = get_display_title(component['title'])
+    for ssp in ssps:
+        ssp['display_title'] = get_display_title(ssp['title'])
+    for plan in assessment_plans:
+        plan['display_title'] = get_display_title(plan['title'])
+    for result in assessment_results:
+        result['display_title'] = get_display_title(result['title'])
+    for poam in poams:
+        poam['display_title'] = get_display_title(poam['title'])
+    
     total_docs = len(catalogs) + len(profiles) + len(components) + len(ssps) + len(assessment_plans) + len(xccdf_results) + len(assessment_results) + len(poams) + len(mappings)
     
     return f"""
@@ -127,10 +194,13 @@ def index():
         <style>
             body {{ font-family: Arial, sans-serif; margin: 40px; background: #f5f5f5; }}
             .container {{ max-width: 1200px; margin: 0 auto; background: white; padding: 30px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }}
-            h1 {{ color: #2c3e50; border-bottom: 3px solid #3498db; padding-bottom: 10px; }}
+            .header {{ display: flex; align-items: center; gap: 20px; margin-bottom: 20px; }}
+            .logo {{ height: 60px; width: auto; }}
+            .header-text {{ flex: 1; }}
+            h1 {{ color: #2c3e50; border-bottom: 3px solid #3498db; padding-bottom: 10px; margin: 0; }}
             h2 {{ color: #34495e; margin-top: 30px; }}
-            .grid {{ display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin: 20px 0; }}
-            .card {{ background: #e8f4f8; border: 1px solid #ddd; border-radius: 8px; padding: 20px; transition: transform 0.2s, box-shadow 0.2s; }}
+            .grid {{ display: grid; grid-template-columns: repeat(auto-fill, minmax(400px, 400px)); gap: 20px; margin: 20px 0; }}
+            .card {{ background: #e8f4f8; border: 1px solid #ddd; border-radius: 8px; padding: 20px; transition: transform 0.2s, box-shadow 0.2s; width: 400px; box-sizing: border-box; }}
             .card:hover {{ transform: translateY(-5px); box-shadow: 0 4px 8px rgba(0,0,0,0.15); }}
             .card h3 {{ color: #2980b9; margin-top: 0; }}
             .card p {{ color: #7f8c8d; margin: 10px 0; }}
@@ -145,21 +215,34 @@ def index():
     </head>
     <body>
         <div class="container">
-            <h1>🛡️ OSCAL Compliance Demo</h1>
-            <p>Comprehensive demonstration of OSCAL documents with DORA-to-FedRAMP mapping</p>
-            <p><strong>Powered by:</strong> compliance-trestle 4.0+ | Flask</p>
+            <div class="header">
+                <img src="/static/images/oscal-compass-logo.png" alt="OSCAL Compass Logo" class="logo">
+                <div class="header-text">
+                    <h1>OSCAL Compass Compliance Demo</h1>
+                </div>
+            </div>
+            <p>Comprehensive demonstration comprising complete set of OSCAL documents using OSCAL Compass compliance-trestle</p>
+            <p><strong>Powered by:</strong> compliance-trestle 4.0+ | Flask {flask.__version__}</p>
             
             <div class="info">
-                <strong>📁 Trestle Workspace:</strong> {TRESTLE_ROOT.absolute()}<br>
-                <strong>📊 Total Documents:</strong> {total_docs} OSCAL documents + {len(xccdf_results)} XCCDF results<br>
-                <strong>📚 Breakdown:</strong> {len(catalogs)} catalogs, {len(profiles)} profiles, {len(components)} components, {len(ssps)} SSPs, {len(assessment_plans)} plans, {len(xccdf_results)} XCCDF results, {len(assessment_results)} results, {len(poams)} POA&Ms, {len(mappings)} mappings
+                <strong>📊 Total Documents:</strong> {total_docs} OSCAL documents + <a href="#xccdf-results">{len(xccdf_results)} XCCDF results</a><br>
+                <strong>📚 Breakdown:</strong>
+                <a href="#catalogs">{len(catalogs)} catalogs</a>,
+                <a href="#profiles">{len(profiles)} profiles</a>,
+                <a href="#mappings">{len(mappings)} mapping-collections</a>,
+                <a href="#components">{len(components)} component definitions</a>,
+                <a href="#ssps">{len(ssps)} SSPs</a>,
+                <a href="#assessment-plans">{len(assessment_plans)} assessment plans</a>,
+                <a href="#xccdf-results">{len(xccdf_results)} XCCDF results</a>,
+                <a href="#assessment-results">{len(assessment_results)} assessment results</a>,
+                <a href="#poams">{len(poams)} POA&Ms</a>
             </div>
             
-            <h2>📚 OSCAL Catalogs ({len(catalogs)})</h2>
+            <h2 id="catalogs">📚 OSCAL Catalogs and Resolved Profiles ({len(catalogs)})</h2>
             <div class="grid">
                 {''.join([f'''
-                <div class="card">
-                    <h3>📖 {cat['title']}</h3>
+                <div class="card" title="{cat['title']}">
+                    <h3>📖 {cat.get('display_title', cat['title'])}</h3>
                     <p><strong>Name:</strong> {cat['name']}</p>
                     <p><strong>Version:</strong> {cat['version']}</p>
                     <a href="/catalog/{cat['name']}">View Catalog</a>
@@ -167,11 +250,11 @@ def index():
                 ''' for cat in catalogs])}
             </div>
             
-            <h2>📋 OSCAL Profiles ({len(profiles)})</h2>
+            <h2 id="profiles">📋 OSCAL Profiles ({len(profiles)})</h2>
             <div class="grid">
                 {''.join([f'''
-                <div class="card">
-                    <h3>📋 {prof['title']}</h3>
+                <div class="card" title="{prof['title']}">
+                    <h3>📋 {prof.get('display_title', prof['title'])}</h3>
                     <p><strong>Name:</strong> {prof['name']}</p>
                     <p><strong>Version:</strong> {prof['version']}</p>
                     <a href="/profile/{prof['name']}">View Profile</a>
@@ -179,36 +262,35 @@ def index():
                 ''' for prof in profiles])}
             </div>
             
-            <h2>🔗 Mappings ({len(mappings)})</h2>
+            <h2 id="mappings">🔗 OSCAL Mapping Collections ({len(mappings)})</h2>
             <div class="grid">
                 {''.join([f'''
-                <div class="card">
-                    <h3>🔗 {mapping['title']}</h3>
+                <div class="card" title="{mapping['title']}">
+                    <h3>🔗 {mapping.get('display_title', mapping['title'])}</h3>
                     <p><strong>Name:</strong> {mapping['name']}</p>
                     <p><strong>Version:</strong> {mapping['version']}</p>
-                    <a href="/mapping/{mapping['name']}">View Mapping</a>
+                    <a href="/mapping/{mapping['name']}">View Mapping Collection</a>
                 </div>
                 ''' for mapping in mappings]) if mappings else '<p><em>No mappings found. Run "make create-docs" to generate demo documents.</em></p>'}
             </div>
             
-            <h2>🔧 Component Definitions ({len(components)})</h2>
+            <h2 id="components">🔧 OSCAL Component Definitions ({len(components)})</h2>
             <div class="grid">
                 {''.join([f'''
-                <div class="card">
-                    <h3>{'🔍' if comp.get('type') == 'validation' else '🔧'} {comp['title']}</h3>
+                <div class="card" title="{comp['title']}">
+                    <h3>{'🔍' if comp.get('type') == 'validation' else '🔧'} {comp.get('display_title', comp['title'])}</h3>
                     <p><strong>Name:</strong> {comp['name']}</p>
-                    <p><strong>Type:</strong> <span style="background: {'#fffaf0' if comp.get('type') == 'validation' else '#e6f7ff'}; padding: 2px 8px; border-radius: 4px; font-weight: bold;">{comp.get('type', 'N/A')}</span></p>
                     <p><strong>Version:</strong> {comp['version']}</p>
-                    <a href="/component/{comp['name']}">View Component</a>
+                    <a href="/component/{comp['name']}">View Component Definition</a>
                 </div>
                 ''' for comp in components]) if components else '<p><em>No component definitions found. Run "make create-docs" to generate demo documents.</em></p>'}
             </div>
             
-            <h2>📄 System Security Plans ({len(ssps)})</h2>
+            <h2 id="ssps">📄 OSCAL System Security Plans ({len(ssps)})</h2>
             <div class="grid">
                 {''.join([f'''
-                <div class="card">
-                    <h3>📄 {ssp['title']}</h3>
+                <div class="card" title="{ssp['title']}">
+                    <h3>📄 {ssp.get('display_title', ssp['title'])}</h3>
                     <p><strong>Name:</strong> {ssp['name']}</p>
                     <p><strong>Version:</strong> {ssp['version']}</p>
                     <a href="/ssp/{ssp['name']}">View SSP</a>
@@ -216,47 +298,47 @@ def index():
                 ''' for ssp in ssps]) if ssps else '<p><em>No SSPs found. Run "make create-docs" to generate demo documents.</em></p>'}
             </div>
             
-            <h2>📋 Assessment Plans ({len(assessment_plans)})</h2>
+            <h2 id="assessment-plans">📋 OSCAL Assessment Plans ({len(assessment_plans)})</h2>
             <div class="grid">
                 {''.join([f'''
-                <div class="card">
-                    <h3>📋 {plan['title']}</h3>
+                <div class="card" title="{plan['title']}">
+                    <h3>📋 {plan.get('display_title', plan['title'])}</h3>
                     <p><strong>Name:</strong> {plan['name']}</p>
                     <p><strong>Version:</strong> {plan['version']}</p>
-                    <a href="/assessment-plan/{plan['name']}">View Plan</a>
+                    <a href="/assessment-plan/{plan['name']}">View Assessment Plan</a>
                 </div>
                 ''' for plan in assessment_plans]) if assessment_plans else '<p><em>No assessment plans found. Run "make create-docs" to generate demo documents.</em></p>'}
             </div>
             
-            <h2>🔍 XCCDF Scan Results ({len(xccdf_results)})</h2>
+            <h2 id="xccdf-results">🔍 OpenSCAP XCCDF Scan Results ({len(xccdf_results)})</h2>
             <div class="grid">
                 {''.join([f'''
-                <div class="card">
+                <div class="card" title="{result['title']}">
                     <h3>🔍 {result['title']}</h3>
                     <p><strong>Server:</strong> {result['name']}</p>
                     <p><strong>File:</strong> {result['filename']}</p>
-                    <a href="/xccdf-result/{result['name']}">View Results</a>
+                    <a href="/xccdf-result/{result['name']}">View XCCDF Results</a>
                 </div>
                 ''' for result in xccdf_results]) if xccdf_results else '<p><em>No XCCDF results found. Run "python3 create_xccdf_results.py" to generate scan results.</em></p>'}
             </div>
             
-            <h2>� Assessment Results ({len(assessment_results)})</h2>
+            <h2>📊 OSCAL Assessment Results ({len(assessment_results)})</h2>
             <div class="grid">
                 {''.join([f'''
-                <div class="card">
-                    <h3>📊 {result['title']}</h3>
+                <div class="card" title="{result['title']}">
+                    <h3>📊 {result.get('display_title', result['title'])}</h3>
                     <p><strong>Name:</strong> {result['name']}</p>
                     <p><strong>Version:</strong> {result['version']}</p>
-                    <a href="/assessment-results/{result['name']}">View Results</a>
+                    <a href="/assessment-results/{result['name']}">View Assessment Results</a>
                 </div>
                 ''' for result in assessment_results]) if assessment_results else '<p><em>No assessment results found. Run "make create-docs" to generate demo documents.</em></p>'}
             </div>
             
-            <h2>📝 Plan of Action & Milestones ({len(poams)})</h2>
+            <h2 id="poams">📝 OSCAL Plan of Action & Milestones ({len(poams)})</h2>
             <div class="grid">
                 {''.join([f'''
-                <div class="card">
-                    <h3>📝 {poam['title']}</h3>
+                <div class="card" title="{poam['title']}">
+                    <h3>📝 {poam.get('display_title', poam['title'])}</h3>
                     <p><strong>Name:</strong> {poam['name']}</p>
                     <p><strong>Version:</strong> {poam['version']}</p>
                     <a href="/poam/{poam['name']}">View POA&M</a>
@@ -265,7 +347,7 @@ def index():
             </div>
             
             <div class="footer">
-                <p><strong>OSCAL Compliance Demo</strong></p>
+                <p><strong>OSCAL Compass Demo</strong></p>
                 <p><a href="https://pages.nist.gov/OSCAL/">OSCAL Documentation</a> | <a href="https://oscal-compass.github.io/compliance-trestle/">Trestle Docs</a> | <a href="https://github.com/oscal-compass">OSCAL Compass</a></p>
             </div>
         </div>
@@ -1734,49 +1816,11 @@ def assessment_results_view(results_name):
 @app.route('/poam/<poam_name>')
 def poam(poam_name):
     """View specific POA&M"""
-    poam_file = trestle_api.poams_dir / poam_name / 'plan-of-action-and-milestones.json'
-    if not poam_file.exists():
+    data = trestle_api.load_poam_view(poam_name)
+    if not data:
         return f"POA&M '{poam_name}' not found", 404
     
-    with open(poam_file, 'r') as f:
-        data = json.load(f)
-    
-    poam_data = data.get('plan-of-action-and-milestones', {})
-    metadata = poam_data.get('metadata', {})
-    
-    return f"""
-    <!DOCTYPE html>
-    <html>
-    <head>
-        <title>{metadata.get('title', poam_name)}</title>
-        <style>
-            body {{ font-family: Arial, sans-serif; margin: 40px; background: #f5f5f5; }}
-            .container {{ max-width: 1200px; margin: 0 auto; background: white; padding: 30px; border-radius: 8px; }}
-            h1 {{ color: #2c3e50; }}
-            .back {{ display: inline-block; margin-bottom: 20px; padding: 8px 16px; background: #95a5a6; color: white; text-decoration: none; border-radius: 4px; }}
-            .info {{ background: #ecf0f1; padding: 20px; border-radius: 8px; margin: 20px 0; }}
-            pre {{ background: #2c3e50; color: #ecf0f1; padding: 15px; border-radius: 4px; overflow-x: auto; }}
-        </style>
-    </head>
-    <body>
-        <div class="container">
-            <a href="/" class="back">← Back to Home</a>
-            <h1>📝 {metadata.get('title', poam_name)}</h1>
-            <div class="info">
-                <p><strong>UUID:</strong> {poam_data.get('uuid', 'N/A')}</p>
-                <p><strong>Version:</strong> {metadata.get('version', 'N/A')}</p>
-                <p><strong>Last Modified:</strong> {metadata.get('last-modified', 'N/A')}</p>
-                <p><strong>OSCAL Version:</strong> {metadata.get('oscal-version', 'N/A')}</p>
-            </div>
-            
-            <h2>Raw OSCAL JSON</h2>
-            <pre>{json.dumps(poam_data, indent=2)[:1000]}...
-            
-(Truncated - use API for full data)</pre>
-        </div>
-    </body>
-    </html>
-    """
+    return render_template('poam.html', poam_name=poam_name, data=data)
 
 @app.route('/mapping/<mapping_name>')
 def mapping(mapping_name):
@@ -1837,7 +1881,7 @@ def mapping(mapping_name):
                 <p><strong>Total Map Entries:</strong> {total_maps}</p>
             </div>
             
-            <h2>Mappings ({len(mappings)})</h2>
+            <h2>OSCAL Mapping Collections ({len(mappings)})</h2>
             {''.join([f'''
             <div class="mapping">
                 <p><strong>Source:</strong> {m.get('source-resource', {}).get('href', 'N/A')}</p>
@@ -1874,6 +1918,15 @@ def api_assessment_results(results_name):
     data = trestle_api.load_assessment_results_dict(results_name)
     if not data:
         return jsonify({'error': f"Assessment results '{results_name}' not found"}), 404
+    
+    return jsonify(data)
+
+@app.route('/api/poam/<poam_name>')
+def api_poam(poam_name):
+    """Get POA&M JSON"""
+    data = trestle_api.load_poam_dict(poam_name)
+    if not data:
+        return jsonify({'error': f"POA&M '{poam_name}' not found"}), 404
     
     return jsonify(data)
 

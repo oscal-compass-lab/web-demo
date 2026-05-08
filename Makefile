@@ -1,4 +1,4 @@
-.PHONY: all venv help ws run validate create-catalogs create-profiles create-resolve create-mappings create-xccdf create-compdefs create-ssps create-aps create-ars create-oscal clean-catalogs clean-profiles clean-resolve clean-mappings clean-compdefs clean-ssps clean-aps clean-ars clean-oscal clean-ws clean-venv
+.PHONY: all venv help ws run validate create-catalogs create-profiles create-resolve create-mappings create-xccdf create-compdefs create-ssps create-aps create-ars create-poams create-oscal clean-catalogs clean-profiles clean-resolve clean-mappings clean-compdefs clean-ssps clean-aps clean-ars clean-poams clean-oscal clean-ws clean-venv
 
 # Python virtual environment directory
 VENV_DIR = .venv
@@ -20,7 +20,8 @@ help:
 	@echo "  create-ssps    - Generate SSPs from component definitions and XCCDF inventory"
 	@echo "  create-aps     - Generate assessment plans from SSPs"
 	@echo "  create-ars     - Generate assessment results from XCCDF scan files"
-	@echo "  create-oscal   - Create all OSCAL documents (catalogs, profiles, resolve, mappings, compdefs, ssps, aps, ars)"
+	@echo "  create-poams   - Generate POA&Ms from assessment results"
+	@echo "  create-oscal   - Create all OSCAL documents (catalogs, profiles, resolve, mappings, compdefs, ssps, aps, ars, poams)"
 	@echo "  validate       - Validate all OSCAL documents with trestle"
 	@echo "  run            - Launch Flask application"
 	@echo "  clean-catalogs - Remove catalogs from trestle workspace"
@@ -31,7 +32,8 @@ help:
 	@echo "  clean-ssps     - Remove all generated SSPs"
 	@echo "  clean-aps      - Remove all generated assessment plans"
 	@echo "  clean-ars      - Remove all generated assessment results"
-	@echo "  clean-oscal    - Remove all OSCAL documents (catalogs, profiles, resolve, mappings, compdefs, ssps, aps, ars)"
+	@echo "  clean-poams    - Remove all generated POA&Ms"
+	@echo "  clean-oscal    - Remove all OSCAL documents (catalogs, profiles, resolve, mappings, compdefs, ssps, aps, ars, poams)"
 	@echo "  clean-ws       - Remove trestle-workspace folder and contents"
 	@echo "  clean-venv     - Remove virtual environment"
 
@@ -92,7 +94,7 @@ clean-mappings:
 	@rm -rf $(TRESTLE_WORKSPACE)/mapping-collections/nist-800-53-rev5-to-EU-Dora
 	@echo "✅ Mapping collection removed"
 
-create-oscal: create-catalogs create-profiles create-resolve create-mappings create-compdefs create-ssps create-aps create-ars
+create-oscal: create-catalogs create-profiles create-resolve create-mappings create-compdefs create-ssps create-aps create-ars create-poams
 	@echo "✅ All OSCAL documents created"
 
 create-compdefs: venv ws
@@ -133,7 +135,7 @@ clean-compdefs:
 	@rm -rf $(TRESTLE_WORKSPACE)/component-definitions/Ubuntu_Linux_24_04_LTS
 	@echo "✅ Component definitions removed"
 
-create-ssps: venv ws create-xccdf create-compdefs
+create-ssps: clean-ssps venv ws create-xccdf create-compdefs
 	@echo "Creating SSPs from component definitions and XCCDF inventory..."
 	@. $(VENV_DIR)/bin/activate && python3 create_ssps.py
 
@@ -142,7 +144,7 @@ clean-ssps:
 	@rm -rf $(TRESTLE_WORKSPACE)/system-security-plans/Ubuntu-System-ssp-*
 	@echo "✅ SSPs removed"
 
-create-aps: venv ws create-ssps
+create-aps: clean-aps venv ws create-ssps
 	@echo "Creating assessment plans from SSPs..."
 	@. $(VENV_DIR)/bin/activate && python3 create_assessment_plans.py
 
@@ -151,7 +153,7 @@ clean-aps:
 	@rm -rf $(TRESTLE_WORKSPACE)/assessment-plans/Ubuntu-System-ap-*
 	@echo "✅ Assessment plans removed"
 
-create-ars: venv ws create-xccdf
+create-ars: clean-ars venv ws create-xccdf
 	@echo "Creating assessment results from XCCDF scan files..."
 	@. $(VENV_DIR)/bin/activate && python3 create_assessment_results.py
 
@@ -160,7 +162,16 @@ clean-ars:
 	@rm -rf $(TRESTLE_WORKSPACE)/assessment-results/Ubuntu-System-ar-*
 	@echo "✅ Assessment results removed"
 
-clean-oscal: clean-ars clean-aps clean-ssps clean-compdefs clean-mappings clean-resolve clean-profiles clean-catalogs
+create-poams: clean-poams venv ws create-ars
+	@echo "Creating POA&Ms from assessment results..."
+	@. $(VENV_DIR)/bin/activate && python3 create_poams.py
+
+clean-poams:
+	@echo "Removing all generated POA&Ms..."
+	@rm -rf $(TRESTLE_WORKSPACE)/plan-of-action-and-milestones/Ubuntu-System-poam-*
+	@echo "✅ POA&Ms removed"
+
+clean-oscal: clean-poams clean-ars clean-aps clean-ssps clean-compdefs clean-mappings clean-resolve clean-profiles clean-catalogs
 	@echo "✅ All OSCAL documents removed"
 
 validate: venv ws

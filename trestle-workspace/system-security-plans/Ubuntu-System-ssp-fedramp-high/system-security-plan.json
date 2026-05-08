@@ -1,9 +1,9 @@
 {
   "system-security-plan": {
-    "uuid": "bd547d1e-01b8-4cf2-8f19-8a0474454ba7",
+    "uuid": "10d17330-250a-411c-a97f-ec4bf43db0d9",
     "metadata": {
       "title": "Ubuntu System Security Plan - FedRAMP High",
-      "last-modified": "2026-05-07T16:26:28.913326",
+      "last-modified": "2026-05-08T08:11:22.084335",
       "version": "1.0",
       "oscal-version": "1.2.1"
     },
@@ -17,7 +17,7 @@
         }
       ],
       "system-name": "Ubuntu 24.04 LTS Fleet",
-      "description": "System Security Plan for Ubuntu Linux 24.04 LTS 5-server fleet with OSCAP compliance validation - FedRAMP High baseline",
+      "description": "System Security Plan for Ubuntu Linux 24.04 LTS 6-server fleet with OSCAP compliance validation - FedRAMP High baseline",
       "security-sensitivity-level": "moderate",
       "system-information": {
         "information-types": [
@@ -31,13 +31,13 @@
         "state": "operational"
       },
       "authorization-boundary": {
-        "description": "Ubuntu Linux 24.04 LTS 5-server fleet operating within a single authorization boundary, implementing FedRAMP High security controls"
+        "description": "Ubuntu Linux 24.04 LTS 6-server fleet operating within a single authorization boundary, implementing FedRAMP High security controls"
       }
     },
     "system-implementation": {
       "users": [
         {
-          "uuid": "282d1c6c-a9a5-4e9f-b783-b7cf99e35561",
+          "uuid": "00bdf7ad-e928-4e29-834f-707625122651",
           "title": "System Administrator",
           "role-ids": [
             "admin"
@@ -887,7 +887,7 @@
       ],
       "inventory-items": [
         {
-          "uuid": "2b01bf2d-0d42-4019-a661-8b01d5481c5d",
+          "uuid": "9fb98de3-5eed-447c-97c0-92ef86881ece",
           "description": "Ubuntu Application Server running Ubuntu 24.04 LTS",
           "props": [
             {
@@ -918,7 +918,7 @@
           ]
         },
         {
-          "uuid": "26085f3f-9ebf-487e-a778-40eabc73e11b",
+          "uuid": "2a3eed6f-5ca6-4fc2-b07d-d48709e7d346",
           "description": "Ubuntu Database Server running Ubuntu 24.04 LTS",
           "props": [
             {
@@ -949,7 +949,7 @@
           ]
         },
         {
-          "uuid": "d13e7e29-0ef4-4984-a733-780ef4471d8a",
+          "uuid": "32ba093e-40de-42a9-b2fe-0317f3b5174b",
           "description": "Ubuntu Management Server running Ubuntu 24.04 LTS",
           "props": [
             {
@@ -980,7 +980,7 @@
           ]
         },
         {
-          "uuid": "655526f2-a653-41df-8f3c-fc323017d56b",
+          "uuid": "c5022708-94a6-4c43-b1f6-d97609a93346",
           "description": "Ubuntu Web Server 01.EXAMPLE.COM running Ubuntu 24.04 LTS",
           "props": [
             {
@@ -1011,7 +1011,7 @@
           ]
         },
         {
-          "uuid": "69307396-043d-4063-8b07-91662afeaac2",
+          "uuid": "d231efcf-04fd-46ec-b4e2-994bdcac6dbe",
           "description": "Ubuntu Web Server 02.EXAMPLE.COM running Ubuntu 24.04 LTS",
           "props": [
             {
@@ -1040,6 +1040,37 @@
               "component-uuid": "b2e11579-d4d6-48f8-a43c-ec7157543648"
             }
           ]
+        },
+        {
+          "uuid": "a5c1facc-7b90-437b-8d25-d1299b49cb21",
+          "description": "Ubuntu Web Server 03.EXAMPLE.COM running Ubuntu 24.04 LTS",
+          "props": [
+            {
+              "name": "asset-id",
+              "value": "ubuntu-web-03.example.com"
+            },
+            {
+              "name": "asset-type",
+              "value": "server"
+            },
+            {
+              "name": "ipv4-address",
+              "value": "192.168.1.103"
+            },
+            {
+              "name": "role",
+              "value": "web-server"
+            },
+            {
+              "name": "operating-system",
+              "value": "Ubuntu 24.04 LTS"
+            }
+          ],
+          "implemented-components": [
+            {
+              "component-uuid": "b2e11579-d4d6-48f8-a43c-ec7157543648"
+            }
+          ]
         }
       ]
     },
@@ -1047,7 +1078,7 @@
       "description": "Control implementation for FedRAMP High baseline using Ubuntu Linux 24.04 LTS",
       "implemented-requirements": [
         {
-          "uuid": "0faee4e9-eb86-4a97-a08d-d14782f76bb7",
+          "uuid": "fc19b557-a7a2-4803-b50a-19cd75630c86",
           "control-id": "ac-3",
           "props": [
             {
@@ -1143,7 +1174,7 @@
           ]
         },
         {
-          "uuid": "a8986075-d04f-4e14-b0cd-55f78402a215",
+          "uuid": "fac58b72-a492-4e27-913f-32bf0dc0e7d4",
           "control-id": "ac-5",
           "props": [
             {
@@ -1239,7 +1270,7 @@
           ]
         },
         {
-          "uuid": "7bb5f63d-0823-4646-89a0-1ed03086eb05",
+          "uuid": "cfba5cc3-e9ad-4421-8171-b0c871827e5f",
           "control-id": "ac-6",
           "props": [
             {
@@ -1335,7 +1366,7 @@
           ]
         },
         {
-          "uuid": "f1f4f112-7b2e-448c-a21b-45e66e329087",
+          "uuid": "abc86b73-9b0b-41af-80d0-68a52cf712c8",
           "control-id": "mp-2",
           "props": [
             {
@@ -1431,7 +1462,7 @@
           ]
         },
         {
-          "uuid": "fa032949-ebb7-40cf-82a5-7366fb69476b",
+          "uuid": "780896b3-b810-4ac2-af3e-7c9154f7c1ff",
           "control-id": "ac-17.2",
           "props": [
             {
@@ -1452,7 +1483,7 @@
           ]
         },
         {
-          "uuid": "a8d2a37e-fd8a-4fcc-ae7f-6b36c88fa9e1",
+          "uuid": "920f65e9-770c-4f53-8d83-b479bd8e353b",
           "control-id": "ia-5",
           "props": [
             {
@@ -1473,7 +1504,7 @@
           ]
         },
         {
-          "uuid": "b86072cd-5ac9-46b2-8629-935619e627df",
+          "uuid": "da8d4af3-f0ca-49ad-a942-1ee59332918a",
           "control-id": "ia-5.1",
           "props": [
             {
@@ -1654,7 +1685,7 @@
           ]
         },
         {
-          "uuid": "ed1aa2c9-97e6-490c-9f03-a044a8e719d0",
+          "uuid": "da81cea6-63ca-49e7-b3cf-80694194b00e",
           "control-id": "sc-8",
           "props": [
             {
@@ -1675,7 +1706,7 @@
           ]
         },
         {
-          "uuid": "d6ebcdc8-3f1a-4898-804d-85023ff24615",
+          "uuid": "94c99d7c-e569-4e6c-b935-2223f87db0ec",
           "control-id": "sc-8.1",
           "props": [
             {
@@ -1696,7 +1727,7 @@
           ]
         },
         {
-          "uuid": "1678a241-4be7-4bf5-a7fd-7271f481613b",
+          "uuid": "2deb6f10-a4c6-4df0-817c-19511b448f35",
           "control-id": "sc-28",
           "props": [
             {
@@ -1722,7 +1753,7 @@
           ]
         },
         {
-          "uuid": "22498130-4645-4746-a4fa-b96866be6cf4",
+          "uuid": "46374673-0e26-416a-9f2a-488f69bffb85",
           "control-id": "sc-28.1",
           "props": [
             {
@@ -1748,7 +1779,7 @@
           ]
         },
         {
-          "uuid": "2ccecba7-581d-4eb8-82b7-187e420f955c",
+          "uuid": "d4245f71-e99a-491f-8d1a-da8e3dd3e722",
           "control-id": "cm-1",
           "props": [
             {
@@ -1759,7 +1790,7 @@
           ]
         },
         {
-          "uuid": "e8036072-bd40-416a-a202-9bc5085760c4",
+          "uuid": "504c4263-a561-4bab-bd1b-1c3a136c48d0",
           "control-id": "cm-2",
           "props": [
             {
@@ -1770,7 +1801,7 @@
           ]
         },
         {
-          "uuid": "2d8cec27-739b-4727-aded-6a47fa26e6f3",
+          "uuid": "baa4d5bb-f349-48e0-a2eb-eaceff8a40f1",
           "control-id": "cm-6",
           "props": [
             {
@@ -1786,7 +1817,7 @@
           ]
         },
         {
-          "uuid": "89d1192a-b55f-443d-b090-664d2c5c5e94",
+          "uuid": "f4282e5b-cd46-49b3-9319-8644c955d108",
           "control-id": "cm-7",
           "props": [
             {
@@ -1802,7 +1833,7 @@
           ]
         },
         {
-          "uuid": "0e9588da-198e-42de-b0a1-09c8a9e968a1",
+          "uuid": "e1aeba6e-0892-420d-9cde-3cecb3ed0e49",
           "control-id": "cm-7.1",
           "props": [
             {
@@ -1813,7 +1844,7 @@
           ]
         },
         {
-          "uuid": "9c494ee2-828f-41b1-8024-30b145de8063",
+          "uuid": "1db42a93-f1b3-4f9c-a848-e426e59ada08",
           "control-id": "cm-9",
           "props": [
             {
@@ -1824,7 +1855,7 @@
           ]
         },
         {
-          "uuid": "cfebfe2a-c0a4-4c2e-896b-cbc3e4b861e1",
+          "uuid": "a8416931-5a7a-4357-a472-500ca43adf36",
           "control-id": "sa-3",
           "props": [
             {
@@ -1835,7 +1866,7 @@
           ]
         },
         {
-          "uuid": "a938d61f-42d6-41fc-8fb3-dac5d6f8a282",
+          "uuid": "cf58efce-617f-4abe-9d44-a09e66f65dd0",
           "control-id": "sa-8",
           "props": [
             {
@@ -1846,7 +1877,7 @@
           ]
         },
         {
-          "uuid": "7b8e09fd-291d-4364-bd22-61afa6130fee",
+          "uuid": "360ab981-4cb6-4901-b786-b4a1093b7041",
           "control-id": "sa-10",
           "props": [
             {
@@ -1857,7 +1888,7 @@
           ]
         },
         {
-          "uuid": "699cfbef-3eb8-47cd-98fa-aa1b0fa14dce",
+          "uuid": "cbc25570-8730-4336-bc6b-1c1401203e6b",
           "control-id": "ac-2.5",
           "props": [
             {
@@ -1868,7 +1899,7 @@
           ]
         },
         {
-          "uuid": "84d5fd55-bc59-4524-8833-b10e52bb4a59",
+          "uuid": "567cc274-1632-486c-a660-53ef9fcb9cda",
           "control-id": "ac-11",
           "props": [
             {
@@ -1879,7 +1910,7 @@
           ]
         },
         {
-          "uuid": "21fe94f2-35f9-486e-a1b5-37d12268b7d4",
+          "uuid": "3b29365d-a877-4689-a225-e21fd8230018",
           "control-id": "ac-11.1",
           "props": [
             {
@@ -1890,7 +1921,7 @@
           ]
         },
         {
-          "uuid": "4d20552c-f8ab-472d-bcef-a4eca98af18f",
+          "uuid": "d6e262c8-e612-40f3-8bb0-e6eeafb7e39a",
           "control-id": "ac-12",
           "props": [
             {
@@ -1901,7 +1932,7 @@
           ]
         },
         {
-          "uuid": "c385fe9a-4b0b-45ab-b82b-6f81388fc1d3",
+          "uuid": "b6f23287-fb8c-4056-837a-2297d4bcc881",
           "control-id": "ac-6.2",
           "props": [
             {
@@ -1937,7 +1968,7 @@
           ]
         },
         {
-          "uuid": "13bce58a-3d38-46a7-9c9b-faeb5e520e3a",
+          "uuid": "d3542850-3bf0-42a5-9a30-48c6f52b27d3",
           "control-id": "ac-6.5",
           "props": [
             {
@@ -1973,7 +2004,7 @@
           ]
         },
         {
-          "uuid": "5e3e9c47-673b-4749-8fde-3ff2baa28f03",
+          "uuid": "baa1eeef-223f-4f4c-b8c4-bd00686abce5",
           "control-id": "ac-1",
           "props": [
             {
@@ -1999,7 +2030,7 @@
           ]
         },
         {
-          "uuid": "9e522af2-c7da-4178-af21-896ad2802014",
+          "uuid": "54217468-3614-4f2c-a50a-44a230b99751",
           "control-id": "ac-2",
           "props": [
             {
@@ -2025,7 +2056,7 @@
           ]
         },
         {
-          "uuid": "6d04732a-00f2-4675-9650-2cbbfa9a2128",
+          "uuid": "dc4888dc-b65c-47e0-a09c-e9c279995592",
           "control-id": "ac-2.1",
           "props": [
             {
@@ -2051,7 +2082,7 @@
           ]
         },
         {
-          "uuid": "4cf0005a-0712-4c6a-81f1-da21d8b44443",
+          "uuid": "2be2cafd-db9c-407b-a746-ee15646e13d4",
           "control-id": "au-2",
           "props": [
             {
@@ -2062,7 +2093,7 @@
           ]
         },
         {
-          "uuid": "a3325cf0-1045-4b09-98b4-ffb5f1e0e15b",
+          "uuid": "da1fe0c1-75a6-452d-8489-144d54e6b6ff",
           "control-id": "au-7",
           "props": [
             {
@@ -2083,7 +2114,7 @@
           ]
         },
         {
-          "uuid": "31f16490-3646-42f5-9c18-ab3dfe26c36a",
+          "uuid": "748d5e96-b575-4635-a695-c585dfa4dad4",
           "control-id": "au-12",
           "props": [
             {
@@ -2104,7 +2135,7 @@
           ]
         },
         {
-          "uuid": "957875cf-2171-44e8-8a4e-e08ce3ce0ee7",
+          "uuid": "d8659042-1795-4e2b-9070-0da9cd227279",
           "control-id": "au-3",
           "props": [
             {
@@ -2120,7 +2151,7 @@
           ]
         },
         {
-          "uuid": "8434ab02-f754-4623-acf1-57bb82f0eee0",
+          "uuid": "427c658b-9b3d-4d4c-aa5a-552eebeb1556",
           "control-id": "au-3.1",
           "props": [
             {

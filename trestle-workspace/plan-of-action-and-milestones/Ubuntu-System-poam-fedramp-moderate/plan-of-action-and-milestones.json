@@ -1,0 +1,1354 @@
+{
+  "plan-of-action-and-milestones": {
+    "uuid": "001ce3f2-ab0a-4d82-a7bf-79ff3c593baf",
+    "metadata": {
+      "title": "Ubuntu System Plan of Action and Milestones - FedRAMP Moderate",
+      "published": "2026-05-08T08:11:23.371015",
+      "last-modified": "2026-05-08T08:11:23.371015",
+      "version": "1.0",
+      "oscal-version": "1.2.1",
+      "props": [
+        {
+          "name": "regulation",
+          "value": "FedRAMP Rev 5 Moderate"
+        },
+        {
+          "name": "poam-item-count",
+          "value": "29"
+        },
+        {
+          "name": "source-assessment",
+          "value": "Ubuntu-System-ar-fedramp-moderate"
+        }
+      ]
+    },
+    "import-ssp": {
+      "href": "trestle://system-security-plans/Ubuntu-System-ssp-fedramp-moderate/system-security-plan.json"
+    },
+    "system-id": {
+      "id": "ubuntu-system-001"
+    },
+    "local-definitions": {
+      "components": [
+        {
+          "uuid": "a1dc89c3-ad87-43ee-9170-e4d512f08edd",
+          "type": "software",
+          "title": "Ubuntu Linux 24.04 LTS",
+          "description": "Operating system requiring remediation",
+          "status": {
+            "state": "under-development"
+          }
+        }
+      ]
+    },
+    "findings": [
+      {
+        "uuid": "5e0a89ca-ce9e-487d-a4dd-ff7f34cd3bcc",
+        "title": "Control ac-1 assessment outcome",
+        "description": "Control ac-1 is partially-satisfied based on 17 passing and 7 failing mapped XCCDF rule evaluations across 6 assessed subjects.",
+        "target": {
+          "type": "objective-id",
+          "target-id": "ac-1",
+          "title": "Control ac-1",
+          "description": "Assessment finding for control ac-1"
+        },
+        "related-observations": [
+          {
+            "observation-uuid": "18038556-d681-4caf-9394-35d3028040cc"
+          }
+        ]
+      },
+      {
+        "uuid": "f487dfee-782d-47d4-9a38-3df5a21f74fc",
+        "title": "Control ac-11 assessment outcome",
+        "description": "Control ac-11 is partially-satisfied based on 4 passing and 2 failing mapped XCCDF rule evaluations across 6 assessed subjects.",
+        "target": {
+          "type": "objective-id",
+          "target-id": "ac-11",
+          "title": "Control ac-11",
+          "description": "Assessment finding for control ac-11"
+        },
+        "related-observations": [
+          {
+            "observation-uuid": "90758756-152a-48ef-b4c0-2e37f08cca4c"
+          }
+        ]
+      },
+      {
+        "uuid": "6b72486e-00ee-4ddb-a148-40da9a9ff0d4",
+        "title": "Control ac-11.1 assessment outcome",
+        "description": "Control ac-11.1 is partially-satisfied based on 4 passing and 2 failing mapped XCCDF rule evaluations across 6 assessed subjects.",
+        "target": {
+          "type": "objective-id",
+          "target-id": "ac-11.1",
+          "title": "Control ac-11.1",
+          "description": "Assessment finding for control ac-11.1"
+        },
+        "related-observations": [
+          {
+            "observation-uuid": "1fee5d0b-bf41-4e59-800e-3be29468cbaa"
+          }
+        ]
+      },
+      {
+        "uuid": "ebeee1bf-adc2-42c1-bd0f-67f97c57679f",
+        "title": "Control ac-12 assessment outcome",
+        "description": "Control ac-12 is partially-satisfied based on 4 passing and 2 failing mapped XCCDF rule evaluations across 6 assessed subjects.",
+        "target": {
+          "type": "objective-id",
+          "target-id": "ac-12",
+          "title": "Control ac-12",
+          "description": "Assessment finding for control ac-12"
+        },
+        "related-observations": [
+          {
+            "observation-uuid": "de8f02d9-e867-477f-b934-b7c4c000810c"
+          }
+        ]
+      },
+      {
+        "uuid": "d2c8ba3b-5f86-4767-ac24-fdb4665690b7",
+        "title": "Control ac-2 assessment outcome",
+        "description": "Control ac-2 is partially-satisfied based on 17 passing and 7 failing mapped XCCDF rule evaluations across 6 assessed subjects.",
+        "target": {
+          "type": "objective-id",
+          "target-id": "ac-2",
+          "title": "Control ac-2",
+          "description": "Assessment finding for control ac-2"
+        },
+        "related-observations": [
+          {
+            "observation-uuid": "eff942c1-358d-4fa1-8400-4c88d0a96da6"
+          }
+        ]
+      },
+      {
+        "uuid": "169cdda1-3590-488f-b1a1-c7f091ab1e42",
+        "title": "Control ac-2.1 assessment outcome",
+        "description": "Control ac-2.1 is partially-satisfied based on 17 passing and 7 failing mapped XCCDF rule evaluations across 6 assessed subjects.",
+        "target": {
+          "type": "objective-id",
+          "target-id": "ac-2.1",
+          "title": "Control ac-2.1",
+          "description": "Assessment finding for control ac-2.1"
+        },
+        "related-observations": [
+          {
+            "observation-uuid": "ea370773-a401-44dd-93f0-7634f883eb5e"
+          }
+        ]
+      },
+      {
+        "uuid": "1a38416a-c83a-4e62-bede-9fb484f43046",
+        "title": "Control ac-2.5 assessment outcome",
+        "description": "Control ac-2.5 is partially-satisfied based on 4 passing and 2 failing mapped XCCDF rule evaluations across 6 assessed subjects.",
+        "target": {
+          "type": "objective-id",
+          "target-id": "ac-2.5",
+          "title": "Control ac-2.5",
+          "description": "Assessment finding for control ac-2.5"
+        },
+        "related-observations": [
+          {
+            "observation-uuid": "51a3719c-6936-4cdf-99aa-42cc8dc4dd7d"
+          }
+        ]
+      },
+      {
+        "uuid": "967eabb6-f829-4578-8ce6-81edbc3741a6",
+        "title": "Control ac-3 assessment outcome",
+        "description": "Control ac-3 is partially-satisfied based on 93 passing and 15 failing mapped XCCDF rule evaluations across 6 assessed subjects.",
+        "target": {
+          "type": "objective-id",
+          "target-id": "ac-3",
+          "title": "Control ac-3",
+          "description": "Assessment finding for control ac-3"
+        },
+        "related-observations": [
+          {
+            "observation-uuid": "9a678901-1ab4-4627-a76e-cdfdadec9d44"
+          }
+        ]
+      },
+      {
+        "uuid": "27114987-8890-4c09-903f-d9d63402ad98",
+        "title": "Control ac-5 assessment outcome",
+        "description": "Control ac-5 is partially-satisfied based on 93 passing and 15 failing mapped XCCDF rule evaluations across 6 assessed subjects.",
+        "target": {
+          "type": "objective-id",
+          "target-id": "ac-5",
+          "title": "Control ac-5",
+          "description": "Assessment finding for control ac-5"
+        },
+        "related-observations": [
+          {
+            "observation-uuid": "d1cacf50-6b64-45f3-8ff1-4c2121039b6d"
+          }
+        ]
+      },
+      {
+        "uuid": "e143625f-7ea8-4c0f-ae75-c380ee52ff91",
+        "title": "Control ac-6 assessment outcome",
+        "description": "Control ac-6 is partially-satisfied based on 93 passing and 15 failing mapped XCCDF rule evaluations across 6 assessed subjects.",
+        "target": {
+          "type": "objective-id",
+          "target-id": "ac-6",
+          "title": "Control ac-6",
+          "description": "Assessment finding for control ac-6"
+        },
+        "related-observations": [
+          {
+            "observation-uuid": "a3d6fa97-5eb2-4c84-bcd3-cacabe2f5675"
+          }
+        ]
+      },
+      {
+        "uuid": "d4c903e5-11b4-4e3e-8ccf-4708c50dd04b",
+        "title": "Control ac-6.2 assessment outcome",
+        "description": "Control ac-6.2 is partially-satisfied based on 31 passing and 5 failing mapped XCCDF rule evaluations across 6 assessed subjects.",
+        "target": {
+          "type": "objective-id",
+          "target-id": "ac-6.2",
+          "title": "Control ac-6.2",
+          "description": "Assessment finding for control ac-6.2"
+        },
+        "related-observations": [
+          {
+            "observation-uuid": "e127cbb8-8708-4dbc-b066-22ada51aba4a"
+          }
+        ]
+      },
+      {
+        "uuid": "c679660c-a326-410d-8825-a20887532427",
+        "title": "Control ac-6.5 assessment outcome",
+        "description": "Control ac-6.5 is partially-satisfied based on 31 passing and 5 failing mapped XCCDF rule evaluations across 6 assessed subjects.",
+        "target": {
+          "type": "objective-id",
+          "target-id": "ac-6.5",
+          "title": "Control ac-6.5",
+          "description": "Assessment finding for control ac-6.5"
+        },
+        "related-observations": [
+          {
+            "observation-uuid": "da7a56cb-2519-4ba4-97db-b2f43f054b28"
+          }
+        ]
+      },
+      {
+        "uuid": "82568647-ac7c-4ac1-b92d-03b9dbf2e6e2",
+        "title": "Control au-12 assessment outcome",
+        "description": "Control au-12 is partially-satisfied based on 16 passing and 2 failing mapped XCCDF rule evaluations across 6 assessed subjects.",
+        "target": {
+          "type": "objective-id",
+          "target-id": "au-12",
+          "title": "Control au-12",
+          "description": "Assessment finding for control au-12"
+        },
+        "related-observations": [
+          {
+            "observation-uuid": "4a4cb8c4-49d4-49c4-8bd4-c766b5ec62d9"
+          }
+        ]
+      },
+      {
+        "uuid": "dc8c0638-3a78-40de-912e-254e1b211cb2",
+        "title": "Control au-3 assessment outcome",
+        "description": "Control au-3 is partially-satisfied based on 10 passing and 2 failing mapped XCCDF rule evaluations across 6 assessed subjects.",
+        "target": {
+          "type": "objective-id",
+          "target-id": "au-3",
+          "title": "Control au-3",
+          "description": "Assessment finding for control au-3"
+        },
+        "related-observations": [
+          {
+            "observation-uuid": "001a3e04-a61b-4113-bb44-75a99bfdd929"
+          }
+        ]
+      },
+      {
+        "uuid": "f6a8d074-2a70-4fda-9437-bc0d9d68c35b",
+        "title": "Control au-3.1 assessment outcome",
+        "description": "Control au-3.1 is partially-satisfied based on 10 passing and 2 failing mapped XCCDF rule evaluations across 6 assessed subjects.",
+        "target": {
+          "type": "objective-id",
+          "target-id": "au-3.1",
+          "title": "Control au-3.1",
+          "description": "Assessment finding for control au-3.1"
+        },
+        "related-observations": [
+          {
+            "observation-uuid": "9e53985c-33d3-4009-9393-ce508bc7cf47"
+          }
+        ]
+      },
+      {
+        "uuid": "c49bd723-c546-4a8e-b131-d96bc257ea30",
+        "title": "Control au-7 assessment outcome",
+        "description": "Control au-7 is partially-satisfied based on 16 passing and 2 failing mapped XCCDF rule evaluations across 6 assessed subjects.",
+        "target": {
+          "type": "objective-id",
+          "target-id": "au-7",
+          "title": "Control au-7",
+          "description": "Assessment finding for control au-7"
+        },
+        "related-observations": [
+          {
+            "observation-uuid": "9155a7dc-081f-4aef-b926-79bb8627aeaa"
+          }
+        ]
+      },
+      {
+        "uuid": "15b4a70c-26a2-4ef5-b667-f625e98afdfe",
+        "title": "Control cm-1 assessment outcome",
+        "description": "Control cm-1 is partially-satisfied based on 4 passing and 2 failing mapped XCCDF rule evaluations across 6 assessed subjects.",
+        "target": {
+          "type": "objective-id",
+          "target-id": "cm-1",
+          "title": "Control cm-1",
+          "description": "Assessment finding for control cm-1"
+        },
+        "related-observations": [
+          {
+            "observation-uuid": "06db137c-b159-4faa-a4c9-c3503fe387e1"
+          }
+        ]
+      },
+      {
+        "uuid": "e4a278e8-602d-4ea0-a4ae-622af165dca1",
+        "title": "Control cm-2 assessment outcome",
+        "description": "Control cm-2 is partially-satisfied based on 4 passing and 2 failing mapped XCCDF rule evaluations across 6 assessed subjects.",
+        "target": {
+          "type": "objective-id",
+          "target-id": "cm-2",
+          "title": "Control cm-2",
+          "description": "Assessment finding for control cm-2"
+        },
+        "related-observations": [
+          {
+            "observation-uuid": "a9c6aa8e-47bc-406f-b6f0-676bb3d223a3"
+          }
+        ]
+      },
+      {
+        "uuid": "38a4bd89-9291-4343-9b84-5339ed6c98dd",
+        "title": "Control cm-6 assessment outcome",
+        "description": "Control cm-6 is partially-satisfied based on 10 passing and 2 failing mapped XCCDF rule evaluations across 6 assessed subjects.",
+        "target": {
+          "type": "objective-id",
+          "target-id": "cm-6",
+          "title": "Control cm-6",
+          "description": "Assessment finding for control cm-6"
+        },
+        "related-observations": [
+          {
+            "observation-uuid": "2413d3d4-12be-4ca0-8fa5-28750560b913"
+          }
+        ]
+      },
+      {
+        "uuid": "f126d363-1963-4d96-b76e-e10eb83c8adc",
+        "title": "Control cm-7 assessment outcome",
+        "description": "Control cm-7 is partially-satisfied based on 10 passing and 2 failing mapped XCCDF rule evaluations across 6 assessed subjects.",
+        "target": {
+          "type": "objective-id",
+          "target-id": "cm-7",
+          "title": "Control cm-7",
+          "description": "Assessment finding for control cm-7"
+        },
+        "related-observations": [
+          {
+            "observation-uuid": "e26ce85a-f8ae-445c-9b79-3044fbeced64"
+          }
+        ]
+      },
+      {
+        "uuid": "5a5d2566-b6c3-4ff2-999f-44293718af6c",
+        "title": "Control cm-7.1 assessment outcome",
+        "description": "Control cm-7.1 is partially-satisfied based on 4 passing and 2 failing mapped XCCDF rule evaluations across 6 assessed subjects.",
+        "target": {
+          "type": "objective-id",
+          "target-id": "cm-7.1",
+          "title": "Control cm-7.1",
+          "description": "Assessment finding for control cm-7.1"
+        },
+        "related-observations": [
+          {
+            "observation-uuid": "27911f72-1bef-4f1a-aeff-396d45b0132a"
+          }
+        ]
+      },
+      {
+        "uuid": "0772f2b0-3749-4005-b632-d84be45af46c",
+        "title": "Control cm-9 assessment outcome",
+        "description": "Control cm-9 is partially-satisfied based on 4 passing and 2 failing mapped XCCDF rule evaluations across 6 assessed subjects.",
+        "target": {
+          "type": "objective-id",
+          "target-id": "cm-9",
+          "title": "Control cm-9",
+          "description": "Assessment finding for control cm-9"
+        },
+        "related-observations": [
+          {
+            "observation-uuid": "e0e0c0fa-0dc1-48c2-8539-d2dbdd679059"
+          }
+        ]
+      },
+      {
+        "uuid": "0969320d-ad53-4f8a-a9f4-f18cba5f4160",
+        "title": "Control ia-5.1 assessment outcome",
+        "description": "Control ia-5.1 is partially-satisfied based on 175 passing and 35 failing mapped XCCDF rule evaluations across 6 assessed subjects.",
+        "target": {
+          "type": "objective-id",
+          "target-id": "ia-5.1",
+          "title": "Control ia-5.1",
+          "description": "Assessment finding for control ia-5.1"
+        },
+        "related-observations": [
+          {
+            "observation-uuid": "81489007-ea68-444f-b25f-3152a6b5fae3"
+          }
+        ]
+      },
+      {
+        "uuid": "5a5b1562-8008-4ab3-8f6f-e77acc76310c",
+        "title": "Control mp-2 assessment outcome",
+        "description": "Control mp-2 is partially-satisfied based on 93 passing and 15 failing mapped XCCDF rule evaluations across 6 assessed subjects.",
+        "target": {
+          "type": "objective-id",
+          "target-id": "mp-2",
+          "title": "Control mp-2",
+          "description": "Assessment finding for control mp-2"
+        },
+        "related-observations": [
+          {
+            "observation-uuid": "1dd4df10-9e37-4010-bd22-38f4e17ea809"
+          }
+        ]
+      },
+      {
+        "uuid": "21ccfcd9-9d29-4f2a-b864-d0dc13ae294d",
+        "title": "Control sa-10 assessment outcome",
+        "description": "Control sa-10 is partially-satisfied based on 4 passing and 2 failing mapped XCCDF rule evaluations across 6 assessed subjects.",
+        "target": {
+          "type": "objective-id",
+          "target-id": "sa-10",
+          "title": "Control sa-10",
+          "description": "Assessment finding for control sa-10"
+        },
+        "related-observations": [
+          {
+            "observation-uuid": "ae16b9f1-e881-4d37-ab6a-48c9063e217b"
+          }
+        ]
+      },
+      {
+        "uuid": "2e727f50-2549-4719-951f-5826b8daa05b",
+        "title": "Control sa-3 assessment outcome",
+        "description": "Control sa-3 is partially-satisfied based on 4 passing and 2 failing mapped XCCDF rule evaluations across 6 assessed subjects.",
+        "target": {
+          "type": "objective-id",
+          "target-id": "sa-3",
+          "title": "Control sa-3",
+          "description": "Assessment finding for control sa-3"
+        },
+        "related-observations": [
+          {
+            "observation-uuid": "f2ca1a0b-16ad-4327-8ea5-562714c2ae38"
+          }
+        ]
+      },
+      {
+        "uuid": "d75b9150-4bf9-40ec-86b0-84d50451ddc6",
+        "title": "Control sa-8 assessment outcome",
+        "description": "Control sa-8 is partially-satisfied based on 4 passing and 2 failing mapped XCCDF rule evaluations across 6 assessed subjects.",
+        "target": {
+          "type": "objective-id",
+          "target-id": "sa-8",
+          "title": "Control sa-8",
+          "description": "Assessment finding for control sa-8"
+        },
+        "related-observations": [
+          {
+            "observation-uuid": "6fed66f9-886f-459d-a6b1-f8c0f1cc257d"
+          }
+        ]
+      },
+      {
+        "uuid": "63e08ca6-0b49-4aec-841b-a87da395223e",
+        "title": "Control sc-28 assessment outcome",
+        "description": "Control sc-28 is partially-satisfied based on 19 passing and 5 failing mapped XCCDF rule evaluations across 6 assessed subjects.",
+        "target": {
+          "type": "objective-id",
+          "target-id": "sc-28",
+          "title": "Control sc-28",
+          "description": "Assessment finding for control sc-28"
+        },
+        "related-observations": [
+          {
+            "observation-uuid": "ebdf69b1-8428-4127-b092-479290dc6aec"
+          }
+        ]
+      },
+      {
+        "uuid": "9a556cbf-6618-4fba-ad35-92bed2594e72",
+        "title": "Control sc-28.1 assessment outcome",
+        "description": "Control sc-28.1 is partially-satisfied based on 19 passing and 5 failing mapped XCCDF rule evaluations across 6 assessed subjects.",
+        "target": {
+          "type": "objective-id",
+          "target-id": "sc-28.1",
+          "title": "Control sc-28.1",
+          "description": "Assessment finding for control sc-28.1"
+        },
+        "related-observations": [
+          {
+            "observation-uuid": "cb113fe9-327f-4f76-a83f-33cee52dae0f"
+          }
+        ]
+      }
+    ],
+    "poam-items": [
+      {
+        "uuid": "cba6d164-41a1-4045-9231-84c2054f5546",
+        "title": "Remediate ac-1",
+        "description": "Address non-compliance for control ac-1 with 7 failing rule evaluations",
+        "props": [
+          {
+            "name": "control-id",
+            "value": "ac-1"
+          },
+          {
+            "name": "priority",
+            "value": "high"
+          },
+          {
+            "name": "fail-count",
+            "value": "7"
+          }
+        ],
+        "related-findings": [
+          {
+            "finding-uuid": "5e0a89ca-ce9e-487d-a4dd-ff7f34cd3bcc"
+          }
+        ],
+        "related-observations": [
+          {
+            "observation-uuid": "18038556-d681-4caf-9394-35d3028040cc"
+          }
+        ]
+      },
+      {
+        "uuid": "4f3dbee8-cd37-4a83-a853-f69a5b679004",
+        "title": "Remediate ac-11",
+        "description": "Address non-compliance for control ac-11 with 2 failing rule evaluations",
+        "props": [
+          {
+            "name": "control-id",
+            "value": "ac-11"
+          },
+          {
+            "name": "priority",
+            "value": "low"
+          },
+          {
+            "name": "fail-count",
+            "value": "2"
+          }
+        ],
+        "related-findings": [
+          {
+            "finding-uuid": "f487dfee-782d-47d4-9a38-3df5a21f74fc"
+          }
+        ],
+        "related-observations": [
+          {
+            "observation-uuid": "90758756-152a-48ef-b4c0-2e37f08cca4c"
+          }
+        ]
+      },
+      {
+        "uuid": "a7d757d5-334b-44d0-92df-808f269c00af",
+        "title": "Remediate ac-11.1",
+        "description": "Address non-compliance for control ac-11.1 with 2 failing rule evaluations",
+        "props": [
+          {
+            "name": "control-id",
+            "value": "ac-11.1"
+          },
+          {
+            "name": "priority",
+            "value": "low"
+          },
+          {
+            "name": "fail-count",
+            "value": "2"
+          }
+        ],
+        "related-findings": [
+          {
+            "finding-uuid": "6b72486e-00ee-4ddb-a148-40da9a9ff0d4"
+          }
+        ],
+        "related-observations": [
+          {
+            "observation-uuid": "1fee5d0b-bf41-4e59-800e-3be29468cbaa"
+          }
+        ]
+      },
+      {
+        "uuid": "85e9c2a8-cf9e-407a-9f34-df56f84f574c",
+        "title": "Remediate ac-12",
+        "description": "Address non-compliance for control ac-12 with 2 failing rule evaluations",
+        "props": [
+          {
+            "name": "control-id",
+            "value": "ac-12"
+          },
+          {
+            "name": "priority",
+            "value": "low"
+          },
+          {
+            "name": "fail-count",
+            "value": "2"
+          }
+        ],
+        "related-findings": [
+          {
+            "finding-uuid": "ebeee1bf-adc2-42c1-bd0f-67f97c57679f"
+          }
+        ],
+        "related-observations": [
+          {
+            "observation-uuid": "de8f02d9-e867-477f-b934-b7c4c000810c"
+          }
+        ]
+      },
+      {
+        "uuid": "0671ec16-4a3c-499d-9301-eb22ac5f2a84",
+        "title": "Remediate ac-2",
+        "description": "Address non-compliance for control ac-2 with 7 failing rule evaluations",
+        "props": [
+          {
+            "name": "control-id",
+            "value": "ac-2"
+          },
+          {
+            "name": "priority",
+            "value": "high"
+          },
+          {
+            "name": "fail-count",
+            "value": "7"
+          }
+        ],
+        "related-findings": [
+          {
+            "finding-uuid": "d2c8ba3b-5f86-4767-ac24-fdb4665690b7"
+          }
+        ],
+        "related-observations": [
+          {
+            "observation-uuid": "eff942c1-358d-4fa1-8400-4c88d0a96da6"
+          }
+        ]
+      },
+      {
+        "uuid": "da3e6fbb-a03b-42a7-81c1-518b61ede59d",
+        "title": "Remediate ac-2.1",
+        "description": "Address non-compliance for control ac-2.1 with 7 failing rule evaluations",
+        "props": [
+          {
+            "name": "control-id",
+            "value": "ac-2.1"
+          },
+          {
+            "name": "priority",
+            "value": "high"
+          },
+          {
+            "name": "fail-count",
+            "value": "7"
+          }
+        ],
+        "related-findings": [
+          {
+            "finding-uuid": "169cdda1-3590-488f-b1a1-c7f091ab1e42"
+          }
+        ],
+        "related-observations": [
+          {
+            "observation-uuid": "ea370773-a401-44dd-93f0-7634f883eb5e"
+          }
+        ]
+      },
+      {
+        "uuid": "05b9be35-e830-4878-b9f7-969abb6647b5",
+        "title": "Remediate ac-2.5",
+        "description": "Address non-compliance for control ac-2.5 with 2 failing rule evaluations",
+        "props": [
+          {
+            "name": "control-id",
+            "value": "ac-2.5"
+          },
+          {
+            "name": "priority",
+            "value": "low"
+          },
+          {
+            "name": "fail-count",
+            "value": "2"
+          }
+        ],
+        "related-findings": [
+          {
+            "finding-uuid": "1a38416a-c83a-4e62-bede-9fb484f43046"
+          }
+        ],
+        "related-observations": [
+          {
+            "observation-uuid": "51a3719c-6936-4cdf-99aa-42cc8dc4dd7d"
+          }
+        ]
+      },
+      {
+        "uuid": "e428317f-dd8e-4243-af66-cc46ffd881aa",
+        "title": "Remediate ac-3",
+        "description": "Address non-compliance for control ac-3 with 15 failing rule evaluations",
+        "props": [
+          {
+            "name": "control-id",
+            "value": "ac-3"
+          },
+          {
+            "name": "priority",
+            "value": "high"
+          },
+          {
+            "name": "fail-count",
+            "value": "15"
+          }
+        ],
+        "related-findings": [
+          {
+            "finding-uuid": "967eabb6-f829-4578-8ce6-81edbc3741a6"
+          }
+        ],
+        "related-observations": [
+          {
+            "observation-uuid": "9a678901-1ab4-4627-a76e-cdfdadec9d44"
+          }
+        ]
+      },
+      {
+        "uuid": "e2af8d96-812d-42cf-b12f-1efd64de4636",
+        "title": "Remediate ac-5",
+        "description": "Address non-compliance for control ac-5 with 15 failing rule evaluations",
+        "props": [
+          {
+            "name": "control-id",
+            "value": "ac-5"
+          },
+          {
+            "name": "priority",
+            "value": "high"
+          },
+          {
+            "name": "fail-count",
+            "value": "15"
+          }
+        ],
+        "related-findings": [
+          {
+            "finding-uuid": "27114987-8890-4c09-903f-d9d63402ad98"
+          }
+        ],
+        "related-observations": [
+          {
+            "observation-uuid": "d1cacf50-6b64-45f3-8ff1-4c2121039b6d"
+          }
+        ]
+      },
+      {
+        "uuid": "e83f9c65-7301-44c5-af50-e2b89671e703",
+        "title": "Remediate ac-6",
+        "description": "Address non-compliance for control ac-6 with 15 failing rule evaluations",
+        "props": [
+          {
+            "name": "control-id",
+            "value": "ac-6"
+          },
+          {
+            "name": "priority",
+            "value": "high"
+          },
+          {
+            "name": "fail-count",
+            "value": "15"
+          }
+        ],
+        "related-findings": [
+          {
+            "finding-uuid": "e143625f-7ea8-4c0f-ae75-c380ee52ff91"
+          }
+        ],
+        "related-observations": [
+          {
+            "observation-uuid": "a3d6fa97-5eb2-4c84-bcd3-cacabe2f5675"
+          }
+        ]
+      },
+      {
+        "uuid": "89d9d78b-5c5c-4ce8-a72f-a8ffec501098",
+        "title": "Remediate ac-6.2",
+        "description": "Address non-compliance for control ac-6.2 with 5 failing rule evaluations",
+        "props": [
+          {
+            "name": "control-id",
+            "value": "ac-6.2"
+          },
+          {
+            "name": "priority",
+            "value": "medium"
+          },
+          {
+            "name": "fail-count",
+            "value": "5"
+          }
+        ],
+        "related-findings": [
+          {
+            "finding-uuid": "d4c903e5-11b4-4e3e-8ccf-4708c50dd04b"
+          }
+        ],
+        "related-observations": [
+          {
+            "observation-uuid": "e127cbb8-8708-4dbc-b066-22ada51aba4a"
+          }
+        ]
+      },
+      {
+        "uuid": "5e2a7dca-55ca-4f8c-a394-9e00ab2c66de",
+        "title": "Remediate ac-6.5",
+        "description": "Address non-compliance for control ac-6.5 with 5 failing rule evaluations",
+        "props": [
+          {
+            "name": "control-id",
+            "value": "ac-6.5"
+          },
+          {
+            "name": "priority",
+            "value": "medium"
+          },
+          {
+            "name": "fail-count",
+            "value": "5"
+          }
+        ],
+        "related-findings": [
+          {
+            "finding-uuid": "c679660c-a326-410d-8825-a20887532427"
+          }
+        ],
+        "related-observations": [
+          {
+            "observation-uuid": "da7a56cb-2519-4ba4-97db-b2f43f054b28"
+          }
+        ]
+      },
+      {
+        "uuid": "0f7f7d81-990a-4678-b363-74a49243f3b6",
+        "title": "Remediate au-12",
+        "description": "Address non-compliance for control au-12 with 2 failing rule evaluations",
+        "props": [
+          {
+            "name": "control-id",
+            "value": "au-12"
+          },
+          {
+            "name": "priority",
+            "value": "low"
+          },
+          {
+            "name": "fail-count",
+            "value": "2"
+          }
+        ],
+        "related-findings": [
+          {
+            "finding-uuid": "82568647-ac7c-4ac1-b92d-03b9dbf2e6e2"
+          }
+        ],
+        "related-observations": [
+          {
+            "observation-uuid": "4a4cb8c4-49d4-49c4-8bd4-c766b5ec62d9"
+          }
+        ]
+      },
+      {
+        "uuid": "c08059c7-04fd-4c81-8576-3f6518cd2a4b",
+        "title": "Remediate au-3",
+        "description": "Address non-compliance for control au-3 with 2 failing rule evaluations",
+        "props": [
+          {
+            "name": "control-id",
+            "value": "au-3"
+          },
+          {
+            "name": "priority",
+            "value": "low"
+          },
+          {
+            "name": "fail-count",
+            "value": "2"
+          }
+        ],
+        "related-findings": [
+          {
+            "finding-uuid": "dc8c0638-3a78-40de-912e-254e1b211cb2"
+          }
+        ],
+        "related-observations": [
+          {
+            "observation-uuid": "001a3e04-a61b-4113-bb44-75a99bfdd929"
+          }
+        ]
+      },
+      {
+        "uuid": "646a6466-30bc-40e9-a512-99a79330c7aa",
+        "title": "Remediate au-3.1",
+        "description": "Address non-compliance for control au-3.1 with 2 failing rule evaluations",
+        "props": [
+          {
+            "name": "control-id",
+            "value": "au-3.1"
+          },
+          {
+            "name": "priority",
+            "value": "low"
+          },
+          {
+            "name": "fail-count",
+            "value": "2"
+          }
+        ],
+        "related-findings": [
+          {
+            "finding-uuid": "f6a8d074-2a70-4fda-9437-bc0d9d68c35b"
+          }
+        ],
+        "related-observations": [
+          {
+            "observation-uuid": "9e53985c-33d3-4009-9393-ce508bc7cf47"
+          }
+        ]
+      },
+      {
+        "uuid": "1c570077-0196-48d1-ba4f-1ca7e52714ad",
+        "title": "Remediate au-7",
+        "description": "Address non-compliance for control au-7 with 2 failing rule evaluations",
+        "props": [
+          {
+            "name": "control-id",
+            "value": "au-7"
+          },
+          {
+            "name": "priority",
+            "value": "low"
+          },
+          {
+            "name": "fail-count",
+            "value": "2"
+          }
+        ],
+        "related-findings": [
+          {
+            "finding-uuid": "c49bd723-c546-4a8e-b131-d96bc257ea30"
+          }
+        ],
+        "related-observations": [
+          {
+            "observation-uuid": "9155a7dc-081f-4aef-b926-79bb8627aeaa"
+          }
+        ]
+      },
+      {
+        "uuid": "6843d6d3-a387-4ecd-8ed4-5e6769df4be6",
+        "title": "Remediate cm-1",
+        "description": "Address non-compliance for control cm-1 with 2 failing rule evaluations",
+        "props": [
+          {
+            "name": "control-id",
+            "value": "cm-1"
+          },
+          {
+            "name": "priority",
+            "value": "low"
+          },
+          {
+            "name": "fail-count",
+            "value": "2"
+          }
+        ],
+        "related-findings": [
+          {
+            "finding-uuid": "15b4a70c-26a2-4ef5-b667-f625e98afdfe"
+          }
+        ],
+        "related-observations": [
+          {
+            "observation-uuid": "06db137c-b159-4faa-a4c9-c3503fe387e1"
+          }
+        ]
+      },
+      {
+        "uuid": "145b1655-607f-4a5b-b315-cc1e91d6493b",
+        "title": "Remediate cm-2",
+        "description": "Address non-compliance for control cm-2 with 2 failing rule evaluations",
+        "props": [
+          {
+            "name": "control-id",
+            "value": "cm-2"
+          },
+          {
+            "name": "priority",
+            "value": "low"
+          },
+          {
+            "name": "fail-count",
+            "value": "2"
+          }
+        ],
+        "related-findings": [
+          {
+            "finding-uuid": "e4a278e8-602d-4ea0-a4ae-622af165dca1"
+          }
+        ],
+        "related-observations": [
+          {
+            "observation-uuid": "a9c6aa8e-47bc-406f-b6f0-676bb3d223a3"
+          }
+        ]
+      },
+      {
+        "uuid": "0aee8478-9e3b-4ab5-b369-4e13245d289c",
+        "title": "Remediate cm-6",
+        "description": "Address non-compliance for control cm-6 with 2 failing rule evaluations",
+        "props": [
+          {
+            "name": "control-id",
+            "value": "cm-6"
+          },
+          {
+            "name": "priority",
+            "value": "low"
+          },
+          {
+            "name": "fail-count",
+            "value": "2"
+          }
+        ],
+        "related-findings": [
+          {
+            "finding-uuid": "38a4bd89-9291-4343-9b84-5339ed6c98dd"
+          }
+        ],
+        "related-observations": [
+          {
+            "observation-uuid": "2413d3d4-12be-4ca0-8fa5-28750560b913"
+          }
+        ]
+      },
+      {
+        "uuid": "e399615b-c292-40b4-8f7d-895874bd5abf",
+        "title": "Remediate cm-7",
+        "description": "Address non-compliance for control cm-7 with 2 failing rule evaluations",
+        "props": [
+          {
+            "name": "control-id",
+            "value": "cm-7"
+          },
+          {
+            "name": "priority",
+            "value": "low"
+          },
+          {
+            "name": "fail-count",
+            "value": "2"
+          }
+        ],
+        "related-findings": [
+          {
+            "finding-uuid": "f126d363-1963-4d96-b76e-e10eb83c8adc"
+          }
+        ],
+        "related-observations": [
+          {
+            "observation-uuid": "e26ce85a-f8ae-445c-9b79-3044fbeced64"
+          }
+        ]
+      },
+      {
+        "uuid": "ace906ee-1699-4578-a94e-31b2ebb75a63",
+        "title": "Remediate cm-7.1",
+        "description": "Address non-compliance for control cm-7.1 with 2 failing rule evaluations",
+        "props": [
+          {
+            "name": "control-id",
+            "value": "cm-7.1"
+          },
+          {
+            "name": "priority",
+            "value": "low"
+          },
+          {
+            "name": "fail-count",
+            "value": "2"
+          }
+        ],
+        "related-findings": [
+          {
+            "finding-uuid": "5a5d2566-b6c3-4ff2-999f-44293718af6c"
+          }
+        ],
+        "related-observations": [
+          {
+            "observation-uuid": "27911f72-1bef-4f1a-aeff-396d45b0132a"
+          }
+        ]
+      },
+      {
+        "uuid": "4c67216f-2f51-4254-9d43-25bf0976dad5",
+        "title": "Remediate cm-9",
+        "description": "Address non-compliance for control cm-9 with 2 failing rule evaluations",
+        "props": [
+          {
+            "name": "control-id",
+            "value": "cm-9"
+          },
+          {
+            "name": "priority",
+            "value": "low"
+          },
+          {
+            "name": "fail-count",
+            "value": "2"
+          }
+        ],
+        "related-findings": [
+          {
+            "finding-uuid": "0772f2b0-3749-4005-b632-d84be45af46c"
+          }
+        ],
+        "related-observations": [
+          {
+            "observation-uuid": "e0e0c0fa-0dc1-48c2-8539-d2dbdd679059"
+          }
+        ]
+      },
+      {
+        "uuid": "60e93681-a54f-425e-a75a-83771d6869cb",
+        "title": "Remediate ia-5.1",
+        "description": "Address non-compliance for control ia-5.1 with 35 failing rule evaluations",
+        "props": [
+          {
+            "name": "control-id",
+            "value": "ia-5.1"
+          },
+          {
+            "name": "priority",
+            "value": "high"
+          },
+          {
+            "name": "fail-count",
+            "value": "35"
+          }
+        ],
+        "related-findings": [
+          {
+            "finding-uuid": "0969320d-ad53-4f8a-a9f4-f18cba5f4160"
+          }
+        ],
+        "related-observations": [
+          {
+            "observation-uuid": "81489007-ea68-444f-b25f-3152a6b5fae3"
+          }
+        ]
+      },
+      {
+        "uuid": "ff92b254-caf8-4b58-a7bb-996d2d496c0b",
+        "title": "Remediate mp-2",
+        "description": "Address non-compliance for control mp-2 with 15 failing rule evaluations",
+        "props": [
+          {
+            "name": "control-id",
+            "value": "mp-2"
+          },
+          {
+            "name": "priority",
+            "value": "high"
+          },
+          {
+            "name": "fail-count",
+            "value": "15"
+          }
+        ],
+        "related-findings": [
+          {
+            "finding-uuid": "5a5b1562-8008-4ab3-8f6f-e77acc76310c"
+          }
+        ],
+        "related-observations": [
+          {
+            "observation-uuid": "1dd4df10-9e37-4010-bd22-38f4e17ea809"
+          }
+        ]
+      },
+      {
+        "uuid": "1786bf5f-85c5-40ab-a3dd-b01029fa8393",
+        "title": "Remediate sa-10",
+        "description": "Address non-compliance for control sa-10 with 2 failing rule evaluations",
+        "props": [
+          {
+            "name": "control-id",
+            "value": "sa-10"
+          },
+          {
+            "name": "priority",
+            "value": "low"
+          },
+          {
+            "name": "fail-count",
+            "value": "2"
+          }
+        ],
+        "related-findings": [
+          {
+            "finding-uuid": "21ccfcd9-9d29-4f2a-b864-d0dc13ae294d"
+          }
+        ],
+        "related-observations": [
+          {
+            "observation-uuid": "ae16b9f1-e881-4d37-ab6a-48c9063e217b"
+          }
+        ]
+      },
+      {
+        "uuid": "943c9b99-b722-4f26-a9e1-94b5c5c0d2ca",
+        "title": "Remediate sa-3",
+        "description": "Address non-compliance for control sa-3 with 2 failing rule evaluations",
+        "props": [
+          {
+            "name": "control-id",
+            "value": "sa-3"
+          },
+          {
+            "name": "priority",
+            "value": "low"
+          },
+          {
+            "name": "fail-count",
+            "value": "2"
+          }
+        ],
+        "related-findings": [
+          {
+            "finding-uuid": "2e727f50-2549-4719-951f-5826b8daa05b"
+          }
+        ],
+        "related-observations": [
+          {
+            "observation-uuid": "f2ca1a0b-16ad-4327-8ea5-562714c2ae38"
+          }
+        ]
+      },
+      {
+        "uuid": "78175dcc-8c16-4806-8d48-61cec0626443",
+        "title": "Remediate sa-8",
+        "description": "Address non-compliance for control sa-8 with 2 failing rule evaluations",
+        "props": [
+          {
+            "name": "control-id",
+            "value": "sa-8"
+          },
+          {
+            "name": "priority",
+            "value": "low"
+          },
+          {
+            "name": "fail-count",
+            "value": "2"
+          }
+        ],
+        "related-findings": [
+          {
+            "finding-uuid": "d75b9150-4bf9-40ec-86b0-84d50451ddc6"
+          }
+        ],
+        "related-observations": [
+          {
+            "observation-uuid": "6fed66f9-886f-459d-a6b1-f8c0f1cc257d"
+          }
+        ]
+      },
+      {
+        "uuid": "7503b991-1acb-4812-8866-0ee49344b4c3",
+        "title": "Remediate sc-28",
+        "description": "Address non-compliance for control sc-28 with 5 failing rule evaluations",
+        "props": [
+          {
+            "name": "control-id",
+            "value": "sc-28"
+          },
+          {
+            "name": "priority",
+            "value": "medium"
+          },
+          {
+            "name": "fail-count",
+            "value": "5"
+          }
+        ],
+        "related-findings": [
+          {
+            "finding-uuid": "63e08ca6-0b49-4aec-841b-a87da395223e"
+          }
+        ],
+        "related-observations": [
+          {
+            "observation-uuid": "ebdf69b1-8428-4127-b092-479290dc6aec"
+          }
+        ]
+      },
+      {
+        "uuid": "ff4d6229-59e6-4220-9725-c9f87b09d7d9",
+        "title": "Remediate sc-28.1",
+        "description": "Address non-compliance for control sc-28.1 with 5 failing rule evaluations",
+        "props": [
+          {
+            "name": "control-id",
+            "value": "sc-28.1"
+          },
+          {
+            "name": "priority",
+            "value": "medium"
+          },
+          {
+            "name": "fail-count",
+            "value": "5"
+          }
+        ],
+        "related-findings": [
+          {
+            "finding-uuid": "9a556cbf-6618-4fba-ad35-92bed2594e72"
+          }
+        ],
+        "related-observations": [
+          {
+            "observation-uuid": "cb113fe9-327f-4f76-a83f-33cee52dae0f"
+          }
+        ]
+      }
+    ]
+  }
+}
