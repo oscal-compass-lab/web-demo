@@ -27,6 +27,13 @@ from trestle_api import TrestleAPI
 
 app = Flask(__name__, template_folder='app-config/templates', static_folder='app-config/static')
 
+# Add route to serve charts from source-data
+@app.route('/charts/<path:filename>')
+def serve_chart(filename):
+    """Serve chart images from source-data/charts directory"""
+    from flask import send_from_directory
+    return send_from_directory('source-data/charts', filename)
+
 # Initialize Trestle API
 TRESTLE_ROOT = Path('trestle-workspace')
 trestle_api = TrestleAPI(TRESTLE_ROOT)
@@ -246,6 +253,7 @@ def index():
                 <a href="#assessment-plans">{len(assessment_plans)} assessment plans</a>,
                 <a href="#xccdf-results">{len(xccdf_results)} XCCDF results</a>,
                 <a href="#assessment-results">{len(assessment_results)} assessment results</a>,
+                <a href="#charts">📈 compliance charts</a>,
                 <a href="#poams">{len(poams)} POA&Ms</a>
             </div>
             
@@ -335,7 +343,7 @@ def index():
                 ''' for result in xccdf_results]) if xccdf_results else '<p><em>No XCCDF results found. Run "python3 create_xccdf_results.py" to generate scan results.</em></p>'}
             </div>
             
-            <h2>📊 OSCAL Assessment Results ({len(assessment_results)})</h2>
+            <h2 id="assessment-results">📊 OSCAL Assessment Results ({len(assessment_results)})</h2>
             <div class="grid">
                 {''.join([f'''
                 <div class="card" title="{result['title']}">
@@ -345,6 +353,15 @@ def index():
                     <a href="/assessment-results/{result['name']}">View Assessment Results</a>
                 </div>
                 ''' for result in assessment_results]) if assessment_results else '<p><em>No assessment results found. Run "make create-docs" to generate demo documents.</em></p>'}
+            </div>
+            
+            <h2 id="charts">📈 Compliance Status Charts</h2>
+            <div class="info">
+                <p><strong>📊 Visual Dashboard:</strong> View all compliance status charts in one place showing control compliance across regulatory frameworks.</p>
+                <p><strong>Available Charts:</strong> FedRAMP (Low, Moderate, High), DORA, and Cross-Regulation Comparison</p>
+                <p style="text-align: center; margin-top: 15px;">
+                    <a href="/charts" style="display: inline-block; padding: 12px 24px; background: #667eea; color: white; text-decoration: none; border-radius: 6px; font-weight: bold; font-size: 1.1em;">📈 View All Charts</a>
+                </p>
             </div>
             
             <h2 id="poams">📝 OSCAL Plan of Action & Milestones ({len(poams)})</h2>
@@ -1803,6 +1820,11 @@ def ssp(ssp_name):
     </body>
     </html>
     """
+
+@app.route('/charts')
+def charts():
+    """View all compliance status charts"""
+    return render_template('charts.html')
 
 @app.route('/assessment-plan/<plan_name>')
 def assessment_plan(plan_name):

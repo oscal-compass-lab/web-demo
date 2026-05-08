@@ -133,11 +133,73 @@ def load_rule_to_control_mapping(ssp_name: str) -> Dict[str, Set[str]]:
     return dict(rule_to_controls)
 
 
-def aggregate_results_by_control(xccdf_results: Dict[str, Tuple[Dict, Dict]], 
+def load_mapping_coverage(regulation: str) -> Dict[str, float]:
+    """
+    Load mapping coverage percentages for regulations that use mapping-collections.
+    
+    Args:
+        regulation: Regulation name (e.g., 'EU DORA')
+    
+    Returns:
+        Dict mapping control_id to coverage percentage (0.0-1.0)
+    """
+    coverage_map = {}
+    
+    # Check if this is a mapping-based regulation
+    if 'DORA' not in regulation:
+        return coverage_map
+    
+    # Load the NIST to DORA mapping collection
+    mapping_path = Path('trestle-workspace/mapping-collections/nist-800-53-rev5-to-EU-Dora/mapping-collection.json')
+    if not mapping_path.exists():
+        print(f"  Warning: Mapping collection not found at {mapping_path}")
+        return coverage_map
+    
+    try:
+        import json
+        with open(mapping_path) as f:
+            mapping_data = json.load(f)
+        
+        # Extract coverage from mappings
+        mappings = mapping_data.get('mapping-collection', {}).get('mappings', [])
+        for mapping in mappings:
+            for map_entry in mapping.get('maps', []):
+                # Get source control ID (NIST)
+                sources = map_entry.get('sources', [])
+                if sources and sources[0].get('type') == 'control':
+                    source_id = sources[0].get('id-ref', '')
+                    
+                    # Get target coverage
+                    coverage_info = map_entry.get('coverage', {})
+                    target_coverage = coverage_info.get('target-coverage', 1.0)
+                    
+                    # Store the coverage (use minimum if multiple mappings exist)
+                    if source_id:
+                        if source_id in coverage_map:
+                            coverage_map[source_id] = min(coverage_map[source_id], target_coverage)
+                        else:
+                            coverage_map[source_id] = target_coverage
+        
+        print(f"  Loaded mapping coverage for {len(coverage_map)} controls")
+        
+    except Exception as e:
+        print(f"  Warning: Could not load mapping coverage: {e}")
+    
+    return coverage_map
+
+
+def aggregate_results_by_control(xccdf_results: Dict[str, Tuple[Dict, Dict]],
                                   rule_to_controls: Dict[str, Set[str]],
-                                  subject_uuids: List[str]) -> Dict[str, Dict]:
+                                  subject_uuids: List[str],
+                                  coverage_map: Dict[str, float] = None) -> Dict[str, Dict]:
     """
     Aggregate XCCDF results by control across all subjects.
+    
+    Args:
+        xccdf_results: XCCDF scan results
+        rule_to_controls: Mapping of rules to controls
+        subject_uuids: List of subject UUIDs
+        coverage_map: Optional mapping coverage percentages for controls
     
     Returns:
         Dict mapping control_id to aggregated results
@@ -146,7 +208,8 @@ def aggregate_results_by_control(xccdf_results: Dict[str, Tuple[Dict, Dict]],
         'pass_count': 0,
         'fail_count': 0,
         'rules': set(),
-        'subjects': set()
+        'subjects': set(),
+        'coverage': 1.0
     })
     
     # Process each server's results
@@ -163,6 +226,11 @@ def aggregate_results_by_control(xccdf_results: Dict[str, Tuple[Dict, Dict]],
                 for control_id in rule_to_controls[rule_id]:
                     control_results[control_id]['rules'].add(rule_id)
                     control_results[control_id]['subjects'].add(subject_uuid)
+                    
+                    # Apply coverage percentage if available
+                    if coverage_map and control_id in coverage_map:
+                        control_results[control_id]['coverage'] = coverage_map[control_id]
+                    
                     if result == 'pass':
                         control_results[control_id]['pass_count'] += 1
                     elif result == 'fail':
@@ -229,9 +297,12 @@ def create_assessment_results(plan_name: str, xccdf_dir: Path) -> bool:
     rule_to_controls = load_rule_to_control_mapping(ssp_name)
     print(f"  Mapped {len(rule_to_controls)} rules to controls")
     
+    # Load mapping coverage if this is a mapping-based regulation
+    coverage_map = load_mapping_coverage(regulation)
+    
     # Aggregate results by control
     print("  Aggregating results by control...")
-    control_results = aggregate_results_by_control(xccdf_results, rule_to_controls, subject_uuids)
+    control_results = aggregate_results_by_control(xccdf_results, rule_to_controls, subject_uuids, coverage_map)
     print(f"  Generated results for {len(control_results)} controls")
     
     # Create assessment results structure
@@ -248,9 +319,25 @@ def create_assessment_results(plan_name: str, xccdf_dir: Path) -> bool:
     reviewed_controls_list = []
     for control_id in sorted(control_results.keys()):
         cr = control_results[control_id]
-        status = 'satisfied' if cr['fail_count'] == 0 else 'partially-satisfied'
+        coverage = cr.get('coverage', 1.0)
+        
+        # Calculate status considering coverage
+        # If coverage < 1.0, the control can only be partially-satisfied at best
+        # because the mapping doesn't fully cover the control requirements
+        if coverage < 1.0:
+            adjusted_pass = int(cr['pass_count'] * coverage)
+            adjusted_fail = int(cr['fail_count'] * coverage)
+            # Partial coverage means control is automatically partially-satisfied
+            status = 'partially-satisfied'
+            coverage_note = f", {int(coverage*100)}% coverage"
+        else:
+            adjusted_pass = cr['pass_count']
+            adjusted_fail = cr['fail_count']
+            status = 'satisfied' if cr['fail_count'] == 0 else 'partially-satisfied'
+            coverage_note = ""
+        
         reviewed_controls_list.append({
-            'description': f"{control_id}: {status} ({cr['pass_count']} pass / {cr['fail_count']} fail rule evaluations)",
+            'description': f"{control_id}: {status} ({adjusted_pass} pass / {adjusted_fail} fail rule evaluations{coverage_note})",
             'include-controls': [{'control-id': control_id}]
         })
     
@@ -258,13 +345,27 @@ def create_assessment_results(plan_name: str, xccdf_dir: Path) -> bool:
     observations_list = []
     for control_id in sorted(control_results.keys()):
         cr = control_results[control_id]
-        status = 'satisfied' if cr['fail_count'] == 0 else 'partially-satisfied'
+        coverage = cr.get('coverage', 1.0)
+        
+        # Calculate status considering coverage
+        # Partial coverage means control is automatically partially-satisfied
+        if coverage < 1.0:
+            adjusted_pass = int(cr['pass_count'] * coverage)
+            adjusted_fail = int(cr['fail_count'] * coverage)
+            status = 'partially-satisfied'
+            coverage_desc = f" with {int(coverage*100)}% mapping coverage (partial coverage = partially-satisfied)"
+        else:
+            adjusted_pass = cr['pass_count']
+            adjusted_fail = cr['fail_count']
+            status = 'satisfied' if cr['fail_count'] == 0 else 'partially-satisfied'
+            coverage_desc = ""
+        
         rules_list = ', '.join(sorted(cr['rules']))
         
         observations_list.append({
             'uuid': str(uuid.uuid4()),
             'title': f"Control {control_id} assessment outcome",
-            'description': f"Control {control_id} is {status} based on {cr['pass_count']} passing and {cr['fail_count']} failing mapped XCCDF rule evaluations across {len(cr['subjects'])} assessed subjects.",
+            'description': f"Control {control_id} is {status} based on {adjusted_pass} passing and {adjusted_fail} failing mapped XCCDF rule evaluations across {len(cr['subjects'])} assessed subjects{coverage_desc}.",
             'methods': ['TEST'],
             'types': ['finding'],
             'collected': assessment_end.isoformat() + 'Z',
@@ -273,9 +374,10 @@ def create_assessment_results(plan_name: str, xccdf_dir: Path) -> bool:
             'props': [
                 {'name': 'control-id', 'value': control_id},
                 {'name': 'status', 'value': status},
-                {'name': 'pass-count', 'value': str(cr['pass_count'])},
-                {'name': 'fail-count', 'value': str(cr['fail_count'])},
-                {'name': 'rule-count', 'value': str(len(cr['rules']))}
+                {'name': 'pass-count', 'value': str(adjusted_pass)},
+                {'name': 'fail-count', 'value': str(adjusted_fail)},
+                {'name': 'rule-count', 'value': str(len(cr['rules']))},
+                {'name': 'coverage', 'value': str(coverage)}
             ]
         })
     

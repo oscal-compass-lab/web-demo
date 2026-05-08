@@ -1,9 +1,9 @@
 {
   "system-security-plan": {
-    "uuid": "22033063-31a6-436e-9450-dc4191f2fb1b",
+    "uuid": "2720b049-e605-4822-9662-44f44d996510",
     "metadata": {
       "title": "Ubuntu System Security Plan - DORA",
-      "last-modified": "2026-05-08T11:36:47.893149",
+      "last-modified": "2026-05-08T14:27:40.806588",
       "version": "1.0",
       "oscal-version": "1.2.1"
     },
@@ -37,7 +37,7 @@
     "system-implementation": {
       "users": [
         {
-          "uuid": "e451a901-11c5-4ac7-bff8-6c22f8e29746",
+          "uuid": "daf9d39e-0faa-4117-adac-985b4a0734e1",
           "title": "System Administrator",
           "role-ids": [
             "admin"
@@ -878,6 +878,294 @@
               "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd",
               "value": "sudo_custom_logfile",
               "remarks": "rule_set_68"
+            },
+            {
+              "name": "Rule_Id",
+              "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd",
+              "value": "account_automated_provisioning_enabled",
+              "remarks": "rule_set_69"
+            },
+            {
+              "name": "Rule_Description",
+              "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd",
+              "value": "Verify automated account management is configured",
+              "remarks": "rule_set_69"
+            },
+            {
+              "name": "Rule_Id",
+              "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd",
+              "value": "account_temporary_expiration_configured",
+              "remarks": "rule_set_70"
+            },
+            {
+              "name": "Rule_Description",
+              "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd",
+              "value": "Verify temporary account expiration is automated",
+              "remarks": "rule_set_70"
+            },
+            {
+              "name": "Rule_Id",
+              "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd",
+              "value": "account_disable_inactive_accounts",
+              "remarks": "rule_set_71"
+            },
+            {
+              "name": "Rule_Description",
+              "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd",
+              "value": "Verify inactive account disabling mechanism",
+              "remarks": "rule_set_71"
+            },
+            {
+              "name": "Rule_Id",
+              "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd",
+              "value": "sudo_security_function_authorization",
+              "remarks": "rule_set_72"
+            },
+            {
+              "name": "Rule_Description",
+              "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd",
+              "value": "Verify sudo configuration restricts security functions",
+              "remarks": "rule_set_72"
+            },
+            {
+              "name": "Rule_Id",
+              "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd",
+              "value": "service_nonprivileged_user_execution",
+              "remarks": "rule_set_73"
+            },
+            {
+              "name": "Rule_Description",
+              "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd",
+              "value": "Verify services run as non-root users",
+              "remarks": "rule_set_73"
+            },
+            {
+              "name": "Rule_Id",
+              "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd",
+              "value": "screen_lock_timeout_configured",
+              "remarks": "rule_set_74"
+            },
+            {
+              "name": "Rule_Description",
+              "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd",
+              "value": "Verify screen lock timeout is configured",
+              "remarks": "rule_set_74"
+            },
+            {
+              "name": "Rule_Id",
+              "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd",
+              "value": "screen_lock_pattern_hiding_enabled",
+              "remarks": "rule_set_75"
+            },
+            {
+              "name": "Rule_Description",
+              "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd",
+              "value": "Verify screen blanking on lock",
+              "remarks": "rule_set_75"
+            },
+            {
+              "name": "Rule_Id",
+              "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd",
+              "value": "sshd_logging_enabled",
+              "remarks": "rule_set_76"
+            },
+            {
+              "name": "Rule_Description",
+              "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd",
+              "value": "Verify SSH logging is enabled and comprehensive",
+              "remarks": "rule_set_76"
+            },
+            {
+              "name": "Rule_Id",
+              "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd",
+              "value": "auditd_extended_information_enabled",
+              "remarks": "rule_set_77"
+            },
+            {
+              "name": "Rule_Description",
+              "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd",
+              "value": "Verify extended audit information is captured",
+              "remarks": "rule_set_77"
+            },
+            {
+              "name": "Rule_Id",
+              "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd",
+              "value": "log_analysis_tool_configured",
+              "remarks": "rule_set_78"
+            },
+            {
+              "name": "Rule_Description",
+              "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd",
+              "value": "Verify automated log analysis tool is configured",
+              "remarks": "rule_set_78"
+            },
+            {
+              "name": "Rule_Id",
+              "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd",
+              "value": "change_control_documentation_required",
+              "remarks": "rule_set_79"
+            },
+            {
+              "name": "Rule_Description",
+              "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd",
+              "value": "Verify change control process documentation",
+              "remarks": "rule_set_79"
+            },
+            {
+              "name": "Rule_Id",
+              "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd",
+              "value": "service_periodic_review_enabled",
+              "remarks": "rule_set_80"
+            },
+            {
+              "name": "Rule_Description",
+              "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd",
+              "value": "Verify periodic service review process",
+              "remarks": "rule_set_80"
+            },
+            {
+              "name": "Rule_Id",
+              "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd",
+              "value": "package_update_automation_configured",
+              "remarks": "rule_set_81"
+            },
+            {
+              "name": "Rule_Description",
+              "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd",
+              "value": "Verify automated patch management",
+              "remarks": "rule_set_81"
+            },
+            {
+              "name": "Rule_Id",
+              "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd",
+              "value": "intrusion_detection_tool_installed",
+              "remarks": "rule_set_82"
+            },
+            {
+              "name": "Rule_Description",
+              "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd",
+              "value": "Verify IDS/IPS tool is installed and running",
+              "remarks": "rule_set_82"
+            },
+            {
+              "name": "Rule_Id",
+              "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd",
+              "value": "encrypted_traffic_inspection_configured",
+              "remarks": "rule_set_83"
+            },
+            {
+              "name": "Rule_Description",
+              "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd",
+              "value": "Verify encrypted traffic inspection capability",
+              "remarks": "rule_set_83"
+            },
+            {
+              "name": "Rule_Id",
+              "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd",
+              "value": "privileged_command_network_restriction",
+              "remarks": "rule_set_84"
+            },
+            {
+              "name": "Rule_Description",
+              "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd",
+              "value": "Verify network-based restrictions on privileged commands",
+              "remarks": "rule_set_84"
+            },
+            {
+              "name": "Rule_Id",
+              "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd",
+              "value": "concurrent_session_limit_configured",
+              "remarks": "rule_set_85"
+            },
+            {
+              "name": "Rule_Description",
+              "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd",
+              "value": "Verify concurrent session limits",
+              "remarks": "rule_set_85"
+            },
+            {
+              "name": "Rule_Id",
+              "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd",
+              "value": "auditd_storage_threshold_alert",
+              "remarks": "rule_set_86"
+            },
+            {
+              "name": "Rule_Description",
+              "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd",
+              "value": "Verify audit storage threshold alerting",
+              "remarks": "rule_set_86"
+            },
+            {
+              "name": "Rule_Id",
+              "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd",
+              "value": "auditd_realtime_alerts_enabled",
+              "remarks": "rule_set_87"
+            },
+            {
+              "name": "Rule_Description",
+              "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd",
+              "value": "Verify real-time audit failure alerts",
+              "remarks": "rule_set_87"
+            },
+            {
+              "name": "Rule_Id",
+              "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd",
+              "value": "centralized_logging_configured",
+              "remarks": "rule_set_88"
+            },
+            {
+              "name": "Rule_Description",
+              "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd",
+              "value": "Verify centralized logging is configured",
+              "remarks": "rule_set_88"
+            },
+            {
+              "name": "Rule_Id",
+              "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd",
+              "value": "audit_logs_remote_storage",
+              "remarks": "rule_set_89"
+            },
+            {
+              "name": "Rule_Description",
+              "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd",
+              "value": "Verify audit logs are sent to remote system",
+              "remarks": "rule_set_89"
+            },
+            {
+              "name": "Rule_Id",
+              "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd",
+              "value": "audit_logs_encrypted",
+              "remarks": "rule_set_90"
+            },
+            {
+              "name": "Rule_Description",
+              "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd",
+              "value": "Verify audit log encryption/signing",
+              "remarks": "rule_set_90"
+            },
+            {
+              "name": "Rule_Id",
+              "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd",
+              "value": "critical_action_signing_enabled",
+              "remarks": "rule_set_91"
+            },
+            {
+              "name": "Rule_Description",
+              "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd",
+              "value": "Verify digital signatures for critical actions",
+              "remarks": "rule_set_91"
+            },
+            {
+              "name": "Rule_Id",
+              "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd",
+              "value": "time_synchronization_configured",
+              "remarks": "rule_set_92"
+            },
+            {
+              "name": "Rule_Description",
+              "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd",
+              "value": "Verify NTP/chrony is configured and running",
+              "remarks": "rule_set_92"
             }
           ],
           "status": {
@@ -887,7 +1175,7 @@
       ],
       "inventory-items": [
         {
-          "uuid": "f81bf58d-0cde-4c61-b1d6-881020091f72",
+          "uuid": "e1f16440-60da-406d-9307-0a0ae723f114",
           "description": "Application server running Ubuntu 24.04 LTS",
           "props": [
             {
@@ -918,7 +1206,7 @@
           ]
         },
         {
-          "uuid": "dae0ce58-1447-4be5-b9ba-30e22488f0dd",
+          "uuid": "7c64dff5-3b98-4719-8070-de1ef6c4afef",
           "description": "Database server running Ubuntu 24.04 LTS",
           "props": [
             {
@@ -949,7 +1237,7 @@
           ]
         },
         {
-          "uuid": "c86ee908-055f-4a74-8712-ed3f0e965ca4",
+          "uuid": "fe571136-0bdb-42c8-93bc-b8ffb960e670",
           "description": "Management and monitoring server running Ubuntu 24.04 LTS",
           "props": [
             {
@@ -980,7 +1268,7 @@
           ]
         },
         {
-          "uuid": "ee3e843a-02d9-42b9-8c58-d2ff0b62cb04",
+          "uuid": "32a632b2-9839-4d02-a9b5-ebfc92a4af69",
           "description": "Primary web server running Ubuntu 24.04 LTS",
           "props": [
             {
@@ -1011,7 +1299,7 @@
           ]
         },
         {
-          "uuid": "933c7c68-5984-49f2-9ba7-de0104d356aa",
+          "uuid": "b9f5d4aa-4b74-43d0-80b1-c10e2ebb9546",
           "description": "Secondary web server running Ubuntu 24.04 LTS",
           "props": [
             {
@@ -1042,7 +1330,7 @@
           ]
         },
         {
-          "uuid": "d99894c5-3810-4434-b11b-066bc8ebc739",
+          "uuid": "e2dc82da-0a38-4084-b49a-3287f24e99fb",
           "description": "Tertiary web server running Ubuntu 24.04 LTS",
           "props": [
             {
@@ -1078,7 +1366,7 @@
       "description": "Control implementation for DORA baseline using Ubuntu Linux 24.04 LTS",
       "implemented-requirements": [
         {
-          "uuid": "037c07ca-0230-4d13-bdab-0319c74152e2",
+          "uuid": "85f62fac-9477-4e06-9fba-af562ad0e270",
           "control-id": "ac-3",
           "props": [
             {
@@ -1174,7 +1462,7 @@
           ]
         },
         {
-          "uuid": "4442f5ac-c8fa-4e83-9fef-57cd7fcd4489",
+          "uuid": "1f1ce93c-277f-4f6a-a76e-41925346f584",
           "control-id": "ac-5",
           "props": [
             {
@@ -1270,7 +1558,7 @@
           ]
         },
         {
-          "uuid": "28c9e54f-f993-47f2-97f0-aa1de67d51ca",
+          "uuid": "2c1828f1-3b66-417b-8d7f-48ae7b711dd0",
           "control-id": "ac-6",
           "props": [
             {
@@ -1366,7 +1654,7 @@
           ]
         },
         {
-          "uuid": "513e4af9-95c1-4092-8a91-027d54dd616d",
+          "uuid": "d93d2c45-6d66-43d3-8e1c-db4c3e621703",
           "control-id": "mp-2",
           "props": [
             {
@@ -1462,7 +1750,7 @@
           ]
         },
         {
-          "uuid": "d8bb42eb-98fc-4c58-a341-2ad384706e76",
+          "uuid": "a3dba8ad-b0e3-4f9f-b26f-62f159fb0b43",
           "control-id": "ac-17.2",
           "props": [
             {
@@ -1483,7 +1771,7 @@
           ]
         },
         {
-          "uuid": "30b68d6c-be58-46fc-b15f-413cdec70695",
+          "uuid": "93d6a05d-dc53-4148-976d-b225af3bebaa",
           "control-id": "ia-5",
           "props": [
             {
@@ -1504,7 +1792,7 @@
           ]
         },
         {
-          "uuid": "e824081c-dabf-4d71-bedb-843b6b396184",
+          "uuid": "27315059-109b-43de-a157-f3d3a7bd57cc",
           "control-id": "ia-5.1",
           "props": [
             {
@@ -1685,7 +1973,7 @@
           ]
         },
         {
-          "uuid": "8d8e9c4a-d492-4b0d-9527-e09e4b8aad6a",
+          "uuid": "3d106e85-f919-4b93-974e-880075ecc086",
           "control-id": "sc-8",
           "props": [
             {
@@ -1706,7 +1994,7 @@
           ]
         },
         {
-          "uuid": "07178cf9-3f6f-429b-b754-71708fa9d94c",
+          "uuid": "3abc0e9b-e33f-430a-b698-b59e7cbbf2af",
           "control-id": "sc-8.1",
           "props": [
             {
@@ -1727,7 +2015,7 @@
           ]
         },
         {
-          "uuid": "2c1d0039-ced5-4c46-95b6-de8be71f7b16",
+          "uuid": "21923944-b307-40ea-993c-6409a17e8917",
           "control-id": "sc-28",
           "props": [
             {
@@ -1753,7 +2041,7 @@
           ]
         },
         {
-          "uuid": "72fe8f7e-c6e5-4634-8037-ef8c04c82c08",
+          "uuid": "e93f418c-d8ac-4320-a058-e9c4b1c338f3",
           "control-id": "sc-28.1",
           "props": [
             {
@@ -1779,7 +2067,7 @@
           ]
         },
         {
-          "uuid": "21fc1ae2-e32a-488b-8e4e-2af68f7c1157",
+          "uuid": "0e231695-22c1-46eb-9ca4-8067241d1887",
           "control-id": "cm-1",
           "props": [
             {
@@ -1790,7 +2078,7 @@
           ]
         },
         {
-          "uuid": "944dcde7-582c-48bb-bc4c-445d79936b2f",
+          "uuid": "4bf15a2f-d7d5-47ba-b6e6-be26d8bc8e6f",
           "control-id": "cm-2",
           "props": [
             {
@@ -1801,7 +2089,7 @@
           ]
         },
         {
-          "uuid": "3099a623-a8a3-443a-abf3-67d93cb592db",
+          "uuid": "1bd00e19-28de-4a09-a2a4-168f5217c1ac",
           "control-id": "cm-6",
           "props": [
             {
@@ -1817,7 +2105,7 @@
           ]
         },
         {
-          "uuid": "9319a7bc-7044-4420-aeda-544b4f22fa2f",
+          "uuid": "761b0188-484d-48e6-97c9-dfee3bea30db",
           "control-id": "cm-7",
           "props": [
             {
@@ -1833,7 +2121,7 @@
           ]
         },
         {
-          "uuid": "61c0f573-1e3b-4fca-8b34-e7998e0aef1f",
+          "uuid": "1d3069bc-8efe-491e-ae7e-2135f44dfd7f",
           "control-id": "cm-7.1",
           "props": [
             {
@@ -1844,7 +2132,7 @@
           ]
         },
         {
-          "uuid": "79274dc9-5c52-4ac0-b5c8-6487c5d94ff7",
+          "uuid": "3fabb45e-30e6-4bbd-b785-0e723987567c",
           "control-id": "cm-9",
           "props": [
             {
@@ -1855,7 +2143,7 @@
           ]
         },
         {
-          "uuid": "dbfa1f9b-280f-46f0-9185-ce7c4a6ead42",
+          "uuid": "8a9e0c25-8e60-4fca-bf8c-344ec2732bf4",
           "control-id": "sa-3",
           "props": [
             {
@@ -1866,7 +2154,7 @@
           ]
         },
         {
-          "uuid": "a8ed587d-d876-4236-8d77-4e7c3178cb84",
+          "uuid": "3a9a2d94-440a-4f00-9b9b-cd910f02456d",
           "control-id": "sa-8",
           "props": [
             {
@@ -1877,7 +2165,7 @@
           ]
         },
         {
-          "uuid": "4a64ec65-a712-492b-9bfb-208386ae95d0",
+          "uuid": "859e70b8-4d9f-4c2e-b265-4f0c5814fb44",
           "control-id": "sa-10",
           "props": [
             {
@@ -1888,7 +2176,7 @@
           ]
         },
         {
-          "uuid": "a199ce7c-8a50-4b86-b8d2-708b179d3713",
+          "uuid": "8d48e25d-281a-4ab8-bc6d-a11b99d45347",
           "control-id": "ac-2.5",
           "props": [
             {
@@ -1899,7 +2187,7 @@
           ]
         },
         {
-          "uuid": "894ee663-ecce-4ac3-9a54-6e5defc9ace1",
+          "uuid": "a2c530e6-ac64-4ffb-ab7a-213529d20806",
           "control-id": "ac-11",
           "props": [
             {
@@ -1910,7 +2198,7 @@
           ]
         },
         {
-          "uuid": "f8d21921-c3f8-491a-bbd3-030f3e91d6f3",
+          "uuid": "221b3885-03fa-431b-9762-d983ff9812ec",
           "control-id": "ac-11.1",
           "props": [
             {
@@ -1921,7 +2209,7 @@
           ]
         },
         {
-          "uuid": "2172c2e8-0a1a-4eb5-9b8a-c6f93ad62941",
+          "uuid": "285246bc-7170-4ebb-a70b-0fb529c1fcac",
           "control-id": "ac-12",
           "props": [
             {
@@ -1932,7 +2220,7 @@
           ]
         },
         {
-          "uuid": "f2c27faf-c15f-4071-9346-ccf91c49ed0d",
+          "uuid": "20064843-d66c-4ec9-8ddf-31c7e32515bc",
           "control-id": "ac-6.2",
           "props": [
             {
@@ -1968,7 +2256,7 @@
           ]
         },
         {
-          "uuid": "a419b7f9-961b-4f4f-b3b2-843c138d471d",
+          "uuid": "f68dcac1-4b06-4110-9613-7069e5e9120e",
           "control-id": "ac-6.5",
           "props": [
             {
@@ -2004,7 +2292,7 @@
           ]
         },
         {
-          "uuid": "69af4379-5c55-4cfe-b14c-bd960c0f3720",
+          "uuid": "f295e7c6-4fc3-45e1-8633-e0de6dd574ac",
           "control-id": "ac-1",
           "props": [
             {
@@ -2030,7 +2318,7 @@
           ]
         },
         {
-          "uuid": "608768dd-2c93-4e03-88c3-29ea082cf319",
+          "uuid": "79abc6c1-9cca-4103-ba53-13f623bee7c5",
           "control-id": "ac-2",
           "props": [
             {
@@ -2056,7 +2344,7 @@
           ]
         },
         {
-          "uuid": "86264fc9-711e-4856-bdd0-b98201b9d174",
+          "uuid": "1cf24baf-26e4-4f06-bbe4-dc460a55cf19",
           "control-id": "ac-2.1",
           "props": [
             {
@@ -2082,7 +2370,7 @@
           ]
         },
         {
-          "uuid": "29d170bb-1ce2-4531-8748-6deaa4cedbf3",
+          "uuid": "5ff1445f-8990-4f60-8850-1d681f9df644",
           "control-id": "au-2",
           "props": [
             {
@@ -2093,7 +2381,7 @@
           ]
         },
         {
-          "uuid": "c8af20f5-0451-4a19-b806-a5755ad5d5be",
+          "uuid": "349b8eea-1f64-416b-a564-8d2919c48974",
           "control-id": "au-7",
           "props": [
             {
@@ -2114,7 +2402,7 @@
           ]
         },
         {
-          "uuid": "16425af6-e65e-4540-b9fd-82bdc19ae5bb",
+          "uuid": "1b0d25d7-e3c6-4fb4-8388-a8cacee55c75",
           "control-id": "au-12",
           "props": [
             {
@@ -2135,7 +2423,7 @@
           ]
         },
         {
-          "uuid": "13a1ee56-bb10-49ea-800e-7446309b87c2",
+          "uuid": "3d928fca-1567-40dd-9a98-55bb409689c4",
           "control-id": "au-3",
           "props": [
             {
@@ -2151,7 +2439,7 @@
           ]
         },
         {
-          "uuid": "28efa857-a6f6-4f49-9366-e9f5b4883ff2",
+          "uuid": "1b0a55cf-49bc-41ed-9b14-36cc0effa24f",
           "control-id": "au-3.1",
           "props": [
             {
@@ -2163,6 +2451,204 @@
               "name": "Rule_Id",
               "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd",
               "value": "sudo_custom_logfile"
+            }
+          ]
+        },
+        {
+          "uuid": "15beb5e9-c9e2-433c-9357-c540fd5b1544",
+          "control-id": "ac-10",
+          "props": [
+            {
+              "name": "Rule_Id",
+              "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd",
+              "value": "concurrent_session_limit_configured"
+            }
+          ]
+        },
+        {
+          "uuid": "51264735-6df8-42fb-a332-7954a30e4d94",
+          "control-id": "ac-17.1",
+          "props": [
+            {
+              "name": "Rule_Id",
+              "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd",
+              "value": "sshd_logging_enabled"
+            }
+          ]
+        },
+        {
+          "uuid": "7c132003-fd56-41dd-8265-0cbea9619389",
+          "control-id": "ac-2.2",
+          "props": [
+            {
+              "name": "Rule_Id",
+              "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd",
+              "value": "account_temporary_expiration_configured"
+            }
+          ]
+        },
+        {
+          "uuid": "885f603d-a949-40b0-ae6c-b6b7c3e19384",
+          "control-id": "ac-2.3",
+          "props": [
+            {
+              "name": "Rule_Id",
+              "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd",
+              "value": "account_disable_inactive_accounts"
+            }
+          ]
+        },
+        {
+          "uuid": "af62887c-bfab-4bd7-a5b7-643b5058c822",
+          "control-id": "ac-4.4",
+          "props": [
+            {
+              "name": "Rule_Id",
+              "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd",
+              "value": "encrypted_traffic_inspection_configured"
+            }
+          ]
+        },
+        {
+          "uuid": "e7593f05-e14d-4b28-8240-cbc6fd39657a",
+          "control-id": "ac-6.1",
+          "props": [
+            {
+              "name": "Rule_Id",
+              "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd",
+              "value": "sudo_security_function_authorization"
+            }
+          ]
+        },
+        {
+          "uuid": "9c5cb868-610b-41a7-ae22-26852b45b1e2",
+          "control-id": "ac-6.3",
+          "props": [
+            {
+              "name": "Rule_Id",
+              "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd",
+              "value": "privileged_command_network_restriction"
+            }
+          ]
+        },
+        {
+          "uuid": "f8df49a5-48bc-4423-b22b-01cb605cf3bb",
+          "control-id": "au-10",
+          "props": [
+            {
+              "name": "Rule_Id",
+              "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd",
+              "value": "critical_action_signing_enabled"
+            }
+          ]
+        },
+        {
+          "uuid": "3b414099-703e-46ac-a8ea-a79bc85c13c1",
+          "control-id": "au-12.1",
+          "props": [
+            {
+              "name": "Rule_Id",
+              "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd",
+              "value": "time_synchronization_configured"
+            }
+          ]
+        },
+        {
+          "uuid": "2f01a1ba-1222-45e7-8526-fc2324ed3761",
+          "control-id": "au-5.1",
+          "props": [
+            {
+              "name": "Rule_Id",
+              "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd",
+              "value": "auditd_storage_threshold_alert"
+            }
+          ]
+        },
+        {
+          "uuid": "3a293907-8e68-4d89-8a8b-0d55ab1a2d07",
+          "control-id": "au-5.2",
+          "props": [
+            {
+              "name": "Rule_Id",
+              "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd",
+              "value": "auditd_realtime_alerts_enabled"
+            }
+          ]
+        },
+        {
+          "uuid": "5eae8f33-2c70-4aee-9a22-1cff8996907d",
+          "control-id": "au-6.1",
+          "props": [
+            {
+              "name": "Rule_Id",
+              "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd",
+              "value": "log_analysis_tool_configured"
+            }
+          ]
+        },
+        {
+          "uuid": "8472f614-8b73-438a-a5d3-310c987ac3a6",
+          "control-id": "au-6.4",
+          "props": [
+            {
+              "name": "Rule_Id",
+              "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd",
+              "value": "centralized_logging_configured"
+            }
+          ]
+        },
+        {
+          "uuid": "509471ae-3d2e-4ac5-bb0f-6fbb60f37dfd",
+          "control-id": "au-9.2",
+          "props": [
+            {
+              "name": "Rule_Id",
+              "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd",
+              "value": "audit_logs_remote_storage"
+            }
+          ]
+        },
+        {
+          "uuid": "baffaee5-5c49-448d-9167-c7593cb11885",
+          "control-id": "au-9.3",
+          "props": [
+            {
+              "name": "Rule_Id",
+              "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd",
+              "value": "audit_logs_encrypted"
+            }
+          ]
+        },
+        {
+          "uuid": "c0abf516-93ae-42e7-a771-49c6fc2e43da",
+          "control-id": "cm-3.2",
+          "props": [
+            {
+              "name": "Rule_Id",
+              "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd",
+              "value": "change_control_documentation_required"
+            }
+          ]
+        },
+        {
+          "uuid": "522c95a5-36ae-46bb-96a8-4049b115c1fa",
+          "control-id": "si-2.2",
+          "props": [
+            {
+              "name": "Rule_Id",
+              "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd",
+              "value": "package_update_automation_configured"
+            }
+          ]
+        },
+        {
+          "uuid": "65a3b377-d2eb-487c-8dc3-60b5af05327f",
+          "control-id": "si-4.2",
+          "props": [
+            {
+              "name": "Rule_Id",
+              "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd",
+              "value": "intrusion_detection_tool_installed"
             }
           ]
         }

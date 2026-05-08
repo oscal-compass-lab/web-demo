@@ -38,8 +38,9 @@ trestle_api = TrestleAPI(Path('trestle-workspace'))
 # XCCDF results directory
 XCCDF_DIR = Path('source-data/xccdf-results')
 
-# Source component definition directory (has control-implementations)
-SOURCE_COMP_DEF_DIR = Path('source-data/component-definitions')
+# Component definition directory (has control-implementations)
+# Use trestle workspace which has enhanced component definitions
+SOURCE_COMP_DEF_DIR = Path('trestle-workspace/component-definitions')
 
 # Profile/Catalog configurations
 PROFILES = [
@@ -157,7 +158,21 @@ def create_ssp(profile_config: Dict[str, str], inventory: List[Dict[str, str]]) 
     
     print(f"\nCreating SSP for {profile_title}...")
     
-    # Load component definition from source-data (has control-implementations)
+    # Load the profile to get the list of controls
+    profile = trestle_api.load_profile(profile_ref)
+    if profile and profile.imports:
+        profile_controls = set()
+        for imp in profile.imports:
+            if imp.include_controls:
+                for inc in imp.include_controls:
+                    if inc.with_ids:
+                        profile_controls.update(inc.with_ids)
+        print(f"  Profile contains {len(profile_controls)} controls")
+    else:
+        print(f"  Warning: Could not load profile controls, including all")
+        profile_controls = None
+    
+    # Load component definition from workspace (has control-implementations)
     source_comp_file = SOURCE_COMP_DEF_DIR / 'Ubuntu_Linux_24_04_LTS' / 'component-definition.json'
     if not source_comp_file.exists():
         print(f"Error: Source component definition not found: {source_comp_file}")
@@ -305,6 +320,7 @@ def create_ssp(profile_config: Dict[str, str], inventory: List[Dict[str, str]]) 
                         'props': req.get('props', []) if req.get('props') else []
                     }
                     for req in ctrl_impls[0].get('implemented-requirements', [])
+                    if profile_controls is None or req.get('control-id') in profile_controls
                 ] if ctrl_impls else []
             }
         }

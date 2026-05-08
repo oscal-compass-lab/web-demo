@@ -1,10 +1,10 @@
-.PHONY: all venv help ws run validate create-catalogs create-profiles create-resolve create-mappings create-xccdf create-compdefs create-ssps create-aps create-ars create-poams create-oscal artifacts clean-artifacts clean-catalogs clean-profiles clean-resolve clean-mappings clean-compdefs clean-ssps clean-aps clean-ars clean-poams clean-xccdf clean-oscal clean-ws clean-venv
+.PHONY: all venv help ws run validate create-catalogs create-profiles create-resolve create-mappings create-xccdf create-compdefs create-ssps create-aps create-ars create-poams charts create-oscal artifacts clean-artifacts clean-catalogs clean-profiles clean-resolve clean-mappings clean-compdefs clean-ssps clean-aps clean-ars clean-poams clean-xccdf clean-charts clean-oscal clean-ws clean-venv
 
 # Python virtual environment directory
 VENV_DIR = .venv
 TRESTLE_WORKSPACE = trestle-workspace
 
-all: venv ws create-xccdf create-oscal validate run
+all: venv ws artifacts charts validate run
 
 help:
 	@echo "Available targets:"
@@ -16,11 +16,13 @@ help:
 	@echo "  artifacts      - Generate all artifacts (XCCDF results and OSCAL documents) in correct order"
 	@echo "  clean-artifacts - Remove all generated/copied artifacts (XCCDF results and OSCAL documents)"
 	@echo "  validate       - Validate all OSCAL documents with trestle"
+	@echo "  charts         - Generate compliance status charts from assessment results"
+	@echo "  clean-charts   - Remove all generated charts"
 	@echo "  run            - Launch Flask application"
 	
 
 
-create-xccdf: venv ws
+create-xccdf: venv ws create-compdefs
 	@echo "Creating XCCDF scan result files..."
 	@. $(VENV_DIR)/bin/activate && python3 create_xccdf_results.py
 
@@ -82,7 +84,10 @@ create-compdefs: venv ws
 			cp -r $$compdef $(TRESTLE_WORKSPACE)/component-definitions/; \
 		fi; \
 	done
-	@echo "✅ Component definitions copied"
+	@echo "Enhancing component definitions with FedRAMP Moderate/High controls..."
+	@. $(VENV_DIR)/bin/activate && \
+		COMP_DEF_DIR=$(TRESTLE_WORKSPACE)/component-definitions python3 update_component_definitions.py
+	@echo "✅ Component definitions copied and enhanced"
 
 # Clean targets (in reverse order of creation)
 clean-catalogs:
@@ -145,6 +150,15 @@ clean-poams:
 	@echo "Removing all generated POA&Ms..."
 	@rm -rf $(TRESTLE_WORKSPACE)/plan-of-action-and-milestones/Ubuntu-System-poam-*
 	@echo "✅ POA&Ms removed"
+
+charts: clean-charts venv ws create-ars
+	@echo "Creating compliance status charts from assessment results..."
+	@. $(VENV_DIR)/bin/activate && python3 create_assessment_result_charts.py
+
+clean-charts:
+	@echo "Removing all generated charts..."
+	@rm -rf source-data/charts/*.png
+	@echo "✅ Charts removed"
 
 clean-oscal: clean-poams clean-ars clean-aps clean-ssps clean-compdefs clean-mappings clean-resolve clean-profiles clean-catalogs
 	@echo "✅ All OSCAL documents removed"

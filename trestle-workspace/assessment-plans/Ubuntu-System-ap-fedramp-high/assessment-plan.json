@@ -1,10 +1,10 @@
 {
   "assessment-plan": {
-    "uuid": "d0ebb311-2179-4b05-8867-59aaa70cce33",
+    "uuid": "a41f6146-2862-4dc4-811d-371b521e54c1",
     "metadata": {
       "title": "Ubuntu System Assessment Plan - FedRAMP High",
-      "published": "2026-05-08T11:36:48.302039",
-      "last-modified": "2026-05-08T11:36:48.302039",
+      "published": "2026-05-08T14:27:41.220064",
+      "last-modified": "2026-05-08T14:27:41.220064",
       "version": "1.0",
       "oscal-version": "1.2.1",
       "props": [
@@ -36,7 +36,7 @@
     "local-definitions": {
       "activities": [
         {
-          "uuid": "0650b4ad-1f9c-4930-8dfc-c5346993376b",
+          "uuid": "e3c2491b-bdb0-42a2-811d-0ce24c925dd4",
           "title": "Automated Security Scanning",
           "description": "Automated vulnerability scanning and configuration compliance checks using OSCAP",
           "props": [
@@ -51,19 +51,19 @@
           ],
           "steps": [
             {
-              "uuid": "5259c079-0389-4f4e-807a-20e06519f586",
+              "uuid": "69408040-e5e6-4d20-b437-127ba120d9a4",
               "title": "Run OSCAP Scan",
               "description": "Execute OpenSCAP security compliance scan against the Ubuntu 24.04 LTS fleet"
             },
             {
-              "uuid": "3655cf6e-b3f7-4074-8dea-d3b78c9d8a72",
+              "uuid": "327913b5-0162-4ab8-a59c-2bc3a700fcbf",
               "title": "Analyze Results",
               "description": "Review scan results and identify non-compliant controls"
             }
           ]
         },
         {
-          "uuid": "2c7ed4ba-d388-471b-98c9-5b34146d703d",
+          "uuid": "cfa4ab58-55b1-4f4d-9462-fd91ec5e4007",
           "title": "Manual Control Testing",
           "description": "Manual review and testing of security controls that cannot be automated",
           "props": [
@@ -78,19 +78,19 @@
           ],
           "steps": [
             {
-              "uuid": "1c608dfb-696a-43ea-8544-fcec1f98d47a",
+              "uuid": "f5ba88b5-f48e-402e-b5b2-d56f2d7e4302",
               "title": "Document Review",
               "description": "Review security policies, procedures, configurations, and evidence artifacts"
             },
             {
-              "uuid": "9ebf73a9-f092-48b1-845e-e7366d9950d8",
+              "uuid": "b59abcaa-ebbb-4cb7-8838-164f23fbe46a",
               "title": "Interview Personnel",
               "description": "Interview system administrators and security personnel"
             }
           ]
         },
         {
-          "uuid": "f4b6e64d-f3ae-44dd-8f34-6110571087af",
+          "uuid": "3badc7ee-c165-4bc0-88d5-64cfce18d792",
           "title": "Resilience and Response Validation",
           "description": "Validate operational resilience, response, and recovery capabilities across the Ubuntu fleet",
           "props": [
@@ -105,12 +105,12 @@
           ],
           "steps": [
             {
-              "uuid": "435a0762-a2ef-45aa-b1a4-671a5b9fe48d",
+              "uuid": "de29ee6d-01b7-4b21-866b-5068b303654b",
               "title": "Scenario Walkthrough",
               "description": "Review incident, disruption, and recovery scenarios applicable to the system"
             },
             {
-              "uuid": "2bf847a5-eef0-48b8-9ba6-dc8899a56353",
+              "uuid": "7e91339e-2d77-4bd1-ac9f-b300a348389d",
               "title": "Evidence Correlation",
               "description": "Correlate technical evidence with implemented controls and procedures"
             }
@@ -143,27 +143,27 @@
         "description": "Ubuntu Linux 24.04 LTS server fleet",
         "include-subjects": [
           {
-            "subject-uuid": "1a908f22-0425-4e56-9355-abc1fedc29a5",
+            "subject-uuid": "6d1e2c9e-bc1f-4a78-bfed-ff04fd0332c3",
             "type": "inventory-item"
           },
           {
-            "subject-uuid": "7f9f4d96-9618-4302-b7bd-6b643b091c9a",
+            "subject-uuid": "c1831b57-d526-4351-9f36-89b73bd261e8",
             "type": "inventory-item"
           },
           {
-            "subject-uuid": "4937e411-29cd-475b-96ac-63b2c1210548",
+            "subject-uuid": "cac3df42-c5dc-443a-9aef-8b121ced4973",
             "type": "inventory-item"
           },
           {
-            "subject-uuid": "1ceeff2c-ff2f-4910-be68-84c6e3b9ba58",
+            "subject-uuid": "0c229ba1-7677-49da-bbb7-d73e27fe9307",
             "type": "inventory-item"
           },
           {
-            "subject-uuid": "c83fd5a7-62c0-4fcf-89c5-f7868103af33",
+            "subject-uuid": "fb64d985-06a9-4eaa-a975-bc35aa12f414",
             "type": "inventory-item"
           },
           {
-            "subject-uuid": "30ee9de7-637f-4ac9-aecb-522702ca1c49",
+            "subject-uuid": "b2aed551-00f5-4fc0-857d-98db02b2787d",
             "type": "inventory-item"
           }
         ]
@@ -172,7 +172,7 @@
     "assessment-assets": {
       "assessment-platforms": [
         {
-          "uuid": "053eda1d-3bd6-4d67-be79-1c6fa6cd7ae7",
+          "uuid": "ac50d6a4-ad2a-4b35-a9d3-d7bcd98cee4d",
           "title": "OpenSCAP Scanner",
           "props": [
             {
@@ -186,7 +186,7 @@
           ]
         },
         {
-          "uuid": "1a63b6a2-b546-411e-a5f7-cce5b2c778d0",
+          "uuid": "1dc3e315-5c2b-4f7a-921c-15a8fc215013",
           "title": "Evidence Review Toolkit",
           "props": [
             {
@@ -203,36 +203,36 @@
     },
     "tasks": [
       {
-        "uuid": "e598214a-671e-480e-bec4-af096ac91ca5",
+        "uuid": "453cac67-6bd1-4149-ba9e-b3efced6120e",
         "type": "action",
         "title": "Assessment Kickoff",
         "description": "Schedule and conduct the assessment kickoff meeting",
         "timing": {
           "on-date": {
-            "date": "2026-05-15T11:36:48.302039"
+            "date": "2026-05-15T14:27:41.220064"
           }
         }
       },
       {
-        "uuid": "bdcf158c-f9af-4be4-8869-5d799471921d",
+        "uuid": "30a182f6-88c4-4d70-a44b-65aaba9d56cc",
         "type": "action",
         "title": "Execute Automated and Manual Assessment Activities",
         "description": "Perform automated scans, document review, interviews, and validation activities",
         "timing": {
           "within-date-range": {
-            "start": "2026-05-22T11:36:48.302039",
-            "end": "2026-06-12T11:36:48.302039"
+            "start": "2026-05-22T14:27:41.220064",
+            "end": "2026-06-12T14:27:41.220064"
           }
         }
       },
       {
-        "uuid": "607c11db-5766-44de-8537-a18f9e4fb126",
+        "uuid": "3b9fb3da-fbe9-40e3-8bb9-a1cc34cbf856",
         "type": "milestone",
         "title": "Assessment Results Ready",
         "description": "Complete evidence review and prepare assessment results",
         "timing": {
           "on-date": {
-            "date": "2026-06-22T11:36:48.302039"
+            "date": "2026-06-22T14:27:41.220064"
           }
         }
       }
