@@ -1,4 +1,4 @@
-.PHONY: all venv help ws run validate create-catalogs create-profiles create-resolve create-mappings create-xccdf create-compdefs create-ssps create-aps create-ars create-poams charts create-oscal artifacts clean-artifacts clean-catalogs clean-profiles clean-resolve clean-mappings clean-compdefs clean-ssps clean-aps clean-ars clean-poams clean-xccdf clean-charts clean-oscal clean-ws clean-venv
+.PHONY: all venv help ws run validate create-catalogs create-profiles create-resolve create-mappings create-xccdf create-compdefs create-ssps create-aps create-ars create-poams charts create-oscal artifacts clean-artifacts clean-catalogs clean-profiles clean-resolve clean-mappings clean-compdefs clean-ssps clean-aps clean-ars clean-poams clean-xccdf clean-charts clean-oscal clean-ws clean-venv copy-images
 
 # Python virtual environment directory
 VENV_DIR = .venv
@@ -202,7 +202,13 @@ validate: venv ws
 run: venv ws create-resolve create-ssps validate
 	@. $(VENV_DIR)/bin/activate && python app.py
 
-ws: venv
+copy-images:
+	@echo "Copying images to app-config/static/images..."
+	@mkdir -p app-config/static/images
+	@cp -f images/oscal-framework-layers.png app-config/static/images/
+	@echo "✅ Images copied"
+
+ws: venv copy-images
 	@if [ ! -d "$(TRESTLE_WORKSPACE)" ]; then \
 		mkdir -p $(TRESTLE_WORKSPACE); \
 		cd $(TRESTLE_WORKSPACE) && . ../$(VENV_DIR)/bin/activate && trestle init; \
