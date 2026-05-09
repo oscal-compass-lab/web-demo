@@ -14,9 +14,13 @@
 # limitations under the License.
 
 """
-Common server configuration data for Ubuntu hosts
-This file provides a centralized source of truth for all Ubuntu server configurations
+Common configuration data for inventory items (Ubuntu servers and Kubernetes nodes).
+This file provides a centralized source of truth for all server and node configurations
 used across the document creation process.
+
+Includes:
+- 6 Ubuntu 24.04 LTS servers (web, database, application, management)
+- 4 Kubernetes 1.28 nodes (1 control plane, 3 workers)
 """
 
 # Ubuntu server configurations
@@ -77,6 +81,54 @@ UBUNTU_SERVERS = [
     }
 ]
 
+# Kubernetes cluster node configurations
+KUBERNETES_NODES = [
+    {
+        "name": "k8s-control-01",
+        "hostname": "k8s-control-01.example.com",
+        "ip": "192.168.2.101",
+        "description": "Kubernetes control plane node running K8s 1.28",
+        "compliance_rate": 0.92,  # 92% pass rate
+        "role": "control-plane",
+        "environment": "production",
+        "k8s_version": "1.28.0",
+        "node_type": "master"
+    },
+    {
+        "name": "k8s-worker-01",
+        "hostname": "k8s-worker-01.example.com",
+        "ip": "192.168.2.102",
+        "description": "Kubernetes worker node running K8s 1.28",
+        "compliance_rate": 0.88,  # 88% pass rate
+        "role": "worker",
+        "environment": "production",
+        "k8s_version": "1.28.0",
+        "node_type": "worker"
+    },
+    {
+        "name": "k8s-worker-02",
+        "hostname": "k8s-worker-02.example.com",
+        "ip": "192.168.2.103",
+        "description": "Kubernetes worker node running K8s 1.28",
+        "compliance_rate": 0.85,  # 85% pass rate
+        "role": "worker",
+        "environment": "production",
+        "k8s_version": "1.28.0",
+        "node_type": "worker"
+    },
+    {
+        "name": "k8s-worker-03",
+        "hostname": "k8s-worker-03.example.com",
+        "ip": "192.168.2.104",
+        "description": "Kubernetes worker node running K8s 1.28",
+        "compliance_rate": 0.90,  # 90% pass rate
+        "role": "worker",
+        "environment": "production",
+        "k8s_version": "1.28.0",
+        "node_type": "worker"
+    }
+]
+
 
 def get_all_servers():
     """
@@ -128,6 +180,55 @@ def get_servers_by_environment(environment):
         list: List of server configuration dictionaries matching the environment
     """
     return [server for server in UBUNTU_SERVERS if server['environment'] == environment]
+
+
+def get_all_k8s_nodes():
+    """
+    Get all Kubernetes node configurations.
+    
+    Returns:
+        list: List of Kubernetes node configuration dictionaries
+    """
+    return KUBERNETES_NODES
+
+
+def get_k8s_node_by_name(name):
+    """
+    Get a specific Kubernetes node configuration by name.
+    
+    Args:
+        name (str): Node name (e.g., 'k8s-control-01')
+    
+    Returns:
+        dict: Node configuration dictionary or None if not found
+    """
+    for node in KUBERNETES_NODES:
+        if node['name'] == name:
+            return node
+    return None
+
+
+def get_k8s_nodes_by_type(node_type):
+    """
+    Get all Kubernetes nodes of a specific type.
+    
+    Args:
+        node_type (str): Node type ('master' or 'worker')
+    
+    Returns:
+        list: List of node configuration dictionaries matching the type
+    """
+    return [node for node in KUBERNETES_NODES if node['node_type'] == node_type]
+
+
+def get_all_inventory():
+    """
+    Get all inventory items (Ubuntu servers and Kubernetes nodes).
+    
+    Returns:
+        list: Combined list of all server and node configurations
+    """
+    return UBUNTU_SERVERS + KUBERNETES_NODES
 
 
 # Made with Bob

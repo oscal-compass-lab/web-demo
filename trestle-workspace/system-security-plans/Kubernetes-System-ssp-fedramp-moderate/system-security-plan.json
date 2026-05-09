@@ -1,0 +1,602 @@
+{
+  "system-security-plan": {
+    "uuid": "43a62368-ec52-4907-9552-670d884f8d87",
+    "metadata": {
+      "title": "Kubernetes System Security Plan - FedRAMP Moderate",
+      "last-modified": "2026-05-09T08:08:27.244122",
+      "version": "1.0",
+      "oscal-version": "1.2.1"
+    },
+    "import-profile": {
+      "href": "trestle://profiles/FedRAMP-Rev5-Moderate/profile.json"
+    },
+    "system-characteristics": {
+      "system-ids": [
+        {
+          "id": "ubuntu-system-001"
+        }
+      ],
+      "system-name": "Kubernetes 1.28 Cluster",
+      "description": "System Security Plan for Kubernetes 1.28 cluster with 4 nodes and kube-bench compliance validation - FedRAMP Moderate baseline",
+      "security-sensitivity-level": "moderate",
+      "system-information": {
+        "information-types": [
+          {
+            "title": "System and Network Configuration",
+            "description": "Information related to system configuration, security settings, compliance validation, and network infrastructure"
+          }
+        ]
+      },
+      "status": {
+        "state": "operational"
+      },
+      "authorization-boundary": {
+        "description": "Kubernetes 1.28 cluster with 4 nodes operating within a single authorization boundary, implementing FedRAMP Moderate security controls"
+      }
+    },
+    "system-implementation": {
+      "users": [
+        {
+          "uuid": "9d80892c-d9c3-4ce3-a7ad-aa2ea393b9bb",
+          "title": "System Administrator",
+          "role-ids": [
+            "admin"
+          ]
+        }
+      ],
+      "components": [
+        {
+          "uuid": "9a8b7c6d-5e4f-4a2b-9c0d-9e8f7a6b5c4d",
+          "type": "software",
+          "title": "Kubernetes_1.28",
+          "description": "Kubernetes Container Orchestration Platform version 1.28",
+          "props": [
+            {
+              "name": "version",
+              "value": "1.28.0"
+            },
+            {
+              "name": "vendor",
+              "value": "Cloud Native Computing Foundation"
+            }
+          ],
+          "status": {
+            "state": "operational"
+          }
+        }
+      ],
+      "inventory-items": [
+        {
+          "uuid": "549a7df4-c8b6-475f-86e8-ff09305304b1",
+          "description": "Kubernetes control plane node running K8s 1.28",
+          "props": [
+            {
+              "name": "asset-id",
+              "value": "k8s-control-01.example.com"
+            },
+            {
+              "name": "asset-type",
+              "value": "k8s-node"
+            },
+            {
+              "name": "ipv4-address",
+              "value": "192.168.2.101"
+            },
+            {
+              "name": "role",
+              "value": "k8s-control-plane"
+            },
+            {
+              "name": "operating-system",
+              "value": "Kubernetes 1.28.0"
+            }
+          ],
+          "implemented-components": [
+            {
+              "component-uuid": "9a8b7c6d-5e4f-4a2b-9c0d-9e8f7a6b5c4d"
+            }
+          ]
+        },
+        {
+          "uuid": "fb994c1f-659c-45ad-b219-8effbcdba598",
+          "description": "Kubernetes worker node running K8s 1.28",
+          "props": [
+            {
+              "name": "asset-id",
+              "value": "k8s-worker-01.example.com"
+            },
+            {
+              "name": "asset-type",
+              "value": "k8s-node"
+            },
+            {
+              "name": "ipv4-address",
+              "value": "192.168.2.102"
+            },
+            {
+              "name": "role",
+              "value": "k8s-worker"
+            },
+            {
+              "name": "operating-system",
+              "value": "Kubernetes 1.28.0"
+            }
+          ],
+          "implemented-components": [
+            {
+              "component-uuid": "9a8b7c6d-5e4f-4a2b-9c0d-9e8f7a6b5c4d"
+            }
+          ]
+        },
+        {
+          "uuid": "ddc9debc-92a2-481a-9d85-2f67ca03b7b8",
+          "description": "Kubernetes worker node running K8s 1.28",
+          "props": [
+            {
+              "name": "asset-id",
+              "value": "k8s-worker-02.example.com"
+            },
+            {
+              "name": "asset-type",
+              "value": "k8s-node"
+            },
+            {
+              "name": "ipv4-address",
+              "value": "192.168.2.103"
+            },
+            {
+              "name": "role",
+              "value": "k8s-worker"
+            },
+            {
+              "name": "operating-system",
+              "value": "Kubernetes 1.28.0"
+            }
+          ],
+          "implemented-components": [
+            {
+              "component-uuid": "9a8b7c6d-5e4f-4a2b-9c0d-9e8f7a6b5c4d"
+            }
+          ]
+        },
+        {
+          "uuid": "fe81215b-0f3f-466c-bc88-a8badfe5dd84",
+          "description": "Kubernetes worker node running K8s 1.28",
+          "props": [
+            {
+              "name": "asset-id",
+              "value": "k8s-worker-03.example.com"
+            },
+            {
+              "name": "asset-type",
+              "value": "k8s-node"
+            },
+            {
+              "name": "ipv4-address",
+              "value": "192.168.2.104"
+            },
+            {
+              "name": "role",
+              "value": "k8s-worker"
+            },
+            {
+              "name": "operating-system",
+              "value": "Kubernetes 1.28.0"
+            }
+          ],
+          "implemented-components": [
+            {
+              "component-uuid": "9a8b7c6d-5e4f-4a2b-9c0d-9e8f7a6b5c4d"
+            }
+          ]
+        }
+      ]
+    },
+    "control-implementation": {
+      "description": "Control implementation for FedRAMP Moderate baseline using Kubernetes 1.28",
+      "implemented-requirements": [
+        {
+          "uuid": "2e92d86b-7b50-46a0-902a-a7f90583a510",
+          "control-id": "ac-2",
+          "props": [
+            {
+              "name": "Rule_Id",
+              "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd",
+              "value": "control_plane_api_server_anonymous_auth"
+            },
+            {
+              "name": "Rule_Id",
+              "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd",
+              "value": "control_plane_api_server_basic_auth"
+            },
+            {
+              "name": "Rule_Id",
+              "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd",
+              "value": "control_plane_api_server_token_auth"
+            },
+            {
+              "name": "Rule_Id",
+              "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd",
+              "value": "worker_node_kubelet_anonymous_auth"
+            }
+          ]
+        },
+        {
+          "uuid": "822a52b0-b2d4-4f86-b7ee-bdc153caeda9",
+          "control-id": "ac-3",
+          "props": [
+            {
+              "name": "Rule_Id",
+              "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd",
+              "value": "control_plane_api_server_authorization_mode"
+            },
+            {
+              "name": "Rule_Id",
+              "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd",
+              "value": "control_plane_api_server_authorization_mode_node"
+            },
+            {
+              "name": "Rule_Id",
+              "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd",
+              "value": "control_plane_api_server_authorization_mode_rbac"
+            },
+            {
+              "name": "Rule_Id",
+              "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd",
+              "value": "worker_node_kubelet_authorization_mode"
+            }
+          ]
+        },
+        {
+          "uuid": "cad44612-239b-4734-9972-ab5f78bf12ea",
+          "control-id": "ac-6",
+          "props": [
+            {
+              "name": "Rule_Id",
+              "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd",
+              "value": "control_plane_api_server_admission_control_plugin_always_admit"
+            },
+            {
+              "name": "Rule_Id",
+              "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd",
+              "value": "control_plane_api_server_admission_control_plugin_security_context_deny"
+            },
+            {
+              "name": "Rule_Id",
+              "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd",
+              "value": "pod_security_policy_enabled"
+            }
+          ]
+        },
+        {
+          "uuid": "50a35053-efed-473f-a60e-ed2a28faaf38",
+          "control-id": "au-2",
+          "props": [
+            {
+              "name": "Rule_Id",
+              "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd",
+              "value": "control_plane_api_server_audit_log_path"
+            },
+            {
+              "name": "Rule_Id",
+              "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd",
+              "value": "control_plane_api_server_audit_log_maxage"
+            },
+            {
+              "name": "Rule_Id",
+              "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd",
+              "value": "control_plane_api_server_audit_log_maxbackup"
+            },
+            {
+              "name": "Rule_Id",
+              "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd",
+              "value": "control_plane_api_server_audit_log_maxsize"
+            }
+          ]
+        },
+        {
+          "uuid": "f6887517-3aaf-456f-8c2a-0ad204075143",
+          "control-id": "cm-6",
+          "props": [
+            {
+              "name": "Rule_Id",
+              "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd",
+              "value": "control_plane_api_server_insecure_port"
+            },
+            {
+              "name": "Rule_Id",
+              "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd",
+              "value": "control_plane_api_server_secure_port"
+            },
+            {
+              "name": "Rule_Id",
+              "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd",
+              "value": "control_plane_api_server_profiling"
+            },
+            {
+              "name": "Rule_Id",
+              "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd",
+              "value": "control_plane_scheduler_profiling"
+            },
+            {
+              "name": "Rule_Id",
+              "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd",
+              "value": "control_plane_controller_manager_profiling"
+            }
+          ]
+        },
+        {
+          "uuid": "e9355380-277d-4dff-b402-453fa467bd90",
+          "control-id": "ia-5",
+          "props": [
+            {
+              "name": "Rule_Id",
+              "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd",
+              "value": "control_plane_api_server_kubelet_client_certificate"
+            },
+            {
+              "name": "Rule_Id",
+              "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd",
+              "value": "control_plane_api_server_kubelet_certificate_authority"
+            },
+            {
+              "name": "Rule_Id",
+              "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd",
+              "value": "control_plane_api_server_client_ca_file"
+            },
+            {
+              "name": "Rule_Id",
+              "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd",
+              "value": "worker_node_kubelet_client_ca_file"
+            }
+          ]
+        },
+        {
+          "uuid": "258e5923-f271-4d35-a6ea-ab3bea117967",
+          "control-id": "sc-8",
+          "props": [
+            {
+              "name": "Rule_Id",
+              "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd",
+              "value": "control_plane_api_server_kubelet_https"
+            },
+            {
+              "name": "Rule_Id",
+              "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd",
+              "value": "control_plane_api_server_tls_cert_file"
+            },
+            {
+              "name": "Rule_Id",
+              "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd",
+              "value": "control_plane_api_server_etcd_certfile"
+            },
+            {
+              "name": "Rule_Id",
+              "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd",
+              "value": "worker_node_kubelet_tls_cert_file"
+            },
+            {
+              "name": "Rule_Id",
+              "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd",
+              "value": "etcd_cert_file"
+            },
+            {
+              "name": "Rule_Id",
+              "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd",
+              "value": "etcd_peer_cert_file"
+            }
+          ]
+        },
+        {
+          "uuid": "e9908f56-d3ea-4358-8ac1-420441d1c20d",
+          "control-id": "sc-13",
+          "props": [
+            {
+              "name": "Rule_Id",
+              "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd",
+              "value": "control_plane_api_server_encryption_provider_config"
+            },
+            {
+              "name": "Rule_Id",
+              "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd",
+              "value": "control_plane_api_server_tls_cipher_suites"
+            },
+            {
+              "name": "Rule_Id",
+              "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd",
+              "value": "etcd_client_cert_auth"
+            },
+            {
+              "name": "Rule_Id",
+              "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd",
+              "value": "etcd_peer_client_cert_auth"
+            }
+          ]
+        },
+        {
+          "uuid": "ea82118a-f4aa-4911-8d42-174e8a62fdc3",
+          "control-id": "sc-23",
+          "props": [
+            {
+              "name": "Rule_Id",
+              "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd",
+              "value": "control_plane_api_server_service_account_lookup"
+            },
+            {
+              "name": "Rule_Id",
+              "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd",
+              "value": "control_plane_api_server_service_account_key_file"
+            },
+            {
+              "name": "Rule_Id",
+              "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd",
+              "value": "control_plane_controller_manager_service_account_private_key_file"
+            },
+            {
+              "name": "Rule_Id",
+              "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd",
+              "value": "control_plane_api_server_admission_control_plugin_service_account"
+            }
+          ]
+        },
+        {
+          "uuid": "cb705868-a44a-475c-8727-415b3b533edd",
+          "control-id": "si-7",
+          "props": [
+            {
+              "name": "Rule_Id",
+              "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd",
+              "value": "control_plane_api_server_admission_control_plugin_always_pull_images"
+            },
+            {
+              "name": "Rule_Id",
+              "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd",
+              "value": "worker_node_kubelet_rotate_certificates"
+            },
+            {
+              "name": "Rule_Id",
+              "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd",
+              "value": "control_plane_controller_manager_feature_gates_rotate_kubelet_server_certificate"
+            }
+          ]
+        },
+        {
+          "uuid": "b4733235-e453-452d-bfb4-519e617b7489",
+          "control-id": "cm-7",
+          "props": [
+            {
+              "name": "Rule_Id",
+              "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd",
+              "value": "control_plane_api_server_admission_control_plugin_namespace_lifecycle"
+            },
+            {
+              "name": "Rule_Id",
+              "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd",
+              "value": "control_plane_api_server_admission_control_plugin_node_restriction"
+            },
+            {
+              "name": "Rule_Id",
+              "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd",
+              "value": "control_plane_api_server_admission_control_plugin_pod_security_policy"
+            },
+            {
+              "name": "Rule_Id",
+              "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd",
+              "value": "network_policy_enabled"
+            }
+          ]
+        },
+        {
+          "uuid": "dc1d67c2-21ba-4be2-8b97-13851ca331de",
+          "control-id": "sc-7",
+          "props": [
+            {
+              "name": "Rule_Id",
+              "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd",
+              "value": "control_plane_scheduler_bind_address"
+            },
+            {
+              "name": "Rule_Id",
+              "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd",
+              "value": "control_plane_controller_manager_bind_address"
+            },
+            {
+              "name": "Rule_Id",
+              "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd",
+              "value": "worker_node_kubelet_read_only_port"
+            },
+            {
+              "name": "Rule_Id",
+              "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd",
+              "value": "control_plane_api_server_etcd_cafile"
+            }
+          ]
+        },
+        {
+          "uuid": "f954d7ab-2a7b-4ccb-aa50-c75d18f1b33d",
+          "control-id": "si-2",
+          "props": [
+            {
+              "name": "Rule_Id",
+              "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd",
+              "value": "control_plane_controller_manager_terminated_pod_gc_threshold"
+            },
+            {
+              "name": "Rule_Id",
+              "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd",
+              "value": "control_plane_controller_manager_use_service_account_credentials"
+            },
+            {
+              "name": "Rule_Id",
+              "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd",
+              "value": "control_plane_controller_manager_root_ca_file"
+            }
+          ]
+        },
+        {
+          "uuid": "00d349b0-2116-43e7-b0a4-91d2f99d0d64",
+          "control-id": "si-4",
+          "props": [
+            {
+              "name": "Rule_Id",
+              "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd",
+              "value": "worker_node_kubelet_streaming_connection_idle_timeout"
+            },
+            {
+              "name": "Rule_Id",
+              "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd",
+              "value": "worker_node_kubelet_event_qps"
+            },
+            {
+              "name": "Rule_Id",
+              "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd",
+              "value": "control_plane_api_server_request_timeout"
+            }
+          ]
+        },
+        {
+          "uuid": "eabd2785-ed01-495d-bbe9-2c3dd9ee614c",
+          "control-id": "cm-2",
+          "props": [
+            {
+              "name": "Rule_Id",
+              "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd",
+              "value": "worker_node_kubelet_protect_kernel_defaults"
+            },
+            {
+              "name": "Rule_Id",
+              "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd",
+              "value": "worker_node_kubelet_make_iptables_util_chains"
+            },
+            {
+              "name": "Rule_Id",
+              "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd",
+              "value": "worker_node_kubelet_hostname_override"
+            }
+          ]
+        },
+        {
+          "uuid": "0016b60a-3142-4d12-b70f-729d29aedbb6",
+          "control-id": "sc-28",
+          "props": [
+            {
+              "name": "Rule_Id",
+              "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd",
+              "value": "etcd_auto_tls"
+            },
+            {
+              "name": "Rule_Id",
+              "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd",
+              "value": "etcd_peer_auto_tls"
+            },
+            {
+              "name": "Rule_Id",
+              "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd",
+              "value": "etcd_unique_ca"
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

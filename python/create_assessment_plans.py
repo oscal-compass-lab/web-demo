@@ -16,10 +16,12 @@
 """
 Create Assessment Plans from System Security Plans.
 This script generates OSCAL assessment plans for each SSP by:
-1. Reading existing SSPs
-2. Extracting inventory items (servers) from the SSP
+1. Reading existing SSPs (Ubuntu and Kubernetes)
+2. Extracting inventory items (servers and nodes) from the SSP
 3. Creating assessment plans that reference the SSPs and their inventory
 4. Defining assessment activities, subjects, and tasks
+
+Works generically with all SSPs regardless of platform.
 """
 
 import sys
@@ -81,7 +83,7 @@ def create_assessment_plan(ssp_name: str) -> bool:
         print(f"  SSPs should be created with inventory-items using create_ssps.py")
         # Continue anyway - assessment plan can exist without specific subjects
     
-    # Extract regulation from SSP title
+    # Extract regulation and platform from SSP title
     ssp_title = ssp.metadata.title
     if "FedRAMP" in ssp_title and "Low" in ssp_title:
         regulation = "FedRAMP Rev 5 Low"
@@ -94,6 +96,13 @@ def create_assessment_plan(ssp_name: str) -> bool:
     else:
         regulation = "Security Assessment"
     
+    # Determine platform from SSP name
+    if '-k8s' in ssp_name or 'Kubernetes' in ssp_title:
+        platform = "Kubernetes 1.28"
+    else:
+        platform = "Ubuntu 24.04 LTS"
+    
+    print(f"  Platform: {platform}")
     print(f"  Regulation: {regulation}")
     print(f"  Inventory items: {len(inventory_uuids)}")
     
@@ -121,6 +130,7 @@ def create_assessment_plan(ssp_name: str) -> bool:
                     {'name': 'assessment-scope', 'value': 'host-assessment'},
                     {'name': 'assessment-frequency', 'value': 'annual'},
                     {'name': 'regulation', 'value': regulation},
+                    {'name': 'platform', 'value': platform},
                     {'name': 'subject-count', 'value': str(len(inventory_uuids))}
                 ]
             },
@@ -140,8 +150,8 @@ def create_assessment_plan(ssp_name: str) -> bool:
                         'steps': [
                             {
                                 'uuid': str(uuid.uuid4()),
-                                'title': 'Run OSCAP Scan',
-                                'description': 'Execute OpenSCAP security compliance scan against the Ubuntu 24.04 LTS fleet'
+                                'title': 'Run Security Compliance Scan',
+                                'description': 'Execute security compliance scan against the inventory items'
                             },
                             {
                                 'uuid': str(uuid.uuid4()),
@@ -271,7 +281,7 @@ def create_assessment_plan(ssp_name: str) -> bool:
         ap_dict['assessment-plan']['assessment-subjects'] = [
             {
                 'type': 'inventory-item',
-                'description': 'Ubuntu Linux 24.04 LTS server fleet',
+                'description': 'System inventory items',
                 'include-subjects': [
                     {'subject-uuid': subj_uuid, 'type': 'inventory-item'}
                     for subj_uuid in inventory_uuids

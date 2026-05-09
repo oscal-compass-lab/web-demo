@@ -1,0 +1,1270 @@
+{
+  "assessment-results": {
+    "uuid": "7d0af203-20e8-4603-add7-22e7b6db3752",
+    "metadata": {
+      "title": "Kubernetes System Assessment Results - FedRAMP High",
+      "published": "2026-05-09T08:16:56.834782+00:00",
+      "last-modified": "2026-05-09T08:16:56.834782+00:00",
+      "version": "1.0",
+      "oscal-version": "1.2.1",
+      "props": [
+        {
+          "name": "regulation",
+          "value": "FedRAMP Rev 5 High"
+        },
+        {
+          "name": "platform",
+          "value": "Kubernetes 1.28"
+        },
+        {
+          "name": "assessment-scope",
+          "value": "host-assessment"
+        },
+        {
+          "name": "assessment-subject-count",
+          "value": "4"
+        },
+        {
+          "name": "result-summary",
+          "value": "partial-pass-with-findings"
+        },
+        {
+          "name": "mapped-control-count",
+          "value": "17"
+        }
+      ]
+    },
+    "import-ap": {
+      "href": "../assessment-plans/Kubernetes-System-ap-fedramp-high/assessment-plan.json"
+    },
+    "local-definitions": {
+      "activities": [
+        {
+          "uuid": "b0d30293-3a45-4975-a781-801cf0df0a73",
+          "title": "Mapped XCCDF evidence analysis",
+          "description": "XCCDF rule results were normalized and mapped to FedRAMP Rev 5 High control identifiers.",
+          "steps": [
+            {
+              "uuid": "96534ffa-4434-4dc3-87e3-a0935296302d",
+              "title": "Parse XCCDF rule results",
+              "description": "Collected rule pass/fail results for all 10 Ubuntu servers."
+            },
+            {
+              "uuid": "a8a602d6-00af-4dba-8a96-6b3722512a33",
+              "title": "Map rules to controls",
+              "description": "Used component definition implemented-requirement Rule_Id properties to associate evidence with controls."
+            }
+          ]
+        }
+      ]
+    },
+    "results": [
+      {
+        "uuid": "a1a7500f-b777-49f9-a821-d6d348943fe5",
+        "title": "FedRAMP Rev 5 High assessment execution results",
+        "description": "Assessment results for 10 inventory items evaluated against FedRAMP Rev 5 High using mapped XCCDF evidence.",
+        "start": "2026-04-09T08:16:56.834782+00:00",
+        "end": "2026-05-09T08:16:56.834782+00:00",
+        "reviewed-controls": {
+          "control-selections": [
+            {
+              "description": "ac-2: partially-satisfied (10 pass / 6 fail rule evaluations)",
+              "include-controls": [
+                {
+                  "control-id": "ac-2"
+                }
+              ]
+            },
+            {
+              "description": "ac-3: partially-satisfied (15 pass / 1 fail rule evaluations)",
+              "include-controls": [
+                {
+                  "control-id": "ac-3"
+                }
+              ]
+            },
+            {
+              "description": "ac-6: partially-satisfied (10 pass / 2 fail rule evaluations)",
+              "include-controls": [
+                {
+                  "control-id": "ac-6"
+                }
+              ]
+            },
+            {
+              "description": "au-2: partially-satisfied (10 pass / 6 fail rule evaluations)",
+              "include-controls": [
+                {
+                  "control-id": "au-2"
+                }
+              ]
+            },
+            {
+              "description": "au-6.4: partially-satisfied (6 pass / 6 fail rule evaluations)",
+              "include-controls": [
+                {
+                  "control-id": "au-6.4"
+                }
+              ]
+            },
+            {
+              "description": "cm-2: satisfied (12 pass / 0 fail rule evaluations)",
+              "include-controls": [
+                {
+                  "control-id": "cm-2"
+                }
+              ]
+            },
+            {
+              "description": "cm-6: partially-satisfied (19 pass / 1 fail rule evaluations)",
+              "include-controls": [
+                {
+                  "control-id": "cm-6"
+                }
+              ]
+            },
+            {
+              "description": "cm-7: partially-satisfied (12 pass / 4 fail rule evaluations)",
+              "include-controls": [
+                {
+                  "control-id": "cm-7"
+                }
+              ]
+            },
+            {
+              "description": "ia-5: partially-satisfied (14 pass / 2 fail rule evaluations)",
+              "include-controls": [
+                {
+                  "control-id": "ia-5"
+                }
+              ]
+            },
+            {
+              "description": "sc-13: satisfied (16 pass / 0 fail rule evaluations)",
+              "include-controls": [
+                {
+                  "control-id": "sc-13"
+                }
+              ]
+            },
+            {
+              "description": "sc-23: partially-satisfied (13 pass / 3 fail rule evaluations)",
+              "include-controls": [
+                {
+                  "control-id": "sc-23"
+                }
+              ]
+            },
+            {
+              "description": "sc-28: partially-satisfied (10 pass / 2 fail rule evaluations)",
+              "include-controls": [
+                {
+                  "control-id": "sc-28"
+                }
+              ]
+            },
+            {
+              "description": "sc-7: partially-satisfied (15 pass / 1 fail rule evaluations)",
+              "include-controls": [
+                {
+                  "control-id": "sc-7"
+                }
+              ]
+            },
+            {
+              "description": "sc-8: partially-satisfied (20 pass / 4 fail rule evaluations)",
+              "include-controls": [
+                {
+                  "control-id": "sc-8"
+                }
+              ]
+            },
+            {
+              "description": "si-2: partially-satisfied (11 pass / 1 fail rule evaluations)",
+              "include-controls": [
+                {
+                  "control-id": "si-2"
+                }
+              ]
+            },
+            {
+              "description": "si-4: partially-satisfied (8 pass / 4 fail rule evaluations)",
+              "include-controls": [
+                {
+                  "control-id": "si-4"
+                }
+              ]
+            },
+            {
+              "description": "si-7: partially-satisfied (11 pass / 1 fail rule evaluations)",
+              "include-controls": [
+                {
+                  "control-id": "si-7"
+                }
+              ]
+            }
+          ]
+        },
+        "assessment-log": {
+          "entries": [
+            {
+              "uuid": "8a6773d7-0f7a-4ee6-8f72-bd53ad1071c8",
+              "title": "XCCDF scans executed",
+              "description": "Executed security compliance scans on 10 inventory items.",
+              "start": "2026-04-09T08:16:56.834782+00:00",
+              "end": "2026-04-10T08:16:56.834782+00:00"
+            },
+            {
+              "uuid": "dd17ec1d-9f94-4fb6-b393-8759844caad4",
+              "title": "Control mapping analysis completed",
+              "description": "Mapped rule-level evidence to control identifiers using component definitions and regulatory mappings.",
+              "start": "2026-05-08T08:16:56.834782+00:00",
+              "end": "2026-05-09T08:16:56.834782+00:00"
+            }
+          ]
+        },
+        "observations": [
+          {
+            "uuid": "2195f70a-3ff9-47e9-92b8-614ede246d99",
+            "title": "Control ac-2 assessment outcome",
+            "description": "Control ac-2 is partially-satisfied based on 10 passing and 6 failing mapped XCCDF rule evaluations across 4 assessed subjects.",
+            "props": [
+              {
+                "name": "control-id",
+                "value": "ac-2"
+              },
+              {
+                "name": "status",
+                "value": "partially-satisfied"
+              },
+              {
+                "name": "pass-count",
+                "value": "10"
+              },
+              {
+                "name": "fail-count",
+                "value": "6"
+              },
+              {
+                "name": "rule-count",
+                "value": "4"
+              },
+              {
+                "name": "coverage",
+                "value": "1.0"
+              }
+            ],
+            "methods": [
+              "TEST"
+            ],
+            "types": [
+              "finding"
+            ],
+            "subjects": [
+              {
+                "subject-uuid": "3969acfd-7847-4bc7-b454-75cdcee5eb5f",
+                "type": "component"
+              },
+              {
+                "subject-uuid": "587abc33-d9a0-4bcb-ac86-e570b4fb4a96",
+                "type": "component"
+              },
+              {
+                "subject-uuid": "6dff9317-1f6c-481f-89a2-06e6f4e4beda",
+                "type": "component"
+              },
+              {
+                "subject-uuid": "75c18c94-3d56-4896-8669-5559deb41273",
+                "type": "component"
+              }
+            ],
+            "relevant-evidence": [
+              {
+                "description": "Mapped rules: control_plane_api_server_anonymous_auth, control_plane_api_server_basic_auth, control_plane_api_server_token_auth, worker_node_kubelet_anonymous_auth"
+              }
+            ],
+            "collected": "2026-05-09T08:16:56.834782+00:00"
+          },
+          {
+            "uuid": "32bf2089-7d06-4a01-a769-a6954a3077ef",
+            "title": "Control ac-3 assessment outcome",
+            "description": "Control ac-3 is partially-satisfied based on 15 passing and 1 failing mapped XCCDF rule evaluations across 4 assessed subjects.",
+            "props": [
+              {
+                "name": "control-id",
+                "value": "ac-3"
+              },
+              {
+                "name": "status",
+                "value": "partially-satisfied"
+              },
+              {
+                "name": "pass-count",
+                "value": "15"
+              },
+              {
+                "name": "fail-count",
+                "value": "1"
+              },
+              {
+                "name": "rule-count",
+                "value": "4"
+              },
+              {
+                "name": "coverage",
+                "value": "1.0"
+              }
+            ],
+            "methods": [
+              "TEST"
+            ],
+            "types": [
+              "finding"
+            ],
+            "subjects": [
+              {
+                "subject-uuid": "3969acfd-7847-4bc7-b454-75cdcee5eb5f",
+                "type": "component"
+              },
+              {
+                "subject-uuid": "587abc33-d9a0-4bcb-ac86-e570b4fb4a96",
+                "type": "component"
+              },
+              {
+                "subject-uuid": "6dff9317-1f6c-481f-89a2-06e6f4e4beda",
+                "type": "component"
+              },
+              {
+                "subject-uuid": "75c18c94-3d56-4896-8669-5559deb41273",
+                "type": "component"
+              }
+            ],
+            "relevant-evidence": [
+              {
+                "description": "Mapped rules: control_plane_api_server_authorization_mode, control_plane_api_server_authorization_mode_node, control_plane_api_server_authorization_mode_rbac, worker_node_kubelet_authorization_mode"
+              }
+            ],
+            "collected": "2026-05-09T08:16:56.834782+00:00"
+          },
+          {
+            "uuid": "19233b9d-521e-4b49-a180-08e063d8ce61",
+            "title": "Control ac-6 assessment outcome",
+            "description": "Control ac-6 is partially-satisfied based on 10 passing and 2 failing mapped XCCDF rule evaluations across 4 assessed subjects.",
+            "props": [
+              {
+                "name": "control-id",
+                "value": "ac-6"
+              },
+              {
+                "name": "status",
+                "value": "partially-satisfied"
+              },
+              {
+                "name": "pass-count",
+                "value": "10"
+              },
+              {
+                "name": "fail-count",
+                "value": "2"
+              },
+              {
+                "name": "rule-count",
+                "value": "3"
+              },
+              {
+                "name": "coverage",
+                "value": "1.0"
+              }
+            ],
+            "methods": [
+              "TEST"
+            ],
+            "types": [
+              "finding"
+            ],
+            "subjects": [
+              {
+                "subject-uuid": "3969acfd-7847-4bc7-b454-75cdcee5eb5f",
+                "type": "component"
+              },
+              {
+                "subject-uuid": "587abc33-d9a0-4bcb-ac86-e570b4fb4a96",
+                "type": "component"
+              },
+              {
+                "subject-uuid": "6dff9317-1f6c-481f-89a2-06e6f4e4beda",
+                "type": "component"
+              },
+              {
+                "subject-uuid": "75c18c94-3d56-4896-8669-5559deb41273",
+                "type": "component"
+              }
+            ],
+            "relevant-evidence": [
+              {
+                "description": "Mapped rules: control_plane_api_server_admission_control_plugin_always_admit, control_plane_api_server_admission_control_plugin_security_context_deny, pod_security_policy_enabled"
+              }
+            ],
+            "collected": "2026-05-09T08:16:56.834782+00:00"
+          },
+          {
+            "uuid": "3ed4cbd5-107d-4237-9dfc-9ddb2655e6ad",
+            "title": "Control au-2 assessment outcome",
+            "description": "Control au-2 is partially-satisfied based on 10 passing and 6 failing mapped XCCDF rule evaluations across 4 assessed subjects.",
+            "props": [
+              {
+                "name": "control-id",
+                "value": "au-2"
+              },
+              {
+                "name": "status",
+                "value": "partially-satisfied"
+              },
+              {
+                "name": "pass-count",
+                "value": "10"
+              },
+              {
+                "name": "fail-count",
+                "value": "6"
+              },
+              {
+                "name": "rule-count",
+                "value": "4"
+              },
+              {
+                "name": "coverage",
+                "value": "1.0"
+              }
+            ],
+            "methods": [
+              "TEST"
+            ],
+            "types": [
+              "finding"
+            ],
+            "subjects": [
+              {
+                "subject-uuid": "3969acfd-7847-4bc7-b454-75cdcee5eb5f",
+                "type": "component"
+              },
+              {
+                "subject-uuid": "587abc33-d9a0-4bcb-ac86-e570b4fb4a96",
+                "type": "component"
+              },
+              {
+                "subject-uuid": "6dff9317-1f6c-481f-89a2-06e6f4e4beda",
+                "type": "component"
+              },
+              {
+                "subject-uuid": "75c18c94-3d56-4896-8669-5559deb41273",
+                "type": "component"
+              }
+            ],
+            "relevant-evidence": [
+              {
+                "description": "Mapped rules: control_plane_api_server_audit_log_maxage, control_plane_api_server_audit_log_maxbackup, control_plane_api_server_audit_log_maxsize, control_plane_api_server_audit_log_path"
+              }
+            ],
+            "collected": "2026-05-09T08:16:56.834782+00:00"
+          },
+          {
+            "uuid": "b1ab7a00-09ac-4d73-80d3-0ca87510f1c3",
+            "title": "Control au-6.4 assessment outcome",
+            "description": "Control au-6.4 is partially-satisfied based on 6 passing and 6 failing mapped XCCDF rule evaluations across 4 assessed subjects.",
+            "props": [
+              {
+                "name": "control-id",
+                "value": "au-6.4"
+              },
+              {
+                "name": "status",
+                "value": "partially-satisfied"
+              },
+              {
+                "name": "pass-count",
+                "value": "6"
+              },
+              {
+                "name": "fail-count",
+                "value": "6"
+              },
+              {
+                "name": "rule-count",
+                "value": "3"
+              },
+              {
+                "name": "coverage",
+                "value": "1.0"
+              }
+            ],
+            "methods": [
+              "TEST"
+            ],
+            "types": [
+              "finding"
+            ],
+            "subjects": [
+              {
+                "subject-uuid": "3969acfd-7847-4bc7-b454-75cdcee5eb5f",
+                "type": "component"
+              },
+              {
+                "subject-uuid": "587abc33-d9a0-4bcb-ac86-e570b4fb4a96",
+                "type": "component"
+              },
+              {
+                "subject-uuid": "6dff9317-1f6c-481f-89a2-06e6f4e4beda",
+                "type": "component"
+              },
+              {
+                "subject-uuid": "75c18c94-3d56-4896-8669-5559deb41273",
+                "type": "component"
+              }
+            ],
+            "relevant-evidence": [
+              {
+                "description": "Mapped rules: control_plane_api_server_audit_log_maxage, control_plane_api_server_audit_log_maxbackup, control_plane_api_server_audit_log_path"
+              }
+            ],
+            "collected": "2026-05-09T08:16:56.834782+00:00"
+          },
+          {
+            "uuid": "1753582d-cd4e-49f5-844a-7092578d9ecb",
+            "title": "Control cm-2 assessment outcome",
+            "description": "Control cm-2 is satisfied based on 12 passing and 0 failing mapped XCCDF rule evaluations across 4 assessed subjects.",
+            "props": [
+              {
+                "name": "control-id",
+                "value": "cm-2"
+              },
+              {
+                "name": "status",
+                "value": "satisfied"
+              },
+              {
+                "name": "pass-count",
+                "value": "12"
+              },
+              {
+                "name": "fail-count",
+                "value": "0"
+              },
+              {
+                "name": "rule-count",
+                "value": "3"
+              },
+              {
+                "name": "coverage",
+                "value": "1.0"
+              }
+            ],
+            "methods": [
+              "TEST"
+            ],
+            "types": [
+              "finding"
+            ],
+            "subjects": [
+              {
+                "subject-uuid": "3969acfd-7847-4bc7-b454-75cdcee5eb5f",
+                "type": "component"
+              },
+              {
+                "subject-uuid": "587abc33-d9a0-4bcb-ac86-e570b4fb4a96",
+                "type": "component"
+              },
+              {
+                "subject-uuid": "6dff9317-1f6c-481f-89a2-06e6f4e4beda",
+                "type": "component"
+              },
+              {
+                "subject-uuid": "75c18c94-3d56-4896-8669-5559deb41273",
+                "type": "component"
+              }
+            ],
+            "relevant-evidence": [
+              {
+                "description": "Mapped rules: worker_node_kubelet_hostname_override, worker_node_kubelet_make_iptables_util_chains, worker_node_kubelet_protect_kernel_defaults"
+              }
+            ],
+            "collected": "2026-05-09T08:16:56.834782+00:00"
+          },
+          {
+            "uuid": "4a8bf781-73d7-43b0-aaef-5638d07ae97b",
+            "title": "Control cm-6 assessment outcome",
+            "description": "Control cm-6 is partially-satisfied based on 19 passing and 1 failing mapped XCCDF rule evaluations across 4 assessed subjects.",
+            "props": [
+              {
+                "name": "control-id",
+                "value": "cm-6"
+              },
+              {
+                "name": "status",
+                "value": "partially-satisfied"
+              },
+              {
+                "name": "pass-count",
+                "value": "19"
+              },
+              {
+                "name": "fail-count",
+                "value": "1"
+              },
+              {
+                "name": "rule-count",
+                "value": "5"
+              },
+              {
+                "name": "coverage",
+                "value": "1.0"
+              }
+            ],
+            "methods": [
+              "TEST"
+            ],
+            "types": [
+              "finding"
+            ],
+            "subjects": [
+              {
+                "subject-uuid": "3969acfd-7847-4bc7-b454-75cdcee5eb5f",
+                "type": "component"
+              },
+              {
+                "subject-uuid": "587abc33-d9a0-4bcb-ac86-e570b4fb4a96",
+                "type": "component"
+              },
+              {
+                "subject-uuid": "6dff9317-1f6c-481f-89a2-06e6f4e4beda",
+                "type": "component"
+              },
+              {
+                "subject-uuid": "75c18c94-3d56-4896-8669-5559deb41273",
+                "type": "component"
+              }
+            ],
+            "relevant-evidence": [
+              {
+                "description": "Mapped rules: control_plane_api_server_insecure_port, control_plane_api_server_profiling, control_plane_api_server_secure_port, control_plane_controller_manager_profiling, control_plane_scheduler_profiling"
+              }
+            ],
+            "collected": "2026-05-09T08:16:56.834782+00:00"
+          },
+          {
+            "uuid": "f03255a1-6468-4c4e-bef2-97b4372a929e",
+            "title": "Control cm-7 assessment outcome",
+            "description": "Control cm-7 is partially-satisfied based on 12 passing and 4 failing mapped XCCDF rule evaluations across 4 assessed subjects.",
+            "props": [
+              {
+                "name": "control-id",
+                "value": "cm-7"
+              },
+              {
+                "name": "status",
+                "value": "partially-satisfied"
+              },
+              {
+                "name": "pass-count",
+                "value": "12"
+              },
+              {
+                "name": "fail-count",
+                "value": "4"
+              },
+              {
+                "name": "rule-count",
+                "value": "4"
+              },
+              {
+                "name": "coverage",
+                "value": "1.0"
+              }
+            ],
+            "methods": [
+              "TEST"
+            ],
+            "types": [
+              "finding"
+            ],
+            "subjects": [
+              {
+                "subject-uuid": "3969acfd-7847-4bc7-b454-75cdcee5eb5f",
+                "type": "component"
+              },
+              {
+                "subject-uuid": "587abc33-d9a0-4bcb-ac86-e570b4fb4a96",
+                "type": "component"
+              },
+              {
+                "subject-uuid": "6dff9317-1f6c-481f-89a2-06e6f4e4beda",
+                "type": "component"
+              },
+              {
+                "subject-uuid": "75c18c94-3d56-4896-8669-5559deb41273",
+                "type": "component"
+              }
+            ],
+            "relevant-evidence": [
+              {
+                "description": "Mapped rules: control_plane_api_server_admission_control_plugin_namespace_lifecycle, control_plane_api_server_admission_control_plugin_node_restriction, control_plane_api_server_admission_control_plugin_pod_security_policy, network_policy_enabled"
+              }
+            ],
+            "collected": "2026-05-09T08:16:56.834782+00:00"
+          },
+          {
+            "uuid": "c2588b7b-230c-486a-90ab-2e51b58e82c5",
+            "title": "Control ia-5 assessment outcome",
+            "description": "Control ia-5 is partially-satisfied based on 14 passing and 2 failing mapped XCCDF rule evaluations across 4 assessed subjects.",
+            "props": [
+              {
+                "name": "control-id",
+                "value": "ia-5"
+              },
+              {
+                "name": "status",
+                "value": "partially-satisfied"
+              },
+              {
+                "name": "pass-count",
+                "value": "14"
+              },
+              {
+                "name": "fail-count",
+                "value": "2"
+              },
+              {
+                "name": "rule-count",
+                "value": "4"
+              },
+              {
+                "name": "coverage",
+                "value": "1.0"
+              }
+            ],
+            "methods": [
+              "TEST"
+            ],
+            "types": [
+              "finding"
+            ],
+            "subjects": [
+              {
+                "subject-uuid": "3969acfd-7847-4bc7-b454-75cdcee5eb5f",
+                "type": "component"
+              },
+              {
+                "subject-uuid": "587abc33-d9a0-4bcb-ac86-e570b4fb4a96",
+                "type": "component"
+              },
+              {
+                "subject-uuid": "6dff9317-1f6c-481f-89a2-06e6f4e4beda",
+                "type": "component"
+              },
+              {
+                "subject-uuid": "75c18c94-3d56-4896-8669-5559deb41273",
+                "type": "component"
+              }
+            ],
+            "relevant-evidence": [
+              {
+                "description": "Mapped rules: control_plane_api_server_client_ca_file, control_plane_api_server_kubelet_certificate_authority, control_plane_api_server_kubelet_client_certificate, worker_node_kubelet_client_ca_file"
+              }
+            ],
+            "collected": "2026-05-09T08:16:56.834782+00:00"
+          },
+          {
+            "uuid": "3be3b9f7-a47e-431a-a1a6-1edb28824e7f",
+            "title": "Control sc-13 assessment outcome",
+            "description": "Control sc-13 is satisfied based on 16 passing and 0 failing mapped XCCDF rule evaluations across 4 assessed subjects.",
+            "props": [
+              {
+                "name": "control-id",
+                "value": "sc-13"
+              },
+              {
+                "name": "status",
+                "value": "satisfied"
+              },
+              {
+                "name": "pass-count",
+                "value": "16"
+              },
+              {
+                "name": "fail-count",
+                "value": "0"
+              },
+              {
+                "name": "rule-count",
+                "value": "4"
+              },
+              {
+                "name": "coverage",
+                "value": "1.0"
+              }
+            ],
+            "methods": [
+              "TEST"
+            ],
+            "types": [
+              "finding"
+            ],
+            "subjects": [
+              {
+                "subject-uuid": "3969acfd-7847-4bc7-b454-75cdcee5eb5f",
+                "type": "component"
+              },
+              {
+                "subject-uuid": "587abc33-d9a0-4bcb-ac86-e570b4fb4a96",
+                "type": "component"
+              },
+              {
+                "subject-uuid": "6dff9317-1f6c-481f-89a2-06e6f4e4beda",
+                "type": "component"
+              },
+              {
+                "subject-uuid": "75c18c94-3d56-4896-8669-5559deb41273",
+                "type": "component"
+              }
+            ],
+            "relevant-evidence": [
+              {
+                "description": "Mapped rules: control_plane_api_server_encryption_provider_config, control_plane_api_server_tls_cipher_suites, etcd_client_cert_auth, etcd_peer_client_cert_auth"
+              }
+            ],
+            "collected": "2026-05-09T08:16:56.834782+00:00"
+          },
+          {
+            "uuid": "a2be9ade-0dfd-41da-b3fd-dd0661db3bce",
+            "title": "Control sc-23 assessment outcome",
+            "description": "Control sc-23 is partially-satisfied based on 13 passing and 3 failing mapped XCCDF rule evaluations across 4 assessed subjects.",
+            "props": [
+              {
+                "name": "control-id",
+                "value": "sc-23"
+              },
+              {
+                "name": "status",
+                "value": "partially-satisfied"
+              },
+              {
+                "name": "pass-count",
+                "value": "13"
+              },
+              {
+                "name": "fail-count",
+                "value": "3"
+              },
+              {
+                "name": "rule-count",
+                "value": "4"
+              },
+              {
+                "name": "coverage",
+                "value": "1.0"
+              }
+            ],
+            "methods": [
+              "TEST"
+            ],
+            "types": [
+              "finding"
+            ],
+            "subjects": [
+              {
+                "subject-uuid": "3969acfd-7847-4bc7-b454-75cdcee5eb5f",
+                "type": "component"
+              },
+              {
+                "subject-uuid": "587abc33-d9a0-4bcb-ac86-e570b4fb4a96",
+                "type": "component"
+              },
+              {
+                "subject-uuid": "6dff9317-1f6c-481f-89a2-06e6f4e4beda",
+                "type": "component"
+              },
+              {
+                "subject-uuid": "75c18c94-3d56-4896-8669-5559deb41273",
+                "type": "component"
+              }
+            ],
+            "relevant-evidence": [
+              {
+                "description": "Mapped rules: control_plane_api_server_admission_control_plugin_service_account, control_plane_api_server_service_account_key_file, control_plane_api_server_service_account_lookup, control_plane_controller_manager_service_account_private_key_file"
+              }
+            ],
+            "collected": "2026-05-09T08:16:56.834782+00:00"
+          },
+          {
+            "uuid": "7d9b318a-c280-40f0-809e-f22e50c4976a",
+            "title": "Control sc-28 assessment outcome",
+            "description": "Control sc-28 is partially-satisfied based on 10 passing and 2 failing mapped XCCDF rule evaluations across 4 assessed subjects.",
+            "props": [
+              {
+                "name": "control-id",
+                "value": "sc-28"
+              },
+              {
+                "name": "status",
+                "value": "partially-satisfied"
+              },
+              {
+                "name": "pass-count",
+                "value": "10"
+              },
+              {
+                "name": "fail-count",
+                "value": "2"
+              },
+              {
+                "name": "rule-count",
+                "value": "3"
+              },
+              {
+                "name": "coverage",
+                "value": "1.0"
+              }
+            ],
+            "methods": [
+              "TEST"
+            ],
+            "types": [
+              "finding"
+            ],
+            "subjects": [
+              {
+                "subject-uuid": "3969acfd-7847-4bc7-b454-75cdcee5eb5f",
+                "type": "component"
+              },
+              {
+                "subject-uuid": "587abc33-d9a0-4bcb-ac86-e570b4fb4a96",
+                "type": "component"
+              },
+              {
+                "subject-uuid": "6dff9317-1f6c-481f-89a2-06e6f4e4beda",
+                "type": "component"
+              },
+              {
+                "subject-uuid": "75c18c94-3d56-4896-8669-5559deb41273",
+                "type": "component"
+              }
+            ],
+            "relevant-evidence": [
+              {
+                "description": "Mapped rules: etcd_auto_tls, etcd_peer_auto_tls, etcd_unique_ca"
+              }
+            ],
+            "collected": "2026-05-09T08:16:56.834782+00:00"
+          },
+          {
+            "uuid": "5034058d-8d58-4b1e-81ac-f6a1fab83fc2",
+            "title": "Control sc-7 assessment outcome",
+            "description": "Control sc-7 is partially-satisfied based on 15 passing and 1 failing mapped XCCDF rule evaluations across 4 assessed subjects.",
+            "props": [
+              {
+                "name": "control-id",
+                "value": "sc-7"
+              },
+              {
+                "name": "status",
+                "value": "partially-satisfied"
+              },
+              {
+                "name": "pass-count",
+                "value": "15"
+              },
+              {
+                "name": "fail-count",
+                "value": "1"
+              },
+              {
+                "name": "rule-count",
+                "value": "4"
+              },
+              {
+                "name": "coverage",
+                "value": "1.0"
+              }
+            ],
+            "methods": [
+              "TEST"
+            ],
+            "types": [
+              "finding"
+            ],
+            "subjects": [
+              {
+                "subject-uuid": "3969acfd-7847-4bc7-b454-75cdcee5eb5f",
+                "type": "component"
+              },
+              {
+                "subject-uuid": "587abc33-d9a0-4bcb-ac86-e570b4fb4a96",
+                "type": "component"
+              },
+              {
+                "subject-uuid": "6dff9317-1f6c-481f-89a2-06e6f4e4beda",
+                "type": "component"
+              },
+              {
+                "subject-uuid": "75c18c94-3d56-4896-8669-5559deb41273",
+                "type": "component"
+              }
+            ],
+            "relevant-evidence": [
+              {
+                "description": "Mapped rules: control_plane_api_server_etcd_cafile, control_plane_controller_manager_bind_address, control_plane_scheduler_bind_address, worker_node_kubelet_read_only_port"
+              }
+            ],
+            "collected": "2026-05-09T08:16:56.834782+00:00"
+          },
+          {
+            "uuid": "f17725a9-0492-488e-b50b-0424ad0c1f87",
+            "title": "Control sc-8 assessment outcome",
+            "description": "Control sc-8 is partially-satisfied based on 20 passing and 4 failing mapped XCCDF rule evaluations across 4 assessed subjects.",
+            "props": [
+              {
+                "name": "control-id",
+                "value": "sc-8"
+              },
+              {
+                "name": "status",
+                "value": "partially-satisfied"
+              },
+              {
+                "name": "pass-count",
+                "value": "20"
+              },
+              {
+                "name": "fail-count",
+                "value": "4"
+              },
+              {
+                "name": "rule-count",
+                "value": "6"
+              },
+              {
+                "name": "coverage",
+                "value": "1.0"
+              }
+            ],
+            "methods": [
+              "TEST"
+            ],
+            "types": [
+              "finding"
+            ],
+            "subjects": [
+              {
+                "subject-uuid": "3969acfd-7847-4bc7-b454-75cdcee5eb5f",
+                "type": "component"
+              },
+              {
+                "subject-uuid": "587abc33-d9a0-4bcb-ac86-e570b4fb4a96",
+                "type": "component"
+              },
+              {
+                "subject-uuid": "6dff9317-1f6c-481f-89a2-06e6f4e4beda",
+                "type": "component"
+              },
+              {
+                "subject-uuid": "75c18c94-3d56-4896-8669-5559deb41273",
+                "type": "component"
+              }
+            ],
+            "relevant-evidence": [
+              {
+                "description": "Mapped rules: control_plane_api_server_etcd_certfile, control_plane_api_server_kubelet_https, control_plane_api_server_tls_cert_file, etcd_cert_file, etcd_peer_cert_file, worker_node_kubelet_tls_cert_file"
+              }
+            ],
+            "collected": "2026-05-09T08:16:56.834782+00:00"
+          },
+          {
+            "uuid": "9d043036-70e8-47e1-89cc-39349c7858e5",
+            "title": "Control si-2 assessment outcome",
+            "description": "Control si-2 is partially-satisfied based on 11 passing and 1 failing mapped XCCDF rule evaluations across 4 assessed subjects.",
+            "props": [
+              {
+                "name": "control-id",
+                "value": "si-2"
+              },
+              {
+                "name": "status",
+                "value": "partially-satisfied"
+              },
+              {
+                "name": "pass-count",
+                "value": "11"
+              },
+              {
+                "name": "fail-count",
+                "value": "1"
+              },
+              {
+                "name": "rule-count",
+                "value": "3"
+              },
+              {
+                "name": "coverage",
+                "value": "1.0"
+              }
+            ],
+            "methods": [
+              "TEST"
+            ],
+            "types": [
+              "finding"
+            ],
+            "subjects": [
+              {
+                "subject-uuid": "3969acfd-7847-4bc7-b454-75cdcee5eb5f",
+                "type": "component"
+              },
+              {
+                "subject-uuid": "587abc33-d9a0-4bcb-ac86-e570b4fb4a96",
+                "type": "component"
+              },
+              {
+                "subject-uuid": "6dff9317-1f6c-481f-89a2-06e6f4e4beda",
+                "type": "component"
+              },
+              {
+                "subject-uuid": "75c18c94-3d56-4896-8669-5559deb41273",
+                "type": "component"
+              }
+            ],
+            "relevant-evidence": [
+              {
+                "description": "Mapped rules: control_plane_controller_manager_root_ca_file, control_plane_controller_manager_terminated_pod_gc_threshold, control_plane_controller_manager_use_service_account_credentials"
+              }
+            ],
+            "collected": "2026-05-09T08:16:56.834782+00:00"
+          },
+          {
+            "uuid": "a22d3562-7cbc-46ed-a471-b9d43c6ed41d",
+            "title": "Control si-4 assessment outcome",
+            "description": "Control si-4 is partially-satisfied based on 8 passing and 4 failing mapped XCCDF rule evaluations across 4 assessed subjects.",
+            "props": [
+              {
+                "name": "control-id",
+                "value": "si-4"
+              },
+              {
+                "name": "status",
+                "value": "partially-satisfied"
+              },
+              {
+                "name": "pass-count",
+                "value": "8"
+              },
+              {
+                "name": "fail-count",
+                "value": "4"
+              },
+              {
+                "name": "rule-count",
+                "value": "3"
+              },
+              {
+                "name": "coverage",
+                "value": "1.0"
+              }
+            ],
+            "methods": [
+              "TEST"
+            ],
+            "types": [
+              "finding"
+            ],
+            "subjects": [
+              {
+                "subject-uuid": "3969acfd-7847-4bc7-b454-75cdcee5eb5f",
+                "type": "component"
+              },
+              {
+                "subject-uuid": "587abc33-d9a0-4bcb-ac86-e570b4fb4a96",
+                "type": "component"
+              },
+              {
+                "subject-uuid": "6dff9317-1f6c-481f-89a2-06e6f4e4beda",
+                "type": "component"
+              },
+              {
+                "subject-uuid": "75c18c94-3d56-4896-8669-5559deb41273",
+                "type": "component"
+              }
+            ],
+            "relevant-evidence": [
+              {
+                "description": "Mapped rules: control_plane_api_server_request_timeout, worker_node_kubelet_event_qps, worker_node_kubelet_streaming_connection_idle_timeout"
+              }
+            ],
+            "collected": "2026-05-09T08:16:56.834782+00:00"
+          },
+          {
+            "uuid": "52f50419-9567-4513-b611-150d2c177b42",
+            "title": "Control si-7 assessment outcome",
+            "description": "Control si-7 is partially-satisfied based on 11 passing and 1 failing mapped XCCDF rule evaluations across 4 assessed subjects.",
+            "props": [
+              {
+                "name": "control-id",
+                "value": "si-7"
+              },
+              {
+                "name": "status",
+                "value": "partially-satisfied"
+              },
+              {
+                "name": "pass-count",
+                "value": "11"
+              },
+              {
+                "name": "fail-count",
+                "value": "1"
+              },
+              {
+                "name": "rule-count",
+                "value": "3"
+              },
+              {
+                "name": "coverage",
+                "value": "1.0"
+              }
+            ],
+            "methods": [
+              "TEST"
+            ],
+            "types": [
+              "finding"
+            ],
+            "subjects": [
+              {
+                "subject-uuid": "3969acfd-7847-4bc7-b454-75cdcee5eb5f",
+                "type": "component"
+              },
+              {
+                "subject-uuid": "587abc33-d9a0-4bcb-ac86-e570b4fb4a96",
+                "type": "component"
+              },
+              {
+                "subject-uuid": "6dff9317-1f6c-481f-89a2-06e6f4e4beda",
+                "type": "component"
+              },
+              {
+                "subject-uuid": "75c18c94-3d56-4896-8669-5559deb41273",
+                "type": "component"
+              }
+            ],
+            "relevant-evidence": [
+              {
+                "description": "Mapped rules: control_plane_api_server_admission_control_plugin_always_pull_images, control_plane_controller_manager_feature_gates_rotate_kubelet_server_certificate, worker_node_kubelet_rotate_certificates"
+              }
+            ],
+            "collected": "2026-05-09T08:16:56.834782+00:00"
+          }
+        ],
+        "risks": [],
+        "remarks": "Assessment results generated from XCCDF scan data for 10 servers with 17 controls evaluated."
+      }
+    ]
+  }
+}

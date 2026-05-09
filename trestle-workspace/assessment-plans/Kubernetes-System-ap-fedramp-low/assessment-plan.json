@@ -1,0 +1,237 @@
+{
+  "assessment-plan": {
+    "uuid": "fa17fa8c-253d-4e30-b1a7-6d1d497964c1",
+    "metadata": {
+      "title": "Kubernetes System Assessment Plan - FedRAMP Low",
+      "published": "2026-05-09T08:08:27.730754",
+      "last-modified": "2026-05-09T08:08:27.730754",
+      "version": "1.0",
+      "oscal-version": "1.2.1",
+      "props": [
+        {
+          "name": "assessment-type",
+          "value": "security-assessment"
+        },
+        {
+          "name": "assessment-scope",
+          "value": "host-assessment"
+        },
+        {
+          "name": "assessment-frequency",
+          "value": "annual"
+        },
+        {
+          "name": "regulation",
+          "value": "FedRAMP Rev 5 Low"
+        },
+        {
+          "name": "platform",
+          "value": "Kubernetes 1.28"
+        },
+        {
+          "name": "subject-count",
+          "value": "4"
+        }
+      ]
+    },
+    "import-ssp": {
+      "href": "../system-security-plans/Kubernetes-System-ssp-fedramp-low/system-security-plan.json"
+    },
+    "local-definitions": {
+      "activities": [
+        {
+          "uuid": "4c8cb0be-af33-497b-95c7-bce9dc3315d4",
+          "title": "Automated Security Scanning",
+          "description": "Automated vulnerability scanning and configuration compliance checks using OSCAP",
+          "props": [
+            {
+              "name": "method",
+              "value": "TEST"
+            },
+            {
+              "name": "assessment-type",
+              "value": "automated"
+            }
+          ],
+          "steps": [
+            {
+              "uuid": "64e3ca14-41b2-45c3-a441-80e11d012259",
+              "title": "Run Security Compliance Scan",
+              "description": "Execute security compliance scan against the inventory items"
+            },
+            {
+              "uuid": "c187bc0b-b1f4-47eb-834a-ef2ba0309460",
+              "title": "Analyze Results",
+              "description": "Review scan results and identify non-compliant controls"
+            }
+          ]
+        },
+        {
+          "uuid": "185a51ce-6aa2-4ccf-9f42-a1ada4642a3a",
+          "title": "Manual Control Testing",
+          "description": "Manual review and testing of security controls that cannot be automated",
+          "props": [
+            {
+              "name": "method",
+              "value": "EXAMINE"
+            },
+            {
+              "name": "assessment-type",
+              "value": "manual"
+            }
+          ],
+          "steps": [
+            {
+              "uuid": "90a0bef0-6904-4125-ad1f-7cea8b3b92ce",
+              "title": "Document Review",
+              "description": "Review security policies, procedures, configurations, and evidence artifacts"
+            },
+            {
+              "uuid": "bc4bec9f-f885-4e02-a0fd-f9eec9ff7d47",
+              "title": "Interview Personnel",
+              "description": "Interview system administrators and security personnel"
+            }
+          ]
+        },
+        {
+          "uuid": "637ac1cd-ade4-48b7-be81-ba58b1e7833b",
+          "title": "Resilience and Response Validation",
+          "description": "Validate operational resilience, response, and recovery capabilities across the Ubuntu fleet",
+          "props": [
+            {
+              "name": "method",
+              "value": "TEST"
+            },
+            {
+              "name": "assessment-type",
+              "value": "scenario-based"
+            }
+          ],
+          "steps": [
+            {
+              "uuid": "0bac04a1-8ee9-4bf7-a8a9-d4f826ee1c41",
+              "title": "Scenario Walkthrough",
+              "description": "Review incident, disruption, and recovery scenarios applicable to the system"
+            },
+            {
+              "uuid": "9d8e7814-3044-4150-9449-f65c2c7b743e",
+              "title": "Evidence Correlation",
+              "description": "Correlate technical evidence with implemented controls and procedures"
+            }
+          ]
+        }
+      ]
+    },
+    "reviewed-controls": {
+      "description": "Assessment of controls for the FedRAMP Rev 5 Low baseline",
+      "props": [
+        {
+          "name": "assessment-baseline",
+          "value": "FedRAMP Rev 5 Low"
+        },
+        {
+          "name": "control-selection",
+          "value": "all-imported-controls"
+        }
+      ],
+      "control-selections": [
+        {
+          "description": "All controls imported by the referenced SSP will be assessed",
+          "include-all": {}
+        }
+      ]
+    },
+    "assessment-subjects": [
+      {
+        "type": "inventory-item",
+        "description": "System inventory items",
+        "include-subjects": [
+          {
+            "subject-uuid": "d9aabf57-57e6-4ad0-ab04-cd3a556ab9f9",
+            "type": "inventory-item"
+          },
+          {
+            "subject-uuid": "cb237af0-3b6b-47e7-a2cb-ab6e6dbe1866",
+            "type": "inventory-item"
+          },
+          {
+            "subject-uuid": "c33128c4-c5d2-44ab-b903-b6674eb40386",
+            "type": "inventory-item"
+          },
+          {
+            "subject-uuid": "c33b9a01-216f-4ade-aed3-41f1afb08512",
+            "type": "inventory-item"
+          }
+        ]
+      }
+    ],
+    "assessment-assets": {
+      "assessment-platforms": [
+        {
+          "uuid": "e3b48ce3-b85f-455e-ba41-e1981cec3a15",
+          "title": "OpenSCAP Scanner",
+          "props": [
+            {
+              "name": "tool-type",
+              "value": "scanner"
+            },
+            {
+              "name": "tool-version",
+              "value": "1.3.x"
+            }
+          ]
+        },
+        {
+          "uuid": "39f2cfbb-f510-4279-b9cf-19ccd325c119",
+          "title": "Evidence Review Toolkit",
+          "props": [
+            {
+              "name": "tool-type",
+              "value": "analysis"
+            },
+            {
+              "name": "tool-version",
+              "value": "1.0"
+            }
+          ]
+        }
+      ]
+    },
+    "tasks": [
+      {
+        "uuid": "85fad745-1c46-4177-b10e-1e4ad68cc8a7",
+        "type": "action",
+        "title": "Assessment Kickoff",
+        "description": "Schedule and conduct the assessment kickoff meeting",
+        "timing": {
+          "on-date": {
+            "date": "2026-05-16T08:08:27.730754"
+          }
+        }
+      },
+      {
+        "uuid": "80b46bfa-b0a2-4564-9274-dda93aeb4fed",
+        "type": "action",
+        "title": "Execute Automated and Manual Assessment Activities",
+        "description": "Perform automated scans, document review, interviews, and validation activities",
+        "timing": {
+          "within-date-range": {
+            "start": "2026-05-23T08:08:27.730754",
+            "end": "2026-06-13T08:08:27.730754"
+          }
+        }
+      },
+      {
+        "uuid": "79b4bddf-9a98-4352-94b0-eb9c1f51273b",
+        "type": "milestone",
+        "title": "Assessment Results Ready",
+        "description": "Complete evidence review and prepare assessment results",
+        "timing": {
+          "on-date": {
+            "date": "2026-06-23T08:08:27.730754"
+          }
+        }
+      }
+    ]
+  }
+}

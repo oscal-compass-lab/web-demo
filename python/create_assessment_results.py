@@ -16,10 +16,12 @@
 """
 Create Assessment Results from XCCDF scan results.
 This script generates OSCAL assessment results for each assessment plan by:
-1. Reading XCCDF result files for each Ubuntu server
-2. Parsing rule-level pass/fail results
+1. Reading XCCDF result files for all inventory items (Ubuntu servers and K8s nodes)
+2. Parsing rule-level pass/fail results (OSCAP and kube-bench formats)
 3. Mapping rules to controls using component definitions
 4. Creating observations and findings for each control
+
+Works generically with all XCCDF formats.
 """
 
 import sys
@@ -256,12 +258,14 @@ def create_assessment_results(plan_name: str, xccdf_dir: Path) -> bool:
         print(f"Error: Could not load assessment plan {plan_name}")
         return False
     
-    # Extract regulation/profile from plan metadata
+    # Extract regulation/profile and platform from plan metadata
     regulation = 'Unknown'
+    platform = 'Ubuntu 24.04 LTS'  # Default to Ubuntu
     for prop in plan.metadata.props or []:
         if prop.name == 'regulation':
             regulation = prop.value
-            break
+        elif prop.name == 'platform':
+            platform = prop.value
     
     # Get subject UUIDs from the plan
     subject_uuids = []
@@ -271,6 +275,7 @@ def create_assessment_results(plan_name: str, xccdf_dir: Path) -> bool:
                 for subj in subj_group.include_subjects:
                     subject_uuids.append(str(subj.subject_uuid))
     
+    print(f"  Platform: {platform}")
     print(f"  Regulation: {regulation}")
     print(f"  Subjects: {len(subject_uuids)}")
     
@@ -407,6 +412,7 @@ def create_assessment_results(plan_name: str, xccdf_dir: Path) -> bool:
                 'oscal-version': ar_module.OSCAL_VERSION,
                 'props': [
                     {'name': 'regulation', 'value': regulation},
+                    {'name': 'platform', 'value': platform},
                     {'name': 'assessment-scope', 'value': 'host-assessment'},
                     {'name': 'assessment-subject-count', 'value': str(len(subject_uuids))},
                     {'name': 'result-summary', 'value': 'partial-pass-with-findings'},
@@ -436,7 +442,7 @@ def create_assessment_results(plan_name: str, xccdf_dir: Path) -> bool:
             'results': [{
                 'uuid': str(uuid.uuid4()),
                 'title': f'{regulation} assessment execution results',
-                'description': f'Assessment results for the Ubuntu 24.04 LTS {len(xccdf_results)}-server fleet evaluated against {regulation} using mapped XCCDF evidence.',
+                'description': f'Assessment results for {len(xccdf_results)} inventory items evaluated against {regulation} using mapped XCCDF evidence.',
                 'start': assessment_start.isoformat() + 'Z',
                 'end': assessment_end.isoformat() + 'Z',
                 'reviewed-controls': {'control-selections': reviewed_controls_list},
@@ -445,7 +451,7 @@ def create_assessment_results(plan_name: str, xccdf_dir: Path) -> bool:
                         {
                             'uuid': str(uuid.uuid4()),
                             'title': 'XCCDF scans executed',
-                            'description': f'Executed OpenSCAP security compliance scans on {len(xccdf_results)} Ubuntu 24.04 LTS servers.',
+                            'description': f'Executed security compliance scans on {len(xccdf_results)} inventory items.',
                             'start': assessment_start.isoformat() + 'Z',
                             'end': (assessment_start + timedelta(days=1)).isoformat() + 'Z'
                         },

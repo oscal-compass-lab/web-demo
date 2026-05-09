@@ -55,31 +55,72 @@ TITLE_DISPLAY_MAP = {
     'NIST SP 800-53 Rev 5 to Digital Operational Resilience Act (DORA)': 'NIST SP 800-53 Rev 5 to DORA',
     # Components
     'Component definition for Ubuntu_Linux_24.04_LTS': 'Ubuntu 24.04 LTS',
-    # SSPs
+    'Component definition for Kubernetes 1.28': 'Kubernetes 1.28',
+    # SSPs (directory names) - Kubernetes
+    'Kubernetes-System-ssp-fedramp-low': 'Kubernetes FedRAMP Low',
+    'Kubernetes-System-ssp-fedramp-moderate': 'Kubernetes FedRAMP Moderate',
+    'Kubernetes-System-ssp-fedramp-high': 'Kubernetes FedRAMP High',
+    'Kubernetes-System-ssp-dora': 'Kubernetes DORA',
+    # SSPs - Ubuntu
     'Ubuntu System Security Plan - FedRAMP Low': 'Ubuntu FedRAMP Low',
     'Ubuntu System Security Plan - FedRAMP Moderate': 'Ubuntu FedRAMP Moderate',
     'Ubuntu System Security Plan - FedRAMP High': 'Ubuntu FedRAMP High',
     'Ubuntu System Security Plan - DORA': 'Ubuntu DORA',
-    # Assessment Plans
+    # SSPs - Kubernetes
+    'Kubernetes System Security Plan - FedRAMP Low': 'Kubernetes FedRAMP Low',
+    'Kubernetes System Security Plan - FedRAMP Moderate': 'Kubernetes FedRAMP Moderate',
+    'Kubernetes System Security Plan - FedRAMP High': 'Kubernetes FedRAMP High',
+    'Kubernetes System Security Plan - DORA': 'Kubernetes DORA',
+    # Assessment Plans (directory names) - Kubernetes
+    'Kubernetes-System-ap-fedramp-low': 'Kubernetes FedRAMP Low',
+    'Kubernetes-System-ap-fedramp-moderate': 'Kubernetes FedRAMP Moderate',
+    'Kubernetes-System-ap-fedramp-high': 'Kubernetes FedRAMP High',
+    'Kubernetes-System-ap-dora': 'Kubernetes DORA',
+    # Assessment Plans - Ubuntu
     'Ubuntu System Assessment Plan - FedRAMP Low': 'Ubuntu FedRAMP Low',
     'Ubuntu System Assessment Plan - FedRAMP Moderate': 'Ubuntu FedRAMP Moderate',
     'Ubuntu System Assessment Plan - FedRAMP High': 'Ubuntu FedRAMP High',
     'Ubuntu System Assessment Plan - DORA': 'Ubuntu DORA',
-    # Assessment Results
+    # Assessment Plans - Kubernetes
+    'Kubernetes System Assessment Plan - FedRAMP Low': 'Kubernetes FedRAMP Low',
+    'Kubernetes System Assessment Plan - FedRAMP Moderate': 'Kubernetes FedRAMP Moderate',
+    'Kubernetes System Assessment Plan - FedRAMP High': 'Kubernetes FedRAMP High',
+    'Kubernetes System Assessment Plan - DORA': 'Kubernetes DORA',
+    # Assessment Results (directory names) - Kubernetes
+    'Kubernetes-System-ar-fedramp-low': 'Kubernetes FedRAMP Low',
+    'Kubernetes-System-ar-fedramp-moderate': 'Kubernetes FedRAMP Moderate',
+    'Kubernetes-System-ar-fedramp-high': 'Kubernetes FedRAMP High',
+    'Kubernetes-System-ar-dora': 'Kubernetes DORA',
+    # Assessment Results - Ubuntu
     'Ubuntu System Assessment Results - FedRAMP Low': 'Ubuntu FedRAMP Low',
     'Ubuntu System Assessment Results - FedRAMP Moderate': 'Ubuntu FedRAMP Moderate',
     'Ubuntu System Assessment Results - FedRAMP High': 'Ubuntu FedRAMP High',
     'Ubuntu System Assessment Results - DORA': 'Ubuntu DORA',
-    # POA&Ms (directory names)
+    # Assessment Results - Kubernetes
+    'Kubernetes System Assessment Results - FedRAMP Low': 'Kubernetes FedRAMP Low',
+    'Kubernetes System Assessment Results - FedRAMP Moderate': 'Kubernetes FedRAMP Moderate',
+    'Kubernetes System Assessment Results - FedRAMP High': 'Kubernetes FedRAMP High',
+    'Kubernetes System Assessment Results - DORA': 'Kubernetes DORA',
+    # POA&Ms (directory names) - Kubernetes
+    'Kubernetes-System-poam-fedramp-low': 'Kubernetes FedRAMP Low',
+    'Kubernetes-System-poam-fedramp-moderate': 'Kubernetes FedRAMP Moderate',
+    'Kubernetes-System-poam-fedramp-high': 'Kubernetes FedRAMP High',
+    'Kubernetes-System-poam-dora': 'Kubernetes DORA',
+    # POA&Ms (directory names) - Ubuntu
     'Ubuntu-System-poam-fedramp-low': 'Ubuntu FedRAMP Low',
     'Ubuntu-System-poam-fedramp-moderate': 'Ubuntu FedRAMP Moderate',
     'Ubuntu-System-poam-fedramp-high': 'Ubuntu FedRAMP High',
     'Ubuntu-System-poam-dora': 'Ubuntu DORA',
-    # POA&Ms (full titles from JSON)
+    # POA&Ms (full titles from JSON) - Ubuntu
     'Ubuntu System Plan of Action and Milestones - FedRAMP Low': 'Ubuntu FedRAMP Low',
     'Ubuntu System Plan of Action and Milestones - FedRAMP Moderate': 'Ubuntu FedRAMP Moderate',
     'Ubuntu System Plan of Action and Milestones - FedRAMP High': 'Ubuntu FedRAMP High',
     'Ubuntu System Plan of Action and Milestones - DORA': 'Ubuntu DORA',
+    # POA&Ms (full titles from JSON) - Kubernetes
+    'Kubernetes System Plan of Action and Milestones - FedRAMP Low': 'Kubernetes FedRAMP Low',
+    'Kubernetes System Plan of Action and Milestones - FedRAMP Moderate': 'Kubernetes FedRAMP Moderate',
+    'Kubernetes System Plan of Action and Milestones - FedRAMP High': 'Kubernetes FedRAMP High',
+    'Kubernetes System Plan of Action and Milestones - DORA': 'Kubernetes DORA',
 }
 
 def get_display_title(title):
@@ -255,7 +296,7 @@ def index():
             <p>Presented are a complete set of OSCAL documents covering:</p>
             <ul>
                 <li>2 regulations DORA and FedRAMP (Low, Moderate, and High levels)</li>
-                <li>6 inventory items (ubuntu VMs)</li>
+                <li>10 inventory items (6 Ubuntu VMs + 4 Kubernetes nodes)</li>
             </ul>
             <p>The documents have been constructed using OSCAL Compass Compliance-trestle.</p>
             
@@ -311,6 +352,9 @@ def index():
             </div>
             
             <h2 id="components">🔧 OSCAL Component Definitions ({len(components)})</h2>
+            <div class="info">
+                <p><strong>📝 Note:</strong> Ubuntu uses separate component definitions for software (Ubuntu_Linux_24_04_LTS) and validation (oscap), while Kubernetes combines both software and validation components in a single definition (Kubernetes_1_28).</p>
+            </div>
             <div class="grid">
                 {''.join([f'''
                 <div class="card" title="{comp['title']}">

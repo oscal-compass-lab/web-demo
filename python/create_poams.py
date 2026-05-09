@@ -16,9 +16,11 @@
 """
 Create Plan of Action and Milestones (POA&M) from Assessment Results.
 This script generates OSCAL POA&Ms by:
-1. Reading assessment results to identify findings and risks
+1. Reading assessment results to identify findings and risks (Ubuntu and K8s)
 2. Creating POA&M items for each identified risk or non-compliant control
 3. Defining milestones, responsible parties, and remediation timelines
+
+Works generically with all assessment results regardless of platform.
 """
 
 import sys
@@ -271,14 +273,14 @@ def create_poam(ar_name: str) -> bool:
         import_ssp=common.ImportSsp(
             href=f"trestle://system-security-plans/{ar_name.replace('-ar-', '-ssp-')}/system-security-plan.json"
         ),
-        system_id=common.SystemId(id='ubuntu-system-001'),
+        system_id=common.SystemId(id='system-001'),
         local_definitions=poam_module.LocalDefinitions(
             components=[
                 common.SystemComponent(
                     uuid=str(uuid.uuid4()),
                     type='software',
-                    title='Ubuntu Linux 24.04 LTS',
-                    description='Operating system requiring remediation',
+                    title='System Component',
+                    description='System component requiring remediation',
                     status=common.Status(state='under-development')
                 )
             ]

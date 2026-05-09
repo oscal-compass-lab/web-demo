@@ -128,6 +128,7 @@ create-ssps: clean-ssps venv ws create-xccdf create-compdefs
 clean-ssps:
 	@echo "Removing all generated SSPs..."
 	@rm -rf $(TRESTLE_WORKSPACE)/system-security-plans/Ubuntu-System-ssp-*
+	@rm -rf $(TRESTLE_WORKSPACE)/system-security-plans/Kubernetes-System-ssp-*
 	@echo "✅ SSPs removed"
 
 create-aps: clean-aps venv ws create-ssps
@@ -137,6 +138,7 @@ create-aps: clean-aps venv ws create-ssps
 clean-aps:
 	@echo "Removing all generated assessment plans..."
 	@rm -rf $(TRESTLE_WORKSPACE)/assessment-plans/Ubuntu-System-ap-*
+	@rm -rf $(TRESTLE_WORKSPACE)/assessment-plans/Kubernetes-System-ap-*
 	@echo "✅ Assessment plans removed"
 
 create-ars: clean-ars venv ws create-xccdf
@@ -146,6 +148,7 @@ create-ars: clean-ars venv ws create-xccdf
 clean-ars:
 	@echo "Removing all generated assessment results..."
 	@rm -rf $(TRESTLE_WORKSPACE)/assessment-results/Ubuntu-System-ar-*
+	@rm -rf $(TRESTLE_WORKSPACE)/assessment-results/Kubernetes-System-ar-*
 	@echo "✅ Assessment results removed"
 
 create-poams: clean-poams venv ws create-ars
@@ -155,6 +158,7 @@ create-poams: clean-poams venv ws create-ars
 clean-poams:
 	@echo "Removing all generated POA&Ms..."
 	@rm -rf $(TRESTLE_WORKSPACE)/plan-of-action-and-milestones/Ubuntu-System-poam-*
+	@rm -rf $(TRESTLE_WORKSPACE)/plan-of-action-and-milestones/Kubernetes-System-poam-*
 	@echo "✅ POA&Ms removed"
 
 charts: clean-charts venv ws create-ars

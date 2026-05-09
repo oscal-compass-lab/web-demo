@@ -1,0 +1,735 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Benchmark xmlns="http://checklists.nist.gov/xccdf/1.2"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           id="xccdf_org.cisecurity.benchmarks_benchmark_kubernetes"
+           resolved="true">
+  
+  <status date="2026-05-07">accepted</status>
+  <title>CIS Kubernetes Benchmark v1.8.0</title>
+  <description>
+    This benchmark provides prescriptive guidance for establishing a secure configuration
+    posture for Kubernetes v1.28.0. This guide was tested against Kubernetes
+    running on Linux.
+  </description>
+  <version>1.8.0</version>
+  
+  <Profile id="xccdf_org.cisecurity.benchmarks_profile_Level_2_-_Worker_Node">
+    <title>CIS Kubernetes Benchmark Level 2 - Worker Node</title>
+    <description>
+      This profile contains configuration checks that align to the CIS Kubernetes Benchmark
+      Level 2 for worker nodes.
+    </description>
+  </Profile>
+  
+  <TestResult id="xccdf_org.kube-bench_testresult_xccdf_org.cisecurity.benchmarks_profile_Level_2_-_Worker_Node"
+              start-time="2026-05-07T15:16:56.232025"
+              end-time="2026-05-07T15:29:56.232025"
+              version="1.2"
+              test-system="cpe:/a:aquasecurity:kube-bench:0.7.0">
+    
+    <benchmark href="/etc/kube-bench/cfg/cis-1.8/benchmark.yml"
+               id="xccdf_org.cisecurity.benchmarks_benchmark_kubernetes"/>
+    
+    <title>kube-bench Scan Result - Kubernetes worker node running K8s 1.28</title>
+    
+    <identity authenticated="true" privileged="true">root</identity>
+    
+    <profile idref="xccdf_org.cisecurity.benchmarks_profile_Level_2_-_Worker_Node"/>
+    
+    <target>k8s-worker-01.example.com</target>
+    <target-address>192.168.2.102</target-address>
+    <target-facts>
+      <fact name="urn:xccdf:fact:asset:identifier:host_name" type="string">k8s-worker-01.example.com</fact>
+      <fact name="urn:xccdf:fact:asset:identifier:ipv4" type="string">192.168.2.102</fact>
+      <fact name="urn:xccdf:fact:asset:identifier:platform" type="string">Kubernetes</fact>
+      <fact name="urn:xccdf:fact:asset:identifier:k8s_version" type="string">1.28.0</fact>
+      <fact name="urn:xccdf:fact:asset:identifier:node_type" type="string">worker</fact>
+    </target-facts>
+    
+    <platform idref="cpe:/a:kubernetes:kubernetes:1.28.0"/>
+    
+    <score system="urn:xccdf:scoring:default" maximum="100.000000">88.0</score>
+    
+    <rule-result idref="xccdf_org.cisecurity.benchmarks_rule_control_plane_api_server_anonymous_auth"
+                 time="2026-05-07T15:17:10.232025"
+                 severity="low"
+                 weight="1.000000">
+      <result>fail</result>
+      <ident system="https://www.cisecurity.org/benchmark/kubernetes">CIS-K8S-2.4.14</ident>
+      <check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
+        <check-content-ref name="oval:org.cisecurity.benchmarks:def:720" href="cis-kubernetes-oval.xml"/>
+      </check>
+      <message severity="error">Check failed: control_plane_api_server_anonymous_auth</message>
+    </rule-result>
+    
+    <rule-result idref="xccdf_org.cisecurity.benchmarks_rule_control_plane_api_server_basic_auth"
+                 time="2026-05-07T15:17:17.232025"
+                 severity="medium"
+                 weight="1.000000">
+      <result>pass</result>
+      <ident system="https://www.cisecurity.org/benchmark/kubernetes">CIS-K8S-1.6.20</ident>
+      <check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
+        <check-content-ref name="oval:org.cisecurity.benchmarks:def:209" href="cis-kubernetes-oval.xml"/>
+      </check>
+    </rule-result>
+    
+    <rule-result idref="xccdf_org.cisecurity.benchmarks_rule_control_plane_api_server_token_auth"
+                 time="2026-05-07T15:17:26.232025"
+                 severity="low"
+                 weight="1.000000">
+      <result>pass</result>
+      <ident system="https://www.cisecurity.org/benchmark/kubernetes">CIS-K8S-1.8.10</ident>
+      <check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
+        <check-content-ref name="oval:org.cisecurity.benchmarks:def:352" href="cis-kubernetes-oval.xml"/>
+      </check>
+    </rule-result>
+    
+    <rule-result idref="xccdf_org.cisecurity.benchmarks_rule_control_plane_api_server_kubelet_https"
+                 time="2026-05-07T15:17:41.232025"
+                 severity="high"
+                 weight="1.000000">
+      <result>pass</result>
+      <ident system="https://www.cisecurity.org/benchmark/kubernetes">CIS-K8S-5.6.8</ident>
+      <check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
+        <check-content-ref name="oval:org.cisecurity.benchmarks:def:675" href="cis-kubernetes-oval.xml"/>
+      </check>
+    </rule-result>
+    
+    <rule-result idref="xccdf_org.cisecurity.benchmarks_rule_control_plane_api_server_kubelet_client_certificate"
+                 time="2026-05-07T15:17:49.232025"
+                 severity="low"
+                 weight="1.000000">
+      <result>pass</result>
+      <ident system="https://www.cisecurity.org/benchmark/kubernetes">CIS-K8S-5.2.14</ident>
+      <check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
+        <check-content-ref name="oval:org.cisecurity.benchmarks:def:411" href="cis-kubernetes-oval.xml"/>
+      </check>
+    </rule-result>
+    
+    <rule-result idref="xccdf_org.cisecurity.benchmarks_rule_control_plane_api_server_kubelet_certificate_authority"
+                 time="2026-05-07T15:17:56.232025"
+                 severity="high"
+                 weight="1.000000">
+      <result>fail</result>
+      <ident system="https://www.cisecurity.org/benchmark/kubernetes">CIS-K8S-2.5.15</ident>
+      <check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
+        <check-content-ref name="oval:org.cisecurity.benchmarks:def:156" href="cis-kubernetes-oval.xml"/>
+      </check>
+      <message severity="error">Check failed: control_plane_api_server_kubelet_certificate_authority</message>
+    </rule-result>
+    
+    <rule-result idref="xccdf_org.cisecurity.benchmarks_rule_control_plane_api_server_authorization_mode"
+                 time="2026-05-07T15:18:06.232025"
+                 severity="low"
+                 weight="1.000000">
+      <result>pass</result>
+      <ident system="https://www.cisecurity.org/benchmark/kubernetes">CIS-K8S-4.7.8</ident>
+      <check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
+        <check-content-ref name="oval:org.cisecurity.benchmarks:def:642" href="cis-kubernetes-oval.xml"/>
+      </check>
+    </rule-result>
+    
+    <rule-result idref="xccdf_org.cisecurity.benchmarks_rule_control_plane_api_server_authorization_mode_node"
+                 time="2026-05-07T15:18:19.232025"
+                 severity="medium"
+                 weight="1.000000">
+      <result>pass</result>
+      <ident system="https://www.cisecurity.org/benchmark/kubernetes">CIS-K8S-1.8.4</ident>
+      <check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
+        <check-content-ref name="oval:org.cisecurity.benchmarks:def:415" href="cis-kubernetes-oval.xml"/>
+      </check>
+    </rule-result>
+    
+    <rule-result idref="xccdf_org.cisecurity.benchmarks_rule_control_plane_api_server_authorization_mode_rbac"
+                 time="2026-05-07T15:18:25.232025"
+                 severity="medium"
+                 weight="1.000000">
+      <result>fail</result>
+      <ident system="https://www.cisecurity.org/benchmark/kubernetes">CIS-K8S-4.4.9</ident>
+      <check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
+        <check-content-ref name="oval:org.cisecurity.benchmarks:def:603" href="cis-kubernetes-oval.xml"/>
+      </check>
+      <message severity="error">Check failed: control_plane_api_server_authorization_mode_rbac</message>
+    </rule-result>
+    
+    <rule-result idref="xccdf_org.cisecurity.benchmarks_rule_control_plane_api_server_admission_control_plugin_always_admit"
+                 time="2026-05-07T15:18:30.232025"
+                 severity="high"
+                 weight="1.000000">
+      <result>pass</result>
+      <ident system="https://www.cisecurity.org/benchmark/kubernetes">CIS-K8S-1.2.18</ident>
+      <check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
+        <check-content-ref name="oval:org.cisecurity.benchmarks:def:547" href="cis-kubernetes-oval.xml"/>
+      </check>
+    </rule-result>
+    
+    <rule-result idref="xccdf_org.cisecurity.benchmarks_rule_control_plane_api_server_admission_control_plugin_always_pull_images"
+                 time="2026-05-07T15:18:36.232025"
+                 severity="high"
+                 weight="1.000000">
+      <result>pass</result>
+      <ident system="https://www.cisecurity.org/benchmark/kubernetes">CIS-K8S-4.1.5</ident>
+      <check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
+        <check-content-ref name="oval:org.cisecurity.benchmarks:def:350" href="cis-kubernetes-oval.xml"/>
+      </check>
+    </rule-result>
+    
+    <rule-result idref="xccdf_org.cisecurity.benchmarks_rule_control_plane_api_server_admission_control_plugin_security_context_deny"
+                 time="2026-05-07T15:18:47.232025"
+                 severity="low"
+                 weight="1.000000">
+      <result>pass</result>
+      <ident system="https://www.cisecurity.org/benchmark/kubernetes">CIS-K8S-5.2.14</ident>
+      <check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
+        <check-content-ref name="oval:org.cisecurity.benchmarks:def:452" href="cis-kubernetes-oval.xml"/>
+      </check>
+    </rule-result>
+    
+    <rule-result idref="xccdf_org.cisecurity.benchmarks_rule_control_plane_api_server_admission_control_plugin_service_account"
+                 time="2026-05-07T15:18:57.232025"
+                 severity="low"
+                 weight="1.000000">
+      <result>pass</result>
+      <ident system="https://www.cisecurity.org/benchmark/kubernetes">CIS-K8S-1.9.3</ident>
+      <check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
+        <check-content-ref name="oval:org.cisecurity.benchmarks:def:887" href="cis-kubernetes-oval.xml"/>
+      </check>
+    </rule-result>
+    
+    <rule-result idref="xccdf_org.cisecurity.benchmarks_rule_control_plane_api_server_admission_control_plugin_namespace_lifecycle"
+                 time="2026-05-07T15:19:02.232025"
+                 severity="high"
+                 weight="1.000000">
+      <result>pass</result>
+      <ident system="https://www.cisecurity.org/benchmark/kubernetes">CIS-K8S-1.3.3</ident>
+      <check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
+        <check-content-ref name="oval:org.cisecurity.benchmarks:def:999" href="cis-kubernetes-oval.xml"/>
+      </check>
+    </rule-result>
+    
+    <rule-result idref="xccdf_org.cisecurity.benchmarks_rule_control_plane_api_server_admission_control_plugin_pod_security_policy"
+                 time="2026-05-07T15:19:12.232025"
+                 severity="high"
+                 weight="1.000000">
+      <result>pass</result>
+      <ident system="https://www.cisecurity.org/benchmark/kubernetes">CIS-K8S-1.1.12</ident>
+      <check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
+        <check-content-ref name="oval:org.cisecurity.benchmarks:def:990" href="cis-kubernetes-oval.xml"/>
+      </check>
+    </rule-result>
+    
+    <rule-result idref="xccdf_org.cisecurity.benchmarks_rule_control_plane_api_server_admission_control_plugin_node_restriction"
+                 time="2026-05-07T15:19:17.232025"
+                 severity="low"
+                 weight="1.000000">
+      <result>fail</result>
+      <ident system="https://www.cisecurity.org/benchmark/kubernetes">CIS-K8S-5.7.14</ident>
+      <check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
+        <check-content-ref name="oval:org.cisecurity.benchmarks:def:187" href="cis-kubernetes-oval.xml"/>
+      </check>
+      <message severity="error">Check failed: control_plane_api_server_admission_control_plugin_node_restriction</message>
+    </rule-result>
+    
+    <rule-result idref="xccdf_org.cisecurity.benchmarks_rule_control_plane_api_server_insecure_port"
+                 time="2026-05-07T15:19:23.232025"
+                 severity="high"
+                 weight="1.000000">
+      <result>pass</result>
+      <ident system="https://www.cisecurity.org/benchmark/kubernetes">CIS-K8S-4.9.2</ident>
+      <check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
+        <check-content-ref name="oval:org.cisecurity.benchmarks:def:145" href="cis-kubernetes-oval.xml"/>
+      </check>
+    </rule-result>
+    
+    <rule-result idref="xccdf_org.cisecurity.benchmarks_rule_control_plane_api_server_secure_port"
+                 time="2026-05-07T15:19:38.232025"
+                 severity="low"
+                 weight="1.000000">
+      <result>pass</result>
+      <ident system="https://www.cisecurity.org/benchmark/kubernetes">CIS-K8S-4.4.18</ident>
+      <check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
+        <check-content-ref name="oval:org.cisecurity.benchmarks:def:266" href="cis-kubernetes-oval.xml"/>
+      </check>
+    </rule-result>
+    
+    <rule-result idref="xccdf_org.cisecurity.benchmarks_rule_control_plane_api_server_profiling"
+                 time="2026-05-07T15:19:43.232025"
+                 severity="low"
+                 weight="1.000000">
+      <result>pass</result>
+      <ident system="https://www.cisecurity.org/benchmark/kubernetes">CIS-K8S-2.2.14</ident>
+      <check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
+        <check-content-ref name="oval:org.cisecurity.benchmarks:def:457" href="cis-kubernetes-oval.xml"/>
+      </check>
+    </rule-result>
+    
+    <rule-result idref="xccdf_org.cisecurity.benchmarks_rule_control_plane_api_server_audit_log_path"
+                 time="2026-05-07T15:19:58.232025"
+                 severity="high"
+                 weight="1.000000">
+      <result>fail</result>
+      <ident system="https://www.cisecurity.org/benchmark/kubernetes">CIS-K8S-4.1.10</ident>
+      <check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
+        <check-content-ref name="oval:org.cisecurity.benchmarks:def:933" href="cis-kubernetes-oval.xml"/>
+      </check>
+      <message severity="error">Check failed: control_plane_api_server_audit_log_path</message>
+    </rule-result>
+    
+    <rule-result idref="xccdf_org.cisecurity.benchmarks_rule_control_plane_api_server_audit_log_maxage"
+                 time="2026-05-07T15:20:09.232025"
+                 severity="low"
+                 weight="1.000000">
+      <result>pass</result>
+      <ident system="https://www.cisecurity.org/benchmark/kubernetes">CIS-K8S-1.1.14</ident>
+      <check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
+        <check-content-ref name="oval:org.cisecurity.benchmarks:def:689" href="cis-kubernetes-oval.xml"/>
+      </check>
+    </rule-result>
+    
+    <rule-result idref="xccdf_org.cisecurity.benchmarks_rule_control_plane_api_server_audit_log_maxbackup"
+                 time="2026-05-07T15:20:23.232025"
+                 severity="medium"
+                 weight="1.000000">
+      <result>pass</result>
+      <ident system="https://www.cisecurity.org/benchmark/kubernetes">CIS-K8S-5.9.4</ident>
+      <check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
+        <check-content-ref name="oval:org.cisecurity.benchmarks:def:726" href="cis-kubernetes-oval.xml"/>
+      </check>
+    </rule-result>
+    
+    <rule-result idref="xccdf_org.cisecurity.benchmarks_rule_control_plane_api_server_audit_log_maxsize"
+                 time="2026-05-07T15:20:33.232025"
+                 severity="low"
+                 weight="1.000000">
+      <result>pass</result>
+      <ident system="https://www.cisecurity.org/benchmark/kubernetes">CIS-K8S-1.6.19</ident>
+      <check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
+        <check-content-ref name="oval:org.cisecurity.benchmarks:def:577" href="cis-kubernetes-oval.xml"/>
+      </check>
+    </rule-result>
+    
+    <rule-result idref="xccdf_org.cisecurity.benchmarks_rule_control_plane_api_server_request_timeout"
+                 time="2026-05-07T15:20:38.232025"
+                 severity="medium"
+                 weight="1.000000">
+      <result>fail</result>
+      <ident system="https://www.cisecurity.org/benchmark/kubernetes">CIS-K8S-3.5.6</ident>
+      <check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
+        <check-content-ref name="oval:org.cisecurity.benchmarks:def:723" href="cis-kubernetes-oval.xml"/>
+      </check>
+      <message severity="error">Check failed: control_plane_api_server_request_timeout</message>
+    </rule-result>
+    
+    <rule-result idref="xccdf_org.cisecurity.benchmarks_rule_control_plane_api_server_service_account_lookup"
+                 time="2026-05-07T15:20:48.232025"
+                 severity="medium"
+                 weight="1.000000">
+      <result>pass</result>
+      <ident system="https://www.cisecurity.org/benchmark/kubernetes">CIS-K8S-1.7.16</ident>
+      <check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
+        <check-content-ref name="oval:org.cisecurity.benchmarks:def:915" href="cis-kubernetes-oval.xml"/>
+      </check>
+    </rule-result>
+    
+    <rule-result idref="xccdf_org.cisecurity.benchmarks_rule_control_plane_api_server_service_account_key_file"
+                 time="2026-05-07T15:20:57.232025"
+                 severity="high"
+                 weight="1.000000">
+      <result>pass</result>
+      <ident system="https://www.cisecurity.org/benchmark/kubernetes">CIS-K8S-1.6.10</ident>
+      <check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
+        <check-content-ref name="oval:org.cisecurity.benchmarks:def:156" href="cis-kubernetes-oval.xml"/>
+      </check>
+    </rule-result>
+    
+    <rule-result idref="xccdf_org.cisecurity.benchmarks_rule_control_plane_api_server_etcd_certfile"
+                 time="2026-05-07T15:21:08.232025"
+                 severity="low"
+                 weight="1.000000">
+      <result>pass</result>
+      <ident system="https://www.cisecurity.org/benchmark/kubernetes">CIS-K8S-3.9.10</ident>
+      <check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
+        <check-content-ref name="oval:org.cisecurity.benchmarks:def:199" href="cis-kubernetes-oval.xml"/>
+      </check>
+    </rule-result>
+    
+    <rule-result idref="xccdf_org.cisecurity.benchmarks_rule_control_plane_api_server_tls_cert_file"
+                 time="2026-05-07T15:21:16.232025"
+                 severity="high"
+                 weight="1.000000">
+      <result>pass</result>
+      <ident system="https://www.cisecurity.org/benchmark/kubernetes">CIS-K8S-1.2.18</ident>
+      <check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
+        <check-content-ref name="oval:org.cisecurity.benchmarks:def:480" href="cis-kubernetes-oval.xml"/>
+      </check>
+    </rule-result>
+    
+    <rule-result idref="xccdf_org.cisecurity.benchmarks_rule_control_plane_api_server_client_ca_file"
+                 time="2026-05-07T15:21:23.232025"
+                 severity="high"
+                 weight="1.000000">
+      <result>pass</result>
+      <ident system="https://www.cisecurity.org/benchmark/kubernetes">CIS-K8S-5.6.3</ident>
+      <check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
+        <check-content-ref name="oval:org.cisecurity.benchmarks:def:249" href="cis-kubernetes-oval.xml"/>
+      </check>
+    </rule-result>
+    
+    <rule-result idref="xccdf_org.cisecurity.benchmarks_rule_control_plane_api_server_etcd_cafile"
+                 time="2026-05-07T15:21:32.232025"
+                 severity="low"
+                 weight="1.000000">
+      <result>pass</result>
+      <ident system="https://www.cisecurity.org/benchmark/kubernetes">CIS-K8S-3.4.19</ident>
+      <check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
+        <check-content-ref name="oval:org.cisecurity.benchmarks:def:819" href="cis-kubernetes-oval.xml"/>
+      </check>
+    </rule-result>
+    
+    <rule-result idref="xccdf_org.cisecurity.benchmarks_rule_control_plane_api_server_encryption_provider_config"
+                 time="2026-05-07T15:21:40.232025"
+                 severity="medium"
+                 weight="1.000000">
+      <result>pass</result>
+      <ident system="https://www.cisecurity.org/benchmark/kubernetes">CIS-K8S-1.6.3</ident>
+      <check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
+        <check-content-ref name="oval:org.cisecurity.benchmarks:def:326" href="cis-kubernetes-oval.xml"/>
+      </check>
+    </rule-result>
+    
+    <rule-result idref="xccdf_org.cisecurity.benchmarks_rule_control_plane_api_server_tls_cipher_suites"
+                 time="2026-05-07T15:21:52.232025"
+                 severity="low"
+                 weight="1.000000">
+      <result>pass</result>
+      <ident system="https://www.cisecurity.org/benchmark/kubernetes">CIS-K8S-3.2.4</ident>
+      <check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
+        <check-content-ref name="oval:org.cisecurity.benchmarks:def:745" href="cis-kubernetes-oval.xml"/>
+      </check>
+    </rule-result>
+    
+    <rule-result idref="xccdf_org.cisecurity.benchmarks_rule_control_plane_scheduler_profiling"
+                 time="2026-05-07T15:22:03.232025"
+                 severity="low"
+                 weight="1.000000">
+      <result>pass</result>
+      <ident system="https://www.cisecurity.org/benchmark/kubernetes">CIS-K8S-4.2.19</ident>
+      <check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
+        <check-content-ref name="oval:org.cisecurity.benchmarks:def:574" href="cis-kubernetes-oval.xml"/>
+      </check>
+    </rule-result>
+    
+    <rule-result idref="xccdf_org.cisecurity.benchmarks_rule_control_plane_scheduler_bind_address"
+                 time="2026-05-07T15:22:17.232025"
+                 severity="low"
+                 weight="1.000000">
+      <result>pass</result>
+      <ident system="https://www.cisecurity.org/benchmark/kubernetes">CIS-K8S-2.1.16</ident>
+      <check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
+        <check-content-ref name="oval:org.cisecurity.benchmarks:def:931" href="cis-kubernetes-oval.xml"/>
+      </check>
+    </rule-result>
+    
+    <rule-result idref="xccdf_org.cisecurity.benchmarks_rule_control_plane_controller_manager_terminated_pod_gc_threshold"
+                 time="2026-05-07T15:22:25.232025"
+                 severity="high"
+                 weight="1.000000">
+      <result>pass</result>
+      <ident system="https://www.cisecurity.org/benchmark/kubernetes">CIS-K8S-4.9.16</ident>
+      <check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
+        <check-content-ref name="oval:org.cisecurity.benchmarks:def:147" href="cis-kubernetes-oval.xml"/>
+      </check>
+    </rule-result>
+    
+    <rule-result idref="xccdf_org.cisecurity.benchmarks_rule_control_plane_controller_manager_profiling"
+                 time="2026-05-07T15:22:32.232025"
+                 severity="high"
+                 weight="1.000000">
+      <result>pass</result>
+      <ident system="https://www.cisecurity.org/benchmark/kubernetes">CIS-K8S-4.6.18</ident>
+      <check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
+        <check-content-ref name="oval:org.cisecurity.benchmarks:def:773" href="cis-kubernetes-oval.xml"/>
+      </check>
+    </rule-result>
+    
+    <rule-result idref="xccdf_org.cisecurity.benchmarks_rule_control_plane_controller_manager_use_service_account_credentials"
+                 time="2026-05-07T15:22:42.232025"
+                 severity="low"
+                 weight="1.000000">
+      <result>pass</result>
+      <ident system="https://www.cisecurity.org/benchmark/kubernetes">CIS-K8S-3.9.8</ident>
+      <check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
+        <check-content-ref name="oval:org.cisecurity.benchmarks:def:401" href="cis-kubernetes-oval.xml"/>
+      </check>
+    </rule-result>
+    
+    <rule-result idref="xccdf_org.cisecurity.benchmarks_rule_control_plane_controller_manager_service_account_private_key_file"
+                 time="2026-05-07T15:22:48.232025"
+                 severity="low"
+                 weight="1.000000">
+      <result>pass</result>
+      <ident system="https://www.cisecurity.org/benchmark/kubernetes">CIS-K8S-1.4.1</ident>
+      <check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
+        <check-content-ref name="oval:org.cisecurity.benchmarks:def:439" href="cis-kubernetes-oval.xml"/>
+      </check>
+    </rule-result>
+    
+    <rule-result idref="xccdf_org.cisecurity.benchmarks_rule_control_plane_controller_manager_root_ca_file"
+                 time="2026-05-07T15:22:56.232025"
+                 severity="high"
+                 weight="1.000000">
+      <result>pass</result>
+      <ident system="https://www.cisecurity.org/benchmark/kubernetes">CIS-K8S-4.5.1</ident>
+      <check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
+        <check-content-ref name="oval:org.cisecurity.benchmarks:def:339" href="cis-kubernetes-oval.xml"/>
+      </check>
+    </rule-result>
+    
+    <rule-result idref="xccdf_org.cisecurity.benchmarks_rule_control_plane_controller_manager_feature_gates_rotate_kubelet_server_certificate"
+                 time="2026-05-07T15:23:10.232025"
+                 severity="medium"
+                 weight="1.000000">
+      <result>pass</result>
+      <ident system="https://www.cisecurity.org/benchmark/kubernetes">CIS-K8S-3.8.4</ident>
+      <check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
+        <check-content-ref name="oval:org.cisecurity.benchmarks:def:500" href="cis-kubernetes-oval.xml"/>
+      </check>
+    </rule-result>
+    
+    <rule-result idref="xccdf_org.cisecurity.benchmarks_rule_control_plane_controller_manager_bind_address"
+                 time="2026-05-07T15:23:23.232025"
+                 severity="medium"
+                 weight="1.000000">
+      <result>pass</result>
+      <ident system="https://www.cisecurity.org/benchmark/kubernetes">CIS-K8S-5.3.16</ident>
+      <check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
+        <check-content-ref name="oval:org.cisecurity.benchmarks:def:430" href="cis-kubernetes-oval.xml"/>
+      </check>
+    </rule-result>
+    
+    <rule-result idref="xccdf_org.cisecurity.benchmarks_rule_worker_node_kubelet_anonymous_auth"
+                 time="2026-05-07T15:23:37.232025"
+                 severity="medium"
+                 weight="1.000000">
+      <result>fail</result>
+      <ident system="https://www.cisecurity.org/benchmark/kubernetes">CIS-K8S-2.8.6</ident>
+      <check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
+        <check-content-ref name="oval:org.cisecurity.benchmarks:def:358" href="cis-kubernetes-oval.xml"/>
+      </check>
+      <message severity="error">Check failed: worker_node_kubelet_anonymous_auth</message>
+    </rule-result>
+    
+    <rule-result idref="xccdf_org.cisecurity.benchmarks_rule_worker_node_kubelet_authorization_mode"
+                 time="2026-05-07T15:23:42.232025"
+                 severity="medium"
+                 weight="1.000000">
+      <result>pass</result>
+      <ident system="https://www.cisecurity.org/benchmark/kubernetes">CIS-K8S-5.5.13</ident>
+      <check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
+        <check-content-ref name="oval:org.cisecurity.benchmarks:def:540" href="cis-kubernetes-oval.xml"/>
+      </check>
+    </rule-result>
+    
+    <rule-result idref="xccdf_org.cisecurity.benchmarks_rule_worker_node_kubelet_client_ca_file"
+                 time="2026-05-07T15:23:52.232025"
+                 severity="medium"
+                 weight="1.000000">
+      <result>pass</result>
+      <ident system="https://www.cisecurity.org/benchmark/kubernetes">CIS-K8S-4.2.3</ident>
+      <check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
+        <check-content-ref name="oval:org.cisecurity.benchmarks:def:810" href="cis-kubernetes-oval.xml"/>
+      </check>
+    </rule-result>
+    
+    <rule-result idref="xccdf_org.cisecurity.benchmarks_rule_worker_node_kubelet_read_only_port"
+                 time="2026-05-07T15:24:00.232025"
+                 severity="low"
+                 weight="1.000000">
+      <result>fail</result>
+      <ident system="https://www.cisecurity.org/benchmark/kubernetes">CIS-K8S-5.5.11</ident>
+      <check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
+        <check-content-ref name="oval:org.cisecurity.benchmarks:def:155" href="cis-kubernetes-oval.xml"/>
+      </check>
+      <message severity="error">Check failed: worker_node_kubelet_read_only_port</message>
+    </rule-result>
+    
+    <rule-result idref="xccdf_org.cisecurity.benchmarks_rule_worker_node_kubelet_streaming_connection_idle_timeout"
+                 time="2026-05-07T15:24:05.232025"
+                 severity="medium"
+                 weight="1.000000">
+      <result>pass</result>
+      <ident system="https://www.cisecurity.org/benchmark/kubernetes">CIS-K8S-3.8.5</ident>
+      <check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
+        <check-content-ref name="oval:org.cisecurity.benchmarks:def:812" href="cis-kubernetes-oval.xml"/>
+      </check>
+    </rule-result>
+    
+    <rule-result idref="xccdf_org.cisecurity.benchmarks_rule_worker_node_kubelet_protect_kernel_defaults"
+                 time="2026-05-07T15:24:17.232025"
+                 severity="high"
+                 weight="1.000000">
+      <result>pass</result>
+      <ident system="https://www.cisecurity.org/benchmark/kubernetes">CIS-K8S-4.9.14</ident>
+      <check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
+        <check-content-ref name="oval:org.cisecurity.benchmarks:def:748" href="cis-kubernetes-oval.xml"/>
+      </check>
+    </rule-result>
+    
+    <rule-result idref="xccdf_org.cisecurity.benchmarks_rule_worker_node_kubelet_make_iptables_util_chains"
+                 time="2026-05-07T15:24:27.232025"
+                 severity="medium"
+                 weight="1.000000">
+      <result>pass</result>
+      <ident system="https://www.cisecurity.org/benchmark/kubernetes">CIS-K8S-3.1.6</ident>
+      <check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
+        <check-content-ref name="oval:org.cisecurity.benchmarks:def:923" href="cis-kubernetes-oval.xml"/>
+      </check>
+    </rule-result>
+    
+    <rule-result idref="xccdf_org.cisecurity.benchmarks_rule_worker_node_kubelet_hostname_override"
+                 time="2026-05-07T15:24:42.232025"
+                 severity="low"
+                 weight="1.000000">
+      <result>pass</result>
+      <ident system="https://www.cisecurity.org/benchmark/kubernetes">CIS-K8S-2.8.11</ident>
+      <check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
+        <check-content-ref name="oval:org.cisecurity.benchmarks:def:123" href="cis-kubernetes-oval.xml"/>
+      </check>
+    </rule-result>
+    
+    <rule-result idref="xccdf_org.cisecurity.benchmarks_rule_worker_node_kubelet_event_qps"
+                 time="2026-05-07T15:24:55.232025"
+                 severity="high"
+                 weight="1.000000">
+      <result>pass</result>
+      <ident system="https://www.cisecurity.org/benchmark/kubernetes">CIS-K8S-3.8.20</ident>
+      <check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
+        <check-content-ref name="oval:org.cisecurity.benchmarks:def:663" href="cis-kubernetes-oval.xml"/>
+      </check>
+    </rule-result>
+    
+    <rule-result idref="xccdf_org.cisecurity.benchmarks_rule_worker_node_kubelet_tls_cert_file"
+                 time="2026-05-07T15:25:08.232025"
+                 severity="medium"
+                 weight="1.000000">
+      <result>pass</result>
+      <ident system="https://www.cisecurity.org/benchmark/kubernetes">CIS-K8S-2.6.4</ident>
+      <check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
+        <check-content-ref name="oval:org.cisecurity.benchmarks:def:512" href="cis-kubernetes-oval.xml"/>
+      </check>
+    </rule-result>
+    
+    <rule-result idref="xccdf_org.cisecurity.benchmarks_rule_worker_node_kubelet_rotate_certificates"
+                 time="2026-05-07T15:25:16.232025"
+                 severity="medium"
+                 weight="1.000000">
+      <result>pass</result>
+      <ident system="https://www.cisecurity.org/benchmark/kubernetes">CIS-K8S-3.2.2</ident>
+      <check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
+        <check-content-ref name="oval:org.cisecurity.benchmarks:def:257" href="cis-kubernetes-oval.xml"/>
+      </check>
+    </rule-result>
+    
+    <rule-result idref="xccdf_org.cisecurity.benchmarks_rule_etcd_cert_file"
+                 time="2026-05-07T15:25:29.232025"
+                 severity="medium"
+                 weight="1.000000">
+      <result>fail</result>
+      <ident system="https://www.cisecurity.org/benchmark/kubernetes">CIS-K8S-5.8.13</ident>
+      <check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
+        <check-content-ref name="oval:org.cisecurity.benchmarks:def:566" href="cis-kubernetes-oval.xml"/>
+      </check>
+      <message severity="error">Check failed: etcd_cert_file</message>
+    </rule-result>
+    
+    <rule-result idref="xccdf_org.cisecurity.benchmarks_rule_etcd_client_cert_auth"
+                 time="2026-05-07T15:25:40.232025"
+                 severity="low"
+                 weight="1.000000">
+      <result>pass</result>
+      <ident system="https://www.cisecurity.org/benchmark/kubernetes">CIS-K8S-5.3.5</ident>
+      <check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
+        <check-content-ref name="oval:org.cisecurity.benchmarks:def:402" href="cis-kubernetes-oval.xml"/>
+      </check>
+    </rule-result>
+    
+    <rule-result idref="xccdf_org.cisecurity.benchmarks_rule_etcd_auto_tls"
+                 time="2026-05-07T15:25:48.232025"
+                 severity="medium"
+                 weight="1.000000">
+      <result>fail</result>
+      <ident system="https://www.cisecurity.org/benchmark/kubernetes">CIS-K8S-1.8.13</ident>
+      <check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
+        <check-content-ref name="oval:org.cisecurity.benchmarks:def:192" href="cis-kubernetes-oval.xml"/>
+      </check>
+      <message severity="error">Check failed: etcd_auto_tls</message>
+    </rule-result>
+    
+    <rule-result idref="xccdf_org.cisecurity.benchmarks_rule_etcd_peer_cert_file"
+                 time="2026-05-07T15:25:58.232025"
+                 severity="high"
+                 weight="1.000000">
+      <result>pass</result>
+      <ident system="https://www.cisecurity.org/benchmark/kubernetes">CIS-K8S-3.6.13</ident>
+      <check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
+        <check-content-ref name="oval:org.cisecurity.benchmarks:def:172" href="cis-kubernetes-oval.xml"/>
+      </check>
+    </rule-result>
+    
+    <rule-result idref="xccdf_org.cisecurity.benchmarks_rule_etcd_peer_client_cert_auth"
+                 time="2026-05-07T15:26:05.232025"
+                 severity="medium"
+                 weight="1.000000">
+      <result>pass</result>
+      <ident system="https://www.cisecurity.org/benchmark/kubernetes">CIS-K8S-2.2.20</ident>
+      <check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
+        <check-content-ref name="oval:org.cisecurity.benchmarks:def:304" href="cis-kubernetes-oval.xml"/>
+      </check>
+    </rule-result>
+    
+    <rule-result idref="xccdf_org.cisecurity.benchmarks_rule_etcd_peer_auto_tls"
+                 time="2026-05-07T15:26:19.232025"
+                 severity="medium"
+                 weight="1.000000">
+      <result>pass</result>
+      <ident system="https://www.cisecurity.org/benchmark/kubernetes">CIS-K8S-4.2.3</ident>
+      <check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
+        <check-content-ref name="oval:org.cisecurity.benchmarks:def:725" href="cis-kubernetes-oval.xml"/>
+      </check>
+    </rule-result>
+    
+    <rule-result idref="xccdf_org.cisecurity.benchmarks_rule_etcd_unique_ca"
+                 time="2026-05-07T15:26:26.232025"
+                 severity="high"
+                 weight="1.000000">
+      <result>pass</result>
+      <ident system="https://www.cisecurity.org/benchmark/kubernetes">CIS-K8S-1.6.11</ident>
+      <check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
+        <check-content-ref name="oval:org.cisecurity.benchmarks:def:343" href="cis-kubernetes-oval.xml"/>
+      </check>
+    </rule-result>
+    
+    <rule-result idref="xccdf_org.cisecurity.benchmarks_rule_network_policy_enabled"
+                 time="2026-05-07T15:26:35.232025"
+                 severity="low"
+                 weight="1.000000">
+      <result>pass</result>
+      <ident system="https://www.cisecurity.org/benchmark/kubernetes">CIS-K8S-1.6.12</ident>
+      <check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
+        <check-content-ref name="oval:org.cisecurity.benchmarks:def:933" href="cis-kubernetes-oval.xml"/>
+      </check>
+    </rule-result>
+    
+    <rule-result idref="xccdf_org.cisecurity.benchmarks_rule_pod_security_policy_enabled"
+                 time="2026-05-07T15:26:43.232025"
+                 severity="medium"
+                 weight="1.000000">
+      <result>pass</result>
+      <ident system="https://www.cisecurity.org/benchmark/kubernetes">CIS-K8S-1.7.11</ident>
+      <check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
+        <check-content-ref name="oval:org.cisecurity.benchmarks:def:171" href="cis-kubernetes-oval.xml"/>
+      </check>
+    </rule-result>
+    
+  </TestResult>
+</Benchmark>

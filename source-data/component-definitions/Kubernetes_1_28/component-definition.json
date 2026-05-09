@@ -1,0 +1,962 @@
+{
+  "component-definition": {
+    "uuid": "8f7a9c2d-3e4b-4f5a-9c8d-7e6f5a4b3c2d",
+    "metadata": {
+      "title": "Component definition for Kubernetes 1.28",
+      "last-modified": "2026-05-09T10:36:00+00:00",
+      "version": "V1.0",
+      "oscal-version": "1.2.1"
+    },
+    "components": [
+      {
+        "uuid": "9a8b7c6d-5e4f-4a2b-9c0d-9e8f7a6b5c4d",
+        "type": "software",
+        "title": "Kubernetes_1.28",
+        "description": "Kubernetes Container Orchestration Platform version 1.28",
+        "props": [
+          {
+            "name": "version",
+            "value": "1.28.0"
+          },
+          {
+            "name": "vendor",
+            "value": "Cloud Native Computing Foundation"
+          }
+        ],
+        "control-implementations": [
+          {
+            "uuid": "8caa8c7b-913c-4b5f-a2c0-9073cba592ad",
+            "source": "../../catalogs/resolved-FedRAMP-Rev5-Moderate/catalog.json",
+            "description": "FedRAMP Rev 5 Moderate Baseline for Kubernetes",
+            "implemented-requirements": [
+              {
+                "uuid": "1b82eb98-f61e-4aa9-9d0f-25865b1ac953",
+                "control-id": "ac-2",
+                "description": "Account Management controls for Kubernetes",
+                "props": [
+                  {"name": "Rule_Id", "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd", "value": "control_plane_api_server_anonymous_auth"},
+                  {"name": "Rule_Id", "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd", "value": "control_plane_api_server_basic_auth"},
+                  {"name": "Rule_Id", "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd", "value": "control_plane_api_server_token_auth"},
+                  {"name": "Rule_Id", "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd", "value": "worker_node_kubelet_anonymous_auth"}
+                ]
+              },
+              {
+                "uuid": "918ee579-05f6-490d-b119-292bf6e12727",
+                "control-id": "ac-3",
+                "description": "Access Enforcement controls for Kubernetes",
+                "props": [
+                  {"name": "Rule_Id", "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd", "value": "control_plane_api_server_authorization_mode"},
+                  {"name": "Rule_Id", "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd", "value": "control_plane_api_server_authorization_mode_node"},
+                  {"name": "Rule_Id", "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd", "value": "control_plane_api_server_authorization_mode_rbac"},
+                  {"name": "Rule_Id", "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd", "value": "worker_node_kubelet_authorization_mode"}
+                ]
+              },
+              {
+                "uuid": "66ff833f-5144-4b95-9735-67f2a3df6cbc",
+                "control-id": "ac-6",
+                "description": "Least Privilege controls for Kubernetes",
+                "props": [
+                  {"name": "Rule_Id", "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd", "value": "control_plane_api_server_admission_control_plugin_always_admit"},
+                  {"name": "Rule_Id", "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd", "value": "control_plane_api_server_admission_control_plugin_security_context_deny"},
+                  {"name": "Rule_Id", "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd", "value": "pod_security_policy_enabled"}
+                ]
+              },
+              {
+                "uuid": "1a28c9c4-ac19-4d0a-bf8e-16934aaf3160",
+                "control-id": "au-2",
+                "description": "Audit Events controls for Kubernetes",
+                "props": [
+                  {"name": "Rule_Id", "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd", "value": "control_plane_api_server_audit_log_path"},
+                  {"name": "Rule_Id", "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd", "value": "control_plane_api_server_audit_log_maxage"},
+                  {"name": "Rule_Id", "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd", "value": "control_plane_api_server_audit_log_maxbackup"},
+                  {"name": "Rule_Id", "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd", "value": "control_plane_api_server_audit_log_maxsize"}
+                ]
+              },
+              {
+                "uuid": "dd1ad0f0-dafc-4746-9292-405249c0b83b",
+                "control-id": "cm-6",
+                "description": "Configuration Settings controls for Kubernetes",
+                "props": [
+                  {"name": "Rule_Id", "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd", "value": "control_plane_api_server_insecure_port"},
+                  {"name": "Rule_Id", "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd", "value": "control_plane_api_server_secure_port"},
+                  {"name": "Rule_Id", "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd", "value": "control_plane_api_server_profiling"},
+                  {"name": "Rule_Id", "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd", "value": "control_plane_scheduler_profiling"},
+                  {"name": "Rule_Id", "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd", "value": "control_plane_controller_manager_profiling"}
+                ]
+              },
+              {
+                "uuid": "a3286600-8ac2-4c03-984d-138a6b111f6b",
+                "control-id": "ia-5",
+                "description": "Authenticator Management controls for Kubernetes",
+                "props": [
+                  {"name": "Rule_Id", "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd", "value": "control_plane_api_server_kubelet_client_certificate"},
+                  {"name": "Rule_Id", "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd", "value": "control_plane_api_server_kubelet_certificate_authority"},
+                  {"name": "Rule_Id", "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd", "value": "control_plane_api_server_client_ca_file"},
+                  {"name": "Rule_Id", "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd", "value": "worker_node_kubelet_client_ca_file"}
+                ]
+              },
+              {
+                "uuid": "d3308ff6-8ffa-4c56-94bc-55e6597282a7",
+                "control-id": "sc-8",
+                "description": "Transmission Confidentiality controls for Kubernetes",
+                "props": [
+                  {"name": "Rule_Id", "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd", "value": "control_plane_api_server_kubelet_https"},
+                  {"name": "Rule_Id", "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd", "value": "control_plane_api_server_tls_cert_file"},
+                  {"name": "Rule_Id", "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd", "value": "control_plane_api_server_etcd_certfile"},
+                  {"name": "Rule_Id", "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd", "value": "worker_node_kubelet_tls_cert_file"},
+                  {"name": "Rule_Id", "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd", "value": "etcd_cert_file"},
+                  {"name": "Rule_Id", "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd", "value": "etcd_peer_cert_file"}
+                ]
+              },
+              {
+                "uuid": "cbe6547c-f6bd-4e12-874a-1082159fbf6f",
+                "control-id": "sc-13",
+                "description": "Cryptographic Protection controls for Kubernetes",
+                "props": [
+                  {"name": "Rule_Id", "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd", "value": "control_plane_api_server_encryption_provider_config"},
+                  {"name": "Rule_Id", "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd", "value": "control_plane_api_server_tls_cipher_suites"},
+                  {"name": "Rule_Id", "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd", "value": "etcd_client_cert_auth"},
+                  {"name": "Rule_Id", "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd", "value": "etcd_peer_client_cert_auth"}
+                ]
+              },
+              {
+                "uuid": "5b72547d-9c32-46cd-948a-ae0542f1a3d6",
+                "control-id": "sc-23",
+                "description": "Session Authenticity controls for Kubernetes",
+                "props": [
+                  {"name": "Rule_Id", "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd", "value": "control_plane_api_server_service_account_lookup"},
+                  {"name": "Rule_Id", "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd", "value": "control_plane_api_server_service_account_key_file"},
+                  {"name": "Rule_Id", "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd", "value": "control_plane_controller_manager_service_account_private_key_file"},
+                  {"name": "Rule_Id", "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd", "value": "control_plane_api_server_admission_control_plugin_service_account"}
+                ]
+              },
+              {
+                "uuid": "125b9748-b63b-4980-82b0-8347e5791b90",
+                "control-id": "si-7",
+                "description": "Software and Information Integrity controls for Kubernetes",
+                "props": [
+                  {"name": "Rule_Id", "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd", "value": "control_plane_api_server_admission_control_plugin_always_pull_images"},
+                  {"name": "Rule_Id", "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd", "value": "worker_node_kubelet_rotate_certificates"},
+                  {"name": "Rule_Id", "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd", "value": "control_plane_controller_manager_feature_gates_rotate_kubelet_server_certificate"}
+                ]
+              },
+              {
+                "uuid": "4b99c553-36fa-4226-804f-60131627b891",
+                "control-id": "cm-7",
+                "description": "Least Functionality controls for Kubernetes",
+                "props": [
+                  {"name": "Rule_Id", "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd", "value": "control_plane_api_server_admission_control_plugin_namespace_lifecycle"},
+                  {"name": "Rule_Id", "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd", "value": "control_plane_api_server_admission_control_plugin_node_restriction"},
+                  {"name": "Rule_Id", "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd", "value": "control_plane_api_server_admission_control_plugin_pod_security_policy"},
+                  {"name": "Rule_Id", "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd", "value": "network_policy_enabled"}
+                ]
+              },
+              {
+                "uuid": "4c003bb7-bd0d-43e0-a950-2abf2ccfc437",
+                "control-id": "sc-7",
+                "description": "Boundary Protection controls for Kubernetes",
+                "props": [
+                  {"name": "Rule_Id", "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd", "value": "control_plane_scheduler_bind_address"},
+                  {"name": "Rule_Id", "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd", "value": "control_plane_controller_manager_bind_address"},
+                  {"name": "Rule_Id", "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd", "value": "worker_node_kubelet_read_only_port"},
+                  {"name": "Rule_Id", "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd", "value": "control_plane_api_server_etcd_cafile"}
+                ]
+              },
+              {
+                "uuid": "12d8a171-4f5d-461b-a50f-cee53675473b",
+                "control-id": "si-2",
+                "description": "Flaw Remediation controls for Kubernetes",
+                "props": [
+                  {"name": "Rule_Id", "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd", "value": "control_plane_controller_manager_terminated_pod_gc_threshold"},
+                  {"name": "Rule_Id", "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd", "value": "control_plane_controller_manager_use_service_account_credentials"},
+                  {"name": "Rule_Id", "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd", "value": "control_plane_controller_manager_root_ca_file"}
+                ]
+              },
+              {
+                "uuid": "eca30bfa-7299-48f1-8545-d01e61110cfe",
+                "control-id": "si-4",
+                "description": "Information System Monitoring controls for Kubernetes",
+                "props": [
+                  {"name": "Rule_Id", "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd", "value": "worker_node_kubelet_streaming_connection_idle_timeout"},
+                  {"name": "Rule_Id", "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd", "value": "worker_node_kubelet_event_qps"},
+                  {"name": "Rule_Id", "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd", "value": "control_plane_api_server_request_timeout"}
+                ]
+              },
+              {
+                "uuid": "3bd672f4-adcd-4d5b-adea-06b567753e68",
+                "control-id": "cm-2",
+                "description": "Baseline Configuration controls for Kubernetes",
+                "props": [
+                  {"name": "Rule_Id", "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd", "value": "worker_node_kubelet_protect_kernel_defaults"},
+                  {"name": "Rule_Id", "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd", "value": "worker_node_kubelet_make_iptables_util_chains"},
+                  {"name": "Rule_Id", "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd", "value": "worker_node_kubelet_hostname_override"}
+                ]
+              },
+              {
+                "uuid": "4accc1fd-5ea3-4a8a-acbe-a488eb228bcc",
+                "control-id": "sc-28",
+                "description": "Protection of Information at Rest controls for Kubernetes",
+                "props": [
+                  {"name": "Rule_Id", "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd", "value": "etcd_auto_tls"},
+                  {"name": "Rule_Id", "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd", "value": "etcd_peer_auto_tls"},
+                  {"name": "Rule_Id", "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd", "value": "etcd_unique_ca"}
+                ]
+              },
+              {
+                "uuid": "7f8e9d0c-1a2b-4c3d-8e9f-0a1b2c3d4e5f",
+                "control-id": "au-6.4",
+                "description": "Central Review and Analysis of Audit Records for Kubernetes (FedRAMP High only)",
+                "props": [
+                  {"name": "Rule_Id", "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd", "value": "control_plane_api_server_audit_log_path"},
+                  {"name": "Rule_Id", "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd", "value": "control_plane_api_server_audit_log_maxage"},
+                  {"name": "Rule_Id", "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd", "value": "control_plane_api_server_audit_log_maxbackup"}
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "uuid": "1b2c3d4e-5f6a-4b8c-9d0e-1f2a3b4c5d6e",
+        "type": "validation",
+        "title": "kube-bench",
+        "description": "CIS Kubernetes Benchmark validation using kube-bench",
+        "props": [
+          {
+            "name": "Rule_Id",
+            "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd",
+            "value": "control_plane_api_server_anonymous_auth",
+            "remarks": "rule_set_00"
+          },
+          {
+            "name": "Rule_Description",
+            "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd",
+            "value": "Ensure that the --anonymous-auth argument is set to false",
+            "remarks": "rule_set_00"
+          },
+          {
+            "name": "Rule_Id",
+            "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd",
+            "value": "control_plane_api_server_basic_auth",
+            "remarks": "rule_set_01"
+          },
+          {
+            "name": "Rule_Description",
+            "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd",
+            "value": "Ensure that the --basic-auth-file argument is not set",
+            "remarks": "rule_set_01"
+          },
+          {
+            "name": "Rule_Id",
+            "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd",
+            "value": "control_plane_api_server_token_auth",
+            "remarks": "rule_set_02"
+          },
+          {
+            "name": "Rule_Description",
+            "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd",
+            "value": "Ensure that the --token-auth-file parameter is not set",
+            "remarks": "rule_set_02"
+          },
+          {
+            "name": "Rule_Id",
+            "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd",
+            "value": "control_plane_api_server_kubelet_https",
+            "remarks": "rule_set_03"
+          },
+          {
+            "name": "Rule_Description",
+            "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd",
+            "value": "Ensure that the --kubelet-https argument is set to true",
+            "remarks": "rule_set_03"
+          },
+          {
+            "name": "Rule_Id",
+            "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd",
+            "value": "control_plane_api_server_kubelet_client_certificate",
+            "remarks": "rule_set_04"
+          },
+          {
+            "name": "Rule_Description",
+            "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd",
+            "value": "Ensure that the --kubelet-client-certificate and --kubelet-client-key arguments are set",
+            "remarks": "rule_set_04"
+          },
+          {
+            "name": "Rule_Id",
+            "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd",
+            "value": "control_plane_api_server_kubelet_certificate_authority",
+            "remarks": "rule_set_05"
+          },
+          {
+            "name": "Rule_Description",
+            "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd",
+            "value": "Ensure that the --kubelet-certificate-authority argument is set",
+            "remarks": "rule_set_05"
+          },
+          {
+            "name": "Rule_Id",
+            "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd",
+            "value": "control_plane_api_server_authorization_mode",
+            "remarks": "rule_set_06"
+          },
+          {
+            "name": "Rule_Description",
+            "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd",
+            "value": "Ensure that the --authorization-mode argument is not set to AlwaysAllow",
+            "remarks": "rule_set_06"
+          },
+          {
+            "name": "Rule_Id",
+            "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd",
+            "value": "control_plane_api_server_authorization_mode_node",
+            "remarks": "rule_set_07"
+          },
+          {
+            "name": "Rule_Description",
+            "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd",
+            "value": "Ensure that the --authorization-mode argument includes Node",
+            "remarks": "rule_set_07"
+          },
+          {
+            "name": "Rule_Id",
+            "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd",
+            "value": "control_plane_api_server_authorization_mode_rbac",
+            "remarks": "rule_set_08"
+          },
+          {
+            "name": "Rule_Description",
+            "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd",
+            "value": "Ensure that the --authorization-mode argument includes RBAC",
+            "remarks": "rule_set_08"
+          },
+          {
+            "name": "Rule_Id",
+            "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd",
+            "value": "control_plane_api_server_admission_control_plugin_always_admit",
+            "remarks": "rule_set_09"
+          },
+          {
+            "name": "Rule_Description",
+            "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd",
+            "value": "Ensure that the admission control plugin AlwaysAdmit is not set",
+            "remarks": "rule_set_09"
+          },
+          {
+            "name": "Rule_Id",
+            "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd",
+            "value": "control_plane_api_server_admission_control_plugin_always_pull_images",
+            "remarks": "rule_set_10"
+          },
+          {
+            "name": "Rule_Description",
+            "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd",
+            "value": "Ensure that the admission control plugin AlwaysPullImages is set",
+            "remarks": "rule_set_10"
+          },
+          {
+            "name": "Rule_Id",
+            "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd",
+            "value": "control_plane_api_server_admission_control_plugin_security_context_deny",
+            "remarks": "rule_set_11"
+          },
+          {
+            "name": "Rule_Description",
+            "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd",
+            "value": "Ensure that the admission control plugin SecurityContextDeny is set if PodSecurityPolicy is not used",
+            "remarks": "rule_set_11"
+          },
+          {
+            "name": "Rule_Id",
+            "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd",
+            "value": "control_plane_api_server_admission_control_plugin_service_account",
+            "remarks": "rule_set_12"
+          },
+          {
+            "name": "Rule_Description",
+            "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd",
+            "value": "Ensure that the admission control plugin ServiceAccount is set",
+            "remarks": "rule_set_12"
+          },
+          {
+            "name": "Rule_Id",
+            "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd",
+            "value": "control_plane_api_server_admission_control_plugin_namespace_lifecycle",
+            "remarks": "rule_set_13"
+          },
+          {
+            "name": "Rule_Description",
+            "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd",
+            "value": "Ensure that the admission control plugin NamespaceLifecycle is set",
+            "remarks": "rule_set_13"
+          },
+          {
+            "name": "Rule_Id",
+            "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd",
+            "value": "control_plane_api_server_admission_control_plugin_pod_security_policy",
+            "remarks": "rule_set_14"
+          },
+          {
+            "name": "Rule_Description",
+            "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd",
+            "value": "Ensure that the admission control plugin PodSecurityPolicy is set",
+            "remarks": "rule_set_14"
+          },
+          {
+            "name": "Rule_Id",
+            "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd",
+            "value": "control_plane_api_server_admission_control_plugin_node_restriction",
+            "remarks": "rule_set_15"
+          },
+          {
+            "name": "Rule_Description",
+            "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd",
+            "value": "Ensure that the admission control plugin NodeRestriction is set",
+            "remarks": "rule_set_15"
+          },
+          {
+            "name": "Rule_Id",
+            "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd",
+            "value": "control_plane_api_server_insecure_port",
+            "remarks": "rule_set_16"
+          },
+          {
+            "name": "Rule_Description",
+            "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd",
+            "value": "Ensure that the --insecure-port argument is set to 0",
+            "remarks": "rule_set_16"
+          },
+          {
+            "name": "Rule_Id",
+            "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd",
+            "value": "control_plane_api_server_secure_port",
+            "remarks": "rule_set_17"
+          },
+          {
+            "name": "Rule_Description",
+            "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd",
+            "value": "Ensure that the --secure-port argument is not set to 0",
+            "remarks": "rule_set_17"
+          },
+          {
+            "name": "Rule_Id",
+            "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd",
+            "value": "control_plane_api_server_profiling",
+            "remarks": "rule_set_18"
+          },
+          {
+            "name": "Rule_Description",
+            "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd",
+            "value": "Ensure that the --profiling argument is set to false",
+            "remarks": "rule_set_18"
+          },
+          {
+            "name": "Rule_Id",
+            "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd",
+            "value": "control_plane_api_server_audit_log_path",
+            "remarks": "rule_set_19"
+          },
+          {
+            "name": "Rule_Description",
+            "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd",
+            "value": "Ensure that the --audit-log-path argument is set",
+            "remarks": "rule_set_19"
+          },
+          {
+            "name": "Rule_Id",
+            "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd",
+            "value": "control_plane_api_server_audit_log_maxage",
+            "remarks": "rule_set_20"
+          },
+          {
+            "name": "Rule_Description",
+            "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd",
+            "value": "Ensure that the --audit-log-maxage argument is set to 30 or as appropriate",
+            "remarks": "rule_set_20"
+          },
+          {
+            "name": "Rule_Id",
+            "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd",
+            "value": "control_plane_api_server_audit_log_maxbackup",
+            "remarks": "rule_set_21"
+          },
+          {
+            "name": "Rule_Description",
+            "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd",
+            "value": "Ensure that the --audit-log-maxbackup argument is set to 10 or as appropriate",
+            "remarks": "rule_set_21"
+          },
+          {
+            "name": "Rule_Id",
+            "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd",
+            "value": "control_plane_api_server_audit_log_maxsize",
+            "remarks": "rule_set_22"
+          },
+          {
+            "name": "Rule_Description",
+            "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd",
+            "value": "Ensure that the --audit-log-maxsize argument is set to 100 or as appropriate",
+            "remarks": "rule_set_22"
+          },
+          {
+            "name": "Rule_Id",
+            "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd",
+            "value": "control_plane_api_server_request_timeout",
+            "remarks": "rule_set_23"
+          },
+          {
+            "name": "Rule_Description",
+            "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd",
+            "value": "Ensure that the --request-timeout argument is set as appropriate",
+            "remarks": "rule_set_23"
+          },
+          {
+            "name": "Rule_Id",
+            "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd",
+            "value": "control_plane_api_server_service_account_lookup",
+            "remarks": "rule_set_24"
+          },
+          {
+            "name": "Rule_Description",
+            "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd",
+            "value": "Ensure that the --service-account-lookup argument is set to true",
+            "remarks": "rule_set_24"
+          },
+          {
+            "name": "Rule_Id",
+            "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd",
+            "value": "control_plane_api_server_service_account_key_file",
+            "remarks": "rule_set_25"
+          },
+          {
+            "name": "Rule_Description",
+            "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd",
+            "value": "Ensure that the --service-account-key-file argument is set",
+            "remarks": "rule_set_25"
+          },
+          {
+            "name": "Rule_Id",
+            "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd",
+            "value": "control_plane_api_server_etcd_certfile",
+            "remarks": "rule_set_26"
+          },
+          {
+            "name": "Rule_Description",
+            "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd",
+            "value": "Ensure that the --etcd-certfile and --etcd-keyfile arguments are set",
+            "remarks": "rule_set_26"
+          },
+          {
+            "name": "Rule_Id",
+            "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd",
+            "value": "control_plane_api_server_tls_cert_file",
+            "remarks": "rule_set_27"
+          },
+          {
+            "name": "Rule_Description",
+            "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd",
+            "value": "Ensure that the --tls-cert-file and --tls-private-key-file arguments are set",
+            "remarks": "rule_set_27"
+          },
+          {
+            "name": "Rule_Id",
+            "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd",
+            "value": "control_plane_api_server_client_ca_file",
+            "remarks": "rule_set_28"
+          },
+          {
+            "name": "Rule_Description",
+            "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd",
+            "value": "Ensure that the --client-ca-file argument is set",
+            "remarks": "rule_set_28"
+          },
+          {
+            "name": "Rule_Id",
+            "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd",
+            "value": "control_plane_api_server_etcd_cafile",
+            "remarks": "rule_set_29"
+          },
+          {
+            "name": "Rule_Description",
+            "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd",
+            "value": "Ensure that the --etcd-cafile argument is set",
+            "remarks": "rule_set_29"
+          },
+          {
+            "name": "Rule_Id",
+            "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd",
+            "value": "control_plane_api_server_encryption_provider_config",
+            "remarks": "rule_set_30"
+          },
+          {
+            "name": "Rule_Description",
+            "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd",
+            "value": "Ensure that the --encryption-provider-config argument is set",
+            "remarks": "rule_set_30"
+          },
+          {
+            "name": "Rule_Id",
+            "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd",
+            "value": "control_plane_api_server_tls_cipher_suites",
+            "remarks": "rule_set_31"
+          },
+          {
+            "name": "Rule_Description",
+            "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd",
+            "value": "Ensure that the --tls-cipher-suites argument is set as appropriate",
+            "remarks": "rule_set_31"
+          },
+          {
+            "name": "Rule_Id",
+            "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd",
+            "value": "control_plane_scheduler_profiling",
+            "remarks": "rule_set_32"
+          },
+          {
+            "name": "Rule_Description",
+            "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd",
+            "value": "Ensure that the --profiling argument is set to false (Scheduler)",
+            "remarks": "rule_set_32"
+          },
+          {
+            "name": "Rule_Id",
+            "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd",
+            "value": "control_plane_scheduler_bind_address",
+            "remarks": "rule_set_33"
+          },
+          {
+            "name": "Rule_Description",
+            "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd",
+            "value": "Ensure that the --bind-address argument is set to 127.0.0.1 (Scheduler)",
+            "remarks": "rule_set_33"
+          },
+          {
+            "name": "Rule_Id",
+            "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd",
+            "value": "control_plane_controller_manager_terminated_pod_gc_threshold",
+            "remarks": "rule_set_34"
+          },
+          {
+            "name": "Rule_Description",
+            "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd",
+            "value": "Ensure that the --terminated-pod-gc-threshold argument is set as appropriate",
+            "remarks": "rule_set_34"
+          },
+          {
+            "name": "Rule_Id",
+            "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd",
+            "value": "control_plane_controller_manager_profiling",
+            "remarks": "rule_set_35"
+          },
+          {
+            "name": "Rule_Description",
+            "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd",
+            "value": "Ensure that the --profiling argument is set to false (Controller Manager)",
+            "remarks": "rule_set_35"
+          },
+          {
+            "name": "Rule_Id",
+            "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd",
+            "value": "control_plane_controller_manager_use_service_account_credentials",
+            "remarks": "rule_set_36"
+          },
+          {
+            "name": "Rule_Description",
+            "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd",
+            "value": "Ensure that the --use-service-account-credentials argument is set to true",
+            "remarks": "rule_set_36"
+          },
+          {
+            "name": "Rule_Id",
+            "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd",
+            "value": "control_plane_controller_manager_service_account_private_key_file",
+            "remarks": "rule_set_37"
+          },
+          {
+            "name": "Rule_Description",
+            "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd",
+            "value": "Ensure that the --service-account-private-key-file argument is set",
+            "remarks": "rule_set_37"
+          },
+          {
+            "name": "Rule_Id",
+            "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd",
+            "value": "control_plane_controller_manager_root_ca_file",
+            "remarks": "rule_set_38"
+          },
+          {
+            "name": "Rule_Description",
+            "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd",
+            "value": "Ensure that the --root-ca-file argument is set",
+            "remarks": "rule_set_38"
+          },
+          {
+            "name": "Rule_Id",
+            "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd",
+            "value": "control_plane_controller_manager_feature_gates_rotate_kubelet_server_certificate",
+            "remarks": "rule_set_39"
+          },
+          {
+            "name": "Rule_Description",
+            "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd",
+            "value": "Ensure that the RotateKubeletServerCertificate argument is set to true",
+            "remarks": "rule_set_39"
+          },
+          {
+            "name": "Rule_Id",
+            "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd",
+            "value": "control_plane_controller_manager_bind_address",
+            "remarks": "rule_set_40"
+          },
+          {
+            "name": "Rule_Description",
+            "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd",
+            "value": "Ensure that the --bind-address argument is set to 127.0.0.1 (Controller Manager)",
+            "remarks": "rule_set_40"
+          },
+          {
+            "name": "Rule_Id",
+            "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd",
+            "value": "worker_node_kubelet_anonymous_auth",
+            "remarks": "rule_set_41"
+          },
+          {
+            "name": "Rule_Description",
+            "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd",
+            "value": "Ensure that the --anonymous-auth argument is set to false (Kubelet)",
+            "remarks": "rule_set_41"
+          },
+          {
+            "name": "Rule_Id",
+            "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd",
+            "value": "worker_node_kubelet_authorization_mode",
+            "remarks": "rule_set_42"
+          },
+          {
+            "name": "Rule_Description",
+            "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd",
+            "value": "Ensure that the --authorization-mode argument is not set to AlwaysAllow (Kubelet)",
+            "remarks": "rule_set_42"
+          },
+          {
+            "name": "Rule_Id",
+            "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd",
+            "value": "worker_node_kubelet_client_ca_file",
+            "remarks": "rule_set_43"
+          },
+          {
+            "name": "Rule_Description",
+            "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd",
+            "value": "Ensure that the --client-ca-file argument is set (Kubelet)",
+            "remarks": "rule_set_43"
+          },
+          {
+            "name": "Rule_Id",
+            "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd",
+            "value": "worker_node_kubelet_read_only_port",
+            "remarks": "rule_set_44"
+          },
+          {
+            "name": "Rule_Description",
+            "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd",
+            "value": "Ensure that the --read-only-port argument is set to 0 (Kubelet)",
+            "remarks": "rule_set_44"
+          },
+          {
+            "name": "Rule_Id",
+            "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd",
+            "value": "worker_node_kubelet_streaming_connection_idle_timeout",
+            "remarks": "rule_set_45"
+          },
+          {
+            "name": "Rule_Description",
+            "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd",
+            "value": "Ensure that the --streaming-connection-idle-timeout argument is not set to 0 (Kubelet)",
+            "remarks": "rule_set_45"
+          },
+          {
+            "name": "Rule_Id",
+            "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd",
+            "value": "worker_node_kubelet_protect_kernel_defaults",
+            "remarks": "rule_set_46"
+          },
+          {
+            "name": "Rule_Description",
+            "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd",
+            "value": "Ensure that the --protect-kernel-defaults argument is set to true (Kubelet)",
+            "remarks": "rule_set_46"
+          },
+          {
+            "name": "Rule_Id",
+            "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd",
+            "value": "worker_node_kubelet_make_iptables_util_chains",
+            "remarks": "rule_set_47"
+          },
+          {
+            "name": "Rule_Description",
+            "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd",
+            "value": "Ensure that the --make-iptables-util-chains argument is set to true (Kubelet)",
+            "remarks": "rule_set_47"
+          },
+          {
+            "name": "Rule_Id",
+            "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd",
+            "value": "worker_node_kubelet_hostname_override",
+            "remarks": "rule_set_48"
+          },
+          {
+            "name": "Rule_Description",
+            "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd",
+            "value": "Ensure that the --hostname-override argument is not set (Kubelet)",
+            "remarks": "rule_set_48"
+          },
+          {
+            "name": "Rule_Id",
+            "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd",
+            "value": "worker_node_kubelet_event_qps",
+            "remarks": "rule_set_49"
+          },
+          {
+            "name": "Rule_Description",
+            "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd",
+            "value": "Ensure that the --event-qps argument is set to 0 or a level which ensures appropriate event capture (Kubelet)",
+            "remarks": "rule_set_49"
+          },
+          {
+            "name": "Rule_Id",
+            "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd",
+            "value": "worker_node_kubelet_tls_cert_file",
+            "remarks": "rule_set_50"
+          },
+          {
+            "name": "Rule_Description",
+            "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd",
+            "value": "Ensure that the --tls-cert-file and --tls-private-key-file arguments are set (Kubelet)",
+            "remarks": "rule_set_50"
+          },
+          {
+            "name": "Rule_Id",
+            "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd",
+            "value": "worker_node_kubelet_rotate_certificates",
+            "remarks": "rule_set_51"
+          },
+          {
+            "name": "Rule_Description",
+            "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd",
+            "value": "Ensure that the RotateKubeletServerCertificate argument is set to true (Kubelet)",
+            "remarks": "rule_set_51"
+          },
+          {
+            "name": "Rule_Id",
+            "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd",
+            "value": "etcd_cert_file",
+            "remarks": "rule_set_52"
+          },
+          {
+            "name": "Rule_Description",
+            "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd",
+            "value": "Ensure that the --cert-file and --key-file arguments are set (etcd)",
+            "remarks": "rule_set_52"
+          },
+          {
+            "name": "Rule_Id",
+            "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd",
+            "value": "etcd_client_cert_auth",
+            "remarks": "rule_set_53"
+          },
+          {
+            "name": "Rule_Description",
+            "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd",
+            "value": "Ensure that the --client-cert-auth argument is set to true (etcd)",
+            "remarks": "rule_set_53"
+          },
+          {
+            "name": "Rule_Id",
+            "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd",
+            "value": "etcd_auto_tls",
+            "remarks": "rule_set_54"
+          },
+          {
+            "name": "Rule_Description",
+            "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd",
+            "value": "Ensure that the --auto-tls argument is not set to true (etcd)",
+            "remarks": "rule_set_54"
+          },
+          {
+            "name": "Rule_Id",
+            "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd",
+            "value": "etcd_peer_cert_file",
+            "remarks": "rule_set_55"
+          },
+          {
+            "name": "Rule_Description",
+            "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd",
+            "value": "Ensure that the --peer-cert-file and --peer-key-file arguments are set (etcd)",
+            "remarks": "rule_set_55"
+          },
+          {
+            "name": "Rule_Id",
+            "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd",
+            "value": "etcd_peer_client_cert_auth",
+            "remarks": "rule_set_56"
+          },
+          {
+            "name": "Rule_Description",
+            "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd",
+            "value": "Ensure that the --peer-client-cert-auth argument is set to true (etcd)",
+            "remarks": "rule_set_56"
+          },
+          {
+            "name": "Rule_Id",
+            "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd",
+            "value": "etcd_peer_auto_tls",
+            "remarks": "rule_set_57"
+          },
+          {
+            "name": "Rule_Description",
+            "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd",
+            "value": "Ensure that the --peer-auto-tls argument is not set to true (etcd)",
+            "remarks": "rule_set_57"
+          },
+          {
+            "name": "Rule_Id",
+            "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd",
+            "value": "etcd_unique_ca",
+            "remarks": "rule_set_58"
+          },
+          {
+            "name": "Rule_Description",
+            "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd",
+            "value": "Ensure that a unique Certificate Authority is used for etcd",
+            "remarks": "rule_set_58"
+          },
+          {
+            "name": "Rule_Id",
+            "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd",
+            "value": "network_policy_enabled",
+            "remarks": "rule_set_59"
+          },
+          {
+            "name": "Rule_Description",
+            "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd",
+            "value": "Ensure that Network Policies are enabled and used",
+            "remarks": "rule_set_59"
+          },
+          {
+            "name": "Rule_Id",
+            "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd",
+            "value": "pod_security_policy_enabled",
+            "remarks": "rule_set_60"
+          },
+          {
+            "name": "Rule_Description",
+            "ns": "https://oscal-compass/compliance-trestle/schemas/oscal/cd",
+            "value": "Ensure that Pod Security Policies are enabled and configured",
+            "remarks": "rule_set_60"
+          }
+        ],
+        "control-implementations": []
+      }
+    ]
+  }
+}

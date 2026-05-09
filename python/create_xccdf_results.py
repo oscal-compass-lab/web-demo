@@ -14,8 +14,15 @@
 # limitations under the License.
 
 """
-Create XCCDF result files for each Ubuntu server component
-Uses all rules from the OSCAP validation component definition
+Create XCCDF result files for inventory items (Ubuntu servers and Kubernetes nodes).
+
+For Ubuntu servers:
+- Uses all rules from the OSCAP validation component definition
+- Generates OpenSCAP-format XCCDF results
+
+For Kubernetes nodes:
+- Uses all rules from the kube-bench validation component definition
+- Generates CIS Kubernetes Benchmark-format XCCDF results
 """
 
 import sys
@@ -24,30 +31,57 @@ from datetime import datetime, timedelta
 import random
 sys.path.insert(0, str(Path(__file__).parent.parent))
 from trestle_api import TrestleAPI
-from server_config import get_all_servers
+from server_config import get_all_servers, get_all_k8s_nodes
 
 # Initialize Trestle API
 trestle_api = TrestleAPI(Path('trestle-workspace'))
 
-# Load OSCAP component to get all rules
+# Load OSCAP component to get all rules for Ubuntu servers
 print("Loading OSCAP component definition...")
 oscap_comp = trestle_api.load_component('oscap')
 if not oscap_comp or not oscap_comp.components:
     print("Error: Could not load OSCAP component")
     exit(1)
 
-# Extract all Rule_Id properties
+# Extract all Rule_Id properties from OSCAP
 oscap_component = oscap_comp.components[0]
-rules = []
+oscap_rules = []
 if oscap_component.props:
     for prop in oscap_component.props:
         if prop.name == 'Rule_Id':
-            rules.append(str(prop.value))
+            oscap_rules.append(str(prop.value))
 
-print(f"Found {len(rules)} rules in OSCAP component\n")
+print(f"Found {len(oscap_rules)} rules in OSCAP component\n")
 
-# Get server configurations from common data file
+# Load Kubernetes component to get all rules for K8s nodes
+print("Loading Kubernetes component definition...")
+k8s_comp = trestle_api.load_component('Kubernetes_1_28')
+if not k8s_comp or not k8s_comp.components:
+    print("Error: Could not load Kubernetes component")
+    exit(1)
+
+# Extract all Rule_Id properties from kube-bench (validation component)
+kube_bench_component = None
+for comp in k8s_comp.components:
+    if comp.type == 'validation':
+        kube_bench_component = comp
+        break
+
+if not kube_bench_component:
+    print("Error: Could not find kube-bench validation component")
+    exit(1)
+
+k8s_rules = []
+if kube_bench_component.props:
+    for prop in kube_bench_component.props:
+        if prop.name == 'Rule_Id':
+            k8s_rules.append(str(prop.value))
+
+print(f"Found {len(k8s_rules)} rules in kube-bench component\n")
+
+# Get server and node configurations from common data file
 servers = get_all_servers()
+k8s_nodes = get_all_k8s_nodes()
 
 # Create results directory
 results_dir = Path("source-data/xccdf-results")
@@ -60,16 +94,24 @@ base_time = datetime.now()
 # Force certain rules to always fail to create exactly 2 "not-satisfied" controls
 # au-2 has 1 unique rule: sshd_set_loglevel_info
 # au-3 has 2 rules, one unique: sudo_custom_logfile
-ALWAYS_FAIL_RULES = [
+UBUNTU_ALWAYS_FAIL_RULES = [
     'sshd_set_loglevel_info',  # au-2 control (1 control affected)
     'sudo_custom_logfile'       # au-3 control (1 control affected)
 ]
+
+# Force certain K8s rules to always fail
+K8S_ALWAYS_FAIL_RULES = [
+    'control_plane_api_server_audit_log_path',  # au-2 control
+    'worker_node_kubelet_anonymous_auth'        # ac-2 control
+]
+
+print("Creating XCCDF result files for Ubuntu servers...\n")
 
 for server in servers:
     filename = results_dir / f"{server['name']}-xccdf-results.xml"
     
     # Calculate pass/fail based on compliance rate
-    num_rules = len(rules)
+    num_rules = len(oscap_rules)
     num_pass = int(num_rules * server['compliance_rate'])
     num_fail = num_rules - num_pass
     
@@ -78,8 +120,8 @@ for server in servers:
     random.shuffle(results)
     
     # Force specific rules to always fail (creates not-satisfied controls)
-    for i, rule_id in enumerate(rules):
-        if rule_id in ALWAYS_FAIL_RULES:
+    for i, rule_id in enumerate(oscap_rules):
+        if rule_id in UBUNTU_ALWAYS_FAIL_RULES:
             results[i] = 'fail'
     
     # Assign random severity to each rule
@@ -143,7 +185,7 @@ for server in servers:
     
     # Add rule results
     rule_time = scan_start
-    for rule_id, result in zip(rules, results):
+    for rule_id, result in zip(oscap_rules, results):
         rule_time += timedelta(seconds=random.randint(5, 15))
         severity = random.choice(severities)
         
@@ -180,8 +222,141 @@ for server in servers:
     print(f"  Compliance: {server['compliance_rate'] * 100:.1f}% ({num_pass}/{num_rules} passed)")
     print(f"  Scan time: {scan_start.strftime('%Y-%m-%d %H:%M:%S')}\n")
 
-print(f"\n✓ All XCCDF result files created in {results_dir}/")
-print(f"  Total servers: {len(servers)}")
-print(f"  Rules per server: {len(rules)} (from OSCAP component definition)")
+print(f"\n✓ All Ubuntu server XCCDF result files created")
+print(f"  Total Ubuntu servers: {len(servers)}")
+print(f"  Rules per server: {len(oscap_rules)} (from OSCAP component definition)\n")
+
+# Now create XCCDF results for Kubernetes nodes
+print("Creating XCCDF result files for Kubernetes nodes...\n")
+
+for node in k8s_nodes:
+    filename = results_dir / f"{node['name']}-xccdf-results.xml"
+    
+    # Calculate pass/fail based on compliance rate
+    num_rules = len(k8s_rules)
+    num_pass = int(num_rules * node['compliance_rate'])
+    num_fail = num_rules - num_pass
+    
+    # Randomly assign pass/fail to rules
+    results = ['pass'] * num_pass + ['fail'] * num_fail
+    random.shuffle(results)
+    
+    # Force specific rules to always fail (creates not-satisfied controls)
+    for i, rule_id in enumerate(k8s_rules):
+        if rule_id in K8S_ALWAYS_FAIL_RULES:
+            results[i] = 'fail'
+    
+    # Assign random severity to each rule
+    severities = ['high', 'medium', 'low']
+    
+    # Generate XCCDF XML for Kubernetes
+    scan_start = base_time - timedelta(hours=random.randint(1, 48))
+    scan_end = scan_start + timedelta(minutes=random.randint(5, 15))
+    
+    # Determine profile based on node type
+    profile_id = "xccdf_org.cisecurity.benchmarks_profile_Level_2_-_Master_Node" if node['node_type'] == 'master' else "xccdf_org.cisecurity.benchmarks_profile_Level_2_-_Worker_Node"
+    profile_title = f"CIS Kubernetes Benchmark Level 2 - {node['node_type'].title()} Node"
+    
+    xml_content = f'''<?xml version="1.0" encoding="UTF-8"?>
+<Benchmark xmlns="http://checklists.nist.gov/xccdf/1.2"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           id="xccdf_org.cisecurity.benchmarks_benchmark_kubernetes"
+           resolved="true">
+  
+  <status date="{scan_start.strftime('%Y-%m-%d')}">accepted</status>
+  <title>CIS Kubernetes Benchmark v1.8.0</title>
+  <description>
+    This benchmark provides prescriptive guidance for establishing a secure configuration
+    posture for Kubernetes v{node['k8s_version']}. This guide was tested against Kubernetes
+    running on Linux.
+  </description>
+  <version>1.8.0</version>
+  
+  <Profile id="{profile_id}">
+    <title>{profile_title}</title>
+    <description>
+      This profile contains configuration checks that align to the CIS Kubernetes Benchmark
+      Level 2 for {node['node_type']} nodes.
+    </description>
+  </Profile>
+  
+  <TestResult id="xccdf_org.kube-bench_testresult_{profile_id}"
+              start-time="{scan_start.isoformat()}"
+              end-time="{scan_end.isoformat()}"
+              version="1.2"
+              test-system="cpe:/a:aquasecurity:kube-bench:0.7.0">
+    
+    <benchmark href="/etc/kube-bench/cfg/cis-1.8/benchmark.yml"
+               id="xccdf_org.cisecurity.benchmarks_benchmark_kubernetes"/>
+    
+    <title>kube-bench Scan Result - {node['description']}</title>
+    
+    <identity authenticated="true" privileged="true">root</identity>
+    
+    <profile idref="{profile_id}"/>
+    
+    <target>{node['hostname']}</target>
+    <target-address>{node['ip']}</target-address>
+    <target-facts>
+      <fact name="urn:xccdf:fact:asset:identifier:host_name" type="string">{node['hostname']}</fact>
+      <fact name="urn:xccdf:fact:asset:identifier:ipv4" type="string">{node['ip']}</fact>
+      <fact name="urn:xccdf:fact:asset:identifier:platform" type="string">Kubernetes</fact>
+      <fact name="urn:xccdf:fact:asset:identifier:k8s_version" type="string">{node['k8s_version']}</fact>
+      <fact name="urn:xccdf:fact:asset:identifier:node_type" type="string">{node['node_type']}</fact>
+    </target-facts>
+    
+    <platform idref="cpe:/a:kubernetes:kubernetes:{node['k8s_version']}"/>
+    
+    <score system="urn:xccdf:scoring:default" maximum="100.000000">{node['compliance_rate'] * 100:.1f}</score>
+    
+'''
+    
+    # Add rule results
+    rule_time = scan_start
+    for rule_id, result in zip(k8s_rules, results):
+        rule_time += timedelta(seconds=random.randint(5, 15))
+        severity = random.choice(severities)
+        
+        xml_content += f'''    <rule-result idref="xccdf_org.cisecurity.benchmarks_rule_{rule_id}"
+                 time="{rule_time.isoformat()}"
+                 severity="{severity}"
+                 weight="1.000000">
+      <result>{result}</result>
+      <ident system="https://www.cisecurity.org/benchmark/kubernetes">CIS-K8S-{random.randint(1, 5)}.{random.randint(1, 9)}.{random.randint(1, 20)}</ident>
+      <check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
+        <check-content-ref name="oval:org.cisecurity.benchmarks:def:{random.randint(100, 999)}" href="cis-kubernetes-oval.xml"/>
+      </check>
+'''
+        
+        if result == 'fail':
+            xml_content += f'''      <message severity="error">Check failed: {rule_id}</message>
+'''
+        
+        xml_content += '''    </rule-result>
+    
+'''
+    
+    xml_content += '''  </TestResult>
+</Benchmark>
+'''
+    
+    # Write file
+    with open(filename, 'w') as f:
+        f.write(xml_content)
+    
+    print(f"✓ Created: {filename}")
+    print(f"  Node: {node['hostname']}")
+    print(f"  Type: {node['node_type']}")
+    print(f"  Rules checked: {num_rules}")
+    print(f"  Compliance: {node['compliance_rate'] * 100:.1f}% ({num_pass}/{num_rules} passed)")
+    print(f"  Scan time: {scan_start.strftime('%Y-%m-%d %H:%M:%S')}\n")
+
+print(f"\n{'='*60}")
+print(f"✓ All XCCDF result files created in {results_dir}/")
+print(f"{'='*60}")
+print(f"  Ubuntu servers: {len(servers)} ({len(oscap_rules)} OSCAP rules each)")
+print(f"  Kubernetes nodes: {len(k8s_nodes)} ({len(k8s_rules)} kube-bench rules each)")
+print(f"  Total inventory items: {len(servers) + len(k8s_nodes)}")
+print(f"{'='*60}")
 
 # Made with Bob

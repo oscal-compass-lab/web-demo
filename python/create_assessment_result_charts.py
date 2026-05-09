@@ -99,9 +99,10 @@ def parse_assessment_result(ar_file: Path) -> Dict:
     metadata = ar.get('metadata', {})
     title = metadata.get('title', 'Unknown')
     
-    # Get regulation and inventory count from props
+    # Get regulation, inventory count, and platform from props
     regulation = 'Unknown'
     inventory_count = 1  # Default to 1 if not found
+    platform = 'Ubuntu'  # Default to Ubuntu for backward compatibility
     for prop in metadata.get('props', []):
         if prop.get('name') == 'regulation':
             regulation = prop.get('value', 'Unknown')
@@ -110,6 +111,8 @@ def parse_assessment_result(ar_file: Path) -> Dict:
                 inventory_count = int(prop.get('value', '1'))
             except (ValueError, TypeError):
                 inventory_count = 1
+        elif prop.get('name') == 'platform':
+            platform = prop.get('value', 'Ubuntu')
     
     # Parse control results
     controls = []
@@ -145,6 +148,7 @@ def parse_assessment_result(ar_file: Path) -> Dict:
     return {
         'title': title,
         'regulation': regulation,
+        'platform': platform,
         'file': ar_file.name,
         'controls': controls,
         'inventory_count': inventory_count,
@@ -241,8 +245,9 @@ def create_regulation_summary_chart(stats: Dict, output_file: Path):
                  fontsize=12, fontweight='bold', pad=15)
     ax2.grid(axis='y', alpha=0.3, linestyle='--')
     
-    # Overall title
-    fig.suptitle(f"{stats['regulation']} - Compliance Summary", 
+    # Overall title with platform
+    platform = stats.get('platform', 'Ubuntu')
+    fig.suptitle(f"{stats['regulation']} - {platform} Compliance Summary",
                 fontsize=16, fontweight='bold', y=0.98)
     
     # Save figure
@@ -285,9 +290,13 @@ def create_control_detail_chart(stats: Dict, output_file: Path):
     # Create horizontal stacked bar chart
     y_pos = range(len(control_ids))
     
-    bars1 = ax.barh(y_pos, pass_counts, color=COLORS['pass'], 
+    # Calculate adaptive bar height - smaller for fewer controls to prevent bars from being too wide
+    # Use 0.6 for many controls, scale down to 0.4 for fewer controls
+    bar_height = max(0.4, min(0.6, len(controls_sorted) / 30))
+    
+    bars1 = ax.barh(y_pos, pass_counts, height=bar_height, color=COLORS['pass'],
                     edgecolor='black', linewidth=0.5, label='Pass')
-    bars2 = ax.barh(y_pos, fail_counts, left=pass_counts, color=COLORS['fail'],
+    bars2 = ax.barh(y_pos, fail_counts, height=bar_height, left=pass_counts, color=COLORS['fail'],
                     edgecolor='black', linewidth=0.5, label='Fail')
     
     # Add value labels
@@ -309,8 +318,9 @@ def create_control_detail_chart(stats: Dict, output_file: Path):
     # Customize chart
     ax.set_yticks(y_pos)
     ax.set_yticklabels(control_ids, fontsize=10)
+    platform = stats.get('platform', 'Ubuntu')
     ax.set_xlabel('Rule Evaluations', fontsize=12, fontweight='bold')
-    ax.set_title(f"{stats['regulation']} - Control-Level Compliance{title_suffix}", 
+    ax.set_title(f"{stats['regulation']} - {platform} Control-Level Compliance{title_suffix}",
                 fontsize=14, fontweight='bold', pad=20)
     ax.legend(loc='lower right', fontsize=11)
     ax.grid(axis='x', alpha=0.3, linestyle='--')
@@ -328,7 +338,7 @@ def create_control_detail_chart(stats: Dict, output_file: Path):
 
 def create_cross_regulation_comparison(all_stats: List[Dict], output_file: Path):
     """
-    Create a comparison chart across all regulations.
+    Create a comparison chart across all regulations with platform labels.
     
     Args:
         all_stats: List of statistics dictionaries
@@ -337,26 +347,56 @@ def create_cross_regulation_comparison(all_stats: List[Dict], output_file: Path)
     if not all_stats:
         return
     
-    # Sort regulations in desired order: Low, Moderate, High, DORA
+    # Sort by platform first (Ubuntu before Kubernetes), then by regulation
     def sort_key(stat):
+        platform = stat.get('platform', 'Ubuntu')
         reg = stat['regulation'].lower()
+        
+        # Platform order: Ubuntu=0, Kubernetes=1
+        platform_order = 0 if 'Ubuntu' in platform else 1
+        
+        # Regulation order within platform
         if 'low' in reg:
-            return 0
+            reg_order = 0
         elif 'moderate' in reg:
-            return 1
+            reg_order = 1
         elif 'high' in reg:
-            return 2
+            reg_order = 2
         elif 'dora' in reg:
-            return 3
+            reg_order = 3
         else:
-            return 4
+            reg_order = 4
+        
+        return (platform_order, reg_order)
     
     all_stats = sorted(all_stats, key=sort_key)
     
     # Create figure
-    fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(16, 6))
+    fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(18, 7))
     
-    # Prepare data
+    # Prepare data with platform labels
+    labels = []
+    for s in all_stats:
+        platform = s.get('platform', 'Ubuntu')
+        # Shorten platform names for labels
+        platform_short = 'Ubuntu' if 'Ubuntu' in platform else 'K8s'
+        reg = s['regulation']
+        # Shorten regulation names but keep FedRAMP
+        if 'FedRAMP' in reg:
+            if 'Low' in reg:
+                reg_short = 'FedRAMP Low'
+            elif 'Moderate' in reg:
+                reg_short = 'FedRAMP Mod'
+            elif 'High' in reg:
+                reg_short = 'FedRAMP High'
+            else:
+                reg_short = reg
+        elif 'DORA' in reg:
+            reg_short = 'DORA'
+        else:
+            reg_short = reg
+        labels.append(f"{reg_short}\n({platform_short})")
+    
     regulations = [s['regulation'] for s in all_stats]
     total_controls = [s['summary']['total_controls'] for s in all_stats]
     satisfied = [s['summary']['satisfied'] for s in all_stats]
@@ -398,10 +438,10 @@ def create_cross_regulation_comparison(all_stats: List[Dict], output_file: Path)
                     fontsize=10, fontweight='bold', color='black')
     
     ax1.set_ylabel('Number of Controls', fontsize=12, fontweight='bold')
-    ax1.set_title('Control Status Comparison Across Regulations',
+    ax1.set_title('Control Status Comparison Across Regulations and Platforms',
                  fontsize=13, fontweight='bold', pad=15)
     ax1.set_xticks(x)
-    ax1.set_xticklabels(regulations, rotation=45, ha='right', fontsize=10)
+    ax1.set_xticklabels(labels, rotation=0, ha='center', fontsize=9)
     
     # Set y-axis limit to leave room for legend at top
     max_controls = max(total_controls)
@@ -430,10 +470,10 @@ def create_cross_regulation_comparison(all_stats: List[Dict], output_file: Path)
             ax2.text(i + bar_width/2, f, f'{f:.1f}', ha='center', va='bottom', fontsize=9, fontweight='bold')
     
     ax2.set_ylabel('Average Rule Evaluations per System', fontsize=12, fontweight='bold')
-    ax2.set_title('Rule Evaluation Results Across Regulations\n(Average per system assessed)',
+    ax2.set_title('Rule Evaluation Results Across Regulations and Platforms\n(Average per system assessed)',
                  fontsize=12, fontweight='bold', pad=15)
     ax2.set_xticks(x_pos)
-    ax2.set_xticklabels(regulations, rotation=45, ha='right', fontsize=10)
+    ax2.set_xticklabels(labels, rotation=0, ha='center', fontsize=9)
     
     # Set y-axis limit to leave room for legend at top
     max_pass = max(pass_counts) if pass_counts else 0
@@ -444,7 +484,7 @@ def create_cross_regulation_comparison(all_stats: List[Dict], output_file: Path)
     ax2.grid(axis='y', alpha=0.3, linestyle='--')
     
     # Overall title
-    fig.suptitle('Cross-Regulation Compliance Comparison',
+    fig.suptitle('Multi-Platform Cross-Regulation Compliance Comparison',
                 fontsize=16, fontweight='bold', y=0.98)
     
     # Save figure
@@ -453,6 +493,133 @@ def create_cross_regulation_comparison(all_stats: List[Dict], output_file: Path)
     plt.close()
     
     print(f"  ✓ Created cross-regulation comparison chart: {output_file}")
+
+
+def create_platform_comparison(ubuntu_stats: List[Dict], k8s_stats: List[Dict], output_file: Path):
+    """
+    Create a comparison chart between Ubuntu and Kubernetes platforms.
+    
+    Args:
+        ubuntu_stats: List of Ubuntu statistics dictionaries
+        k8s_stats: List of Kubernetes statistics dictionaries
+        output_file: Path to save the chart
+    """
+    if not ubuntu_stats and not k8s_stats:
+        return
+    
+    # Create figure
+    fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(16, 6))
+    
+    # Calculate platform totals
+    platforms = []
+    total_pass = []
+    total_fail = []
+    inventory_counts = []
+    
+    if ubuntu_stats:
+        platforms.append('Ubuntu 24.04 LTS')
+        ubuntu_pass = sum(s['summary']['total_pass'] for s in ubuntu_stats)
+        ubuntu_fail = sum(s['summary']['total_fail'] for s in ubuntu_stats)
+        # Get unique inventory count (same systems assessed across multiple regulations)
+        ubuntu_inventory = ubuntu_stats[0].get('inventory_count', 1) if ubuntu_stats else 1
+        ubuntu_total_inventory = sum(s.get('inventory_count', 1) for s in ubuntu_stats)
+        total_pass.append(ubuntu_pass / ubuntu_total_inventory if ubuntu_total_inventory > 0 else 0)
+        total_fail.append(ubuntu_fail / ubuntu_total_inventory if ubuntu_total_inventory > 0 else 0)
+        inventory_counts.append(ubuntu_inventory)  # Unique system count
+    
+    if k8s_stats:
+        platforms.append('Kubernetes 1.28')
+        k8s_pass = sum(s['summary']['total_pass'] for s in k8s_stats)
+        k8s_fail = sum(s['summary']['total_fail'] for s in k8s_stats)
+        # Get unique inventory count (same nodes assessed across multiple regulations)
+        k8s_inventory = k8s_stats[0].get('inventory_count', 1) if k8s_stats else 1
+        k8s_total_inventory = sum(s.get('inventory_count', 1) for s in k8s_stats)
+        total_pass.append(k8s_pass / k8s_total_inventory if k8s_total_inventory > 0 else 0)
+        total_fail.append(k8s_fail / k8s_total_inventory if k8s_total_inventory > 0 else 0)
+        inventory_counts.append(k8s_inventory)  # Unique node count
+    
+    # Left chart: Compliance Rate by Platform (Percentage)
+    compliance_rates = []
+    for p, f in zip(total_pass, total_fail):
+        total = p + f
+        rate = (p / total * 100) if total > 0 else 0
+        compliance_rates.append(rate)
+    
+    colors_list = [COLORS['pass'] if rate >= 90 else COLORS['partially-satisfied'] if rate >= 75 else COLORS['fail']
+                   for rate in compliance_rates]
+    
+    bars = ax1.bar(platforms, compliance_rates, color=colors_list, edgecolor='black', linewidth=1.5, width=0.6)
+    
+    # Add value labels
+    for i, (bar, rate) in enumerate(zip(bars, compliance_rates)):
+        height = bar.get_height()
+        ax1.text(bar.get_x() + bar.get_width()/2., height,
+                f'{rate:.1f}%', ha='center', va='bottom', fontsize=12, fontweight='bold')
+    
+    ax1.set_ylabel('Compliance Rate (%)', fontsize=12, fontweight='bold')
+    ax1.set_title('Platform Comparison - Overall Compliance Rate\n(Pass / Total Evaluations)',
+                 fontsize=13, fontweight='bold', pad=15)
+    # Set y-axis limit with substantial headroom to avoid legend collision
+    max_rate = max(compliance_rates) if compliance_rates else 100
+    ax1.set_ylim(0, min(max_rate * 1.35, 120))  # 35% headroom, max 120
+    ax1.grid(axis='y', alpha=0.3, linestyle='--')
+    
+    # Add reference lines
+    ax1.axhline(y=90, color='green', linestyle='--', alpha=0.5, linewidth=1)
+    ax1.axhline(y=75, color='orange', linestyle='--', alpha=0.5, linewidth=1)
+    
+    # Create legend with color meanings
+    from matplotlib.patches import Patch
+    legend_elements = [
+        Patch(facecolor=COLORS['pass'], edgecolor='black', label='≥90% (Excellent)'),
+        Patch(facecolor=COLORS['partially-satisfied'], edgecolor='black', label='75-89% (Good)'),
+        Patch(facecolor=COLORS['fail'], edgecolor='black', label='<75% (Needs Improvement)')
+    ]
+    ax1.legend(handles=legend_elements, fontsize=9, loc='upper right', framealpha=0.95)
+    
+    # Right chart: Pass/Fail by Platform (Grouped Bar)
+    x_pos = range(len(platforms))
+    bar_width = 0.35
+    
+    bars1 = ax2.bar([i - bar_width/2 for i in x_pos], total_pass, bar_width,
+                   label='Pass', color=COLORS['pass'], edgecolor='black', linewidth=1.5)
+    bars2 = ax2.bar([i + bar_width/2 for i in x_pos], total_fail, bar_width,
+                   label='Fail', color=COLORS['fail'], edgecolor='black', linewidth=1.5)
+    
+    # Add value labels
+    for i, (p, f, inv) in enumerate(zip(total_pass, total_fail, inventory_counts)):
+        if p > 0:
+            ax2.text(i - bar_width/2, p, f'{p:.1f}\n({inv} systems)',
+                    ha='center', va='bottom', fontsize=10, fontweight='bold')
+        if f > 0:
+            ax2.text(i + bar_width/2, f, f'{f:.1f}\n({inv} systems)',
+                    ha='center', va='bottom', fontsize=10, fontweight='bold')
+    
+    ax2.set_ylabel('Average Rule Evaluations per System', fontsize=12, fontweight='bold')
+    ax2.set_title('Platform Comparison - Rule Evaluation Results\n(Average per system)',
+                 fontsize=13, fontweight='bold', pad=15)
+    ax2.set_xticks(x_pos)
+    ax2.set_xticklabels(platforms, fontsize=11)
+    
+    # Set y-axis limit to leave room for labels (25% headroom for better spacing)
+    max_pass = max(total_pass) if total_pass else 0
+    max_fail = max(total_fail) if total_fail else 0
+    max_val = max(max_pass, max_fail)
+    ax2.set_ylim(0, max_val * 1.25)
+    
+    ax2.legend(fontsize=11, loc='upper right')
+    ax2.grid(axis='y', alpha=0.3, linestyle='--')
+    
+    # Overall title
+    fig.suptitle('Multi-Platform Compliance Comparison',
+                fontsize=16, fontweight='bold', y=0.98)
+    
+    # Save figure
+    plt.tight_layout(rect=[0, 0, 1, 0.96])
+    plt.savefig(output_file, dpi=150, bbox_inches='tight')
+    plt.close()
+    
+    print(f"  ✓ Created platform comparison chart: {output_file}")
 
 
 def main():
@@ -479,16 +646,36 @@ def main():
     print(f"\nFound {len(ar_files)} assessment result files\n")
     
     all_stats = []
+    ubuntu_stats = []
+    k8s_stats = []
     
-    # Process each assessment result
+    # First pass: parse all assessment results and categorize by platform
     for ar_file in ar_files:
         ar_name = ar_file.parent.name
-        print(f"Processing: {ar_name}")
-        
-        # Parse assessment result
         stats = parse_assessment_result(ar_file)
+        stats['ar_name'] = ar_name  # Add the assessment result name to stats
         all_stats.append(stats)
         
+        # Categorize by platform
+        platform = stats.get('platform', 'Ubuntu')
+        if 'Kubernetes' in platform or 'K8s' in platform:
+            k8s_stats.append(stats)
+        else:
+            ubuntu_stats.append(stats)
+    
+    # Sort each platform group by regulation name
+    ubuntu_stats.sort(key=lambda x: x['regulation'])
+    k8s_stats.sort(key=lambda x: x['regulation'])
+    
+    # Process Ubuntu charts first, then Kubernetes charts
+    ordered_stats = ubuntu_stats + k8s_stats
+    
+    for stats in ordered_stats:
+        ar_name = stats['ar_name']
+        platform = stats.get('platform', 'Ubuntu')
+        
+        print(f"Processing: {ar_name}")
+        print(f"  Platform: {platform}")
         print(f"  Regulation: {stats['regulation']}")
         print(f"  Total controls: {stats['summary']['total_controls']}")
         print(f"  Satisfied: {stats['summary']['satisfied']}, "
@@ -510,17 +697,25 @@ def main():
         
         print()
     
-    # Create cross-regulation comparison
+    # Create cross-regulation comparison (all platforms combined)
     if len(all_stats) > 1:
         comparison_file = CHARTS_OUTPUT_DIR / "cross-regulation-comparison.png"
         create_cross_regulation_comparison(all_stats, comparison_file)
     
+    # Create platform comparison chart
+    if ubuntu_stats and k8s_stats:
+        platform_file = CHARTS_OUTPUT_DIR / "platform-comparison.png"
+        create_platform_comparison(ubuntu_stats, k8s_stats, platform_file)
+    
     print("=" * 80)
     print(f"✓ Successfully created charts in {CHARTS_OUTPUT_DIR}/")
-    print(f"  Regulations processed: {len(all_stats)}")
-    print(f"  Charts per regulation: 2 (summary + control detail)")
+    print(f"  Ubuntu assessments: {len(ubuntu_stats)}")
+    print(f"  Kubernetes assessments: {len(k8s_stats)}")
+    print(f"  Total assessments: {len(all_stats)}")
+    print(f"  Charts per assessment: 2 (summary + control detail)")
     print(f"  Cross-regulation comparison: 1")
-    print(f"  Total charts: {len(all_stats) * 2 + 1}")
+    print(f"  Platform comparison: {'1' if ubuntu_stats and k8s_stats else '0'}")
+    print(f"  Total charts: {len(all_stats) * 2 + 1 + (1 if ubuntu_stats and k8s_stats else 0)}")
     print("=" * 80)
 
 

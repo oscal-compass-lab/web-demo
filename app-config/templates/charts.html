@@ -140,83 +140,146 @@
 
         <div class="content">
             <div class="info-box">
-                <p><strong>About These Charts:</strong> These charts are automatically generated from OSCAL Assessment Results documents and show the compliance status of security controls across different regulatory frameworks.</p>
+                <p><strong>About These Charts:</strong> These charts are automatically generated from OSCAL Assessment Results documents and show the compliance status of security controls across different regulatory frameworks and platforms.</p>
+                <p><strong>Platforms:</strong> Ubuntu 24.04 LTS (6 servers) and Kubernetes 1.28 (4 nodes)</p>
                 <p><strong>Regulations Covered:</strong> FedRAMP (Low, Moderate, High baselines) and DORA (Digital Operational Resilience Act)</p>
             </div>
 
-            <!-- Cross-Regulation Comparison -->
+            <!-- Multi-Platform Comparisons -->
             <div class="section">
-                <h2>🔄 Cross-Regulation Comparison</h2>
+                <h2>🌐 Multi-Platform Comparisons</h2>
+                
+                <h3>Platform Comparison</h3>
                 <div class="chart-container">
-                    <p class="chart-description">Comparative view of compliance status across all regulatory frameworks</p>
+                    <p class="chart-description">Side-by-side comparison of Ubuntu vs Kubernetes compliance across all regulations</p>
+                    <img src="/charts/platform-comparison.png" alt="Platform Comparison">
+                </div>
+
+                <h3>Cross-Regulation Comparison</h3>
+                <div class="chart-container">
+                    <p class="chart-description">Comparative view of compliance status across all regulatory frameworks and platforms</p>
                     <img src="/charts/cross-regulation-comparison.png" alt="Cross-Regulation Comparison">
                 </div>
             </div>
 
-            <!-- FedRAMP Low -->
+            <!-- Ubuntu Platform Charts -->
             <div class="section">
-                <h2>🔵 FedRAMP Low Baseline</h2>
+                <h2>🖥️ Ubuntu 24.04 LTS Platform</h2>
+                
+                <h3>🔵 FedRAMP Low Baseline</h3>
                 <div class="grid-2">
                     <div class="chart-container">
                         <h3>Summary</h3>
-                        <p class="chart-description">Overall compliance status for FedRAMP Low baseline</p>
-                        <img src="/charts/fedramp-low-summary.png" alt="FedRAMP Low Summary">
+                        <p class="chart-description">Overall compliance status for FedRAMP Low baseline on Ubuntu servers</p>
+                        <img src="/charts/fedramp-low-summary.png" alt="FedRAMP Low Ubuntu Summary">
                     </div>
                     <div class="chart-container">
                         <h3>Control Details</h3>
-                        <p class="chart-description">Detailed breakdown by control family</p>
-                        <img src="/charts/fedramp-low-controls.png" alt="FedRAMP Low Controls">
+                        <p class="chart-description">Detailed breakdown by control family for Ubuntu servers</p>
+                        <img src="/charts/fedramp-low-controls.png" alt="FedRAMP Low Ubuntu Controls">
+                    </div>
+                </div>
+
+                <h3>🟡 FedRAMP Moderate Baseline</h3>
+                <div class="grid-2">
+                    <div class="chart-container">
+                        <h3>Summary</h3>
+                        <p class="chart-description">Overall compliance status for FedRAMP Moderate baseline on Ubuntu servers</p>
+                        <img src="/charts/fedramp-moderate-summary.png" alt="FedRAMP Moderate Ubuntu Summary">
+                    </div>
+                    <div class="chart-container">
+                        <h3>Control Details</h3>
+                        <p class="chart-description">Detailed breakdown by control family for Ubuntu servers</p>
+                        <img src="/charts/fedramp-moderate-controls.png" alt="FedRAMP Moderate Ubuntu Controls">
+                    </div>
+                </div>
+
+                <h3>🔴 FedRAMP High Baseline</h3>
+                <div class="grid-2">
+                    <div class="chart-container">
+                        <h3>Summary</h3>
+                        <p class="chart-description">Overall compliance status for FedRAMP High baseline on Ubuntu servers</p>
+                        <img src="/charts/fedramp-high-summary.png" alt="FedRAMP High Ubuntu Summary">
+                    </div>
+                    <div class="chart-container">
+                        <h3>Control Details</h3>
+                        <p class="chart-description">Detailed breakdown by control family for Ubuntu servers</p>
+                        <img src="/charts/fedramp-high-controls.png" alt="FedRAMP High Ubuntu Controls">
+                    </div>
+                </div>
+
+                <h3>🟢 DORA (Digital Operational Resilience Act)</h3>
+                <div class="grid-2">
+                    <div class="chart-container">
+                        <h3>Summary</h3>
+                        <p class="chart-description">Overall compliance status for DORA requirements on Ubuntu servers</p>
+                        <img src="/charts/dora-summary.png" alt="DORA Ubuntu Summary">
+                    </div>
+                    <div class="chart-container">
+                        <h3>Control Details</h3>
+                        <p class="chart-description">Detailed breakdown by control family for Ubuntu servers</p>
+                        <img src="/charts/dora-controls.png" alt="DORA Ubuntu Controls">
                     </div>
                 </div>
             </div>
 
-            <!-- FedRAMP Moderate -->
+            <!-- Kubernetes Platform Charts -->
             <div class="section">
-                <h2>🟡 FedRAMP Moderate Baseline</h2>
+                <h2>☸️ Kubernetes 1.28 Platform</h2>
+                
+                <h3>🔵 FedRAMP Low Baseline</h3>
                 <div class="grid-2">
                     <div class="chart-container">
                         <h3>Summary</h3>
-                        <p class="chart-description">Overall compliance status for FedRAMP Moderate baseline</p>
-                        <img src="/charts/fedramp-moderate-summary.png" alt="FedRAMP Moderate Summary">
+                        <p class="chart-description">Overall compliance status for FedRAMP Low baseline on Kubernetes cluster</p>
+                        <img src="/charts/Kubernetes-System-ar-fedramp-low-summary.png" alt="FedRAMP Low Kubernetes Summary">
                     </div>
                     <div class="chart-container">
                         <h3>Control Details</h3>
-                        <p class="chart-description">Detailed breakdown by control family</p>
-                        <img src="/charts/fedramp-moderate-controls.png" alt="FedRAMP Moderate Controls">
+                        <p class="chart-description">Detailed breakdown by control family for Kubernetes cluster</p>
+                        <img src="/charts/Kubernetes-System-ar-fedramp-low-controls.png" alt="FedRAMP Low Kubernetes Controls">
                     </div>
                 </div>
-            </div>
 
-            <!-- FedRAMP High -->
-            <div class="section">
-                <h2>🔴 FedRAMP High Baseline</h2>
+                <h3>🟡 FedRAMP Moderate Baseline</h3>
                 <div class="grid-2">
                     <div class="chart-container">
                         <h3>Summary</h3>
-                        <p class="chart-description">Overall compliance status for FedRAMP High baseline</p>
-                        <img src="/charts/fedramp-high-summary.png" alt="FedRAMP High Summary">
+                        <p class="chart-description">Overall compliance status for FedRAMP Moderate baseline on Kubernetes cluster</p>
+                        <img src="/charts/Kubernetes-System-ar-fedramp-moderate-summary.png" alt="FedRAMP Moderate Kubernetes Summary">
                     </div>
                     <div class="chart-container">
                         <h3>Control Details</h3>
-                        <p class="chart-description">Detailed breakdown by control family</p>
-                        <img src="/charts/fedramp-high-controls.png" alt="FedRAMP High Controls">
+                        <p class="chart-description">Detailed breakdown by control family for Kubernetes cluster</p>
+                        <img src="/charts/Kubernetes-System-ar-fedramp-moderate-controls.png" alt="FedRAMP Moderate Kubernetes Controls">
                     </div>
                 </div>
-            </div>
 
-            <!-- DORA -->
-            <div class="section">
-                <h2>🟢 DORA (Digital Operational Resilience Act)</h2>
+                <h3>🔴 FedRAMP High Baseline</h3>
                 <div class="grid-2">
                     <div class="chart-container">
                         <h3>Summary</h3>
-                        <p class="chart-description">Overall compliance status for DORA requirements</p>
-                        <img src="/charts/dora-summary.png" alt="DORA Summary">
+                        <p class="chart-description">Overall compliance status for FedRAMP High baseline on Kubernetes cluster</p>
+                        <img src="/charts/Kubernetes-System-ar-fedramp-high-summary.png" alt="FedRAMP High Kubernetes Summary">
                     </div>
                     <div class="chart-container">
                         <h3>Control Details</h3>
-                        <p class="chart-description">Detailed breakdown by control family</p>
-                        <img src="/charts/dora-controls.png" alt="DORA Controls">
+                        <p class="chart-description">Detailed breakdown by control family for Kubernetes cluster</p>
+                        <img src="/charts/Kubernetes-System-ar-fedramp-high-controls.png" alt="FedRAMP High Kubernetes Controls">
+                    </div>
+                </div>
+
+                <h3>🟢 DORA (Digital Operational Resilience Act)</h3>
+                <div class="grid-2">
+                    <div class="chart-container">
+                        <h3>Summary</h3>
+                        <p class="chart-description">Overall compliance status for DORA requirements on Kubernetes cluster</p>
+                        <img src="/charts/Kubernetes-System-ar-dora-summary.png" alt="DORA Kubernetes Summary">
+                    </div>
+                    <div class="chart-container">
+                        <h3>Control Details</h3>
+                        <p class="chart-description">Detailed breakdown by control family for Kubernetes cluster</p>
+                        <img src="/charts/Kubernetes-System-ar-dora-controls.png" alt="DORA Kubernetes Controls">
                     </div>
                 </div>
             </div>
