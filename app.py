@@ -437,7 +437,7 @@ def index():
             
             <div class="footer">
                 <p><strong>OSCAL Compass Demo</strong></p>
-                <p><a href="https://pages.nist.gov/OSCAL/">OSCAL Documentation</a> | <a href="https://oscal-compass.github.io/compliance-trestle/">Trestle Docs</a> | <a href="https://github.com/oscal-compass">OSCAL Compass</a></p>
+                <p><a href="https://pages.nist.gov/OSCAL/">OSCAL Documentation</a> | <a href="https://oscal-compass.github.io/compliance-trestle/">Trestle Docs</a> | <a href="https://github.com/oscal-compass">OSCAL Compass</a> | <a href="https://dzone.com/articles/compass-compliance-part-1">DZone blogs</a></p>
             </div>
         </div>
     </body>
